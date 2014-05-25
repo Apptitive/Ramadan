@@ -2,6 +2,7 @@ package com.appsomehow.ramadan;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -23,6 +24,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private TextView txtTime;
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
+    private Button btnSaom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         } else {
             txtTime.setText("--");
         }
-
+        btnSaom = (Button) findViewById(R.id.saom);
+        btnSaom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SaomActivity.class));
+            }
+        });
     }
 
     @Override

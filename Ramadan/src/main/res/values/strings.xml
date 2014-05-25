@@ -4,7 +4,6 @@
     <string name="app_name">Ramadan</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
     <string name="title_activity_saom">Saom</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="parallax_text">Android Developer Lab is a series of mobile software development-focused events around the
@@ -18,7 +17,5 @@
         Android Developer Lab is a series of mobile software development-focused events around the world held annually by Google.
     </string>
     <string name="topic_title_ramadan_importance">সাওমের গুরুত্ব</string>
-=======
->>>>>>> origin/master
 
 </resources>

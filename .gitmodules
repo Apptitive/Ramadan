@@ -4,3 +4,6 @@
 [submodule "Paralloid"]
 	path = Paralloid
 	url = https://github.com/chrisjenx/Paralloid.git
+[submodule "android-betterpickers/android-betterpickers"]
+	path = android-betterpickers/android-betterpickers
+	url = https://github.com/derekbrameyer/android-betterpickers.git
