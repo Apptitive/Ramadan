@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
         Log.e("mHasDialogFrame", "" + mHasDialogFrame);
-        txtTime=(TextView)findViewById(R.id.txt_time);
+        txtTime = (TextView) findViewById(R.id.txt_time);
         if (mHasDialogFrame) {
             txtTime.setText("!");
         } else {
@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
 
     @Override
-    public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
         txtTime.setText("" + hourOfDay + ":" + minute);
     }
 }
