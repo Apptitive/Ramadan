@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:background="@color/blue">
+    android:layout_height="400dp">
 <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

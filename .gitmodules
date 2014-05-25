@@ -1,3 +1,3 @@
-[submodule "dependencies"]
-	path = dependencies
+[submodule "android-betterpickers"]
+	path = android-betterpickers
 	url = https://github.com/derekbrameyer/android-betterpickers.git
