@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -20,6 +23,7 @@
       </profile-state>
     </entry>
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
@@ -152,5 +156,10 @@
     </states>
   </component>
 >>>>>>> remotes/origin/parallax
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+>>>>>>> origin/master
 </project>
 

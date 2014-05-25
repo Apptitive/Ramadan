@@ -9,17 +9,23 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Ramadan" />
+<<<<<<< HEAD
             <option value="$PROJECT_DIR$/paralloid" />
 <<<<<<< HEAD
 =======
             <option value="$PROJECT_DIR$/paralloidexample" />
 >>>>>>> remotes/origin/parallax
             <option value="$PROJECT_DIR$/paralloidviews" />
+=======
+>>>>>>> origin/master
           </set>
         </option>
       </GradleProjectSettings>
     </option>
+<<<<<<< HEAD
     <option name="offlineWork" value="true" />
+=======
+>>>>>>> origin/master
   </component>
 </project>
 

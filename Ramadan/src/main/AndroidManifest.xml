@@ -9,8 +9,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.appsomehow.ramadan.SaomActivity"
-            android:label="@string/title_activity_saom" >
+            android:name="com.appsomehow.ramadan.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.appsomehow.ramadan.MainActivity"
+            android:name="com.appsomehow.ramadan.SaomActivity"
             android:label="@string/app_name">
         </activity>
     </application>
