@@ -4,12 +4,7 @@
     tools:context="com.appsomehow.ramadan.MainActivity">
     <item
         android:id="@+id/menu_alarm"
-        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:icon="@drawable/ic_action_alarms"
         android:title="Alarm"
         app:showAsAction="always"></item>
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
 </menu>
