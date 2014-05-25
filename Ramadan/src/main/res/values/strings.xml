@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ramadan</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_saom">Saom</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="parallax_text">Android Developer Lab is a series of mobile software development-focused events around the
+        world held annually by Google. They include bootcamp and technical sessions focused on Android and give participants
+        an excellent chance to learn about the state of the Android platform, get hands-on with the latest version of the SDK,
+        test applications on the latest sample Android devices, get questions answered by Google engineers from the Android
+        team as well as meet other like-minded members of the local Android developer community. Bootcamp is a hands-on training
+        experience where Google engineers show attendees how to get started with Android development, from Android SDK
+        installation to the creation of Android applications. Technical Sessions are presentations where Google engineers
+        speak about key Android features and show developers how to use them effectively to create high quality applications.
+        Android Developer Lab is a series of mobile software development-focused events around the world held annually by Google.
+    </string>
+    <string name="topic_title_ramadan_importance">সাওমের গুরুত্ব</string>
+
+</resources>
