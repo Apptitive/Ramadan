@@ -27,25 +27,42 @@
                 android:background="@color/Red"
                 android:alpha=".8">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/saom_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_activity_saom" />
+                    android:src="@drawable/ic_saom"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_toRightOf="@id/saom_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/parallox_title_saom"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_action_overflow"
                     android:scaleType="centerCrop"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/parallax_text"
-                android:background="@color/transparent_black"
-                android:padding="10dp"
+                android:background="@color/Black"
+                android:alpha=".7"
+                android:padding="12dp"
                 android:layout_margin="8dp"
                 android:textSize="16sp"
                 android:textColor="@color/white"/>
