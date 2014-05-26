@@ -22,57 +22,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.appsomehow.ramadan" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28e209cb-a607-42bb-94e5-b4abfbfa75e1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/bg_home.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/bg_home.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/bg_home.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/bg_home.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/icon_tarabih.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/niyat.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/niyat.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/niyat.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/niyat.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/saom.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/saom.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/saom.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/saom.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/saom_vonger_karon.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/saom_vonger_karon.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/saom_vonger_karon.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/saom_vonger_karon.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/sehri_iftar_time.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/sehri_iftar_time.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/sehri_iftar_time.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/sehri_iftar_time.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/shob_e_kodor.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/shob_e_kodor.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/shob_e_kodor.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/shob_e_kodor.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-hdpi/tarabih.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-mdpi/tarabih.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xhdpi/tarabih.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/drawable-xxhdpi/tarabih.9.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/values-large/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/values-small/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/values-xlarge/dimens.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/partial_view_niat_dua.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/partial_view_saom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/partial_view_saom_vonger_karon.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/partial_view_sob_e_kadar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/partial_view_tarabih_namaj.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan/src/main/java/com/appsomehow/ramadan/MainActivity.java" afterPath="$PROJECT_DIR$/Ramadan/src/main/java/com/appsomehow/ramadan/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan/Ramadan-Ramadan.iml" afterPath="$PROJECT_DIR$/Ramadan/Ramadan-Ramadan.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan.iml" afterPath="$PROJECT_DIR$/Ramadan.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_19_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_19_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ramadan/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/Ramadan/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_19_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="28e209cb-a607-42bb-94e5-b4abfbfa75e1" name="Default" comment="" />
     <ignored path="Ramadan.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1350,10 +1300,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29720855" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40229884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40229884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28696924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28696924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
