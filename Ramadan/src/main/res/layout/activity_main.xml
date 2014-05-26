@@ -1,22 +1,157 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.appsomehow.ramadan.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_home"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_8"
+    android:weightSum="1">
 
-    <TextView
-        android:id="@+id/txt_time"
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".42"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_2"
+        android:text="1">
 
-    <Button
-        android:id="@+id/saom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Saom"/>
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/dp_4">
+
+            <include
+                android:id="@+id/tab_saom"
+                layout="@layout/partial_view_saom"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/tab_sobekadar"
+                layout="@layout/partial_view_niat_dua"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/tab_tarabih"
+            layout="@layout/partial_view_saom_vonger_karon"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".30"
+        android:alpha=".7"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_6">
+
+        <include
+            android:id="@+id/tab_iftar_time"
+            layout="@layout/partial_view_iftar_time"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="2">
+
+            <View
+                android:id="@+id/devider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@android:color/white"
+                android:alpha=".2"/>
+
+            <TextView
+                android:id="@+id/tv_time_seheri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_25"
+                android:layout_toRightOf="@id/devider"
+                android:text="সেহেরীর শেষ\nসময়"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@+id/tv_seheri_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_time_seheri"
+                android:text="5:12"
+                android:textColor="@color/white"
+                android:layout_alignLeft="@id/tv_time_seheri"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_20"/>
+
+            <TextView
+                android:id="@+id/tv_time_ifter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_seheri_time"
+                android:text="ইফতার"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:layout_alignLeft="@id/tv_time_seheri"/>
+
+            <TextView
+                android:id="@+id/tv_ifter_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_time_ifter"
+                android:text="6:45"
+                android:textColor="@color/white"
+                android:layout_alignLeft="@id/tv_time_seheri"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_25"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".28"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_4"
+        android:text="3">
+
+
+        <include
+            android:id="@+id/tab_saom_vonger_karon"
+            layout="@layout/partial_view_tarabih_namaj"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/dp_4"
+            android:layout_weight="3" />
+
+        <include
+            android:id="@+id/tab_nioat"
+            layout="@layout/partial_view_sob_e_kadar"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

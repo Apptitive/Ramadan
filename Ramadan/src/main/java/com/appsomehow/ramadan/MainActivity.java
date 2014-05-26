@@ -3,6 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -13,10 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.appsomehow.ramadan.utilities.Alarm;
+import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
@@ -24,7 +29,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private TextView txtTime;
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
-    private Button btnSaom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +37,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
         Log.e("mHasDialogFrame", "" + mHasDialogFrame);
-        txtTime = (TextView) findViewById(R.id.txt_time);
-        if (mHasDialogFrame) {
-            txtTime.setText("!");
-        } else {
-            txtTime.setText("--");
-        }
-        btnSaom = (Button) findViewById(R.id.saom);
-        btnSaom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SaomActivity.class));
-            }
-        });
+
     }
 
     @Override
@@ -91,6 +83,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
-        txtTime.setText("" + hourOfDay + ":" + minute);
+        Alarm alarm = new Alarm(this);
+        alarm.setOneTimeAlarm(hourOfDay, minute);
     }
+
 }
