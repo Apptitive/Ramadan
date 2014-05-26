@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--common file dimen start-->
+    <dimen name="text_size_25">18.5sp</dimen>
+    <dimen name="text_size_20">15sp</dimen>
+    <dimen name="text_size_15">11.25sp</dimen>
+    <dimen name="text_size_12">9sp</dimen>
+
+    <dimen name="dp_ng_80">-60dp</dimen>
+    <dimen name="dp_ng_75">-57dp</dimen>
+    <dimen name="dp_ng_60">-45dp</dimen>
+    <dimen name="dp_ng_50">-37.5dp</dimen>
+    <dimen name="dp_ng_30">-22.5dp</dimen>
+    <dimen name="dp_ng_20">-15dp</dimen>
+
+    <dimen name="dp_120">90dp</dimen>
+    <dimen name="dp_70">52.50dp</dimen>
+    <dimen name="dp_50">37.5dp</dimen>
+    <dimen name="dp_30">22.5dp</dimen>
+    <dimen name="dp_25">18.5dp</dimen>
+    <dimen name="dp_20">15dp</dimen>
+    <dimen name="dp_18">13.5dp</dimen>
+    <dimen name="dp_15">11.25dp</dimen>
+    <dimen name="dp_10">7.5dp</dimen>
+    <dimen name="dp_5">3.75dp</dimen>
+    <dimen name="dp_8">6dp</dimen>
+    <dimen name="dp_4">3dp</dimen>
+    <dimen name="dp_6">4.5dp</dimen>
+    <dimen name="dp_2">1.5dp</dimen>
+    <!--common file dimen end-->
+
+</resources>
