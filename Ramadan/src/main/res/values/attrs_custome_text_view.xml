@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="CustomeTextView">
+        <attr name="fontName" format="string" />
+        <attr name="banglaText" format="string" />
+    </declare-styleable>
+</resources>
