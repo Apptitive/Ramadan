@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.appsomehow.ramadan.ParallaxFragment">
@@ -37,13 +38,14 @@
                     android:layout_marginLeft="12dp"
                     android:layout_centerVertical="true"/>
 
-                <TextView
+                <com.appsomehow.ramadan.views.BanglaTextView
                     android:layout_toRightOf="@id/saom_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:layout_centerVertical="true"
-                    android:text="@string/parallox_title_saom"
+                    app:banglaText="@string/parallox_title_saom"
+                    app:fontName="@string/font_kalpurush"
                     android:textSize="20sp"
                     android:textColor="@color/white"/>
 
