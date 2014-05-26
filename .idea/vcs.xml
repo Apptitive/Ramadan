@@ -2,11 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-=======
->>>>>>> home-screen
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/android-betterpickers" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/android-betterpickers" vcs="Git" />
   </component>
 </project>
 
