@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.appsomehow.ramadan.utilities.Alarm;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
@@ -91,6 +93,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+        Alarm alarm = new Alarm(this);
+        alarm.setOneTimeAlarm(hourOfDay, minute);
         txtTime.setText("" + hourOfDay + ":" + minute);
     }
 }
