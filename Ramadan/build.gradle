@@ -2,10 +2,10 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
@@ -19,6 +19,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.+'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.doomonafireball.betterpickers:library:1.5.2'
+    compile files('libs/joda-time-2.1.jar')
+    compile project(':paralloidviews')
+    compile 'com.android.support:support-v4:+'
+    compile project(':AndroidCustomFontSupport')
 }

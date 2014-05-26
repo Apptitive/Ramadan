@@ -4,6 +4,15 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ramadan.iml" filepath="$PROJECT_DIR$/Ramadan.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ramadan/Ramadan-Ramadan.iml" filepath="$PROJECT_DIR$/Ramadan/Ramadan-Ramadan.iml" />
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/paralloid/paralloid.iml" filepath="$PROJECT_DIR$/paralloid/paralloid.iml" />
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/paralloidexample/paralloidexample.iml" filepath="$PROJECT_DIR$/paralloidexample/paralloidexample.iml" />
+>>>>>>> remotes/origin/parallax
+      <module fileurl="file://$PROJECT_DIR$/paralloidviews/paralloidviews.iml" filepath="$PROJECT_DIR$/paralloidviews/paralloidviews.iml" />
+=======
+>>>>>>> origin/master
     </modules>
   </component>
 </project>
