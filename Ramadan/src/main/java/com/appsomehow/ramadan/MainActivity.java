@@ -3,6 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -14,11 +15,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Alarm;
+import com.appsomehow.ramadan.views.BanglaTextView;
+import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
@@ -41,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         } else {
             txtTime.setText("--");
         }
+
         btnSaom = (Button) findViewById(R.id.saom);
         btnSaom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +53,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 startActivity(new Intent(MainActivity.this, SaomActivity.class));
             }
         });
+
     }
 
     @Override
