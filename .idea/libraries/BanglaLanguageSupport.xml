@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="BanglaLanguageSupport">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/AndroidCustomFontSupport/libs/BanglaLanguageSupport.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Ramadan/build/exploded-aar/Ramadan/AndroidCustomFontSupport/unspecified/libs/BanglaLanguageSupport.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
