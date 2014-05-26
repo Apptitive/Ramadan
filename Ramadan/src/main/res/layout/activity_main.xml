@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.appsomehow.ramadan.MainActivity">
+
+<!--    <com.appsomehow.ramadan.views.BanglaTextView
+        android:id="@+id/customTextView"
+        app:banglaText="Ami Bangladeshi and ami kalpurush"
+        app:fontName="kalpurush.ttf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />-->
 
     <TextView
         android:id="@+id/txt_time"
@@ -18,5 +26,7 @@
         android:id="@+id/saom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Saom"/>
+        android:text="Saom" />
+
+
 </RelativeLayout>
