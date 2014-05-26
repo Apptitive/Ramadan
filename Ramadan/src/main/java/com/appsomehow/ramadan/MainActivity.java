@@ -17,6 +17,7 @@ import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
@@ -91,6 +92,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+       // DateTime dateTimeFormat =DateTime.now();
+
         txtTime.setText("" + hourOfDay + ":" + minute);
     }
 }
