@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.views.BanglaTextView;
-import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -30,7 +29,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private TextView txtTime;
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
-    private Button btnSaom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +37,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
         Log.e("mHasDialogFrame", "" + mHasDialogFrame);
-        txtTime = (TextView) findViewById(R.id.txt_time);
-        if (mHasDialogFrame) {
-            txtTime.setText("!");
-        } else {
-            txtTime.setText("--");
-        }
-
-        btnSaom = (Button) findViewById(R.id.saom);
-        btnSaom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SaomActivity.class));
-            }
-        });
 
     }
 
@@ -101,7 +85,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
         Alarm alarm = new Alarm(this);
         alarm.setOneTimeAlarm(hourOfDay, minute);
-        txtTime.setText("" + hourOfDay + ":" + minute);
     }
 
 }
