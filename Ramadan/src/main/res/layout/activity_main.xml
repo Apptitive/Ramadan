@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg_home"
@@ -111,12 +112,13 @@
                 android:textSize="@dimen/text_size_12"
                 android:layout_alignLeft="@id/tv_time_seheri"/>
 
-            <TextView
+            <com.appsomehow.ramadan.views.BanglaTextView
                 android:id="@+id/tv_ifter_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_time_ifter"
-                android:text="6:45"
+                app:banglaText="সাওম ও ফযীলাত"
+                app:fontName="@string/font_kalpurush"
                 android:textColor="@color/white"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:textStyle="bold"
