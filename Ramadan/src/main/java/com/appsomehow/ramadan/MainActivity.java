@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
+import com.appsomehow.ramadan.preferences.SettingsActivity;
 import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
@@ -97,6 +98,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         } else if (id == R.id.menu_alarm) {
             DateTime now = DateTime.now();
