@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.helper.DbManager;
@@ -43,6 +44,14 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
+        View r = findViewById(R.id.tab_saom);
+        r.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                    }
+                });
+    }
 
 /*        Region region = new Region("2","Dhaka",true, 0);
         DbManager.getInstance().addRegion(region);

@@ -20,6 +20,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:focusable="true" >
+
     <FrameLayout
         android:id="@+id/time_display_background"
         android:layout_width="match_parent"

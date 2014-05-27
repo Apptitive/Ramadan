@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.appsomehow.ramadan.ParallaxFragment">
@@ -24,28 +25,46 @@
                 android:layout_marginTop="8dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/Red"
-                android:alpha=".8">
+                android:background="@color/Red_Ramadan"
+                android:alpha=".6">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/saom_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_activity_saom" />
+                    android:src="@drawable/ic_saom"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="12dp"
+                    android:layout_centerVertical="true"/>
+
+                <com.appsomehow.ramadan.views.BanglaTextView
+                    android:layout_toRightOf="@id/saom_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:layout_centerVertical="true"
+                    app:banglaText="@string/parallox_title_saom"
+                    app:fontName="@string/font_solaimanlipi"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_action_overflow"
                     android:scaleType="centerCrop"
-                    android:layout_alignParentRight="true" />
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
             </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/parallax_text"
-                android:background="@color/transparent_black"
-                android:padding="10dp"
+                android:background="@color/Black"
+                android:alpha=".7"
+                android:padding="12dp"
                 android:layout_margin="8dp"
                 android:textSize="16sp"
                 android:textColor="@color/white"/>
