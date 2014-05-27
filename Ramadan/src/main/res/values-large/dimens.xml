@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!--common file dimen start-->
+    <dimen name="text_size_35">52.50sp</dimen>
     <dimen name="text_size_25">37.5sp</dimen>
     <dimen name="text_size_20">30sp</dimen>
     <dimen name="text_size_15">22.5sp</dimen>
@@ -15,6 +16,7 @@
     <dimen name="dp_ng_50">-75dp</dimen>
     <dimen name="dp_ng_30">-45dp</dimen>
     <dimen name="dp_ng_20">-30dp</dimen>
+    <dimen name="dp_ng_10">-15dp</dimen>
 
     <dimen name="dp_120">180dp</dimen>
     <dimen name="dp_70">105dp</dimen>

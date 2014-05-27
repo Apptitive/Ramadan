@@ -31,7 +31,7 @@
                 android:layout_weight="1" />
 
             <include
-                android:id="@+id/tab_sobekadar"
+                android:id="@+id/tab_nioat"
                 layout="@layout/partial_view_niat_dua"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
@@ -41,7 +41,7 @@
         </LinearLayout>
 
         <include
-            android:id="@+id/tab_tarabih"
+            android:id="@+id/tab_saom_vonger_karon"
             layout="@layout/partial_view_saom_vonger_karon"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -54,7 +54,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight=".30"
-        android:alpha=".7"
+        android:alpha=".8"
         android:background="@color/black"
         android:orientation="horizontal"
         android:layout_marginBottom="@dimen/dp_4"
@@ -87,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginTop="@dimen/dp_5"
                 android:layout_toRightOf="@id/devider"
                 app:banglaText="সেহেরীর শেষ\nসময়"
                 android:textColor="@color/white"
@@ -98,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_time_seheri"
+                android:layout_marginTop="@dimen/dp_ng_10"
                 app:banglaText="৩:৪০"
                 android:textColor="@color/white"
                 android:layout_alignLeft="@id/tv_time_seheri"
@@ -123,6 +125,7 @@
                 android:layout_below="@id/tv_time_ifter"
                 app:banglaText="৬:৪৭"
                 android:textColor="@color/white"
+                android:layout_marginTop="@dimen/dp_ng_10"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_size_25"/>
@@ -141,7 +144,7 @@
 
 
         <include
-            android:id="@+id/tab_saom_vonger_karon"
+            android:id="@+id/tab_tarabih"
             layout="@layout/partial_view_tarabih_namaj"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
@@ -149,7 +152,7 @@
             android:layout_weight="3" />
 
         <include
-            android:id="@+id/tab_nioat"
+            android:id="@+id/tab_sobekadar"
             layout="@layout/partial_view_sob_e_kadar"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
