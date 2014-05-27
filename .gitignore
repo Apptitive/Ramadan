@@ -24,3 +24,5 @@ local.properties
 proguard/
 /.idea/vcs.xml
 /.idea/workspace.xml
+
+/.idea/gradle.xml
