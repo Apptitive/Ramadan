@@ -29,8 +29,6 @@
         <item name="actionModeBackground">@drawable/cab_background_top_ramadan</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_ramadan</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ramadan</item>
-
-        
     </style>
 
     <style name="ActionBar.Solid.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
