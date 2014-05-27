@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.appsomehow.ramadan.ParallaxFragment">
 
-    <uk.co.chrisjenx.paralloid.views.ParallaxScrollView
+    <com.appsomehow.ramadan.views.StickyParallaxScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/parallax_scrollview"
+        android:id="@+id/sticky_parallax_scrollview"
         android:layout_gravity="center">
 
         <LinearLayout
@@ -26,6 +26,8 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:background="@color/Red_Ramadan"
+                android:scrollY="0dp"
+                android:tag="sticky-hastransparancy"
                 android:alpha=".6">
 
                 <ImageView
@@ -69,5 +71,5 @@
                 android:textSize="16sp"
                 android:textColor="@color/white"/>
         </LinearLayout>
-    </uk.co.chrisjenx.paralloid.views.ParallaxScrollView>
+    </com.appsomehow.ramadan.views.StickyParallaxScrollView>
 </FrameLayout>
