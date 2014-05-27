@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                         startActivity(new Intent(MainActivity.this, SaomActivity.class));
                     }
                 });
-    }
+
 
 /*        Region region = new Region("2","Dhaka",true, 0);
         DbManager.getInstance().addRegion(region);
