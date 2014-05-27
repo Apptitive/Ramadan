@@ -13,7 +13,6 @@ import com.appsomehow.ramadan.receiver.AlarmReceiver;
 public class Alarm {
     private Context context;
     private AlarmManager alarmManager;
-    private int AM_PM;
 
     public Alarm(Context context) {
         this.context = context;

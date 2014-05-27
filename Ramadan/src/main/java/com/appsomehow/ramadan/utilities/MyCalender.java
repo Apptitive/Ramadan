@@ -14,7 +14,6 @@ public class MyCalender {
 
 
     private Calendar calendar;
-    private int AM_PM;
 
     private MyCalender() {
         calendar = Calendar.getInstance();
@@ -36,11 +35,6 @@ public class MyCalender {
     }
 
     public int getAM_PM(int hourOfDay) {
-        if (hourOfDay < 12) {
-            AM_PM = Calendar.AM;
-        } else {
-            AM_PM = Calendar.PM;
-        }
-        return AM_PM;
+        return hourOfDay < 12 ? Calendar.AM : Calendar.PM;
     }
 }
