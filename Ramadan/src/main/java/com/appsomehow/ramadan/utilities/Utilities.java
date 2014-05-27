@@ -10,10 +10,9 @@ import com.appsomehow.ramadan.R;
  */
 public class Utilities {
 
-
     public static Typeface getFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(),
-                context.getString(R.string.font_solaimanlipi));
+                "fonts/" + context.getString(R.string.font_solaimanlipi));
     }
 
 }
