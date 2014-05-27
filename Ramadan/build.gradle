@@ -27,4 +27,7 @@ dependencies {
     compile 'com.android.support:support-v4:+'
     compile project(':stickyscrollview')
     compile project(':paralloid')
+    compile project(':AndroidCustomFontSupport')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/ormlite-core-4.48.jar')
 }

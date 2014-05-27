@@ -1,0 +1,2 @@
+1,Dhaka,0,0
+2,Rajshahi,1,6

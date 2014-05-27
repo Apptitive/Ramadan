@@ -1,0 +1,109 @@
+package com.appsomehow.ramadan.helper;
+
+import android.content.Context;
+import com.appsomehow.ramadan.model.Region;
+import com.appsomehow.ramadan.model.TimeTable;
+import java.sql.SQLException;
+import java.util.List;
+
+/**
+ * Created by rayhan on 5/27/2014.
+ */
+public class DbManager {
+
+    static private DbManager instance;
+
+    static public void init(Context ctx) {
+        if (null==instance) {
+            instance = new DbManager(ctx);
+        }
+    }
+
+    static public DbManager getInstance() {
+        return instance;
+    }
+
+    private DbHelper helper;
+    private DbManager(Context ctx) {
+        helper = new DbHelper(ctx);
+    }
+
+    private DbHelper getHelper() {
+        return helper;
+    }
+
+    public List<Region> getAllRegions() {
+        List<Region> regionList = null;
+        try {
+            regionList = getHelper().getRegionDao().queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return regionList;
+    }
+
+    public Region getDonorWithId(String regionId){
+        Region region = null;
+        try {
+            region = getHelper().getRegionDao().queryForId(regionId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return region;
+    }
+
+    public void addRegion(Region region) {
+        try {
+            getHelper().getRegionDao().create(region);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateRegion(Region region) {
+        try {
+            getHelper().getRegionDao().update(region);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public List<TimeTable> getAllTimeTables() {
+        List<TimeTable> timeTableList = null;
+        try {
+            timeTableList = getHelper().getTimeTableDao().queryForAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return timeTableList;
+    }
+
+    public TimeTable getTimeTableWithId(String timeTableId){
+        TimeTable timeTable = null;
+        try {
+            timeTable = getHelper().getTimeTableDao().queryForId(timeTableId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return timeTable;
+    }
+
+    public void addTimeTable(TimeTable timeTable) {
+        try {
+            getHelper().getTimeTableDao().create(timeTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTimeTable(TimeTable timeTable) {
+        try {
+            getHelper().getTimeTableDao().update(timeTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
