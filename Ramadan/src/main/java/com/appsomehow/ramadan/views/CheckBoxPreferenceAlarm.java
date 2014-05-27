@@ -37,6 +37,8 @@ public class CheckBoxPreferenceAlarm extends CheckBoxPreference {
     protected void onBindView(View view) {
         super.onBindView(view);
         TextView summaryView = (TextView) view.findViewById(android.R.id.title);
+        summaryView.setTypeface(Utilities.getFont(getContext()));
         summaryView.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(getContext().getString(R.string.pref_title_new_message_notifications), Utilities.getFont(getContext()), -1));
+        summaryView.setTextColor(Color.BLACK);
     }
 }
