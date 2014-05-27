@@ -3,10 +3,8 @@ package com.appsomehow.ramadan;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -14,9 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.appsomehow.ramadan.preferences.SettingsActivity;
+import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.model.Region;
+import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
@@ -25,6 +26,9 @@ import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.w3c.dom.Text;
+
+import java.util.Date;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
@@ -36,10 +40,36 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DbManager.init(this);
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
-        Log.e("mHasDialogFrame", "" + mHasDialogFrame);
+        View r = findViewById(R.id.tab_saom);
+        r.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SaomActivity.class));
+            }
+        });
+
+
+/*        Region region = new Region("2","Dhaka",true, 0);
+        DbManager.getInstance().addRegion(region);
+
+        TimeTable timeTable = new TimeTable("2",new Date(),"24-6-4","3:50", "6:49","6");
+        DbManager.getInstance().addTimeTable(timeTable);
+
+        List<Region> regions = DbManager.getInstance().getAllRegions();
+        for (Region r : regions){
+            Log.e("Region Name: ", r.name);
+        }
+
+        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+        for (TimeTable t : timeTables){
+            Log.e("Region Name: ", t.dateInBangla);
+        }*/
+
+
     }
 
     @Override
@@ -67,7 +97,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         } else if (id == R.id.menu_alarm) {
             DateTime now = DateTime.now();
