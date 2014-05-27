@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Alarm;
@@ -37,7 +38,18 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
         Log.e("mHasDialogFrame", "" + mHasDialogFrame);
+        View r = findViewById(R.id.tab_saom);
+        r.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                    }
+                });
+    }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
     }
 
     @Override
