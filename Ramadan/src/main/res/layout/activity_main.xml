@@ -81,44 +81,47 @@
                 android:background="@android:color/white"
                 android:alpha=".2"/>
 
-            <TextView
+            <com.appsomehow.ramadan.views.BanglaTextView
+                app:fontName="@string/font_solaimanlipi"
                 android:id="@+id/tv_time_seheri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_25"
                 android:layout_toRightOf="@id/devider"
-                android:text="সেহেরীর শেষ\nসময়"
+                app:banglaText="সেহেরীর শেষ\nসময়"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12"/>
 
-            <TextView
+            <com.appsomehow.ramadan.views.BanglaTextView
+                app:fontName="@string/font_solaimanlipi"
                 android:id="@+id/tv_seheri_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_time_seheri"
-                android:text="5:12"
+                app:banglaText="৩:৪০"
                 android:textColor="@color/white"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:textStyle="bold"
-                android:textSize="@dimen/text_size_20"/>
+                android:textSize="@dimen/text_size_25"/>
 
-            <TextView
+            <com.appsomehow.ramadan.views.BanglaTextView
+                app:fontName="@string/font_solaimanlipi"
                 android:id="@+id/tv_time_ifter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_seheri_time"
-                android:text="ইফতার"
+                app:banglaText="ইফতার"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12"
                 android:layout_alignLeft="@id/tv_time_seheri"/>
 
             <com.appsomehow.ramadan.views.BanglaTextView
+                app:fontName="@string/font_solaimanlipi"
                 android:id="@+id/tv_ifter_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_time_ifter"
-                app:banglaText="সাওম ও ফযীলাত"
-                app:fontName="@string/font_kalpurush"
+                app:banglaText="৬:৪৭"
                 android:textColor="@color/white"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:textStyle="bold"
