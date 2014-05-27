@@ -20,6 +20,7 @@
       android:layout_height="match_parent"
       android:layout_gravity="center"
       android:background="@color/white" >
+
         <View
             android:id="@+id/center_view"
             android:layout_width="1dp"
@@ -105,7 +106,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/ampm_label"
             android:layout_alignRight="@+id/ampm_label" />
-        <TextView
+       <TextView
             android:id="@+id/ampm_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
