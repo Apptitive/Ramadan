@@ -7,30 +7,15 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-<<<<<<< HEAD
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndroidCustomFontSupport" />
             <option value="$PROJECT_DIR$/Ramadan" />
-<<<<<<< HEAD
             <option value="$PROJECT_DIR$/paralloid" />
-<<<<<<< HEAD
-=======
-            <option value="$PROJECT_DIR$/paralloidexample" />
->>>>>>> remotes/origin/parallax
             <option value="$PROJECT_DIR$/paralloidviews" />
-=======
->>>>>>> origin/master
-=======
-            <option value="E:\Android\Git\Ramadan" />
-            <option value="E:\Android\Git\Ramadan\Ramadan" />
->>>>>>> home-screen
           </set>
         </option>
       </GradleProjectSettings>
     </option>
-<<<<<<< HEAD
-    <option name="offlineWork" value="true" />
-=======
->>>>>>> origin/master
   </component>
 </project>
 
