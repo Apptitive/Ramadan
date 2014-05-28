@@ -8,16 +8,18 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.Utilities;
 
 import java.io.IOException;
 
 public class RingtonService extends IntentService {
     private MediaPlayer mMediaPlayer;
 
-    public RingtonService(String name) {
-        super(name);
+    public RingtonService() {
+        super("RingtonService");
     }
 
     @Override
@@ -25,6 +27,8 @@ public class RingtonService extends IntentService {
         String ringTonName = intent.getStringExtra(Constants.KEY_RINGTON_NAME);
         if (ringTonName != null) {
             playSound(ringTonName);
+            Log.e("start music ", "music started");
+            Utilities.CustomNotification(getBaseContext());
         }
     }
 
@@ -48,8 +52,11 @@ public class RingtonService extends IntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+        }
+
     }
 
 
