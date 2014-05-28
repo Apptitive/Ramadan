@@ -15,4 +15,7 @@ public class Utilities {
                 "fonts/" + context.getString(R.string.font_solaimanlipi));
     }
 
+
+
+
 }

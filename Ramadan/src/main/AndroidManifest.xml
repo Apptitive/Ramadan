@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name="com.appsomehow.ramadan.SaomActivity"
-            android:label="@string/app_name"
+         android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -44,6 +44,21 @@
             android:name="com.appsomehow.ramadan.SehriIfterTimeActivity"
             android:label="@string/title_activity_sehri_ifter_time" >
         </activity>
+
+        <service
+            android:name="com.appsomehow.ramadan.com.appsomehow.ramadan.services.RingTonService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name="com.appsomehow.ramadan.services.RingtonService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name="com.appsomehow.ramadan.services.MyService"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>

@@ -42,5 +42,4 @@ public class CheckBoxPreferenceAlarm extends CheckBoxPreference {
         txtTitle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
     }
 
-
 }

@@ -5,7 +5,7 @@
     <string name="pref_key_alarm_vibrat">pref_key_alarm_vibrat</string>
     <string name="pref_key_location_settings">pref_key_location_settings</string>
     <string name="prep_key_location">prep_key_location</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">সেটিংস</string>
 
 
     <string name="pref_header_general">General</string>
