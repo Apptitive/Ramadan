@@ -1,4 +1,4 @@
-package com.appsomehow.ramadan.preferences;
+package com.appsomehow.ramadan;
 
 import android.annotation.TargetApi;
 import android.content.Context;
