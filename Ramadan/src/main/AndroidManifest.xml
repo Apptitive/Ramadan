@@ -57,6 +57,12 @@
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name="com.appsomehow.ramadan.services.MusicService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

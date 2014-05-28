@@ -4,6 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 
 public class SehriIfterTimeActivity extends ActionBarActivity {
@@ -11,7 +14,19 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sehri_ifter_time);
+        TableRow.LayoutParams params = new TableRow.LayoutParams(100, 100);
+        TableLayout table = new TableLayout(this);
+        for (int i = 0; i < 3; i++) {
+            TableRow row = new TableRow(this);
+            for (int j = 0; j < 3; j++) {
+                TextView text = new TextView(this);
+                text.setLayoutParams(params);
+                text.setText(String.format("(%d, %d)", i, j));
+                row.addView(text);
+            }
+            table.addView(row);
+        }
+        setContentView(table);
     }
 
 

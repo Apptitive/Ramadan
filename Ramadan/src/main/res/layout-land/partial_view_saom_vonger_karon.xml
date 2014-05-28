@@ -24,8 +24,8 @@
         android:layout_below="@id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/iv_icon"
-        app:banglaText="সাওম ভঙ্গের\nকারণসমূহ"
+        android:layout_centerHorizontal="true"
+        app:banglaText="সাওম ভঙ্গের কারণসমূহ"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

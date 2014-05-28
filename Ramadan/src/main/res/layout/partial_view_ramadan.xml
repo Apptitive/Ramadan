@@ -11,7 +11,7 @@
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="@dimen/dp_10"
         android:src="@drawable/shob_e_kodor"
         android:layout_centerHorizontal="true"
@@ -24,8 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:banglaText="শবে কদর"
+        app:banglaText="রমযান"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
