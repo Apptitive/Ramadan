@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:banglaText="শবে কদর"
+        app:banglaText="রমযান"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

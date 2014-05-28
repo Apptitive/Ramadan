@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginLeft="@dimen/dp_25"
         android:layout_marginBottom="@dimen/dp_5"
         android:src="@drawable/sehri_iftar_time" />
 
@@ -22,7 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/iv_icon"
-        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:lineSpacingExtra="@dimen/dp_ng_3"
         app:banglaText="সেহেরী ও ইফতারের\nসময়সূচী"
         android:textColor="@color/white"
         android:textStyle="bold" />
