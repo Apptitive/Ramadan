@@ -5,6 +5,7 @@
         android:key="@string/pref_key_alarm_settings">
 
         <com.appsomehow.ramadan.views.CheckBoxPreferenceAlarm
+            android:title="@string/pref_title_new_message_notifications"
             android:key="@string/pref_key_alarm"
             android:defaultValue="false" />
         <RingtonePreference

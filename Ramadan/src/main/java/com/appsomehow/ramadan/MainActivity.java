@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
@@ -36,6 +37,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
