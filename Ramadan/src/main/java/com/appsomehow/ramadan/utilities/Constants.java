@@ -5,4 +5,6 @@ package com.appsomehow.ramadan.utilities;
  */
 public final class Constants {
     public static final String KEY_RINGTON_NAME = "key_rington_name";
+    public static final String PREF_KEY_LOCATION="prep_key_location";
+
 }

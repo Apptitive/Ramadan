@@ -8,25 +8,36 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.Utilities;
 
 import java.io.IOException;
 
-public class RingtonService extends IntentService {
+public class RingtonService extends Service {
+
     private MediaPlayer mMediaPlayer;
 
-    public RingtonService(String name) {
-        super(name);
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
         String ringTonName = intent.getStringExtra(Constants.KEY_RINGTON_NAME);
         if (ringTonName != null) {
             playSound(ringTonName);
+            Log.e("service rington name", "" + ringTonName);
+            Log.e("start music ", "music started");
+            Utilities.CustomNotification(getBaseContext());
         }
     }
+
 
     private void playSound(String ringTon) {
         mMediaPlayer = new MediaPlayer();
@@ -48,8 +59,11 @@ public class RingtonService extends IntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
+        Log.e("service destroyed", "oh!");
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+        }
     }
 
 

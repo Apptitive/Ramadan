@@ -38,6 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (isRington) {
             Intent ringTonIntent = new Intent(context, RingtonService.class);
             ringTonIntent.putExtra(Constants.KEY_RINGTON_NAME, ringTonName);
+            Log.e("rington name",""+ringTonName);
             context.startService(ringTonIntent);
         }
 

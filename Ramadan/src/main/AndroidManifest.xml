@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name="com.appsomehow.ramadan.SaomActivity"
-         android:label="@string/activity_saom"
+            android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,18 +46,24 @@
         </activity>
 
         <service
-            android:name="com.appsomehow.ramadan.com.appsomehow.ramadan.services.RingTonService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
-        <service
             android:name="com.appsomehow.ramadan.services.RingtonService"
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <receiver
+            android:name="com.appsomehow.ramadan.receiver.NotificationCancelReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="notification_cancelled" />
+            </intent-filter>
+        </receiver>
+
         <service
-            android:name="com.appsomehow.ramadan.services.MyService"
-            android:exported="false" >
+            android:name="com.appsomehow.ramadan.services.MusicService"
+            android:enabled="true"
+            android:exported="true" >
         </service>
     </application>
 

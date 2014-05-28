@@ -1,19 +1,27 @@
 package com.appsomehow.ramadan;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.appsomehow.ramadan.utilities.Utilities;
+import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
+
 
 public class SaomActivity extends ActionBarActivity {
+
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saom);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        actionBar = getSupportActionBar();
+        actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 
 
