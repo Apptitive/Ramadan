@@ -4,7 +4,10 @@
     android:layout_height="fill_parent"
     android:background="@drawable/bg_home"
     android:orientation="vertical"
-    android:padding="@dimen/dp_8"
+    android:paddingTop="?attr/actionBarSize"
+    android:paddingLeft="@dimen/dp_8"
+    android:paddingRight="@dimen/dp_8"
+    android:paddingBottom="@dimen/dp_8"
     android:weightSum="1">
 
     <LinearLayout

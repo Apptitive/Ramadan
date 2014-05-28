@@ -39,7 +39,7 @@
     </style>
 
     <style name="ActionBar.Transparent.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="background">@drawable/ab_transparent_ramadan</item>
+        <item name="background">@null</item>
         <item name="progressBarStyle">@style/ProgressBar.Ramadan</item>
         <item name="windowActionBarOverlay">true</item>
     </style>
