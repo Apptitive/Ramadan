@@ -3,6 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
