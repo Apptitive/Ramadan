@@ -3,6 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -30,6 +31,7 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
 
     private TextView txtTime;
+    private ActionBar actionBar;
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
 
@@ -38,12 +40,16 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         super.onCreate(savedInstanceState);
         DbManager.init(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(android.R.drawable.screen_background_light_transparent));
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(android.R.drawable.screen_background_light_transparent));
+        actionBar.setDisplayShowTitleEnabled(false);
+
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
-        View r = findViewById(R.id.tab_saom);
-        r.setOnClickListener(new View.OnClickListener() {
+        View tabSaom = findViewById(R.id.tab_saom);
+        tabSaom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SaomActivity.class));
