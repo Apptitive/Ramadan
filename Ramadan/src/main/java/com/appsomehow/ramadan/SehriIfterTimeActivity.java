@@ -1,34 +1,25 @@
 package com.appsomehow.ramadan;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.appsomehow.ramadan.utilities.Utilities;
-import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
-
-public class SaomActivity extends ActionBarActivity {
-
-    ActionBar actionBar;
+public class SehriIfterTimeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_saom);
-
-        actionBar = getSupportActionBar();
-        actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
-        actionBar.setDisplayShowHomeEnabled(true);
+        setContentView(R.layout.activity_sehri_ifter_time);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.saom, menu);
+        getMenuInflater().inflate(R.menu.sehri_ifter_time, menu);
         return true;
     }
 
@@ -43,4 +34,5 @@ public class SaomActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
