@@ -44,7 +44,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         v.vibrate(pattern, -1);
     }
 
-
     private void playSound(Context context, String ringTon) {
         mMediaPlayer = new MediaPlayer();
         try {
@@ -59,6 +58,11 @@ public class AlarmReceiver extends BroadcastReceiver {
             }
         } catch (IOException e) {
         }
+    }
+
+    private void stopSound() {
+        mMediaPlayer.stop();
+        mMediaPlayer.release();
     }
 
 }

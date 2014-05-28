@@ -6,6 +6,7 @@
 
 
     <!--common file dimen start-->
+    <dimen name="text_size_35">35sp</dimen>
     <dimen name="text_size_25">25sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_15">15sp</dimen>
@@ -17,6 +18,7 @@
     <dimen name="dp_ng_50">-50dp</dimen>
     <dimen name="dp_ng_30">-30dp</dimen>
     <dimen name="dp_ng_20">-20dp</dimen>
+    <dimen name="dp_ng_10">-10dp</dimen>
 
     <dimen name="dp_120">120dp</dimen>
     <dimen name="dp_70">70dp</dimen>

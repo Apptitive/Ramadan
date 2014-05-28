@@ -18,7 +18,6 @@ import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.DbTableName;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
-import com.appsomehow.ramadan.preferences.SettingsActivity;
 import com.appsomehow.ramadan.utilities.Alarm;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
