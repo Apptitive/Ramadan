@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         super.onCreate(savedInstanceState);
         DbManager.init(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(android.R.drawable.screen_background_light_transparent));
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
