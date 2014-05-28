@@ -3,7 +3,6 @@ package com.appsomehow.ramadan;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -27,10 +26,8 @@ import org.joda.time.DateTime;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener {
+public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
 
-    private TextView txtTime;
-    private ActionBar actionBar;
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
 
@@ -47,24 +44,21 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
-        View tabSaom = findViewById(R.id.tab_saom);
-        tabSaom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SaomActivity.class));
-            }
-        });
+
+        findViewById(R.id.tab_iftar_time).setOnClickListener(this);
+        findViewById(R.id.tab_saom).setOnClickListener(this);
+
 
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
         List<Region> regions = DbManager.getInstance().getAllRegions();
-        for (Region rgn : regions){
+        for (Region rgn : regions) {
             Log.e("Region Name: ", rgn.name);
         }
 
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
-        for (TimeTable t : timeTables){
+        for (TimeTable t : timeTables) {
             Log.e("TimeTable Log: ", t.dateInBangla);
         }
 
@@ -118,4 +112,18 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         alarm.setOneTimeAlarm(hourOfDay, minute);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+
+            case R.id.tab_saom:
+                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                break;
+            case R.id.tab_iftar_time:
+                this.startActivity(new Intent(MainActivity.this, SehriIfterTimeActivity.class));
+                break;
+            default:
+                break;
+        }
+    }
 }
