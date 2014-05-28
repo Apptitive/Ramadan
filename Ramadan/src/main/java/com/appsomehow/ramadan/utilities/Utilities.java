@@ -5,7 +5,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.appsomehow.ramadan.R;
@@ -19,6 +21,13 @@ public class Utilities {
     public static Typeface getFont(Context context) {
         return Typeface.createFromAsset(context.getAssets(),
                 "fonts/" + context.getString(R.string.font_solaimanlipi));
+    }
+
+
+
+    public static String getValue(Context context,String key){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPreferences.getString(key,"");
     }
 
     public static void CustomNotification(Context context) {
