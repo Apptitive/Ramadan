@@ -25,12 +25,10 @@
         <item name="dropDownListViewStyle">@style/DropDownListView.Ramadan</item>
         <item name="actionBarTabStyle">@style/ActionBarTabStyle.Ramadan</item>
         <item name="actionDropDownStyle">@style/DropDownNav.Ramadan</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Ramadan</item>
+        <item name="actionBarStyle">@style/ActionBar.Transparent.Ramadan</item>
         <item name="actionModeBackground">@drawable/cab_background_top_ramadan</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_ramadan</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ramadan</item>
-
-        
     </style>
 
     <style name="ActionBar.Solid.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -43,6 +41,7 @@
     <style name="ActionBar.Transparent.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar">
         <item name="background">@drawable/ab_transparent_ramadan</item>
         <item name="progressBarStyle">@style/ProgressBar.Ramadan</item>
+        <item name="windowActionBarOverlay">true</item>
     </style>
 	
     <style name="PopupMenu.Ramadan" parent="@style/Widget.AppCompat.Light.PopupMenu">	

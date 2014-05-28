@@ -4,9 +4,9 @@
         android:title="Set Up Alarm Rington"
         android:key="@string/pref_key_alarm_settings">
 
-        <CheckBoxPreference
-            android:key="@string/pref_key_alarm"
+        <com.appsomehow.ramadan.views.CheckBoxPreferenceAlarm
             android:title="@string/pref_title_new_message_notifications"
+            android:key="@string/pref_key_alarm"
             android:defaultValue="false" />
         <RingtonePreference
             android:dependency="@string/pref_key_alarm"

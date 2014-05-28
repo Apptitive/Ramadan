@@ -1,1 +1,1 @@
-include ':Ramadan', ':paralloidviews', ':paralloid', ':AndroidCustomFontSupport'
+include ':Ramadan', ':paralloid', ':AndroidCustomFontSupport', ':stickyscrollview'

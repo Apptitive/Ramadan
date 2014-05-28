@@ -9,7 +9,7 @@
         app:showAsAction="always"></item>
     <item
         android:id="@+id/action_settings"
-        android:icon="@drawable/ic_action_alarms"
+        android:icon="@drawable/ic_action_settings"
         android:title="Settings"
         app:showAsAction="always"></item>
 </menu>
