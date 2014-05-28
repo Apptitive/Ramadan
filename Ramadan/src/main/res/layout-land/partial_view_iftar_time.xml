@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:alpha=".8"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_25"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:src="@drawable/sehri_iftar_time" />
+
+    <com.appsomehow.ramadan.views.BanglaTextView
+    app:fontName="@string/font_solaimanlipi"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_icon"
+        android:layout_marginLeft="@dimen/dp_20"
+        app:banglaText="সেহেরী ও ইফতারের\nসময়সূচী"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>
