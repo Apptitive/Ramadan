@@ -4,12 +4,16 @@
     android:layout_height="fill_parent"
     android:background="@drawable/bg_home_land"
     android:orientation="horizontal"
-    android:padding="@dimen/dp_8"
+    android:paddingBottom="@dimen/dp_8"
+    android:paddingLeft="@dimen/dp_8"
+    android:paddingRight="@dimen/dp_8"
+    android:paddingTop="?attr/actionBarSize"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/dp_8"
         android:layout_weight=".42"
         android:orientation="vertical"
         android:paddingRight="@dimen/dp_2"
@@ -53,8 +57,9 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_marginRight="@dimen/dp_4"
         android:layout_marginLeft="@dimen/dp_6"
+        android:layout_marginRight="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_8"
         android:layout_weight=".30"
         android:alpha=".8"
         android:background="@color/black"
@@ -71,8 +76,8 @@
                 android:id="@+id/tv_time_seheri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginLeft="@dimen/dp_25"
+                android:layout_marginTop="@dimen/dp_5"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12"
                 app:banglaText="সেহেরীর শেষ সময়"
@@ -84,9 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:layout_below="@id/tv_time_seheri"
+                android:layout_marginTop="@dimen/dp_ng_10"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_35"
-                android:layout_marginTop="@dimen/dp_ng_10"
                 android:textStyle="bold"
                 app:banglaText="৩:৪০"
                 app:fontName="@string/font_solaimanlipi" />
@@ -108,10 +113,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/tv_time_seheri"
                 android:layout_below="@id/tv_time_ifter"
+                android:layout_marginTop="@dimen/dp_ng_10"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_35"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/dp_ng_10"
                 app:banglaText="৬:৪৭"
                 app:fontName="@string/font_solaimanlipi" />
 
@@ -123,9 +128,9 @@
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_5"
             android:alpha=".2"
-            android:background="@android:color/white" />
+            android:background="@android:color/white"
+            android:paddingTop="@dimen/dp_5" />
 
         <include
             android:id="@+id/tab_iftar_time"
@@ -139,6 +144,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/dp_8"
         android:layout_weight=".28"
         android:orientation="vertical"
         android:paddingLeft="@dimen/dp_4"
@@ -152,13 +158,13 @@
             android:layout_marginBottom="@dimen/dp_4"
             android:layout_weight="1" />
 
-         <include
-             android:id="@+id/tab_tarabih"
-             layout="@layout/partial_view_tarabih_namaj"
-             android:layout_width="fill_parent"
-             android:layout_height="0dp"
-             android:layout_marginTop="@dimen/dp_4"
-             android:layout_weight="1" />
+        <include
+            android:id="@+id/tab_tarabih"
+            layout="@layout/partial_view_tarabih_namaj"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
