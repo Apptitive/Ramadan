@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.appsomehow.ramadan.R;
+import com.appsomehow.ramadan.services.RingtonService;
+import com.appsomehow.ramadan.utilities.Constants;
 
 import java.io.IOException;
 
@@ -25,17 +29,21 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Boolean isVibrate = sharedPref.getBoolean(context.getString(R.string.pref_key_alarm_vibrat), false);
         if (isVibrate) {
-            setAarmVibration(context);
+            setAlarmVibration(context);
         }
 
         String ringTonName = sharedPref.getString(context.getString(R.string.pref_key_alarm_rington), "default ringtone");
 
         Boolean isRington = sharedPref.getBoolean(context.getString(R.string.pref_key_alarm), false);
-        if (isRington)
-            playSound(context, ringTonName);
+        if (isRington) {
+            Intent ringTonIntent = new Intent(context, RingtonService.class);
+            ringTonIntent.putExtra(Constants.KEY_RINGTON_NAME, ringTonName);
+            context.startService(ringTonIntent);
+        }
+
     }
 
-    private void setAarmVibration(Context context) {
+    private void setAlarmVibration(Context context) {
         Vibrator v = (Vibrator) context
                 .getSystemService(Context.VIBRATOR_SERVICE);
         // for 3 seconds
@@ -44,25 +52,5 @@ public class AlarmReceiver extends BroadcastReceiver {
         v.vibrate(pattern, -1);
     }
 
-    private void playSound(Context context, String ringTon) {
-        mMediaPlayer = new MediaPlayer();
-        try {
-            mMediaPlayer.setDataSource(context, Uri.parse(ringTon));
-            final AudioManager audioManager = (AudioManager) context
-                    .getSystemService(Context.AUDIO_SERVICE);
-            if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) {
-                mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-                mMediaPlayer.setLooping(true);
-                mMediaPlayer.prepare();
-                mMediaPlayer.start();
-            }
-        } catch (IOException e) {
-        }
-    }
-
-    private void stopSound() {
-        mMediaPlayer.stop();
-        mMediaPlayer.release();
-    }
 
 }
