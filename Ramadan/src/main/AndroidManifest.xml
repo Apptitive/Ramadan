@@ -21,8 +21,7 @@
         <activity
             android:name="com.appsomehow.ramadan.SaomActivity"
             android:label="@string/activity_saom"
-         android:label="@string/activity_saom"
-           android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
@@ -57,9 +56,15 @@
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
-                <action android:name="notification_cancelled"/>
+                <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name="com.appsomehow.ramadan.services.MusicService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
