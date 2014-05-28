@@ -31,4 +31,20 @@ public class Region {
         this.isPositive = isPositive;
         this.interval = interval;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isPositive() {
+        return isPositive;
+    }
+
+    public int getInterval() {
+        return interval;
+    }
 }

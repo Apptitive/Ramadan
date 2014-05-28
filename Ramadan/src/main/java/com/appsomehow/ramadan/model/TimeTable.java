@@ -40,4 +40,28 @@ public class TimeTable {
         this.ifterTime = ifterTime;
         this.rojaCount = rojaCount;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDateInBangla() {
+        return dateInBangla;
+    }
+
+    public String getSeheriTime() {
+        return seheriTime;
+    }
+
+    public String getIfterTime() {
+        return ifterTime;
+    }
+
+    public String getRojaCount() {
+        return rojaCount;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
