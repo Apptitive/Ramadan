@@ -55,10 +55,10 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
 
         private final NexusTypes familys[];
         private final String headers[] = {
-                "Name",
-                "Company",
-                "Version",
-                "API",
+                "তারিখ",
+                "সেহরী",
+                "ইফতার",
+                "রমজান",
                 "Storage",
                 "Size",
                 "RAM",

@@ -73,13 +73,11 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
 
-        List<Region> regions = DbManager.getInstance().getAllRegions();
-
         Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION));
-        if (region.isPositive) {
-            UIUtils.getIftarTime(region.getInterval(), timeTable, this);
+        if (region.isPositive()) {
+            UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
         } else {
-            UIUtils.getIftarTime(-region.getInterval(), timeTable, this);
+            UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this);
         }
 
 

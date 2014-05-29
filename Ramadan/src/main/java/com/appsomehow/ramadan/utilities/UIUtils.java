@@ -64,7 +64,7 @@ public class UIUtils {
 
     public static StringBuilder getIftarTime(int interval, TimeTable timeTable, Context context) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
-        String dateTime = dateToString(timeTable.getDate()) + " " + timeTable.getIfterTime();
+        String dateTime = timeTable.getDate() + " " + timeTable.getIfterTime();
         try {
             Date date = simpleDateFormat.parse(dateTime);
             Calendar calendar = Calendar.getInstance();
