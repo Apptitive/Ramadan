@@ -30,5 +30,5 @@ dependencies {
     compile project(':AndroidCustomFontSupport')
     compile files('libs/ormlite-android-4.48.jar')
     compile files('libs/ormlite-core-4.48.jar')
-    compile files('libs/tablefixheaders.jar')
+    compile project(':TableFixHeaderLib')
 }

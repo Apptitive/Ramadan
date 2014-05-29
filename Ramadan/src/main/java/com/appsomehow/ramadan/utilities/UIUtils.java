@@ -24,7 +24,7 @@ public class UIUtils {
 
     public static TimeTable compareCurrentDate(List<TimeTable> timeTables) {
         for (TimeTable timeTable : timeTables) {
-            if (dateToString(timeTable.getDate()).equals(getCurrentDate())) {
+            if (timeTable.getDate().equals(getCurrentDate())) {
                 return timeTable;
             }
         }

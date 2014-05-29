@@ -34,7 +34,7 @@ public class CSVToDbHelper {
                 }
 
                 else if (dbTableName.equals(DbTableName.TimeTable)){
-                    timeTable = new TimeTable(result[0],new Date(result[1]),result[2],result[3],result[4],result[5]);
+                    timeTable = new TimeTable(result[0],result[1],result[2],result[3],result[4],result[5]);
                     DbManager.getInstance().addTimeTable(timeTable);
                 }
             }

@@ -23,11 +23,11 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ifter_sheri);
+        setContentView(R.layout.activity_sehri_ifter_time);
 
-       /* TableFixHeaders tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
+        TableFixHeaders tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
         BaseTableAdapter baseTableAdapter = new FamilyNexusAdapter(this);
-        tableFixHeaders.setAdapter(baseTableAdapter);*/
+        tableFixHeaders.setAdapter(baseTableAdapter);
     }
 
 

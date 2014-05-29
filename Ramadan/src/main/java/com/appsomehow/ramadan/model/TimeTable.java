@@ -14,7 +14,7 @@ public class TimeTable {
     private String id;
 
     @DatabaseField
-    private Date date;
+    private String date;
 
     @DatabaseField
     private String dateInBangla;
@@ -32,7 +32,7 @@ public class TimeTable {
     public TimeTable() {
     }
 
-    public TimeTable(String id, Date date, String dateInBangla, String sehriTime, String ifterTime, String rojaCount) {
+    public TimeTable(String id, String date, String dateInBangla, String sehriTime, String ifterTime, String rojaCount) {
         this.id = id;
         this.date = date;
         this.dateInBangla = dateInBangla;
@@ -45,7 +45,7 @@ public class TimeTable {
         return id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
