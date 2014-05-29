@@ -1,2 +1,2 @@
-1,Dhaka,ঢাকা,0,0,0
-2,Rajshahi,রাজশাহী,1,4,5
+3,Dhaka,ঢাকা,true,0,0
+4,Rajshahi,রাজশাহী,false,4,5
