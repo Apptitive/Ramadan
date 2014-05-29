@@ -33,5 +33,13 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="About Us"
+        android:key="@string/pref_key_about_us">
+        <EditTextPreference
+            android:key="@string/prep_key_et_about_us"
+            android:title="@string/pref_title_new_message_notifications"
+            android:summary="Send us your query" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
