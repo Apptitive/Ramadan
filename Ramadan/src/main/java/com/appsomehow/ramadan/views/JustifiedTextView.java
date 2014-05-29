@@ -58,23 +58,14 @@ public class JustifiedTextView extends TextView {
 
     public JustifiedTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        //set a minimum of left and right padding so that the texts are not too close to the side screen
-        this.setPadding(10, 0, 10, 0);
     }
 
     public JustifiedTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.setPadding(10, 0, 10, 0);
     }
 
     public JustifiedTextView(Context context) {
         super(context);
-        this.setPadding(10, 0, 10, 0);
-    }
-
-    @Override
-    public void setPadding(int left, int top, int right, int bottom) {
-        super.setPadding(left + 10, top, right + 10, bottom);
     }
 
     @Override
@@ -82,9 +73,9 @@ public class JustifiedTextView extends TextView {
         this.cacheEnabled = cacheEnabled;
     }
 
-    public void setText(String banglaText, boolean wrap) {
+    public void setText(String text, boolean wrap) {
         wrapEnabled = wrap;
-        super.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, Utilities.getFont(getContext()), -1));
+        super.setText(text);
     }
 
     public void setTextAlign(Align align) {
@@ -129,7 +120,7 @@ public class JustifiedTextView extends TextView {
 
         // Pull widget properties
         paint.setColor(getCurrentTextColor());
-        paint.setTypeface(Utilities.getFont(getContext()));
+        paint.setTypeface(getTypeface());
         paint.setTextSize(getTextSize());
         paint.setTextAlign(_align);
         paint.setFlags(Paint.ANTI_ALIAS_FLAG);

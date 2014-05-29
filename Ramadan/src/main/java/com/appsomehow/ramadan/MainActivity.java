@@ -1,8 +1,10 @@
 package com.appsomehow.ramadan;
 
+
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -21,6 +23,7 @@ import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
+import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -35,6 +38,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
     private PreferenceHelper preferenceHelper;
+    private BanglaTextView iftarTime;
+    private BanglaTextView seheriTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         findViewById(R.id.tab_iftar_time).setOnClickListener(this);
         findViewById(R.id.tab_saom).setOnClickListener(this);
-
+        iftarTime = (BanglaTextView) findViewById(R.id.tv_ifter_time);
+        seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
@@ -61,7 +67,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
 /*        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
-            Log.e("TimeTable Log: ",""+ t.getDate());
+            Log.e("TimeTable Log: ", "" + t.getDate());
         }
 
         List<Region>regions = DbManager.getInstance().getAllRegions();
@@ -69,12 +75,22 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             Log.e("Region isPositive : ", "" + r.isPositive());
         }
 
-/*
-        Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION));
+        TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
+        if (timeTable.getDate() != null)
+            Log.e("get Timetable time", "" + timeTable.getDate());
+
+        List<Region> regions = DbManager.getInstance().getAllRegions();
+
+        Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        if (region == null) {
+            return;
+        }
         if (region.isPositive()) {
-            UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
+            seheriTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this, false));
         } else {
-            UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this);
+            seheriTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this, false));
         }*/
 
 

@@ -16,7 +16,6 @@ public final class Constants {
     public static final StringBuilder banglaReplaceCharacter(Context context, String word) {
         String[] REPLACEMENT = new String[Character.MAX_VALUE + 1];
 
-
         for (int i = Character.MIN_VALUE; i <= Character.MAX_VALUE; i++) {
             REPLACEMENT[i] = Character.toString(Character.toLowerCase((char) i));
         }
