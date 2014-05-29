@@ -3,6 +3,8 @@ package com.appsomehow.ramadan.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.List;
+
 /**
  * Created by rayhan on 5/27/2014.
  */
@@ -63,4 +65,6 @@ public class Region {
     public int getIntervalSehri() {
         return intervalSehri;
     }
+
+
 }

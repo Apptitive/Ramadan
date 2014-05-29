@@ -2,7 +2,6 @@ package com.appsomehow.ramadan;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -12,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
@@ -60,15 +58,30 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
+
         List<Region> regions = DbManager.getInstance().getAllRegions();
         for (Region rgn : regions) {
             Log.e("Region Name: ", rgn.getName());
         }
 
+
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
             Log.e("TimeTable Log: ", t.getDateInBangla());
         }
+
+
+        TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
+
+        List<Region> regions = DbManager.getInstance().getAllRegions();
+
+        Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION));
+        if (region.isPositive) {
+            UIUtils.getIftarTime(region.getInterval(), timeTable, this);
+        } else {
+            UIUtils.getIftarTime(-region.getInterval(), timeTable, this);
+        }
+
 
     }
 
@@ -82,7 +95,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             rtpd.setOnTimeSetListener(this);
         }
 
-      Log.e("Current Date",""+  UIUtils.getCurrentDate());
+        Log.e("Current Date", "" + UIUtils.getCurrentDate());
     }
 
     @Override
