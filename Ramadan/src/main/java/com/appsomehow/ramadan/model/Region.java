@@ -63,4 +63,20 @@ public class Region {
     public int getIntervalSehri() {
         return intervalSehri;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isPositive() {
+        return isPositive;
+    }
+
+    public int getInterval() {
+        return interval;
+    }
 }

@@ -4,15 +4,18 @@
     <string name="app_name">Ramadan</string>
     <string name="action_settings">Settings</string>
     <string name="activity_saom">সাওম</string>
-    <string name="parallax_text">Android Developer Lab is a series of mobile software development-focused events around the
-        world held annually by Google. They include bootcamp and technical sessions focused on Android and give participants
-        an excellent chance to learn about the state of the Android platform, get hands-on with the latest version of the SDK,
-        test applications on the latest sample Android devices, get questions answered by Google engineers from the Android
-        team as well as meet other like-minded members of the local Android developer community. Bootcamp is a hands-on training
-        experience where Google engineers show attendees how to get started with Android development, from Android SDK
-        installation to the creation of Android applications. Technical Sessions are presentations where Google engineers
-        speak about key Android features and show developers how to use them effectively to create high quality applications.
-        Android Developer Lab is a series of mobile software development-focused events around the world held annually by Google.</string>
+    <string name="parallax_text">
+কলকাতা নাইট রাইডার্স ফাইনাল কখনো হারে না।তবে কি আবারও চ্যাম্পিয়ন হতে যাচ্ছে সাকিব আল হাসানের দল?সেই উত্তর জানা যাবে ১ জুন।তবে আপাতত দুর্দান্ত
+গতিতে ছুটতে থাকা কলকাতা এবারের আইপিএলে টানা অষ্টম জয় তুলে নিয়ে চলে গেল ফাইনালে। কলকাতা ফাইনালে হারে না, কথাটার মধ্যে একটা ফাঁক আছে।এর আগে
+একবারই ফাইনালে উঠেছিল কলকাতা।২০১২ সালের ওই আসরে চেন্নাই সুপার কিংসকে হারিয়ে চ্যাম্পিয়ন হয়েছিল গৌতম গম্ভীরের দল।এবারের আরব আমিরাত অংশে খোঁড়
+াতে খোঁড়াতে শুরু করা কলকাতা ভারতে এসেই দুর্দান্ত খেলতে শুরু করে।অবিশ্বাস্য সমীকরণ মিলিয়ে পয়েন্ট টেবিলের দ্বিতীয় দল হয়ে উঠে আসে প্লে অফে।আজ ইডেন
+গার্ডেনে সেই প্লে অফে কলকাতা ২৮ রানে হারাল পয়েন্ট টেবিলের শীর্ষে থেকে গ্রুপ পর্ব শেষ করা কিংস ইলেভেন পাঞ্জাবকে। পাঞ্জাবের ফাইনালে যাওয়ার সুযোগ
+অবশ্য এখনো থাকছে।আজ দ্বিতীয় প্লে অফে মুখোমুখি চেন্নাই-মুম্বাই ম্যাচের বিজয়ী দলের সঙ্গে খেলবে পাঞ্জাব।সেই ম্যাচেই নির্ধারিত হবে ফাইনালে কলকাতার
+প্রতিপক্ষ হচ্ছে কোন দল। ব্যাটে-বলে সাকিবের দিনটা খুব একটা সুখকর ছিল না।১৬ বলে ২ চারে ১৮ করেছেন।কিন্তু চার ওভারে ৪৩ রানে এক উইকেট।এর মধ্যে
+ইনিংসের ১৮তম ওভারেই দিয়েছেন ২১। কলকাতার জয়ের অবশ্য একক কোনো নায়ক নেই।রবিন উথাপ্পার ব্যাট আজও হেসেছে।৩০ বলে ৪টি চার ও ২ ছক্কায় করেছেন
+৪২।এ ছাড়া মনীশ পাণ্ডে (২১), ইউসুফ পাঠান (২০), সূর্যকুমার যাদবের (২০) ইনিংসগুলোর সৌজন্যে ৮ উইকেটে ১৬৩ রান তোলে কলকাতা।কিন্তু ৮ উইকেটে
+১৩৫ রানেই ফুরিয়ে যায় পাঞ্জাবের ২০ ওভার।
+    </string>
     <string name="topic_title_ramadan_importance">সাওমের গুরুত্ব</string>
     <string name="parallox_title_saom">সাওমের ফযিলাত</string>
     <string name="font_solaimanlipi">solaimanlipinormal.ttf</string>

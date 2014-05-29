@@ -3,10 +3,13 @@ package com.appsomehow.ramadan;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Utilities;
+import com.appsomehow.ramadan.views.JustifiedTextView;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
 
@@ -22,6 +25,9 @@ public class SaomActivity extends ActionBarActivity {
         actionBar = getSupportActionBar();
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
         actionBar.setDisplayShowHomeEnabled(true);
+
+        JustifiedTextView textViewDetails = (JustifiedTextView) findViewById(R.id.textview_details);
+        textViewDetails.setText(getString(R.string.parallax_text), true);
     }
 
 

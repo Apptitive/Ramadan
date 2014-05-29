@@ -24,12 +24,6 @@ public class Utilities {
     }
 
 
-
-    public static String getValue(Context context,String key){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getString(key,"");
-    }
-
     public static void CustomNotification(Context context) {
 
 

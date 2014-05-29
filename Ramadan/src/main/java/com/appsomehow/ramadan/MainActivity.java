@@ -2,6 +2,7 @@ package com.appsomehow.ramadan;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +20,9 @@ import com.appsomehow.ramadan.helper.DbTableName;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.utilities.Alarm;
+import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.PreferenceHelper;
+import com.appsomehow.ramadan.utilities.UIUtils;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -32,12 +36,14 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
+    private PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        preferenceHelper = new PreferenceHelper(this);
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
@@ -75,6 +81,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         if (rtpd != null) {
             rtpd.setOnTimeSetListener(this);
         }
+
+      Log.e("Current Date",""+  UIUtils.getCurrentDate());
     }
 
     @Override

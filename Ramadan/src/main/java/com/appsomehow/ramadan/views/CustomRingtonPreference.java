@@ -43,6 +43,6 @@ public class CustomRingtonPreference extends RingtonePreference {
         super.onBindView(view);
         TextView textViewTitle = (TextView) view.findViewById(android.R.id.title);
         textViewTitle.setTypeface(Utilities.getFont(getContext()));
-        textViewTitle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
+//        textViewTitle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
     }
 }

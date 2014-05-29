@@ -39,7 +39,7 @@ public class CheckBoxPreferenceAlarm extends CheckBoxPreference {
         super.onBindView(view);
         TextView txtTitle = (TextView) view.findViewById(android.R.id.title);
         txtTitle.setTypeface(Utilities.getFont(getContext()));
-        txtTitle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
+      //  txtTitle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
     }
 
 }
