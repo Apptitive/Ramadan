@@ -82,6 +82,7 @@
     <orderEntry type="module" module-name="AndroidCustomFontSupport" exported="" />
     <orderEntry type="module" module-name="paralloid" exported="" />
     <orderEntry type="module" module-name="stickyscrollview" exported="" />
+    <orderEntry type="module" module-name="TableFixHeaderLib" />
   </component>
 </module>
 
