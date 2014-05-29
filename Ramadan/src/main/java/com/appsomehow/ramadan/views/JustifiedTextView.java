@@ -82,9 +82,9 @@ public class JustifiedTextView extends TextView {
         this.cacheEnabled = cacheEnabled;
     }
 
-    public void setText(String banglaText, boolean wrap) {
+    public void setText(String text, boolean wrap) {
         wrapEnabled = wrap;
-        super.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, Utilities.getFont(getContext()), -1));
+        super.setText(text);
     }
 
     public void setTextAlign(Align align) {
@@ -129,7 +129,7 @@ public class JustifiedTextView extends TextView {
 
         // Pull widget properties
         paint.setColor(getCurrentTextColor());
-        paint.setTypeface(Utilities.getFont(getContext()));
+        paint.setTypeface(getTypeface());
         paint.setTextSize(getTextSize());
         paint.setTextAlign(_align);
         paint.setFlags(Paint.ANTI_ALIAS_FLAG);
