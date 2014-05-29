@@ -65,11 +65,15 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
 
-        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+/*        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
             Log.e("TimeTable Log: ", "" + t.getDate());
         }
 
+        List<Region>regions = DbManager.getInstance().getAllRegions();
+        for (Region r: regions){
+            Log.e("Region isPositive : ", "" + r.isPositive());
+        }
 
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
         if (timeTable.getDate() != null)
@@ -87,7 +91,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         } else {
             seheriTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalSehri(), timeTable, this, true));
             iftarTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this, false));
-        }
+        }*/
 
 
     }
