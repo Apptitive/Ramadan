@@ -11,24 +11,56 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Region {
 
     @DatabaseField(id = true)
-    public String id;
+    private String id;
 
     @DatabaseField
-    public String name;
+    private String name;
 
     @DatabaseField
-    public boolean isPositive;
+    private String nameInBangla;
 
     @DatabaseField
-    public int interval;
+    private boolean isPositive;
+
+    @DatabaseField
+    private int intervalIfter;
+
+    @DatabaseField
+    private int intervalSehri;
 
     public Region() {
     }
 
-    public Region(String id, String name, boolean isPositive, int interval) {
+    public Region(String id, String name, String nameInBangla, boolean isPositive, int intervalIfter, int intervalSehri) {
         this.id = id;
         this.name = name;
+        this.nameInBangla = nameInBangla;
         this.isPositive = isPositive;
-        this.interval = interval;
+        this.intervalIfter = intervalIfter;
+        this.intervalSehri = intervalSehri;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNameInBangla() {
+        return nameInBangla;
+    }
+
+    public boolean isPositive() {
+        return isPositive;
+    }
+
+    public int getIntervalIfter() {
+        return intervalIfter;
+    }
+
+    public int getIntervalSehri() {
+        return intervalSehri;
     }
 }

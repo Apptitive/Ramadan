@@ -56,12 +56,12 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         List<Region> regions = DbManager.getInstance().getAllRegions();
         for (Region rgn : regions) {
-            Log.e("Region Name: ", rgn.name);
+            Log.e("Region Name: ", rgn.getName());
         }
 
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
-            Log.e("TimeTable Log: ", t.dateInBangla);
+            Log.e("TimeTable Log: ", t.getDateInBangla());
         }
 
     }

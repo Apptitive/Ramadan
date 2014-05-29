@@ -29,7 +29,7 @@ public class CSVToDbHelper {
             while ((readLine = br.readLine()) != null) {
                 String[] result = readLine.split(",");
                 if (dbTableName.equals(DbTableName.Region)){
-                    region = new Region(result[0],result[1],Boolean.parseBoolean(result[2]),Integer.parseInt(result[3]));
+                    region = new Region(result[0],result[1],result[2],Boolean.parseBoolean(result[3]),Integer.parseInt(result[4]),Integer.parseInt(result[5]));
                     DbManager.getInstance().addRegion(region);
                 }
 
