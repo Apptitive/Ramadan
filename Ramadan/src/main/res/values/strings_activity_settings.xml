@@ -11,7 +11,7 @@
     <string name="pref_header_general">General</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
+    <string-array name="pref_entries">
         <item>Dhaka</item>
         <item>Rajshahi</item>
         <item>Chittagong</item>
@@ -33,29 +33,28 @@
         <item>Jasore</item>
         <item>Kustia</item>
     </string-array>
-    <string-array name="pref_example_list_values">
-        <item>-1</item>
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-        <item>16</item>
-        <item>17</item>
-        <item>18</item>
+    <string-array name="pref_values">
+        <item>Dhaka</item>
+        <item>Rajshahi</item>
+        <item>Chittagong</item>
+        <item>Noakhali</item>
+        <item>Comilla</item>
+        <item>Feni</item>
+        <item>BBaria</item>
+        <item>Mymensing</item>
+        <item>Tangail</item>
+        <item>Chadpur</item>
+        <item>Khulna</item>
+        <item>Rangpur</item>
+        <item>Bogura</item>
+        <item>Pabna</item>
+        <item>Barisal</item>
+        <item>Potuakhali</item>
+        <item>Dinajpur</item>
+        <item>Faridpur</item>
+        <item>Jasore</item>
+        <item>Kustia</item>
     </string-array>
-
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 

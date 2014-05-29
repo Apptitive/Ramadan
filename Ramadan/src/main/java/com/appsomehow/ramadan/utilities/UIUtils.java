@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan.utilities;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
@@ -23,6 +24,7 @@ public class UIUtils {
     }
 
     public static TimeTable compareCurrentDate(List<TimeTable> timeTables) {
+        Log.e("current date", "" + getCurrentDate());
         for (TimeTable timeTable : timeTables) {
             if (timeTable.getDate().equals(getCurrentDate())) {
                 return timeTable;
@@ -62,11 +64,12 @@ public class UIUtils {
         return null;
     }
 
-    public static String getIftarTime(int interval, TimeTable timeTable, Context context) {
+    public static String getIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
-        String dateTime = timeTable.getDate() + " " + timeTable.getIfterTime();
+
+
         try {
-            Date date = simpleDateFormat.parse(dateTime);
+            Date date = simpleDateFormat.parse(getTimeSeyeriIftarTime(isSeheri, timeTable));
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, date.getYear());
             calendar.set(Calendar.MONTH, date.getMonth());
@@ -81,4 +84,7 @@ public class UIUtils {
         return null;
     }
 
+    private static String getTimeSeyeriIftarTime(boolean isSeyeri, TimeTable timeTable) {
+        return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
+    }
 }

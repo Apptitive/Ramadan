@@ -14,8 +14,8 @@ public class PreferenceHelper {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public String getString(String key) {
-        return sharedPreferences.getString(key, "");
+    public String getString(String key,String defaultValue) {
+        return sharedPreferences.getString(key, defaultValue);
     }
 
     public boolean getBoolean(String key) {
