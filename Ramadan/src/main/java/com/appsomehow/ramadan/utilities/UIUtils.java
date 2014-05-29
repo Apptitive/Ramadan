@@ -62,7 +62,7 @@ public class UIUtils {
         return null;
     }
 
-    public static StringBuilder getIftarTime(int interval, TimeTable timeTable, Context context) {
+    public static String getIftarTime(int interval, TimeTable timeTable, Context context) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
         String dateTime = timeTable.getDate() + " " + timeTable.getIfterTime();
         try {
@@ -74,7 +74,7 @@ public class UIUtils {
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
 
-            return Constants.banglaReplaceCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE));
+            return Constants.banglaReplaceCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
