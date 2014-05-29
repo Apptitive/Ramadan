@@ -11,34 +11,38 @@ import java.util.Date;
 @DatabaseTable
 public class TimeTable {
     @DatabaseField(id = true)
-    public String id;
+    private String id;
 
     @DatabaseField
-    public Date date;
+    private Date date;
 
     @DatabaseField
-    public String dateInBangla;
+    private String dateInBangla;
 
     @DatabaseField
-    public String seheriTime;
+    private String sehriTime;
 
     @DatabaseField
-    public String ifterTime;
+    private String ifterTime;
 
     @DatabaseField
-    public String rojaCount;
+    private String rojaCount;
 
 
     public TimeTable() {
     }
 
-    public TimeTable(String id, Date date, String dateInBangla, String seheriTime, String ifterTime, String rojaCount) {
+    public TimeTable(String id, Date date, String dateInBangla, String sehriTime, String ifterTime, String rojaCount) {
         this.id = id;
         this.date = date;
         this.dateInBangla = dateInBangla;
-        this.seheriTime = seheriTime;
+        this.sehriTime = sehriTime;
         this.ifterTime = ifterTime;
         this.rojaCount = rojaCount;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public Date getDate() {
@@ -49,8 +53,8 @@ public class TimeTable {
         return dateInBangla;
     }
 
-    public String getSeheriTime() {
-        return seheriTime;
+    public String getSehriTime() {
+        return sehriTime;
     }
 
     public String getIfterTime() {
@@ -59,9 +63,5 @@ public class TimeTable {
 
     public String getRojaCount() {
         return rojaCount;
-    }
-
-    public String getId() {
-        return id;
     }
 }

@@ -59,9 +59,15 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
 
+        List<Region> regions = DbManager.getInstance().getAllRegions();
+        for (Region rgn : regions) {
+            Log.e("Region Name: ", rgn.getName());
+        }
+
+
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
-            Log.e("TimeTable Log: ", t.dateInBangla);
+            Log.e("TimeTable Log: ", t.getDateInBangla());
         }
 
 
