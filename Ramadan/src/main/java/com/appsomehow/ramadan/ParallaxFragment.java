@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appsomehow.ramadan.views.BanglaTextView;
+import com.appsomehow.ramadan.views.JustifiedTextView;
 import com.appsomehow.ramadan.views.StickyParallaxScrollView;
 
 public class ParallaxFragment extends Fragment {

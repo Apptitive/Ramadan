@@ -2,6 +2,7 @@ package com.appsomehow.ramadan.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -12,11 +13,12 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 /**
  * Created by Sharif on 5/26/2014.
  */
-public class BanglaTextView extends TextView {
+public class BanglaTextView extends JustifiedTextView {
     TypedArray typedArray;
     Typeface myTypeface;
     String banglaText;
     String fontName;
+    boolean justify;
 
 
     public BanglaTextView(Context context) {
@@ -35,8 +37,7 @@ public class BanglaTextView extends TextView {
     }
 
     public void setBanglaText(String banglaText) {
-
-        setBanglaSupportedText(banglaText);
+        setBanglaSupportedText(banglaText, justify);
         if (typedArray != null) {
             typedArray.recycle();
         }
@@ -46,10 +47,11 @@ public class BanglaTextView extends TextView {
         // Load attributes
         if (attrs != null) {
             try {
-                typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomeTextView);
-                fontName = typedArray.getString(R.styleable.CustomeTextView_fontName);
+                typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomTextView);
+                fontName = typedArray.getString(R.styleable.CustomTextView_fontName);
                 myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);
-                banglaText = typedArray.getString(R.styleable.CustomeTextView_banglaText);
+                banglaText = typedArray.getString(R.styleable.CustomTextView_banglaText);
+                justify = Boolean.parseBoolean(typedArray.getString(R.styleable.CustomTextView_justify));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -58,15 +60,14 @@ public class BanglaTextView extends TextView {
             if (fontName != null) {
                 setTypeface(myTypeface);
             }
-            setBanglaSupportedText(banglaText);
+            setBanglaSupportedText(banglaText, justify);
             typedArray.recycle();
         }
     }
 
-    private void setBanglaSupportedText(String banglaText) {
+    private void setBanglaSupportedText(String banglaText, boolean justify) {
         if (banglaText != null) {
-            setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1));
+            setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1).toString(), justify);
         }
     }
-
 }

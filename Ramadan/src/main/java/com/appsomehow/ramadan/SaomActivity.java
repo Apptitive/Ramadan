@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Utilities;
@@ -15,19 +16,19 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 
 public class SaomActivity extends ActionBarActivity {
 
-    ActionBar actionBar;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_saom);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
         actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
         actionBar.setDisplayShowHomeEnabled(true);
 
-        JustifiedTextView textViewDetails = (JustifiedTextView) findViewById(R.id.textview_details);
-        textViewDetails.setText(getString(R.string.parallax_text), true);
+        setContentView(R.layout.activity_saom);
     }
 
 
