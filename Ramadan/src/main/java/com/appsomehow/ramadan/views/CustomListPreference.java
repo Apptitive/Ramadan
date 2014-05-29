@@ -36,6 +36,6 @@ public class CustomListPreference extends ListPreference {
         super.onBindView(view);
         TextView txtTittle = (TextView) view.findViewById(android.R.id.title);
         txtTittle.setTypeface(Utilities.getFont(getContext()));
-        txtTittle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
+     //   txtTittle.setText(AndroidCustomFontSupport.getCorrectedBengaliFormat("", Utilities.getFont(getContext()), -1));
     }
 }

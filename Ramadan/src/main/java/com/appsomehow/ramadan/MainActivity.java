@@ -1,5 +1,6 @@
 package com.appsomehow.ramadan;
 
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
@@ -19,6 +19,9 @@ import com.appsomehow.ramadan.helper.DbTableName;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.utilities.Alarm;
+import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.PreferenceHelper;
+import com.appsomehow.ramadan.utilities.UIUtils;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -32,12 +35,14 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
+    private PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        preferenceHelper = new PreferenceHelper(this);
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
@@ -54,15 +59,25 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
-        List<Region> regions = DbManager.getInstance().getAllRegions();
-        for (Region rgn : regions) {
-            Log.e("Region Name: ", rgn.name);
-        }
 
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
-            Log.e("TimeTable Log: ", t.dateInBangla);
+            Log.e("TimeTable Log: ",""+ t.getDate());
         }
+
+
+        TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
+        Log.e("get Timetable time", "" + timeTable.getDate());
+        Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION));
+        if (region.isPositive()) {
+         //   String ifterTime = UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
+            Log.e("ifter time positive", "" + ifterTime);
+        } else {
+          //  String ifterTime = UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this);
+            Log.e("ifter time negative", "" + ifterTime);
+            UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
+        } 
+
 
     }
 
@@ -75,6 +90,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         if (rtpd != null) {
             rtpd.setOnTimeSetListener(this);
         }
+
+        Log.e("Current Date", "" + UIUtils.getCurrentDate());
     }
 
     @Override

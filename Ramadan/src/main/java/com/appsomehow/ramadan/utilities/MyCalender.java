@@ -37,4 +37,10 @@ public class MyCalender {
     public int getAM_PM(int hourOfDay) {
         return hourOfDay < 12 ? Calendar.AM : Calendar.PM;
     }
+
+    public Calendar getCalendar(){
+
+        return null;
+    }
+
 }
