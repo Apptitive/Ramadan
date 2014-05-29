@@ -1,5 +1,6 @@
 package com.appsomehow.ramadan;
 
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,10 +74,10 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         if (region == null)
             return;
         if (region.isPositive()) {
-            String ifterTime = UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
+         //   String ifterTime = UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this);
             Log.e("ifter time positive", "" + ifterTime);
         } else {
-            String ifterTime = UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this);
+          //  String ifterTime = UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this);
             Log.e("ifter time negative", "" + ifterTime);
         }
 
