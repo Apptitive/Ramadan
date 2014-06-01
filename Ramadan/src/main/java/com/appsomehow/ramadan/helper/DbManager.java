@@ -1,9 +1,12 @@
 package com.appsomehow.ramadan.helper;
 
 import android.content.Context;
+
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
+
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +17,7 @@ public class DbManager {
     static private DbManager instance;
 
     static public void init(Context ctx) {
-        if (null==instance) {
+        if (null == instance) {
             instance = new DbManager(ctx);
         }
     }
@@ -24,6 +27,7 @@ public class DbManager {
     }
 
     private DbHelper helper;
+
     private DbManager(Context ctx) {
         helper = new DbHelper(ctx);
     }
@@ -42,7 +46,16 @@ public class DbManager {
         return regionList;
     }
 
-    public Region getDonorWithId(String regionId){
+    public String[] getAllRegionNames() {
+        ArrayList<String> regionNames = new ArrayList<String>();
+        List<Region> regions = getAllRegions();
+        for (Region region : regions) {
+            regionNames.add(region.getName());
+        }
+        return regionNames.toArray(new String[regionNames.size()]);
+    }
+
+    public Region getDonorWithId(String regionId) {
         Region region = null;
         try {
             region = getHelper().getRegionDao().queryForId(regionId);
@@ -79,7 +92,7 @@ public class DbManager {
         return timeTableList;
     }
 
-    public TimeTable getTimeTableWithId(String timeTableId){
+    public TimeTable getTimeTableWithId(String timeTableId) {
         TimeTable timeTable = null;
         try {
             timeTable = getHelper().getTimeTableDao().queryForId(timeTableId);

@@ -5,6 +5,7 @@
         android:key="@string/pref_key_alarm_settings">
 
         <com.appsomehow.ramadan.views.CheckBoxPreferenceAlarm
+
             android:title="@string/pref_title_new_message_notifications"
             android:key="@string/pref_key_alarm"
             android:defaultValue="false" />
@@ -28,8 +29,6 @@
             android:key="@string/prep_key_location"
             android:title="@string/pref_title_new_message_notifications"
             android:defaultValue="Dhaka"
-            android:entries="@array/pref_entries"
-            android:entryValues="@array/pref_values"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null" />
     </PreferenceCategory>

@@ -1,16 +1,19 @@
 package com.appsomehow.ramadan;
 
 import android.content.Context;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-
+import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.model.TimeTable;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
 
@@ -25,15 +28,38 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sehri_ifter_time);
 
+        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+
         TableFixHeaders tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
-        BaseTableAdapter baseTableAdapter = new FamilyNexusAdapter(this);
+        BaseTableAdapter baseTableAdapter = new FamilyNexusAdapter(this, timeTables);
         tableFixHeaders.setAdapter(baseTableAdapter);
+
+        String[] items = DbManager.getInstance().getAllRegionNames();
+        SpinnerAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
+
+            String[] dropDownItems = DbManager.getInstance().getAllRegionNames();
+
+            @Override
+            public boolean onNavigationItemSelected(int position, long id) {
+                // Do stuff when navigation item is selected
+                Log.e("NavigationItemSelected", dropDownItems[position]); // Debug
+                return true;
+            }
+
+        };
+
+// Action Bar
+        ActionBar actions = getSupportActionBar();
+        actions.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        actions.setDisplayShowTitleEnabled(false);
+        actions.setListNavigationCallbacks(adapter, callback);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.sehri_ifter_time, menu);
         return true;
@@ -53,15 +79,13 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
 
     public class FamilyNexusAdapter extends BaseTableAdapter {
 
+        private List<TimeTable> timeTables;
         private final NexusTypes familys[];
         private final String headers[] = {
                 "তারিখ",
                 "সেহরী",
                 "ইফতার",
                 "রমজান",
-                "Storage",
-                "Size",
-                "RAM",
         };
 
         private final int[] widths = {
@@ -69,42 +93,29 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
                 100,
                 140,
                 60,
-                70,
-                60,
-                60,
         };
         private final float density;
 
-        public FamilyNexusAdapter(Context context) {
-            familys = new NexusTypes[] {
-                    new NexusTypes("Mobiles"),
-                    new NexusTypes("Tablets"),
-                    new NexusTypes("Others"),
+        public FamilyNexusAdapter(Context context, List<TimeTable> timeTables) {
+            this.timeTables = timeTables;
+            familys = new NexusTypes[]{
+                    new NexusTypes("Ifter & Sehri Time"),
             };
 
             density = context.getResources().getDisplayMetrics().density;
-
-            familys[0].list.add(new Nexus("Nexus One", "HTC", "Gingerbread", "10", "512 MB", "3.7\"", "512 MB"));
-            familys[0].list.add(new Nexus("Nexus S", "Samsung", "Gingerbread", "10", "16 GB", "4\"", "512 MB"));
-            familys[0].list.add(new Nexus("Galaxy Nexus (16 GB)", "Samsung", "Ice cream Sandwich", "15", "16 GB", "4.65\"", "1 GB"));
-            familys[0].list.add(new Nexus("Galaxy Nexus (32 GB)", "Samsung", "Ice cream Sandwich", "15", "32 GB", "4.65\"", "1 GB"));
-            familys[0].list.add(new Nexus("Nexus 4 (8 GB)", "LG", "Jelly Bean", "17", "8 GB", "4.7\"", "2 GB"));
-            familys[0].list.add(new Nexus("Nexus 4 (16 GB)", "LG", "Jelly Bean", "17", "16 GB", "4.7\"", "2 GB"));
-            familys[1].list.add(new Nexus("Nexus 7 (16 GB)", "Asus", "Jelly Bean", "16", "16 GB", "7\"", "1 GB"));
-            familys[1].list.add(new Nexus("Nexus 7 (32 GB)", "Asus", "Jelly Bean", "16", "32 GB", "7\"", "1 GB"));
-            familys[1].list.add(new Nexus("Nexus 10 (16 GB)", "Samsung", "Jelly Bean", "17", "16 GB", "10\"", "2 GB"));
-            familys[1].list.add(new Nexus("Nexus 10 (32 GB)", "Samsung", "Jelly Bean", "17", "32 GB", "10\"", "2 GB"));
-            familys[2].list.add(new Nexus("Nexus Q", "--", "Honeycomb", "13", "--", "--", "--"));
+            for (TimeTable timeTable : timeTables) {
+                familys[0].list.add(new Nexus(timeTable.getDateInBangla(), timeTable.getSehriTime(), timeTable.getIfterTime(), timeTable.getRojaCount()));
+            }
         }
 
         @Override
         public int getRowCount() {
-            return 14;
+            return timeTables.size();
         }
 
         @Override
         public int getColumnCount() {
-            return 6;
+            return 3;
         }
 
         @Override
@@ -253,15 +264,13 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
     private class Nexus {
         private final String[] data;
 
-        private Nexus(String name, String company, String version, String api, String storage, String inches, String ram) {
-            data = new String[] {
-                    name,
-                    company,
-                    version,
-                    api,
-                    storage,
-                    inches,
-                    ram };
+        private Nexus(String dateInBangali, String sehriTime, String ifterTime, String rojaCount) {
+            data = new String[]{
+                    dateInBangali,
+                    sehriTime,
+                    ifterTime,
+                    rojaCount,
+            };
         }
     }
 
