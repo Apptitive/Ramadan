@@ -25,12 +25,10 @@
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Ramadan</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Ramadan</item>
         <item name="android:actionDropDownStyle">@style/DropDownNav.Ramadan</item>
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Ramadan</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Transparent.Ramadan</item>
         <item name="android:actionModeBackground">@drawable/cab_background_top_ramadan</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_ramadan</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Ramadan</item>
-        
-        
     </style>
 
     <style name="ActionBar.Solid.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -41,10 +39,16 @@
     </style>
 
     <style name="ActionBar.Transparent.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="android:background">@drawable/ab_transparent_ramadan</item>
+        <item name="android:background">@null</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Ramadan</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:titleTextStyle">@style/TitleText.Ramadan</item>
     </style>
-    
+
+    <style name="TitleText.Ramadan" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/White</item>
+    </style>
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Ramadan.Widget" parent="@style/Theme.AppCompat">
         <item name="android:popupMenuStyle">@style/PopupMenu.Ramadan</item>

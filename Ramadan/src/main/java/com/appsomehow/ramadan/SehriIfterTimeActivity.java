@@ -13,25 +13,30 @@ import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
+import com.appsomehow.ramadan.utilities.UIUtils;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SehriIfterTimeActivity extends ActionBarActivity {
 
+    FamilyNexusAdapter baseTableAdapter;
+    TableFixHeaders tableFixHeaders;
+    List<TimeTable> timeTables;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sehri_ifter_time);
 
-        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+        timeTables = DbManager.getInstance().getAllTimeTables();
 
-        TableFixHeaders tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
-        BaseTableAdapter baseTableAdapter = new FamilyNexusAdapter(this, timeTables);
+        tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
+        baseTableAdapter = new FamilyNexusAdapter(this, timeTables);
         tableFixHeaders.setAdapter(baseTableAdapter);
 
         String[] items = DbManager.getInstance().getAllRegionNames();
@@ -39,11 +44,31 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
 
             String[] dropDownItems = DbManager.getInstance().getAllRegionNames();
+            List<Region> regions = DbManager.getInstance().getAllRegions();
+
 
             @Override
             public boolean onNavigationItemSelected(int position, long id) {
-                // Do stuff when navigation item is selected
-                Log.e("NavigationItemSelected", dropDownItems[position]); // Debug
+
+                timeTables.clear();
+                Region region = UIUtils.getSelectedLocation(regions, dropDownItems[position]);
+                List<TimeTable> tempTimeTableList = DbManager.getInstance().getAllTimeTables();
+
+                if (region.isPositive()) {
+                    for (TimeTable timeTable : tempTimeTableList) {
+                        //timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                        //timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false));
+                        timeTables.add(timeTable);
+                    }
+
+                } else {
+                    for (TimeTable timeTable : tempTimeTableList) {
+                         timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                         timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
+                        timeTables.add(timeTable);
+                    }
+                }
+                baseTableAdapter.setUpdatedListItems(timeTables);
                 return true;
             }
 
@@ -99,13 +124,21 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         public FamilyNexusAdapter(Context context, List<TimeTable> timeTables) {
             this.timeTables = timeTables;
             familys = new NexusTypes[]{
-                    new NexusTypes("Ifter & Sehri Time"),
+                    new NexusTypes(""),
             };
 
             density = context.getResources().getDisplayMetrics().density;
             for (TimeTable timeTable : timeTables) {
                 familys[0].list.add(new Nexus(timeTable.getDateInBangla(), timeTable.getSehriTime(), timeTable.getIfterTime(), timeTable.getRojaCount()));
             }
+        }
+
+        public void setUpdatedListItems(List<TimeTable> ttList) {
+            familys[0].list.clear();
+            for (TimeTable tt : ttList) {
+                familys[0].list.add(new Nexus(tt.getDateInBangla(), tt.getSehriTime(), tt.getIfterTime(), tt.getRojaCount()));
+            }
+            update();
         }
 
         @Override
@@ -257,6 +290,10 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         @Override
         public int getViewTypeCount() {
             return 5;
+        }
+
+        public void update() {
+            notifyDataSetChanged();
         }
     }
 

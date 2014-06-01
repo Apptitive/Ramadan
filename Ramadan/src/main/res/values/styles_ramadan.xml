@@ -42,6 +42,11 @@
         <item name="background">@null</item>
         <item name="progressBarStyle">@style/ProgressBar.Ramadan</item>
         <item name="windowActionBarOverlay">true</item>
+        <item name="titleTextStyle">@style/TitleText.Ramadan</item>
+    </style>
+
+    <style name="TitleText.Ramadan" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/White</item>
     </style>
 	
     <style name="PopupMenu.Ramadan" parent="@style/Widget.AppCompat.Light.PopupMenu">	
