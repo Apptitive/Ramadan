@@ -117,6 +117,17 @@ public class DbManager {
             e.printStackTrace();
         }
     }
+
+
+    public String[] getAllBanglaRegionNames() {
+        ArrayList<String> regionNames = new ArrayList<String>();
+        List<Region> regions = getAllRegions();
+        for (Region region : regions) {
+            regionNames.add(region.getNameInBangla());
+        }
+        return regionNames.toArray(new String[regionNames.size()]);
+    }
+
 }
 
 
