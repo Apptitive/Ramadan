@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="Green_Ramadan">#009245</color>
+    <color name="AB_Green_Ramadan">#B3009245</color>
+    <color name="AB_White_Ramadan">#1AFFFFFF</color>
     <color name="Red_Ramadan">#ED1C24</color>
     <color name="White">#FFFFFF</color>
     <color name="Ivory">#FFFFF0</color>

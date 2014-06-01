@@ -3,6 +3,7 @@ package com.appsomehow.ramadan;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.support.v7.app.ActionBar;
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         preferenceHelper = new PreferenceHelper(this);
 
         actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowTitleEnabled(false);
 
         setContentView(R.layout.activity_main);

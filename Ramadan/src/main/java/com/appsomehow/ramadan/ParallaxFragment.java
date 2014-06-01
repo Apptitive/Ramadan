@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.appsomehow.ramadan.views.BanglaTextView;
-import com.appsomehow.ramadan.views.JustifiedTextView;
-import com.appsomehow.ramadan.views.StickyParallaxScrollView;
+import com.appsomehow.ramadan.views.ParallaxScrollView;
 
 public class ParallaxFragment extends Fragment {
 
@@ -20,7 +18,7 @@ public class ParallaxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_parallax, container, false);
-        StickyParallaxScrollView scrollView = (StickyParallaxScrollView) rootView.findViewById(R.id.sticky_parallax_scrollview);
+        ParallaxScrollView scrollView = (ParallaxScrollView) rootView.findViewById(R.id.parallax_scrollview);
         scrollView.parallaxViewBackgroundBy(scrollView, getResources().getDrawable(R.drawable.bg_parallax), .2f);
 
         return rootView;
