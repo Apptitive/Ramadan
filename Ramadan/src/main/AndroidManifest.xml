@@ -42,7 +42,12 @@
         </activity>
         <activity
             android:name="com.appsomehow.ramadan.SehriIfterTimeActivity"
-            android:label="@string/title_activity_sehri_ifter_time"></activity>
+            android:label="@string/title_activity_sehri_ifter_time"
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
 
         <service
             android:name="com.appsomehow.ramadan.services.RingtonService"
@@ -61,8 +66,7 @@
         <service
             android:name="com.appsomehow.ramadan.services.MusicService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:exported="true"></service>
     </application>
 
 </manifest>

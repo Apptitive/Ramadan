@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.utilities.UIUtils;
+import com.appsomehow.ramadan.utilities.Utilities;
+import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
 import java.util.ArrayList;
@@ -24,13 +27,21 @@ import java.util.List;
 
 public class SehriIfterTimeActivity extends ActionBarActivity {
 
-    FamilyNexusAdapter baseTableAdapter;
-    TableFixHeaders tableFixHeaders;
-    List<TimeTable> timeTables;
+    private ActionBar actionBar;
+    private FamilyNexusAdapter baseTableAdapter;
+    private TableFixHeaders tableFixHeaders;
+    private List<TimeTable> timeTables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
+        actionBar.setDisplayShowHomeEnabled(true);
+
         setContentView(R.layout.activity_sehri_ifter_time);
 
         timeTables = DbManager.getInstance().getAllTimeTables();
@@ -40,7 +51,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         tableFixHeaders.setAdapter(baseTableAdapter);
 
         String[] items = DbManager.getInstance().getAllRegionNames();
-        SpinnerAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        SpinnerAdapter adapter = new ArrayAdapter<String>(this, R.layout.sehri_ifter_time_actionbar_spinner_dropdown_item, items);
         ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
 
             String[] dropDownItems = DbManager.getInstance().getAllRegionNames();
