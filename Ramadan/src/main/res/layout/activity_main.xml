@@ -108,7 +108,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_35"
                         android:textStyle="bold"
-                        app:banglaText="৩:৪০"
+                        app:banglaText="0:00"
                         app:fontName="@string/font_solaimanlipi" />
 
                     <com.appsomehow.ramadan.views.BanglaTextView
@@ -142,7 +142,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_35"
                         android:textStyle="bold"
-                        app:banglaText="৬:৪৭"
+                        app:banglaText="0:00"
                         app:fontName="@string/font_solaimanlipi" />
 
                     <com.appsomehow.ramadan.views.BanglaTextView

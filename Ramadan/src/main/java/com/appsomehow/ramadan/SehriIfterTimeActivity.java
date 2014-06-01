@@ -49,24 +49,22 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
 
             @Override
             public boolean onNavigationItemSelected(int position, long id) {
-                // Do stuff when navigation item is selected
-                timeTables.clear();
 
-                Log.e("NavigationItemSelected", dropDownItems[position]); // Debug
+                timeTables.clear();
                 Region region = UIUtils.getSelectedLocation(regions, dropDownItems[position]);
                 List<TimeTable> tempTimeTableList = DbManager.getInstance().getAllTimeTables();
 
                 if (region.isPositive()) {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true));
-                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false));
+                        //timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                        //timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false));
                         timeTables.add(timeTable);
                     }
 
                 } else {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        // timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
-                        // timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
+                         timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                         timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
                         timeTables.add(timeTable);
                     }
                 }
@@ -126,7 +124,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         public FamilyNexusAdapter(Context context, List<TimeTable> timeTables) {
             this.timeTables = timeTables;
             familys = new NexusTypes[]{
-                    new NexusTypes("Ifter & Sehri Time"),
+                    new NexusTypes(""),
             };
 
             density = context.getResources().getDisplayMetrics().density;
@@ -138,7 +136,6 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         public void setUpdatedListItems(List<TimeTable> ttList) {
             familys[0].list.clear();
             for (TimeTable tt : ttList) {
-                Log.e("Table_row ", tt.getSehriTime() + "_" + tt.getIfterTime());
                 familys[0].list.add(new Nexus(tt.getDateInBangla(), tt.getSehriTime(), tt.getIfterTime(), tt.getRojaCount()));
             }
             update();
