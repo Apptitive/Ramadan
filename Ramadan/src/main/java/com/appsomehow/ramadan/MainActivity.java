@@ -66,17 +66,11 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
 
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
-        for (TimeTable t : timeTables) {
-            Log.e("TimeTable Log: ", "" + t.getDate());
-        }
-
-        List<Region>regions = DbManager.getInstance().getAllRegions();
-        for (Region r: regions){
-            Log.e("Region isPositive : ", "" + r.isPositive());
-        }
-
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
 
+        Log.e("saved region",""+preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        List<Region> regions = DbManager.getInstance().getAllRegions();
+        if(timeTable==null)return;
         Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region == null) {
             return;
@@ -85,8 +79,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
             iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
         } else {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this, false));
         }
 
 
