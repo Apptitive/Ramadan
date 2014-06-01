@@ -68,7 +68,9 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
 
+        Log.e("saved region",""+preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         List<Region> regions = DbManager.getInstance().getAllRegions();
+        if(timeTable==null)return;
         Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region == null) {
             return;
