@@ -1,2 +1,21 @@
-1,Dhaka,Dhaka,true,0,0
-2,Rajshahi,Rajshahi,false,5,5
+1,Dhaka,ঢাকা,true,0,0
+2,Syllet,সিলেট,false,7,5
+3,Chittagong,চট্টগ্রাম,false,6,3
+4,Noakhali,নোয়াখালী,false,5,3
+5,Comilla,কুমিল্লা,false,3,3
+6,Feni,ফেনী,false,3,3
+7,BBaria,বি বাড়িয়া,false,3,3
+8,Mymensing,ময়মনসিংহ,false,1,1
+9,Tangail,টাংগাইল,false,1,1
+10,Chadpur,চাঁদপুর,false,1,1
+11,Khulna,খুলনা,true,2,5
+12,Rangpur,রংপুর,true,1,2
+13,Bogura,বগুড়া,true,3,3
+14,Pabna,পাবনা,true,3,3
+15,Brishal,বারিশাল,true,0,1
+16,Potuakhali,পটুয়াখালী,true,0,1
+17,Rajshahi,রাজশাহী,true,4,6
+18,Dinajpur,দিনাজপুর,true,4,6
+19,Foridpur,রিদপুর,true,7,7
+20,Jasore,যশোর,true,7,7
+20,Kustia,কুষ্টিয়া,true,7,7
