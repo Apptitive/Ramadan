@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
         actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowHomeEnabled(true);
 
         setContentView(R.layout.activity_sehri_ifter_time);
@@ -51,7 +52,17 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         tableFixHeaders.setAdapter(baseTableAdapter);
 
         String[] items = DbManager.getInstance().getAllRegionNames();
-        SpinnerAdapter adapter = new ArrayAdapter<String>(this, R.layout.sehri_ifter_time_actionbar_spinner_dropdown_item, items);
+        SpinnerAdapter adapter = new ArrayAdapter<String>(this, R.layout.sehri_ifter_time_actionbar_spinner_dropdown_item, items){
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView, parent);
+                ((TextView) v).setTextColor(getResources().getColor(
+                        R.color.Red));
+
+                return v;
+            }
+        };
         ActionBar.OnNavigationListener callback = new ActionBar.OnNavigationListener() {
 
             String[] dropDownItems = DbManager.getInstance().getAllRegionNames();
