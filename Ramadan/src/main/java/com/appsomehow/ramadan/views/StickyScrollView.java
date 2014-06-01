@@ -248,7 +248,7 @@ public class StickyScrollView extends ScrollView {
             redirectTouchesToStickyView = false;
         }
         if (redirectTouchesToStickyView) {
-            ev.offsetLocation(0, getTopForViewRelativeOnlyChild(currentlyStickingView));
+            ev.offsetLocation(0, -1 * ((getScrollY() + stickyViewTopOffset) - getTopForViewRelativeOnlyChild(currentlyStickingView)));
         }
         return super.dispatchTouchEvent(ev);
     }

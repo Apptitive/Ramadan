@@ -1,5 +1,7 @@
 package com.appsomehow.ramadan;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,16 +23,15 @@ public class SaomActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
 
         actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_transparent_ramadan));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.Green_Ramadan)));
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
+        setTitleColor(getResources().getColor(R.color.White));
         actionBar.setDisplayShowHomeEnabled(true);
 
         setContentView(R.layout.activity_saom);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
