@@ -5,7 +5,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -14,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.DbTableName;
@@ -27,13 +25,12 @@ import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
-
 import org.joda.time.DateTime;
-
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
+
 
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
@@ -62,26 +59,29 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         iftarTime = (BanglaTextView) findViewById(R.id.tv_ifter_time);
         seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
-        CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
-        CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
+        if (!preferenceHelper.getBoolean(Constants.IS_DB_CREATED)) {
+            Log.e("Db Checking : ", "First Time Db Created !");
+            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
+            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
+            preferenceHelper.setBoolean(Constants.IS_DB_CREATED, true);
+        }
 
 
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
 
-        Log.e("saved region",""+preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         List<Region> regions = DbManager.getInstance().getAllRegions();
-        if(timeTable==null)return;
+        if (timeTable == null) return;
         Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region == null) {
             return;
         }
         if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
         } else {
-            seheriTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
         }
 
 
@@ -97,7 +97,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             rtpd.setOnTimeSetListener(this);
         }
 
-        Log.e("Current Date", "" + UIUtils.getCurrentDate());
     }
 
     @Override

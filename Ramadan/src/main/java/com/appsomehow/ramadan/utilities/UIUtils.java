@@ -24,7 +24,6 @@ public class UIUtils {
     }
 
     public static TimeTable compareCurrentDate(List<TimeTable> timeTables) {
-        Log.e("current date", "" + getCurrentDate());
         for (TimeTable timeTable : timeTables) {
             if (timeTable.getDate().equals(getCurrentDate())) {
                 return timeTable;
@@ -64,7 +63,7 @@ public class UIUtils {
         return null;
     }
 
-    public static String getIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
+    public static String getSehriIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
 
 

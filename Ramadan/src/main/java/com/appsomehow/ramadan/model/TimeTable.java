@@ -64,4 +64,12 @@ public class TimeTable {
     public String getRojaCount() {
         return rojaCount;
     }
+
+    public void setSehriTime(String sehriTime) {
+        this.sehriTime = sehriTime;
+    }
+
+    public void setIfterTime(String ifterTime) {
+        this.ifterTime = ifterTime;
+    }
 }
