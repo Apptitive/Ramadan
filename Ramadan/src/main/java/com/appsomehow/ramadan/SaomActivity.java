@@ -15,8 +15,10 @@ import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.JustifiedTextView;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
+import uk.co.chrisjenx.paralloid.OnScrollChangedListener;
 
-public class SaomActivity extends ActionBarActivity {
+
+public class SaomActivity extends ActionBarActivity implements OnScrollChangedListener{
 
     private ActionBar actionBar;
 
@@ -28,8 +30,17 @@ public class SaomActivity extends ActionBarActivity {
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
+        actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
         actionBar.setDisplayShowHomeEnabled(true);
 
         setContentView(R.layout.activity_saom);
+    }
+
+    @Override
+    public void onScrollChanged(Object who, int l, int t, int oldl, int oldt) {
+        if(t < oldt)
+            actionBar.hide();
+        else if(t > oldt)
+            actionBar.show();;
     }
 }
