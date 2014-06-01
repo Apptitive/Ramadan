@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
 
 
-/*        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         for (TimeTable t : timeTables) {
             Log.e("TimeTable Log: ", "" + t.getDate());
         }
@@ -76,22 +76,18 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         }
 
         TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
-        if (timeTable.getDate() != null)
-            Log.e("get Timetable time", "" + timeTable.getDate());
-
-        List<Region> regions = DbManager.getInstance().getAllRegions();
 
         Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region == null) {
             return;
         }
         if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getIftarTime(region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
         } else {
-            seheriTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getIftarTime(-region.getIntervalIfter(), timeTable, this, false));
-        }*/
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
+        }
 
 
     }
