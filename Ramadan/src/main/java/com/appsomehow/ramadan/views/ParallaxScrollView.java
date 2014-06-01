@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ScrollView;
 
 import uk.co.chrisjenx.paralloid.ParallaxViewController;
 import uk.co.chrisjenx.paralloid.Parallaxor;
@@ -12,21 +13,21 @@ import uk.co.chrisjenx.paralloid.transform.Transformer;
 /**
  * Created by Iftekhar on 5/27/2014.
  */
-public class StickyParallaxScrollView extends StickyScrollView implements Parallaxor{
+public class ParallaxScrollView extends ScrollView implements Parallaxor{
 
     ParallaxViewController mParallaxViewController;
 
-    public StickyParallaxScrollView(Context context) {
+    public ParallaxScrollView(Context context) {
         super(context);
         init();
     }
 
-    public StickyParallaxScrollView(Context context, AttributeSet attrs) {
+    public ParallaxScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public StickyParallaxScrollView(Context context, AttributeSet attrs, int defStyle) {
+    public ParallaxScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
