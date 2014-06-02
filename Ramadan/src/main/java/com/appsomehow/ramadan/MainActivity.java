@@ -1,6 +1,5 @@
 package com.appsomehow.ramadan;
 
-
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;

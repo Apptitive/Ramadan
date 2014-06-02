@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="ActionBar_Navigation">#2A4867</color>
     <color name="AB_Green_Ramadan">#B3009245</color>
     <color name="AB_White_Ramadan">#1AFFFFFF</color>
     <color name="Red_Ramadan">#ED1C24</color>
