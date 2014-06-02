@@ -27,7 +27,7 @@ public class Utilities {
     }
 
 
-    public static void CustomNotification(Context context) {
+    public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
         notificationIntent.setAction("notification_cancelled");
         PendingIntent deletePendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -61,10 +61,7 @@ public class Utilities {
         char[] array = input.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == ':') {
-                stringBuilder.append(":");
-            } else
-                stringBuilder.append(Character.toChars((int) array[i] + 2486));
+            stringBuilder.append(Character.toChars((int) array[i] + 2486));
         }
         return stringBuilder.toString();
     }
