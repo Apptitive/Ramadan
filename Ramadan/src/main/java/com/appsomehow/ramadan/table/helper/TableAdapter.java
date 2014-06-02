@@ -1,4 +1,4 @@
-package com.appsomehow.ramadan.table_helper;
+package com.appsomehow.ramadan.table.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;

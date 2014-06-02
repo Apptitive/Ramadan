@@ -16,7 +16,7 @@ import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.Helper;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
-import com.appsomehow.ramadan.table_helper.TableAdapter;
+import com.appsomehow.ramadan.table.helper.TableAdapter;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;

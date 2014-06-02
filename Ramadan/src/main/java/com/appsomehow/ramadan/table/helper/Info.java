@@ -1,4 +1,4 @@
-package com.appsomehow.ramadan.table_helper;
+package com.appsomehow.ramadan.table.helper;
 
 /**
  * Created by rayhan on 6/1/2014.
