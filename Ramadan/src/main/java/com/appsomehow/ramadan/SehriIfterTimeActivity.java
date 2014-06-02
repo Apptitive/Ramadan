@@ -22,8 +22,6 @@ import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +51,16 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sehri_ifter_time);
         timeTables = DbManager.getInstance().getAllTimeTables();
         tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
-        baseTableAdapter = new FamilyNexusAdapter(this, timeTables);
+        baseTableAdapter = new FamilyNexusAdapter(this, timeTables){
+            @Override
+            public View getView(int row, int column, View convertView, ViewGroup parent) {
+                View v =  super.getView(row, column, convertView, parent);
+                if (UIUtils.getCurrentDateIndex() < 100 && row == UIUtils.getCurrentDateIndex() +1){
+                    v.setBackgroundColor(getResources().getColor(R.color.gray));
+                }
+                return v;
+            }
+        };
         tableFixHeaders.setAdapter(baseTableAdapter);
 
         items = DbManager.getInstance().getAllRegionNames();
