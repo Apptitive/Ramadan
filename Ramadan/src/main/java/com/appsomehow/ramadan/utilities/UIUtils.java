@@ -93,8 +93,7 @@ public class UIUtils {
             calendar.set(Calendar.DAY_OF_MONTH, date.getDay());
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
-
-            return Utilities.replaceBanglaCharacter(calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
+            return Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.HOUR))+ ":" + Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.MINUTE));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -105,13 +104,5 @@ public class UIUtils {
         return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
     }
 
-    public static String formatLocalDateTime(final DateTimeFormatter formatter, final DateTime dateTime) {
-        if (dateTime == null) {
-            return "";
-        }
-        DateTimeFormatter f = formatter.withLocale(new Locale("bn", "BD"));
-        f.withZone(DateTimeZone.forTimeZone(TimeZone.getTimeZone("UTC")));
-        return f.print(dateTime);
-    }
 
 }

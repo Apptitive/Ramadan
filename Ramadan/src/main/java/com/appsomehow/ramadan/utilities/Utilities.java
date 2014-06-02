@@ -61,10 +61,7 @@ public class Utilities {
         char[] array = input.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == ':') {
-                stringBuilder.append(":");
-            } else
-                stringBuilder.append(Character.toChars((int) array[i] + 2486));
+            stringBuilder.append(Character.toChars((int) array[i] + 2486));
         }
         return stringBuilder.toString();
     }
