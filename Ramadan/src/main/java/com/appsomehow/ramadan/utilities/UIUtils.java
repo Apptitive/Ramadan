@@ -39,11 +39,11 @@ public class UIUtils {
         return null;
     }
 
-    public static int getCurrentDateIndex(){
+    public static int getCurrentDateIndex() {
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         int i = 0;
-        for (TimeTable timeTable: timeTables){
-            if (timeTable.getDate().equals(getCurrentDate())){
+        for (TimeTable timeTable : timeTables) {
+            if (timeTable.getDate().equals(getCurrentDate())) {
                 return i;
             }
             i++;
@@ -94,7 +94,7 @@ public class UIUtils {
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
 
-            return Utilities.replaceBanglaCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
+            return Utilities.replaceBanglaCharacter(calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
