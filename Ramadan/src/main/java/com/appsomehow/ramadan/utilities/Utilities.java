@@ -1,23 +1,15 @@
 package com.appsomehow.ramadan.utilities;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.text.SpannableString;
-import android.util.Log;
 
 import com.appsomehow.ramadan.R;
-import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
-
-import java.util.List;
 
 /**
  * Created by Sharif on 5/27/2014.
@@ -29,7 +21,7 @@ public class Utilities {
                 "fonts/" + context.getString(R.string.font_solaimanlipi));
     }
 
-    public static android.text.SpannableString setBanglaText(String banglaText, Context context) {
+    public static android.text.SpannableString getBanglaText(String banglaText, Context context) {
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
 
@@ -59,7 +51,7 @@ public class Utilities {
     public static android.text.SpannableString[] banglaSpannableStrings(String[] banglaRegionNames, Context context) {
         android.text.SpannableString[] banglaText = new android.text.SpannableString[banglaRegionNames.length];
         for (int counter = 0; counter < banglaRegionNames.length; counter++) {
-            banglaText[counter] = setBanglaText(banglaRegionNames[counter], context);
+            banglaText[counter] = getBanglaText(banglaRegionNames[counter], context);
         }
         return banglaText;
     }
