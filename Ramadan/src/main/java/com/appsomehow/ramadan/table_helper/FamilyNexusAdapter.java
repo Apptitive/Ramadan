@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.TimeTable;
+import com.appsomehow.ramadan.utilities.Utilities;
 import com.inqbarna.tablefixheaders.adapters.BaseTableAdapter;
 import java.util.List;
 
@@ -97,7 +98,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_table_header_first, parent, false);
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(headers[0]);
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(headers[0],context));
         return convertView;
     }
 
@@ -105,7 +106,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_table_header, parent, false);
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(headers[column + 1]);
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(headers[column + 1],context));
         return convertView;
     }
 
@@ -114,7 +115,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
             convertView = inflater.inflate(R.layout.item_table_first, parent, false);
         }
         convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(getDevice(row).data[column + 1]);
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(getDevice(row).data[column + 1],context));
         return convertView;
     }
 
@@ -123,7 +124,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
             convertView = inflater.inflate(R.layout.item_table, parent, false);
         }
         convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(getDevice(row).data[column + 1]);
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(getDevice(row).data[column + 1],context));
         return convertView;
     }
 
@@ -137,7 +138,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         } else {
             string = "";
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(string);
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(string,context));
         return convertView;
     }
 

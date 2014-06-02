@@ -13,13 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.helper.Helper;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.table_helper.FamilyNexusAdapter;
+import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,12 +38,14 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
     private Map<String,String> regionMap;
     private String[] items;
     private List<Region> regions;
+    private PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         regionMap = new HashMap<String, String>();
+        preferenceHelper = new PreferenceHelper(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
@@ -58,6 +64,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         }
         SpinnerAdapter adapter = new ArrayAdapter<String>(this, R.layout.sehri_ifter_time_actionbar_spinner_dropdown_item, items){
 
+
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
@@ -68,6 +75,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View v = super.getDropDownView(position, convertView, parent);
+                v.setBackgroundColor(getResources().getColor(R.color.ActionBar_Navigation));
                 ((TextView) v).setText(Utilities.setBanglaText(regionMap.get(items[position]), getBaseContext()));
                 return v;
             }
@@ -94,8 +102,8 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
 
                 } else {
                     for (TimeTable timeTable : tempTimeTableList) {
-                         timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
-                         timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
+                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
                         timeTables.add(timeTable);
                     }
                 }
@@ -105,11 +113,13 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
 
         };
 
+
         // Action Bar
         ActionBar actions = getSupportActionBar();
         actions.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         actions.setDisplayShowTitleEnabled(false);
         actions.setListNavigationCallbacks(adapter, callback);
+        actions.setSelectedNavigationItem(Helper.getArrayIndex(items, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, Constants.DEFAULT_REGION)));
     }
 
 
