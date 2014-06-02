@@ -3,6 +3,7 @@ package com.appsomehow.ramadan.utilities;
 import android.content.Context;
 import android.util.Log;
 
+import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 
@@ -32,6 +33,17 @@ public class UIUtils {
         return null;
     }
 
+    public static int getCurrentDateIndex(){
+        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+        int i = 0;
+        for (TimeTable timeTable: timeTables){
+            if (timeTable.getDate().equals(getCurrentDate())){
+                return i;
+            }
+            i++;
+        }
+        return 0;
+    }
 
     public static String dateToString(Date date) {
         try {

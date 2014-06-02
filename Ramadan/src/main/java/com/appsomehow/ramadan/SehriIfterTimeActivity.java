@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,8 +23,6 @@ import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.inqbarna.tablefixheaders.TableFixHeaders;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +52,17 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sehri_ifter_time);
         timeTables = DbManager.getInstance().getAllTimeTables();
         tableFixHeaders = (TableFixHeaders) findViewById(R.id.table);
-        baseTableAdapter = new FamilyNexusAdapter(this, timeTables);
+        baseTableAdapter = new FamilyNexusAdapter(this, timeTables){
+            @Override
+            public View getView(int row, int column, View convertView, ViewGroup parent) {
+                View v =  super.getView(row, column, convertView, parent);
+                if (row == UIUtils.getCurrentDateIndex() +1){
+                    Log.e("Current Date Index: ", "_"+UIUtils.getCurrentDateIndex());
+                    v.setBackgroundColor(getResources().getColor(R.color.red));
+                }
+                return v;
+            }
+        };
         tableFixHeaders.setAdapter(baseTableAdapter);
 
         items = DbManager.getInstance().getAllRegionNames();
