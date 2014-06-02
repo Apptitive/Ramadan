@@ -11,9 +11,9 @@
     <string name="pref_key_alarm_rington">pref_key_alarm_rington</string>
     <string name="pref_key_alarm_vibrat">pref_key_alarm_vibrat</string>
     <string name="pref_key_location_settings">pref_key_location_settings</string>
-    <string name="prep_key_location">prep_key_location</string>
+    <string name="pref_key_location">prep_key_location</string>
     <string name="pref_key_about_us">pref_ey_about_us</string>
-    <string name="prep_key_et_about_us">pref_key_et_about_us</string>
+    <string name="pref_key_preference_about_us">pref_key_et_about_us</string>
 
     <!--<string name="pref_title_new_message_notifications">সাওমের গুরুত্ব</string>-->
     <string name="pref_title_ringtone">Ringtone</string>
