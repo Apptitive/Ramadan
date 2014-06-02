@@ -105,13 +105,4 @@ public class UIUtils {
         return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
     }
 
-    public static String formatLocalDateTime(final DateTimeFormatter formatter, final DateTime dateTime) {
-        if (dateTime == null) {
-            return "";
-        }
-        DateTimeFormatter f = formatter.withLocale(new Locale("bn", "BD"));
-        f.withZone(DateTimeZone.forTimeZone(TimeZone.getTimeZone("UTC")));
-        return f.print(dateTime);
-    }
-
 }
