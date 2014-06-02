@@ -98,7 +98,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_table_header_first, parent, false);
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(headers[0],context));
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.getBanglaText(headers[0],context));
         return convertView;
     }
 
@@ -106,7 +106,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_table_header, parent, false);
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(headers[column + 1],context));
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.getBanglaText(headers[column + 1],context));
         return convertView;
     }
 
@@ -115,7 +115,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
             convertView = inflater.inflate(R.layout.item_table_first, parent, false);
         }
         convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(getDevice(row).data[column + 1],context));
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.getBanglaText(getDevice(row).data[column + 1],context));
         return convertView;
     }
 
@@ -124,7 +124,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
             convertView = inflater.inflate(R.layout.item_table, parent, false);
         }
         convertView.setBackgroundResource(row % 2 == 0 ? R.drawable.bg_table_color1 : R.drawable.bg_table_color2);
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(getDevice(row).data[column + 1],context));
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.getBanglaText(getDevice(row).data[column + 1],context));
         return convertView;
     }
 
@@ -138,7 +138,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         } else {
             string = "";
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.setBanglaText(string,context));
+        ((TextView) convertView.findViewById(android.R.id.text1)).setText(Utilities.getBanglaText(string,context));
         return convertView;
     }
 
