@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,9 +55,8 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
             @Override
             public View getView(int row, int column, View convertView, ViewGroup parent) {
                 View v =  super.getView(row, column, convertView, parent);
-                if (row == UIUtils.getCurrentDateIndex() +1){
-                    Log.e("Current Date Index: ", "_"+UIUtils.getCurrentDateIndex());
-                    v.setBackgroundColor(getResources().getColor(R.color.red));
+                if (UIUtils.getCurrentDateIndex() < 100 && row == UIUtils.getCurrentDateIndex() +1){
+                    v.setBackgroundColor(getResources().getColor(R.color.gray));
                 }
                 return v;
             }

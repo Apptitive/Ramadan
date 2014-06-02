@@ -48,7 +48,7 @@ public class UIUtils {
             }
             i++;
         }
-        return 0;
+        return 100;
     }
 
     public static String dateToString(Date date) {
