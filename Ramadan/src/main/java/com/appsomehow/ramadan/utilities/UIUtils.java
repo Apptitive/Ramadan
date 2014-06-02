@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 
@@ -38,6 +39,17 @@ public class UIUtils {
         return null;
     }
 
+    public static int getCurrentDateIndex() {
+        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
+        int i = 0;
+        for (TimeTable timeTable : timeTables) {
+            if (timeTable.getDate().equals(getCurrentDate())) {
+                return i;
+            }
+            i++;
+        }
+        return 100;
+    }
 
     public static String dateToString(Date date) {
         try {
@@ -81,8 +93,7 @@ public class UIUtils {
             calendar.set(Calendar.DAY_OF_MONTH, date.getDay());
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
-
-            return Constants.banglaReplaceCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
+            return Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.HOUR))+ ":" + Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.MINUTE));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -93,13 +104,5 @@ public class UIUtils {
         return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
     }
 
-    public static String formatLocalDateTime(final DateTimeFormatter formatter, final DateTime dateTime) {
-        if (dateTime == null) {
-            return "";
-        }
-        DateTimeFormatter f = formatter.withLocale(new Locale("bn", "BD"));
-        f.withZone(DateTimeZone.forTimeZone(TimeZone.getTimeZone("UTC")));
-        return f.print(dateTime);
-    }
 
 }

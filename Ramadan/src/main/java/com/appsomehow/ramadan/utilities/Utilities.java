@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
@@ -26,7 +27,7 @@ public class Utilities {
     }
 
 
-    public static void CustomNotification(Context context) {
+    public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
         notificationIntent.setAction("notification_cancelled");
         PendingIntent deletePendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -54,5 +55,14 @@ public class Utilities {
             banglaText[counter] = getBanglaText(banglaRegionNames[counter], context);
         }
         return banglaText;
+    }
+
+    public static String replaceBanglaCharacter(String input) {
+        char[] array = input.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            stringBuilder.append(Character.toChars((int) array[i] + 2486));
+        }
+        return stringBuilder.toString();
     }
 }

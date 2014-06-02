@@ -22,7 +22,7 @@
         android:title="@string/title_location"
         android:key="@string/pref_key_location_settings">
         <ListPreference
-            android:key="@string/prep_key_location"
+            android:key="@string/pref_key_location"
             android:title="@string/title_location_setting"
             android:defaultValue="Dhaka"
             android:negativeButtonText="@null"
@@ -31,9 +31,10 @@
     <PreferenceCategory
         android:title="@string/title_about_us"
         android:key="@string/pref_key_about_us">
-        <EditTextPreference
-            android:key="@string/prep_key_et_about_us"
-            android:summary="Send us your query" />
+        <Preference
+            android:key="@string/pref_key_preference_about_us"
+            android:summary="about us"></Preference>
     </PreferenceCategory>
+
 
 </PreferenceScreen>

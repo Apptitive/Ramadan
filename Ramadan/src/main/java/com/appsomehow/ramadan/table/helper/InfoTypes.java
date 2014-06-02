@@ -1,4 +1,4 @@
-package com.appsomehow.ramadan.table_helper;
+package com.appsomehow.ramadan.table.helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,20 +6,20 @@ import java.util.List;
 /**
  * Created by rayhan on 6/1/2014.
  */
-public class NexusTypes {
+public class InfoTypes {
     public final String name;
-    public final List<Nexus> list;
+    public final List<Info> list;
 
-    NexusTypes(String name) {
+    InfoTypes(String name) {
         this.name = name;
-        list = new ArrayList<Nexus>();
+        list = new ArrayList<Info>();
     }
 
     public int size() {
         return list.size();
     }
 
-    public Nexus get(int i) {
+    public Info get(int i) {
         return list.get(i);
     }
 }

@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -29,6 +30,7 @@ public class SettingsActivity extends PreferenceActivity {
     private ListPreference preferenceLocation;
 
     private static Context settingsActivity;
+    private Preference preferenceAboutUs;
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     private void setupSimplePreferencesScreen() {
         addPreferencesFromResource(R.xml.pref_general);
-        ListPreference listPreference = (ListPreference) findPreference(getString(R.string.prep_key_location));
+        ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
             SpannableString[] banglaRegionNames = Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this);
@@ -48,7 +50,7 @@ public class SettingsActivity extends PreferenceActivity {
             listPreference.setEntryValues(englishRegionNames);
             listPreference.setDialogTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
         }
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.prep_key_location)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_location)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_alarm_rington)));
         findViews();
         setBanglaTextToView();
@@ -59,8 +61,8 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAlarm = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm));
         categoryLocation = (PreferenceCategory) findPreference(getString(R.string.pref_key_location_settings));
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
-        preferenceLocation = (ListPreference) findPreference(getString(R.string.prep_key_location));
-
+        preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
+        preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
     }
 
     private void setBanglaTextToView() {
@@ -69,6 +71,15 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs.setTitle(Utilities.getBanglaText(getString(R.string.title_about_us), this));
         preferenceAlarm.setTitle(Utilities.getBanglaText(getString(R.string.title_alarm_setting), this));
         preferenceLocation.setTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
+        preferenceAboutUs.setSummary(Utilities.getBanglaText(getString(R.string.title_about_us), this));
+
+        preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                startActivity(new Intent(getBaseContext(),AboutUsActivity.class));
+                return true;
+            }
+        });
     }
 
     private static OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new OnPreferenceChangeListener() {

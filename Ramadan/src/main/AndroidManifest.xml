@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.appsomehow.ramadan.SaomActivity"
+            android:name=".SaomActivity"
             android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -28,12 +28,12 @@
         </activity>
 
         <receiver
-            android:name="com.appsomehow.ramadan.receiver.AlarmReceiver"
+            android:name=".receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="com.appsomehow.ramadan.SettingsActivity"
+            android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -41,7 +41,7 @@
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
         <activity
-            android:name="com.appsomehow.ramadan.SehriIfterTimeActivity"
+            android:name=".SehriIfterTimeActivity"
             android:label="@string/title_activity_sehri_ifter_time"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -50,12 +50,12 @@
         </activity>
 
         <service
-            android:name="com.appsomehow.ramadan.services.RingtonService"
+            android:name=".services.RingtonService"
             android:enabled="true"
             android:exported="true" />
 
         <receiver
-            android:name="com.appsomehow.ramadan.receiver.NotificationCancelReceiver"
+            android:name=".receiver.NotificationCancelReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
@@ -64,13 +64,19 @@
         </receiver>
 
         <service
-            android:name="com.appsomehow.ramadan.services.MusicService"
+            android:name=".services.MusicService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
             android:name="com.appsomehow.ramadan.TopicsActivity"
             android:label="@string/title_activity_topics" >
+        </activity>
+            android:exported="true" />
+
+        <activity
+            android:name=".AboutUsActivity"
+            android:label="@string/title_activity_about_us" >
         </activity>
     </application>
 

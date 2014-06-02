@@ -1,6 +1,5 @@
 package com.appsomehow.ramadan.services;
 
-import android.app.IntentService;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +33,7 @@ public class RingtonService extends Service {
             playSound(ringTonName);
             Log.e("service rington name", "" + ringTonName);
             Log.e("start music ", "music started");
-            Utilities.CustomNotification(getBaseContext());
+            Utilities.customNotification(getBaseContext());
         }
     }
 

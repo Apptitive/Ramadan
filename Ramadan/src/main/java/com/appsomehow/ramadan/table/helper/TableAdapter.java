@@ -1,4 +1,4 @@
-package com.appsomehow.ramadan.table_helper;
+package com.appsomehow.ramadan.table.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Created by rayhan on 6/1/2014.
  */
-public class FamilyNexusAdapter extends BaseTableAdapter {
+public class TableAdapter extends BaseTableAdapter {
 
 
     private Context context;
     private LayoutInflater inflater;
     private List<TimeTable> timeTables;
-    private final NexusTypes familys[];
+    private final InfoTypes familys[];
     private final String headers[] = {
             "তারিখ",
             "সেহরী",
@@ -36,16 +36,16 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
     };
     private final float density;
 
-    public FamilyNexusAdapter(Context context, List<TimeTable> timeTables) {
+    public TableAdapter(Context context, List<TimeTable> timeTables) {
         this.context = context;
         this.timeTables = timeTables;
-        familys = new NexusTypes[]{
-                new NexusTypes(""),
+        familys = new InfoTypes[]{
+                new InfoTypes(""),
         };
 
         density = context.getResources().getDisplayMetrics().density;
         for (TimeTable timeTable : timeTables) {
-            familys[0].list.add(new Nexus(timeTable.getDateInBangla(), timeTable.getSehriTime(), timeTable.getIfterTime(), timeTable.getRojaCount()));
+            familys[0].list.add(new Info(timeTable.getDateInBangla(), timeTable.getSehriTime(), timeTable.getIfterTime(), timeTable.getRojaCount()));
         }
 
         inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
@@ -54,7 +54,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
     public void setUpdatedListItems(List<TimeTable> ttList) {
         familys[0].list.clear();
         for (TimeTable tt : ttList) {
-            familys[0].list.add(new Nexus(tt.getDateInBangla(), tt.getSehriTime(), tt.getIfterTime(), tt.getRojaCount()));
+            familys[0].list.add(new Info(tt.getDateInBangla(), tt.getSehriTime(), tt.getIfterTime(), tt.getRojaCount()));
         }
         update();
     }
@@ -186,7 +186,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         return row == 0;
     }
 
-    private NexusTypes getFamily(int row) {
+    private InfoTypes getFamily(int row) {
         int family = 0;
         while (row >= 0) {
             row -= familys[family].size() + 1;
@@ -195,7 +195,7 @@ public class FamilyNexusAdapter extends BaseTableAdapter {
         return familys[family - 1];
     }
 
-    private Nexus getDevice(int row) {
+    private Info getDevice(int row) {
         int family = 0;
         while (row >= 0) {
             row -= familys[family].size() + 1;
