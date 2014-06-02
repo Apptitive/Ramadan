@@ -1,18 +1,24 @@
 package com.appsomehow.ramadan.utilities;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.util.Log;
 
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by Sharif on 5/28/2014.
@@ -86,4 +92,14 @@ public class UIUtils {
     private static String getTimeSeyeriIftarTime(boolean isSeyeri, TimeTable timeTable) {
         return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
     }
+
+    public static String formatLocalDateTime(final DateTimeFormatter formatter, final DateTime dateTime) {
+        if (dateTime == null) {
+            return "";
+        }
+        DateTimeFormatter f = formatter.withLocale(new Locale("bn", "BD"));
+        f.withZone(DateTimeZone.forTimeZone(TimeZone.getTimeZone("UTC")));
+        return f.print(dateTime);
+    }
+
 }
