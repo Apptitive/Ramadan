@@ -14,7 +14,7 @@ import uk.co.chrisjenx.paralloid.transform.Transformer;
 /**
  * Created by Iftekhar on 5/27/2014.
  */
-public class ParallaxScrollView extends ScrollView implements Parallaxor{
+public class ParallaxScrollView extends ScrollView implements Parallaxor {
 
     ParallaxViewController mParallaxViewController;
     OnScrollChangedListener onScrollChangedListener;
@@ -61,6 +61,7 @@ public class ParallaxScrollView extends ScrollView implements Parallaxor{
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         mParallaxViewController.onScrollChanged(this, l, t, oldl, oldt);
-        onScrollChangedListener.onScrollChanged(this, l, t, oldl, oldt);
+        if (onScrollChangedListener != null)
+            onScrollChangedListener.onScrollChanged(this, l, t, oldl, oldt);
     }
 }
