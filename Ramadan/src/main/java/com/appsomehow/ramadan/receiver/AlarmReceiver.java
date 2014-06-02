@@ -16,6 +16,7 @@ import android.util.Log;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.services.RingtonService;
 import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.PreferenceHelper;
 
 import java.io.IOException;
 
@@ -24,21 +25,24 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        PreferenceHelper preferenceHelper = new PreferenceHelper(context);
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 
-        Boolean isVibrate = sharedPref.getBoolean(context.getString(R.string.pref_key_alarm_vibrat), false);
+        boolean isVibrate = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm_vibrat));
+        boolean isAlarmSelected = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm));
+        if (!isAlarmSelected) {
+            return;
+        }
+
         if (isVibrate) {
             setAlarmVibration(context);
         }
-
-        String ringTonName = sharedPref.getString(context.getString(R.string.pref_key_alarm_rington), "default ringtone");
-
-        Boolean isRington = sharedPref.getBoolean(context.getString(R.string.pref_key_alarm), false);
+        String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_rington), "default ringtone");
+        boolean isRington = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm));
         if (isRington) {
             Intent ringTonIntent = new Intent(context, RingtonService.class);
             ringTonIntent.putExtra(Constants.KEY_RINGTON_NAME, ringTonName);
-            Log.e("rington name",""+ringTonName);
+            Log.e("rington name", "" + ringTonName);
             context.startService(ringTonIntent);
         }
 

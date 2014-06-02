@@ -21,6 +21,7 @@ import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
+import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
@@ -95,7 +96,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         if (rtpd != null) {
             rtpd.setOnTimeSetListener(this);
         }
-
     }
 
     @Override

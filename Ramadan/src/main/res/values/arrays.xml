@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="actions">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
+    <string-array name="topics_saom">
+        <item name="saom_importance">সাওম-এর গুরুত্ব ও ফযিলত</item>
+        <item name="saom_masayel">সাওম-এর মাসায়েলসমূহ</item>
+        <item name="sehri">সেহরি</item>
+        <item name="iftari">ইফতারী</item>
     </string-array>
 </resources>

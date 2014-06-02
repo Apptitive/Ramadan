@@ -77,7 +77,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
-                ((TextView) v).setText(Utilities.setBanglaText(regionMap.get(items[position]), getBaseContext()));
+                ((TextView) v).setText(Utilities.getBanglaText(regionMap.get(items[position]), getBaseContext()));
                 return v;
             }
 
@@ -85,7 +85,7 @@ public class SehriIfterTimeActivity extends ActionBarActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View v = super.getDropDownView(position, convertView, parent);
                 v.setBackgroundColor(getResources().getColor(R.color.ActionBar_Navigation));
-                ((TextView) v).setText(Utilities.setBanglaText(regionMap.get(items[position]), getBaseContext()));
+                ((TextView) v).setText(Utilities.getBanglaText(regionMap.get(items[position]), getBaseContext()));
                 return v;
             }
         };
