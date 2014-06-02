@@ -63,4 +63,18 @@ public class Utilities {
         }
         return banglaText;
     }
+
+    public static  String replaceBanglaCharacter(Context context, String word) {
+        word.replace("0",context.getString(R.string.bangla_character_zero));
+        word.replace("1",context.getString(R.string.bangla_character_one));
+        word.replace("2",context.getString(R.string.bangla_character_two));
+        word.replace("3",context.getString(R.string.bangla_character_three));
+        word.replace("4",context.getString(R.string.bangla_character_four));
+        word.replace("5",context.getString(R.string.bangla_character_five));
+        word.replace("6",context.getString(R.string.bangla_character_six));
+        word.replace("7",context.getString(R.string.bangla_character_seven));
+        word.replace("8",context.getString(R.string.bangla_character_eight));
+        word.replace("9",context.getString(R.string.bangla_character_nine));
+        return word;
+    }
 }

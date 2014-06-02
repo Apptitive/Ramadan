@@ -82,7 +82,7 @@ public class UIUtils {
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
 
-            return Constants.banglaReplaceCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
+            return Utilities.replaceBanglaCharacter(context, calendar.get(Calendar.HOUR) + ":" + calendar.get(Calendar.MINUTE)).toString();
         } catch (ParseException e) {
             e.printStackTrace();
         }
