@@ -1,9 +1,7 @@
 package com.appsomehow.ramadan;
 
-import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -18,9 +16,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Utilities;
+import com.appsomehow.ramadan.views.BanglaTextView;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
-
-import org.w3c.dom.Text;
 
 import uk.co.chrisjenx.paralloid.OnScrollChangedListener;
 
@@ -47,13 +44,17 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
 
-        listViewDrawer.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+        listViewDrawer.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_layout,
                 getResources().getStringArray(R.array.topics_saom)) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                TextView tv = (TextView) super.getView(position, convertView, parent);
-                tv.setTextColor(getResources().getColor(R.color.white));
-                return tv;
+                BanglaTextView btv;
+                if(convertView == null) {
+                    convertView = getLayoutInflater().inflate(R.layout.drawer_layout, parent, false);
+                }
+                btv = (BanglaTextView) convertView.findViewById(R.id.btv_nav);
+                btv.setBanglaText(getItem(position));
+                return convertView;
             }
         });
     }
@@ -69,7 +70,7 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
         switch (item.getItemId()) {
             case R.id.menu_drawer:
                 int gravity = Gravity.RIGHT;
-                if(drawerLayout.isDrawerOpen(gravity))
+                if (drawerLayout.isDrawerOpen(gravity))
                     drawerLayout.closeDrawer(gravity);
                 else drawerLayout.openDrawer(gravity);
                 break;

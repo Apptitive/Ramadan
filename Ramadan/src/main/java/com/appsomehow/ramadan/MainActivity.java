@@ -56,6 +56,11 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
         findViewById(R.id.tab_iftar_time).setOnClickListener(this);
         findViewById(R.id.tab_saom).setOnClickListener(this);
+        findViewById(R.id.tab_nioat).setOnClickListener(this);
+        findViewById(R.id.tab_ramadan).setOnClickListener(this);
+        findViewById(R.id.tab_saom_vonger_karon).setOnClickListener(this);
+        findViewById(R.id.tab_tarabih).setOnClickListener(this);
+
         iftarTime = (BanglaTextView) findViewById(R.id.tv_ifter_time);
         seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
@@ -140,10 +145,22 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         switch (view.getId()) {
 
             case R.id.tab_saom:
-                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                this.startActivity(new Intent(MainActivity.this, TopicsActivity.class));
                 break;
             case R.id.tab_iftar_time:
                 this.startActivity(new Intent(MainActivity.this, SehriIfterTimeActivity.class));
+                break;
+            case R.id.tab_nioat:
+                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                break;
+            case R.id.tab_ramadan:
+                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                break;
+            case R.id.tab_saom_vonger_karon:
+                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                break;
+            case R.id.tab_tarabih:
+                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
                 break;
             default:
                 break;

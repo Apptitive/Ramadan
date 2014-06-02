@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Ramadan" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.appsomehow.ramadan.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
         <activity
             android:name=".SaomActivity"
             android:label="@string/activity_saom"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
@@ -35,7 +35,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
@@ -43,7 +43,7 @@
         <activity
             android:name=".SehriIfterTimeActivity"
             android:label="@string/title_activity_sehri_ifter_time"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
@@ -66,6 +66,12 @@
         <service
             android:name=".services.MusicService"
             android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name="com.appsomehow.ramadan.TopicsActivity"
+            android:label="@string/title_activity_topics" >
+        </activity>
             android:exported="true" />
 
         <activity

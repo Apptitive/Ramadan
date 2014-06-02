@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="bgColor">#81BEF7</color>
+    <color name="red">#FE2E2E</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="green">#01DF01</color>
+    <color name="soily">#F5F6CE</color>
+    <color name="transparent_button">#666666</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="ActionBar_Navigation">#2A4867</color>
     <color name="AB_Green_Ramadan">#B3009245</color>
     <color name="AB_White_Ramadan">#1AFFFFFF</color>
+    <color name="Green_Ramadan">#009245</color>
     <color name="Red_Ramadan">#ED1C24</color>
     <color name="White">#FFFFFF</color>
     <color name="Ivory">#FFFFF0</color>
