@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SaomActivity"
+            android:name="com.appsomehow.ramadan.SaomActivity"
             android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -28,12 +28,12 @@
         </activity>
 
         <receiver
-            android:name=".receiver.AlarmReceiver"
+            android:name="com.appsomehow.ramadan.receiver.AlarmReceiver"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.appsomehow.ramadan.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -41,7 +41,7 @@
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
         <activity
-            android:name=".SehriIfterTimeActivity"
+            android:name="com.appsomehow.ramadan.SehriIfterTimeActivity"
             android:label="@string/title_activity_sehri_ifter_time"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
             <meta-data
@@ -50,12 +50,12 @@
         </activity>
 
         <service
-            android:name=".services.RingtonService"
+            android:name="com.appsomehow.ramadan.services.RingtonService"
             android:enabled="true"
             android:exported="true" />
 
         <receiver
-            android:name=".receiver.NotificationCancelReceiver"
+            android:name="com.appsomehow.ramadan.receiver.NotificationCancelReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
@@ -64,7 +64,7 @@
         </receiver>
 
         <service
-            android:name=".services.MusicService"
+            android:name="com.appsomehow.ramadan.services.MusicService"
             android:enabled="true"
             android:exported="true" />
 
@@ -73,10 +73,13 @@
             android:label="@string/title_activity_topics" >
         </activity>
             android:exported="true" />
-
         <activity
-            android:name=".AboutUsActivity"
+            android:name="com.appsomehow.ramadan.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
+        </activity>
+        <activity
+            android:name="com.appsomehow.ramadan.SehriIfterActivity"
+            android:label="@string/title_activity_sehri_ifter" >
         </activity>
     </application>
 

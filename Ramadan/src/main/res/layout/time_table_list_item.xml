@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:orientation="horizontal"
+    android:weightSum="9"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:alpha=".2"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_sehri_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_date"
+        android:layout_weight="2"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:alpha=".2"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_ifter_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_sehri_time"
+        android:layout_weight="2"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:alpha=".2"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tv_roja_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_ifter_time"
+        android:layout_weight="2"
+        android:gravity="center"/>
+
+</LinearLayout>
