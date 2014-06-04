@@ -80,7 +80,6 @@
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
     <orderEntry type="module" module-name="AndroidCustomFontSupport" exported="" />
     <orderEntry type="module" module-name="paralloid" exported="" />
-    <orderEntry type="module" module-name="TableFixHeaderLib" exported="" />
   </component>
 </module>
 

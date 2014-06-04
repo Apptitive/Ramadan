@@ -40,14 +40,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
-        <activity
-            android:name="com.appsomehow.ramadan.SehriIfterTimeActivity"
-            android:label="@string/title_activity_sehri_ifter_time"
-            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
-        </activity>
 
         <service
             android:name="com.appsomehow.ramadan.services.RingtonService"
@@ -79,7 +71,11 @@
         </activity>
         <activity
             android:name="com.appsomehow.ramadan.SehriIfterActivity"
-            android:label="@string/title_activity_sehri_ifter" >
+            android:label="@string/title_activity_sehri_ifter"
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
     </application>
 

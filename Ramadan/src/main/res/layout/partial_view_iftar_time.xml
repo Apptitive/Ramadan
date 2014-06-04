@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/iv_icon"
-        app:banglaText="সেহেরী\nও ইফতারের\nসময়সূচী"
+        app:banglaText="সেহরি\nও ইফতারের\nসময়সূচী"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

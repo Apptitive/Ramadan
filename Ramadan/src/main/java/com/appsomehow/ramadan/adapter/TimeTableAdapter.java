@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.TimeTable;
-import com.appsomehow.ramadan.model.TimeTableViewModel;
-import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 
 import java.util.List;

@@ -4,8 +4,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,35 +12,24 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.appsomehow.ramadan.adapter.TimeTableAdapter;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.Helper;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
-import com.appsomehow.ramadan.model.TimeTableViewModel;
-import com.appsomehow.ramadan.table.helper.TableAdapter;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
-import com.inqbarna.tablefixheaders.TableFixHeaders;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.widget.TableRow.LayoutParams;
-
-
 public class SehriIfterActivity extends ActionBarActivity {
 
     private List<TimeTable> timeTables;
-    private List<TimeTableViewModel> timeTableViewModels;
     private TimeTableAdapter timeTableAdapter;
     ListView lvTimeTable;
     private ActionBar actionBar;
@@ -57,7 +44,6 @@ public class SehriIfterActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
-        timeTableViewModels = new ArrayList<TimeTableViewModel>();
         regionMap = new HashMap<String, String>();
         preferenceHelper = new PreferenceHelper(this);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
@@ -70,23 +56,15 @@ public class SehriIfterActivity extends ActionBarActivity {
 
         timeTables = DbManager.getInstance().getAllTimeTables();
         usersRegion = DbManager.getInstance().getRegionWithName(preferenceHelper.getString(Constants.PREF_KEY_LOCATION, Constants.DEFAULT_REGION));
-        for (TimeTable timeTable: timeTables){
-            if (usersRegion.isPositive()){
-                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()).toString());
-                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()).toString());
-            }
-            else{
-                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()).toString());
-                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()).toString());
+        for (TimeTable timeTable : timeTables) {
+            if (usersRegion.isPositive()) {
+                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
+                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
+            } else {
+                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
+                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
             }
 
-            /*timeTableViewModels.add(
-                    new TimeTableViewModel(
-                        tt.getId(),
-                        new SpannableString(tt.getDateInBangla()),
-                        new SpannableString(tt.getSehriTime()),
-                        new SpannableString(tt.getIfterTime()),
-                        new SpannableString(tt.getRojaCount())));*/
         }
         lvTimeTable = (ListView) findViewById(R.id.lv_time_table);
         timeTableAdapter = new TimeTableAdapter(this, R.layout.time_table_list_item, timeTables) {
@@ -100,6 +78,7 @@ public class SehriIfterActivity extends ActionBarActivity {
             public int getItemViewType(int position) {
                 return position % 30;
             }
+
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
@@ -147,37 +126,20 @@ public class SehriIfterActivity extends ActionBarActivity {
             public boolean onNavigationItemSelected(int position, long id) {
 
                 timeTables.clear();
-                timeTableViewModels.clear();
                 Region region = UIUtils.getSelectedLocation(regions, dropDownItems[position]);
                 List<TimeTable> tempTimeTableList = DbManager.getInstance().getAllTimeTables();
 
                 if (region.isPositive()) {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        /*TimeTableViewModel ttvm = new TimeTableViewModel(
-                                timeTable.getId(),
-                                Utilities.getBanglaText(timeTable.getDateInBangla(),getBaseContext()),
-                                Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()),
-                                Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()),
-                                Utilities.getBanglaText(timeTable.getRojaCount(),getBaseContext())
-                        );
-                        timeTableViewModels.add(ttvm);*/
-                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()).toString());
-                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()).toString());
+                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
+                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
                         timeTables.add(timeTable);
                     }
 
                 } else {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        /*TimeTableViewModel ttvm = new TimeTableViewModel(
-                                timeTable.getId(),
-                                Utilities.getBanglaText(timeTable.getDateInBangla(),getBaseContext()),
-                                Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()),
-                                Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()),
-                                Utilities.getBanglaText(timeTable.getRojaCount(),getBaseContext())
-                        );
-                        timeTableViewModels.add(ttvm);*/
-                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true),getBaseContext()).toString());
-                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false),getBaseContext()).toString());
+                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
+                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
                         timeTables.add(timeTable);
                     }
                 }
@@ -199,17 +161,12 @@ public class SehriIfterActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.sehri_ifter, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
