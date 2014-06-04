@@ -148,7 +148,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 this.startActivity(new Intent(MainActivity.this, TopicsActivity.class));
                 break;
             case R.id.tab_iftar_time:
-                this.startActivity(new Intent(MainActivity.this, SehriIfterTimeActivity.class));
+                this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
                 break;
             case R.id.tab_nioat:
                 this.startActivity(new Intent(MainActivity.this, SaomActivity.class));

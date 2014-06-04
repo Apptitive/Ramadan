@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_home"
+    android:paddingTop="?attr/actionBarSize">
+
+    <LinearLayout
+        android:id="@+id/time_table_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/LightYellow"
+        android:weightSum="9">
+
+        <com.appsomehow.ramadan.views.BanglaTextView
+            app:banglaText="তারিখ"
+            app:fontName="@string/font_solaimanlipi"
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:alpha=".2"
+            android:background="@android:color/black" />
+
+        <com.appsomehow.ramadan.views.BanglaTextView
+            app:banglaText="সেহরি"
+            app:fontName="@string/font_solaimanlipi"
+            android:id="@+id/tv_sehri_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_date"
+            android:layout_weight="2"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:alpha=".2"
+            android:background="@android:color/black" />
+
+        <com.appsomehow.ramadan.views.BanglaTextView
+            app:banglaText="ইফতার"
+            app:fontName="@string/font_solaimanlipi"
+            android:id="@+id/tv_ifter_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_sehri_time"
+            android:layout_weight="2"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:alpha=".2"
+            android:background="@android:color/black" />
+
+        <com.appsomehow.ramadan.views.BanglaTextView
+            app:banglaText="রমযান"
+            app:fontName="@string/font_solaimanlipi"
+            android:id="@+id/tv_roja_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_ifter_time"
+            android:layout_weight="2"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_time_table"
+        android:layout_below="@id/time_table_header"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"></ListView>
+</RelativeLayout>

@@ -24,7 +24,7 @@
         android:layout_below="@id/iv_icon"
         android:layout_marginLeft="@dimen/dp_25"
         android:lineSpacingExtra="@dimen/dp_ng_3"
-        app:banglaText="সেহেরী ও ইফতারের\nসময়সূচী"
+        app:banglaText="সেহরি ও ইফতারের\nসময়সূচী"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

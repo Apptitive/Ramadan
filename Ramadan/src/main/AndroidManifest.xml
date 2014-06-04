@@ -19,31 +19,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SaomActivity"
+            android:name="com.appsomehow.ramadan.SaomActivity"
             android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
-
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.appsomehow.ramadan.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
-        <activity
-            android:name=".SehriIfterTimeActivity"
-            android:label="@string/title_activity_sehri_ifter_time"
-            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
-        </activity>
-
         <activity
             android:name="com.appsomehow.ramadan.TopicsActivity"
             android:label="@string/title_activity_topics"
@@ -52,16 +42,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
-
         <activity
             android:name=".AboutUsActivity"
             android:label="@string/title_activity_about_us"></activity>
+        <activity
+            android:name="com.appsomehow.ramadan.SehriIfterActivity"
+            android:label="@string/title_activity_sehri_ifter"
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
 
         <service
             android:name=".services.RingtonService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".services.MusicService"
+            android:enabled="true"
+            android:exported="true" />
 
+        <receiver
+            android:name=".receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
         <receiver
             android:name=".receiver.NotificationCancelReceiver"
             android:enabled="true"
@@ -70,16 +75,6 @@
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
-
-        <receiver
-            android:name=".receiver.AlarmReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
-        <service
-            android:name=".services.MusicService"
-            android:enabled="true"
-            android:exported="true" />
     </application>
 
 </manifest>
