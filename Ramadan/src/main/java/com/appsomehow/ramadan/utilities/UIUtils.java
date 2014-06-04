@@ -100,7 +100,11 @@ public class UIUtils {
     }
 
     private static String getTimeSeyeriIftarTime(boolean isSeyeri, TimeTable timeTable) {
-        return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
+
+        if(isSeyeri)
+            return timeTable.getDate() + " " + timeTable.getSehriTime();
+        return timeTable.getDate() + " " + timeTable.getIfterTime();
+        /*return isSeyeri==true ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();*/
     }
 
 

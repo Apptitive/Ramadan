@@ -22,12 +22,13 @@
         android:id="@+id/divider"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dp_15"
-        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_alignBottom="@id/btv_topic_hint"
         android:layout_toLeftOf="@+id/imageView_details"
-        android:layout_alignTop="@id/imageView_details"
-        android:alpha=".2"
-        android:background="@android:color/white" />
+        android:layout_alignTop="@id/btv_topic_hint"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:alpha=".2"/>
 
     <ImageView
         android:id="@+id/imageView_details"
