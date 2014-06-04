@@ -119,7 +119,7 @@
                         android:layout_alignLeft="@id/tv_seheri_time"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_12"
-                        app:banglaText="সেহেরীর শেষ সময়"
+                        app:banglaText="সেহরির শেষ সময়"
                         app:fontName="@string/font_solaimanlipi" />
 
 
