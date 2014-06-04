@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.DbTableName;
@@ -25,7 +26,9 @@ import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
+
 import org.joda.time.DateTime;
+
 import java.util.List;
 
 
@@ -38,6 +41,10 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private PreferenceHelper preferenceHelper;
     private BanglaTextView iftarTime;
     private BanglaTextView seheriTime;
+    private List<TimeTable> timeTables;
+    private TimeTable timeTable;
+    private List<Region> regions;
+    private Region region;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +77,21 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
             preferenceHelper.setBoolean(Constants.IS_DB_CREATED, true);
         }
-
-
-        List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
-        TimeTable timeTable = UIUtils.compareCurrentDate(timeTables);
-
-        List<Region> regions = DbManager.getInstance().getAllRegions();
+        timeTables = DbManager.getInstance().getAllTimeTables();
+        timeTable = UIUtils.compareCurrentDate(timeTables);
+        regions = DbManager.getInstance().getAllRegions();
         if (timeTable == null) return;
-        Region region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region == null) {
             return;
         }
+
+    }
+
+    @Override
+    public void onResume() {
+        // Example of reattaching to the fragment
+
         if (region.isPositive()) {
             seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
             iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
@@ -90,11 +101,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         }
 
 
-    }
-
-    @Override
-    public void onResume() {
-        // Example of reattaching to the fragment
         super.onResume();
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
                 FRAG_TAG_TIME_PICKER);

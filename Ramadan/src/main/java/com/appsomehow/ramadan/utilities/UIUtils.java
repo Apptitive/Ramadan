@@ -86,13 +86,17 @@ public class UIUtils {
 
 
         try {
+            Log.e("before time :sehritime",""+timeTable.getSehriTime()+"----"+timeTable.getIfterTime());
+
             Date date = simpleDateFormat.parse(getTimeSeyeriIftarTime(isSeheri, timeTable));
+
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, date.getYear());
             calendar.set(Calendar.MONTH, date.getMonth());
             calendar.set(Calendar.DAY_OF_MONTH, date.getDay());
             calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
             calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
+            Log.e("after time ",""+calendar.get(Calendar.HOUR)+ ":" + +calendar.get(Calendar.MINUTE)+"is seheri or not"+isSeheri);
             return Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.HOUR))+ ":" + Utilities.replaceBanglaCharacter(""+calendar.get(Calendar.MINUTE));
         } catch (ParseException e) {
             e.printStackTrace();
