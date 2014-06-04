@@ -83,10 +83,9 @@ public class UIUtils {
 
     public static String getSehriIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
-
-
         try {
             Date date = simpleDateFormat.parse(getTimeSeyeriIftarTime(isSeheri, timeTable));
+
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, date.getYear());
             calendar.set(Calendar.MONTH, date.getMonth());
@@ -101,7 +100,11 @@ public class UIUtils {
     }
 
     private static String getTimeSeyeriIftarTime(boolean isSeyeri, TimeTable timeTable) {
-        return isSeyeri ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();
+
+        if(isSeyeri)
+            return timeTable.getDate() + " " + timeTable.getSehriTime();
+        return timeTable.getDate() + " " + timeTable.getIfterTime();
+        /*return isSeyeri==true ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();*/
     }
 
 

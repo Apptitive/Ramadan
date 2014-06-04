@@ -25,21 +25,21 @@ public class Region {
     private boolean isPositive;
 
     @DatabaseField
-    private int intervalIfter;
+    private int intervalSehri;
 
     @DatabaseField
-    private int intervalSehri;
+    private int intervalIfter;
 
     public Region() {
     }
 
-    public Region(String id, String name, String nameInBangla, boolean isPositive, int intervalIfter, int intervalSehri) {
+    public Region(String id, String name, String nameInBangla, boolean isPositive, int intervalSehri , int intervalIfter) {
         this.id = id;
         this.name = name;
         this.nameInBangla = nameInBangla;
         this.isPositive = isPositive;
-        this.intervalIfter = intervalIfter;
         this.intervalSehri = intervalSehri;
+        this.intervalIfter = intervalIfter;
     }
 
     public String getId() {

@@ -15,10 +15,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.SpannableString;
 import android.text.TextUtils;
-
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.Utilities;
-
 import static android.preference.Preference.OnPreferenceChangeListener;
 
 
