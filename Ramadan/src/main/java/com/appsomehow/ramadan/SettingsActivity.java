@@ -29,6 +29,8 @@ public class SettingsActivity extends PreferenceActivity {
 
     private static Context settingsActivity;
     private Preference preferenceAboutUs;
+    private RingtonePreference prefereneRington;
+    private CheckBoxPreference preferenceVibrat;
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -61,6 +63,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
         preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
+        prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_rington));
+        preferenceVibrat = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrat));
     }
 
     private void setBanglaTextToView() {
@@ -70,11 +74,12 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAlarm.setTitle(Utilities.getBanglaText(getString(R.string.title_alarm_setting), this));
         preferenceLocation.setTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
         preferenceAboutUs.setSummary(Utilities.getBanglaText(getString(R.string.title_about_us), this));
-
+        prefereneRington.setTitle(Utilities.getBanglaText(getString(R.string.pref_title_ringtone), this));
+        preferenceVibrat.setTitle(Utilities.getBanglaText(getString(R.string.pref_title_vibrate), this));
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                startActivity(new Intent(getBaseContext(),AboutUsActivity.class));
+                startActivity(new Intent(getBaseContext(), AboutUsActivity.class));
                 return true;
             }
         });

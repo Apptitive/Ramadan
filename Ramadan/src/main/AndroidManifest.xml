@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appsomehow.ramadan" >
+    package="com.appsomehow.ramadan">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_ramadan"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Ramadan" >
+        android:theme="@style/Theme.Ramadan">
         <activity
             android:name="com.appsomehow.ramadan.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,62 +21,60 @@
         <activity
             android:name="com.appsomehow.ramadan.SaomActivity"
             android:label="@string/activity_saom"
-            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
-
-        <receiver
-            android:name="com.appsomehow.ramadan.receiver.AlarmReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity
             android:name="com.appsomehow.ramadan.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.appsomehow.ramadan.TopicsActivity"
+            android:label="@string/title_activity_topics"
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutUsActivity"
+            android:label="@string/title_activity_about_us"></activity>
+        <activity
+            android:name="com.appsomehow.ramadan.SehriIfterActivity"
+            android:label="@string/title_activity_sehri_ifter"
+            android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
         </activity>
 
         <service
-            android:name="com.appsomehow.ramadan.services.RingtonService"
+            android:name=".services.RingtonService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".services.MusicService"
             android:enabled="true"
             android:exported="true" />
 
         <receiver
-            android:name="com.appsomehow.ramadan.receiver.NotificationCancelReceiver"
+            android:name=".receiver.AlarmReceiver"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true" />
+        <receiver
+            android:name=".receiver.NotificationCancelReceiver"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
-
-        <service
-            android:name="com.appsomehow.ramadan.services.MusicService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity
-            android:name="com.appsomehow.ramadan.TopicsActivity"
-            android:label="@string/title_activity_topics" >
-        </activity>
-            android:exported="true" />
-        <activity
-            android:name="com.appsomehow.ramadan.AboutUsActivity"
-            android:label="@string/title_activity_about_us" >
-        </activity>
-        <activity
-            android:name="com.appsomehow.ramadan.SehriIfterActivity"
-            android:label="@string/title_activity_sehri_ifter"
-            android:parentActivityName="com.appsomehow.ramadan.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
-        </activity>
     </application>
 
 </manifest>

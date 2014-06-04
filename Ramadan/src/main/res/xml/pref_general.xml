@@ -9,8 +9,8 @@
             android:dependency="@string/pref_key_alarm"
             android:key="@string/pref_key_alarm_rington"
             android:title="@string/pref_title_ringtone"
-            android:ringtoneType="notification"
-            android:defaultValue="content://settings/system/notification_sound" />
+            android:ringtoneType="alarm"
+            android:defaultValue="content://settings/system/alarm_alert" />
         <CheckBoxPreference
             android:dependency="@string/pref_key_alarm"
             android:key="@string/pref_key_alarm_vibrat"
