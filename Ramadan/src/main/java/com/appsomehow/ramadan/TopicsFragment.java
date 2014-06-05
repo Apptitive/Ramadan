@@ -59,6 +59,13 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     }
 
     @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Topic topic=topics.get(position);
+
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final ListView listView = getListView();

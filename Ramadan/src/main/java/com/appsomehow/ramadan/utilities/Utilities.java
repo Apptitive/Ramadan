@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
-
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;

@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.DbTableName;
@@ -23,11 +22,9 @@ import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
-import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
-import com.nineoldandroids.view.ViewHelper;
 
 import org.joda.time.DateTime;
 
@@ -51,13 +48,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         super.onCreate(savedInstanceState);
         DbManager.init(this);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
-        preferenceHelper = new PreferenceHelper(this);
+        setContentView(R.layout.activity_main);
 
+        preferenceHelper = new PreferenceHelper(this);
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowTitleEnabled(false);
 
-        setContentView(R.layout.activity_main);
 
         mHasDialogFrame = findViewById(R.id.frame) != null;
 
