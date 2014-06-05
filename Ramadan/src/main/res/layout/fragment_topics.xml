@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:id="@android:id/list"
     android:layout_gravity="center"
-    android:paddingTop="?attr/actionBarSize"
     android:listSelector="@android:color/transparent"
     android:cacheColorHint="@android:color/transparent"
     android:fillViewport="true"

@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan;
 
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class SehriIfterActivity extends ActionBarActivity {
         DbManager.init(this);
         regionMap = new HashMap<String, String>();
         preferenceHelper = new PreferenceHelper(this);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowHomeEnabled(true);

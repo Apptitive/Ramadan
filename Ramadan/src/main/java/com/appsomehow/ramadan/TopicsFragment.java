@@ -23,7 +23,7 @@ public class TopicsFragment extends ListFragment {
     private String[] topicHeaders;
     private String[] topicBriefs;
     private TypedArray fullTexts;
-    private Activity parentActivity;
+    private TopicsActivity parentActivity;
     private TopicListAdapter topicListAdapter;
     private List<Topic> topics;
 
@@ -34,7 +34,7 @@ public class TopicsFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        parentActivity = activity;
+        parentActivity = (TopicsActivity)activity;
     }
 
     @Override
@@ -42,9 +42,9 @@ public class TopicsFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         topics = new ArrayList<Topic>();
         topicListAdapter = new TopicListAdapter(parentActivity, R.layout.list_item_topics, topics);
-        topicHeaders = getResources().getStringArray(R.array.header_topic_saom);
-        topicBriefs = getResources().getStringArray(R.array.brief_topic_saom);
-        fullTexts = getResources().obtainTypedArray(R.array.full_text_topic_saom);
+        topicHeaders = getResources().getStringArray(parentActivity.getHeaderArrayId());
+        topicBriefs = getResources().getStringArray(parentActivity.getShortDescArrayId());
+        fullTexts = getResources().obtainTypedArray(parentActivity.getFullTextArrayId());
         for(int i = 0; i < topicHeaders.length; i++) {
             topics.add(new Topic(topicHeaders[i], topicBriefs[i], fullTexts.getBoolean(i, false)));
         }
