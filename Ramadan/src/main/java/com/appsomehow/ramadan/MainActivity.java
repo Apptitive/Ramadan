@@ -80,18 +80,17 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         timeTables = DbManager.getInstance().getAllTimeTables();
         timeTable = UIUtils.compareCurrentDate(timeTables);
         regions = DbManager.getInstance().getAllRegions();
-        if (timeTable == null) return;
-        region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
-        if (region == null) {
-            return;
-        }
 
     }
 
     @Override
     public void onResume() {
+        super.onResume();
         // Example of reattaching to the fragment
-
+        if (timeTable != null) {
+            region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        }
+        Log.e("my region",""+region.getName());
         if (region.isPositive()) {
             seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
             iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
@@ -99,12 +98,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
             iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
         }
-
-
-        super.onResume();
-
-
-
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
                 FRAG_TAG_TIME_PICKER);
         if (rtpd != null) {
