@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_icon"
         android:layout_centerVertical="true"
-        app:banglaText="সাওম"
+        app:banglaText="@string/saom"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

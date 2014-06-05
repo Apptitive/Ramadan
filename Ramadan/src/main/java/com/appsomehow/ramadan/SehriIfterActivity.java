@@ -84,11 +84,6 @@ public class SehriIfterActivity extends ActionBarActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
 
-                int h1 = lvTimeTable.getHeight();
-                int h2 = v.getHeight();
-
-                lvTimeTable.setSelectionFromTop(position, h1/2 - h2/2);
-
                 if (currentDateIndex < 100 && position == currentDateIndex) {
                     v.setBackgroundColor(getResources().getColor(R.color.AB_Green_Ramadan));
                 }
@@ -97,6 +92,14 @@ public class SehriIfterActivity extends ActionBarActivity {
 
 
         };
+
+        lvTimeTable.post(new Runnable() {
+            @Override
+            public void run() {
+                lvTimeTable.setSelectionFromTop(currentDateIndex, lvTimeTable.getHeight()/2);
+            }
+        });
+
         lvTimeTable.setAdapter(timeTableAdapter);
 
         items = DbManager.getInstance().getAllRegionNames();
