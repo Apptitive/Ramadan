@@ -69,6 +69,7 @@ public class SehriIfterActivity extends ActionBarActivity {
         lvTimeTable = (ListView) findViewById(R.id.lv_time_table);
         timeTableAdapter = new TimeTableAdapter(this, R.layout.time_table_list_item, timeTables) {
 
+
             @Override
             public int getViewTypeCount() {
                 return 30;
@@ -83,11 +84,18 @@ public class SehriIfterActivity extends ActionBarActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
 
+                int h1 = lvTimeTable.getHeight();
+                int h2 = v.getHeight();
+
+                lvTimeTable.setSelectionFromTop(position, h1/2 - h2/2);
+
                 if (currentDateIndex < 100 && position == currentDateIndex) {
                     v.setBackgroundColor(getResources().getColor(R.color.AB_Green_Ramadan));
                 }
                 return v;
             }
+
+
         };
         lvTimeTable.setAdapter(timeTableAdapter);
 
