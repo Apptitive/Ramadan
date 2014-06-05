@@ -3,14 +3,7 @@ package com.appsomehow.ramadan.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.appsomehow.ramadan.R;
@@ -18,11 +11,7 @@ import com.appsomehow.ramadan.services.RingtonService;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 
-import java.io.IOException;
-
 public class AlarmReceiver extends BroadcastReceiver {
-    private MediaPlayer mMediaPlayer;
-
     @Override
     public void onReceive(Context context, Intent intent) {
         PreferenceHelper preferenceHelper = new PreferenceHelper(context);

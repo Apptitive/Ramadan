@@ -29,7 +29,6 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     public int getViewTypeCount() {
         if (getCount() != 0)
             return getCount();
-
         return 1;
     }
 

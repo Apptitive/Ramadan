@@ -62,7 +62,6 @@
         android:layout_marginBottom="@dimen/dp_4"
         android:layout_marginTop="@dimen/dp_6"
         android:layout_weight=".30"
-        android:alpha=".8"
         android:background="@drawable/tab_selector"
         android:orientation="horizontal">
 
@@ -83,8 +82,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_10"
-                android:alpha=".2"
-                android:background="@android:color/white" />
+                android:background="@color/white_20_transparent" />
 
             <LinearLayout
                 android:layout_width="match_parent"

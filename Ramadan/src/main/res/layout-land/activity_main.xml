@@ -62,7 +62,6 @@
         android:layout_marginRight="@dimen/dp_4"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_weight=".30"
-        android:alpha=".8"
         android:background="@drawable/tab_selector"
         android:orientation="vertical">
 
@@ -144,8 +143,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_10"
-            android:alpha=".2"
-            android:background="@android:color/white"
+            android:background="@color/white_20_transparent"
             android:paddingTop="@dimen/dp_5" />
 
         <include

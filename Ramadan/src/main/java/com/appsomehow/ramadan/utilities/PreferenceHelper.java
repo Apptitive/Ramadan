@@ -13,7 +13,6 @@ public class PreferenceHelper {
 
     public PreferenceHelper(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        editor = sharedPreferences.edit();
     }
 
     public String getString(String key, String defaultValue) {
@@ -21,6 +20,7 @@ public class PreferenceHelper {
     }
 
     public void setString(String key, String value) {
+        editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.commit();
     }
@@ -29,8 +29,13 @@ public class PreferenceHelper {
         return sharedPreferences.getBoolean(key, false);
     }
 
-    public void setBoolean(String key, Boolean value){
-        editor.putBoolean(key,value);
+    public boolean getBoolean(String key, boolean defaultValue) {
+        return sharedPreferences.getBoolean(key, defaultValue);
+    }
+
+    public void setBoolean(String key, Boolean value) {
+        editor = sharedPreferences.edit();
+        editor.putBoolean(key, value);
         editor.commit();
     }
 }
