@@ -45,7 +45,7 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
 
         listViewDrawer.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_layout,
-                getResources().getStringArray(R.array.topics_saom)) {
+                getResources().getStringArray(R.array.header_topic_saom)) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 BanglaTextView btv;
