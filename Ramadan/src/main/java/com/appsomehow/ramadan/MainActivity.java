@@ -27,6 +27,7 @@ import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialPickerLayout;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
+import com.nineoldandroids.view.ViewHelper;
 
 import org.joda.time.DateTime;
 
@@ -34,8 +35,6 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
-
-
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
@@ -81,23 +80,21 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         timeTables = DbManager.getInstance().getAllTimeTables();
         timeTable = UIUtils.compareCurrentDate(timeTables);
         regions = DbManager.getInstance().getAllRegions();
-
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
         // Example of reattaching to the fragment
-        if (timeTable !=null)
+        if (timeTable != null)
             region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
 
         if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true,true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false,true));
         } else {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true,true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false,true));
         }
 
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
@@ -125,7 +122,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             return true;
         } else if (id == R.id.menu_alarm) {
             DateTime now = DateTime.now();
-            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this));
+            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.pref_key_alarm),true));
             if (mHasDialogFrame) {
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.frame, radialTimePickerDialog, FRAG_TAG_TIME_PICKER)
@@ -135,13 +132,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             radialTimePickerDialog.show(getSupportFragmentManager(), FRAG_TAG_TIME_PICKER);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
-        Alarm alarm = new Alarm(this);
-        alarm.setOneTimeAlarm(hourOfDay, minute);
     }
 
     @Override
@@ -188,5 +178,12 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
+        preferenceHelper.setBoolean(getString(R.string.pref_key_alarm), isSwitchOn);
+        Alarm alarm = new Alarm(this);
+        alarm.setOneTimeAlarm(hourOfDay, minute);
     }
 }
