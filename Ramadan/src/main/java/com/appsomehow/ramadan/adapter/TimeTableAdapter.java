@@ -35,6 +35,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         TextView sehriTime;
         TextView ifterTime;
         TextView rojaCount;
+        
     }
     @Override
     public int getViewTypeCount() {
