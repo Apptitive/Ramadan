@@ -22,7 +22,6 @@ import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,26 +42,27 @@ public class SehriIfterActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        setContentView(R.layout.activity_sehri_ifter);
+
         DbManager.init(this);
         regionMap = new HashMap<String, String>();
         preferenceHelper = new PreferenceHelper(this);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowHomeEnabled(true);
         currentDateIndex = UIUtils.getCurrentDateIndex();
-        setContentView(R.layout.activity_sehri_ifter);
 
 
         timeTables = DbManager.getInstance().getAllTimeTables();
         usersRegion = DbManager.getInstance().getRegionWithName(preferenceHelper.getString(Constants.PREF_KEY_LOCATION, Constants.DEFAULT_REGION));
         for (TimeTable timeTable : timeTables) {
             if (usersRegion.isPositive()) {
-                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
-                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
+                timeTable.setSehriTime(UIUtils.getSehriIftarTime(usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true));
+                timeTable.setIfterTime(UIUtils.getSehriIftarTime(usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false));
             } else {
-                timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
-                timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
+                timeTable.setSehriTime(UIUtils.getSehriIftarTime(-usersRegion.getIntervalSehri(), timeTable, getBaseContext(), true));
+                timeTable.setIfterTime(UIUtils.getSehriIftarTime(-usersRegion.getIntervalIfter(), timeTable, getBaseContext(), false));
             }
 
         }
@@ -142,15 +142,15 @@ public class SehriIfterActivity extends ActionBarActivity {
 
                 if (region.isPositive()) {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
-                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
+                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false));
                         timeTables.add(timeTable);
                     }
 
                 } else {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        timeTable.setSehriTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true), getBaseContext()).toString());
-                        timeTable.setIfterTime(Utilities.getBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false), getBaseContext()).toString());
+                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true));
+                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false));
                         timeTables.add(timeTable);
                     }
                 }

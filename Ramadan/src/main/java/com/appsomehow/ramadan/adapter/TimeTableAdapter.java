@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,13 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
 
     Context context;
     int layoutResourceId;
+    Typeface tf;
 
     public TimeTableAdapter(Context context, int layout, List<TimeTable> timeTables) {
         super(context, layout, timeTables);
         this.context = context;
         layoutResourceId = layout;
+        tf = Utilities.getFont(this.context);
     }
 
     private class ViewHolder {
@@ -66,15 +69,17 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         } else
             holder = (ViewHolder) convertView.getTag();
 
-        holder.date.setText(Utilities.getBanglaText(timeTable.getDateInBangla(), context));
-        holder.sehriTime.setText(Utilities.getBanglaText(timeTable.getSehriTime(), context));
-        holder.ifterTime.setText(Utilities.getBanglaText(timeTable.getIfterTime(), context));
-        holder.rojaCount.setText(Utilities.getBanglaText(timeTable.getRojaCount(), context));
+        if (android.os.Build.VERSION.SDK_INT >= 14){
+            holder.date.setTypeface(tf);
+            holder.sehriTime.setTypeface(tf);
+            holder.ifterTime.setTypeface(tf);
+            holder.rojaCount.setTypeface(tf);
+        }
 
-        /*holder.date.setText(timeTable.getDate());
+        holder.date.setText(timeTable.getDateInBangla());
         holder.sehriTime.setText(timeTable.getSehriTime());
         holder.ifterTime.setText(timeTable.getIfterTime());
-        holder.rojaCount.setText(timeTable.getRojaCount())*/;
+        holder.rojaCount.setText(timeTable.getRojaCount());
 
 
         if (Integer.parseInt(timeTable.getId()) % 2 == 0)

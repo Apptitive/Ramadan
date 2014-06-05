@@ -20,6 +20,7 @@ public class TopicsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        setContentView(R.layout.activity_topics);
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
@@ -27,6 +28,5 @@ public class TopicsActivity extends ActionBarActivity {
         actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
         actionBar.setDisplayShowHomeEnabled(true);
 
-        setContentView(R.layout.activity_topics);
     }
 }
