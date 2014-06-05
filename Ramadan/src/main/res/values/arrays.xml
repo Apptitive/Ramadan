@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="topics_saom">
+    <string-array name="header_topic_saom">
         <item name="saom_importance">সাওম-এর গুরুত্ব ও ফযিলত</item>
         <item name="saom_masayel">সাওম-এর মাসায়েলসমূহ</item>
         <item name="sehri">সেহরি</item>
-        <item name="iftari">ইফতারী</item>
+        <item name="iftari">ইফতার</item>
     </string-array>
+    <string-array name="brief_topic_saom">
+        <item name="saom_importance">সাওম অগণিত ফযীলত ও উপকারিতা আছে। হাদীসে এ সম্বন্ধে বিস্তারিত বিররণ রয়েছে। হযরত আবু হুরায়রা (রা) থেকে বর্ণিত
+            বুখারী শরীফে এক হাদীসে আছেঃ রাসুলুল্লাহ (সা) বলেন, রোযা ঢাল স্বরূপ।
+        </item>
+        <item name="saom_masayel">প্রশ্ন: রোযা মাকরূহ্ হওয়ার কারণ সমূহ কী কী?
+            উত্তর: * অযথা কোনো বস্তু মুখের মধ্যে রেখে চিবানো; * লবণ বা অন্য কোনো বস্তুর স্বাদ নিয়ে থুতু করে তা আবার ফেলে দেওয়া; * মাজন, কয়লা বা
+            পেস্ট দিয়ে দাঁত পরিষ্কার করা;
+        </item>
+        <item name="sehri">“তোমরা পানাহার কর রাতের কৃষ্ণরেখা থেকে ঊষার শুভ্ররেখা সুস্পষ্টরূপে তোমাদের কাছে প্রতিভাত না হওয়া পর্যন্ত। অতঃপর রাতের আগমন
+            পর্যন্ত রোজা পূর্ণ কর”। (আল-কোরআন, সূরা বাকারা)
+        </item>
+        <item name="iftari">কোন মানুষ যখন যেকোন গুরুত্বপূর্ণ কাজ সম্পাদন করে স্বভাবইত সে তার পূর্ণ প্রতিদান ফলাফল পেতে চায়, অনুরূপভাবে আধ্যাত্মিক
+            ক্ষেত্রেও ইবাদতের বেলায় এ ধারাটি বিদ্যমান। একজন মুসলমান আল্লাহর নৈকট্য অর্জনের লক্ষ্যে সারাদিন রোজা রাখে।
+        </item>
+    </string-array>
+    <array name="full_text_topic_saom">
+        <item>true</item>
+        <item>false</item>
+        <item>true</item>
+        <item>true</item>
+    </array>
 </resources>
