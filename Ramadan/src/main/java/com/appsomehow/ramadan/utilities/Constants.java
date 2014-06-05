@@ -18,6 +18,8 @@ public final class Constants {
     public final class topic {
         public static final String EXTRA_TITLE = "_title";
         public static final String EXTRA_ICON_ID = "_iconId";
-
+        public static final String EXTRA_HEADER_ARRAY_ID = "_header";
+        public static final String EXTRA_DESC_ARRAY_ID = "_brief";
+        public static final String EXTRA_FULL_TEXT_ARRAY_ID = "_fullText";
     }
 }

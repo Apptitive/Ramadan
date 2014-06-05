@@ -4,6 +4,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
@@ -50,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         preferenceHelper = new PreferenceHelper(this);
 
         actionBar = getSupportActionBar();
@@ -145,28 +146,41 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onClick(View view) {
-        Intent i;
+        Intent i = new Intent(this, TopicsActivity.class);
         switch (view.getId()) {
             case R.id.tab_saom:
-                i = new Intent(this, TopicsActivity.class);
-                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.activity_saom));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom);
+                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_saom);
                 startActivity(i);
                 break;
             case R.id.tab_iftar_time:
                 this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
                 break;
             case R.id.tab_nioat:
-                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_niyat);
+                startActivity(i);
                 break;
             case R.id.tab_ramadan:
-                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_romzan);
+                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_ramadan);
+                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_ramadan);
+                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_ramadan);
+                startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:
-                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom_vongo);
+                startActivity(i);
                 break;
             case R.id.tab_tarabih:
-                this.startActivity(new Intent(MainActivity.this, SaomActivity.class));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_tarabih);
+                startActivity(i);
                 break;
             default:
                 break;

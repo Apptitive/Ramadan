@@ -3,7 +3,6 @@
 
     <string name="app_name">Ramadan</string>
     <string name="action_settings">Settings</string>
-    <string name="activity_saom">সাওম</string>
     <string name="parallax_text">কলকাতা নাইট রাইডার্স ফাইনাল কখনো হারে না।তবে কি আবারও চ্যাম্পিয়ন হতে যাচ্ছে সাকিব আল হাসানের দল?সেই উত্তর জানা যাবে ১ জুন।তবে আপাতত দুর্দান্ত
 গতিতে ছুটতে থাকা কলকাতা এবারের আইপিএলে টানা অষ্টম জয় তুলে নিয়ে চলে গেল ফাইনালে। কলকাতা ফাইনালে হারে না, কথাটার মধ্যে একটা ফাঁক আছে।এর আগে
 একবারই ফাইনালে উঠেছিল কলকাতা।২০১২ সালের ওই আসরে চেন্নাই সুপার কিংসকে হারিয়ে চ্যাম্পিয়ন হয়েছিল গৌতম গম্ভীরের দল।এবারের আরব আমিরাত অংশে খোঁড়
@@ -41,5 +40,9 @@
     <string name="ifter">ইফতার</string>
     <string name="ramadan">রমযান</string>
     <string name="saom">সাওম</string>
+    <string name="tarabih">তারাবীহ নামায</string>
+    <string name="saom_vongo">সাওম ভঙ্গের কারণসমূহ</string>
+    <string name="sehri_iftar_time">সেহরি ও ইফতারের সময়সূচী</string>
+    <string name="niyat_o_doa">নিয়াত ও দোয়া</string>
 
 </resources>

@@ -25,6 +25,7 @@ dependencies {
     compile project(':paralloid')
     compile files('libs/ormlite-android-4.48.jar')
     compile files('libs/ormlite-core-4.48.jar')
+    compile 'com.doomonafireball.betterpickers:library:1.5.2'
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.android.support:support-v4:+'
 }
