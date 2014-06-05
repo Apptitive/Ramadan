@@ -160,9 +160,10 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
                 break;
             case R.id.tab_nioat:
-                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
+                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_niyat);
-                startActivity(i);
+                startActivity(i);*/
+                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
                 break;
             case R.id.tab_ramadan:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
@@ -173,14 +174,16 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:
-                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
+                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom_vongo);
-                startActivity(i);
+                startActivity(i);*/
+                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
                 break;
             case R.id.tab_tarabih:
-                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
+                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_tarabih);
-                startActivity(i);
+                startActivity(i);*/
+                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
                 break;
             default:
                 break;

@@ -11,10 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
@@ -23,7 +21,7 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 import uk.co.chrisjenx.paralloid.OnScrollChangedListener;
 
 
-public class SaomActivity extends ActionBarActivity implements OnScrollChangedListener {
+public class DetailsActivity extends ActionBarActivity {
 
     private ActionBar actionBar;
     private DrawerLayout drawerLayout;
@@ -40,7 +38,7 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
         actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
         actionBar.setDisplayShowHomeEnabled(true);
 
-        setContentView(R.layout.activity_saom);
+        setContentView(R.layout.activity_detail);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
@@ -77,15 +75,6 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onScrollChanged(Object who, int l, int t, int oldl, int oldt) {
-        if (t < oldt)
-            actionBar.hide();
-        else if (t > oldt)
-            actionBar.show();
-        ;
     }
 
     @Override

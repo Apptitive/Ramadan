@@ -17,7 +17,6 @@ import uk.co.chrisjenx.paralloid.transform.Transformer;
 public class ParallaxScrollView extends ScrollView implements Parallaxor {
 
     ParallaxViewController mParallaxViewController;
-    OnScrollChangedListener onScrollChangedListener;
 
     public ParallaxScrollView(Context context) {
         super(context);
@@ -32,10 +31,6 @@ public class ParallaxScrollView extends ScrollView implements Parallaxor {
     public ParallaxScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
-    }
-
-    public void setOnScrollChangedListener(OnScrollChangedListener onScrollChangedListener) {
-        this.onScrollChangedListener = onScrollChangedListener;
     }
 
     private void init() {
@@ -61,7 +56,5 @@ public class ParallaxScrollView extends ScrollView implements Parallaxor {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         mParallaxViewController.onScrollChanged(this, l, t, oldl, oldt);
-        if (onScrollChangedListener != null)
-            onScrollChangedListener.onScrollChanged(this, l, t, oldl, oldt);
     }
 }
