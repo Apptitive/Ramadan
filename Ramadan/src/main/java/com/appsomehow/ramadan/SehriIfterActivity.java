@@ -69,6 +69,7 @@ public class SehriIfterActivity extends ActionBarActivity {
         lvTimeTable = (ListView) findViewById(R.id.lv_time_table);
         timeTableAdapter = new TimeTableAdapter(this, R.layout.time_table_list_item, timeTables) {
 
+
             @Override
             public int getViewTypeCount() {
                 return 30;
@@ -88,7 +89,17 @@ public class SehriIfterActivity extends ActionBarActivity {
                 }
                 return v;
             }
+
+
         };
+
+        lvTimeTable.post(new Runnable() {
+            @Override
+            public void run() {
+                lvTimeTable.setSelectionFromTop(currentDateIndex, lvTimeTable.getHeight()/2);
+            }
+        });
+
         lvTimeTable.setAdapter(timeTableAdapter);
 
         items = DbManager.getInstance().getAllRegionNames();

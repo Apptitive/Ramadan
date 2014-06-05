@@ -37,5 +37,9 @@
     <string name="title_activity_topics">Topics</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_sehri_ifter">SehriIfterActivity</string>
+    <string name="sehri_time">সেহরির শেষ সময়</string>
+    <string name="ifter">ইফতার</string>
+    <string name="ramadan">রমযান</string>
+    <string name="saom">সাওম</string>
 
 </resources>
