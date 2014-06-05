@@ -22,6 +22,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
     int layoutResourceId;
     Typeface tf;
 
+
     public TimeTableAdapter(Context context, int layout, List<TimeTable> timeTables) {
         super(context, layout, timeTables);
         this.context = context;
