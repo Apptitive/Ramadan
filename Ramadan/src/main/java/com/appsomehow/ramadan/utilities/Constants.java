@@ -14,4 +14,10 @@ public final class Constants {
     public static final String DATE_FORMAT = "dd/MM/yyyy";
     public static final String DATE_FORMAT_HOUR_MINUTE = "dd/MM/yyyy HH:mm";
     public static final String IS_DB_CREATED = "key_db_creation";
+
+    public final class topic {
+        public static final String EXTRA_TITLE = "_title";
+        public static final String EXTRA_ICON_ID = "_iconId";
+
+    }
 }

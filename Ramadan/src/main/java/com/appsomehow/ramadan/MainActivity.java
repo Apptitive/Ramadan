@@ -145,10 +145,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onClick(View view) {
+        Intent i;
         switch (view.getId()) {
-
             case R.id.tab_saom:
-                this.startActivity(new Intent(MainActivity.this, TopicsActivity.class));
+                i = new Intent(this, TopicsActivity.class);
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.activity_saom));
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom);
+                startActivity(i);
                 break;
             case R.id.tab_iftar_time:
                 this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
