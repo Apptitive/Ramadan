@@ -29,7 +29,6 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     public int getViewTypeCount() {
         if (getCount() != 0)
             return getCount();
-
         return 1;
     }
 
@@ -64,11 +63,11 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
         holder.btvHeader.setText(topic.getHeader());
         holder.btvShortDesc.setText(topic.getShortDescription());
         if (topic.isFullText()) {
-            holder.divider.setVisibility(View.VISIBLE);
-            holder.imageViewDetails.setVisibility(View.VISIBLE);
-        } else {
             holder.divider.setVisibility(View.GONE);
             holder.imageViewDetails.setVisibility(View.GONE);
+        } else {
+            holder.divider.setVisibility(View.VISIBLE);
+            holder.imageViewDetails.setVisibility(View.VISIBLE);
         }
         return convertView;
     }

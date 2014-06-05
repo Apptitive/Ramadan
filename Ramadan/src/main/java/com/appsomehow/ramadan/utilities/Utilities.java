@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
@@ -43,6 +44,7 @@ public class Utilities {
         NotificationManager mNotifyMgr =
                 (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
         mBuilder.setAutoCancel(true);
+        mBuilder.setContentIntent(deletePendingIntent);
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
@@ -63,4 +65,9 @@ public class Utilities {
         }
         return stringBuilder.toString();
     }
+
+    public static boolean isBuildAboveThirteen() {
+        return Build.VERSION.SDK_INT >= 14 ? true : false;
+    }
+
 }

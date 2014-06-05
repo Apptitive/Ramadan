@@ -8,8 +8,9 @@
     <color name="gray">#BDBDBD</color>
     <color name="green">#01DF01</color>
     <color name="soily">#F5F6CE</color>
+    <color name="white_20_transparent">#33ffffff</color>
     <color name="transparent_button">#666666</color>
-    <color name="black">#000000</color>
+    <color name="black">#80000000</color>
     <color name="white">#FFFFFF</color>
     <color name="ActionBar_Navigation">#2A4867</color>
     <color name="AB_Green_Ramadan">#B3009245</color>

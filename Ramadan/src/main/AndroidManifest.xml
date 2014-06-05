@@ -20,7 +20,6 @@
         </activity>
         <activity
             android:name="com.appsomehow.ramadan.SaomActivity"
-            android:label="@string/activity_saom"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

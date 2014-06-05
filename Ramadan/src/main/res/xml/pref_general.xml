@@ -1,18 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:key="@string/pref_key_alarm_settings">
-
-        <CheckBoxPreference
-            android:key="@string/pref_key_alarm"
-            android:defaultValue="false" />
         <RingtonePreference
-            android:dependency="@string/pref_key_alarm"
             android:key="@string/pref_key_alarm_rington"
             android:title="@string/pref_title_ringtone"
             android:ringtoneType="alarm"
             android:defaultValue="content://settings/system/alarm_alert" />
         <CheckBoxPreference
-            android:dependency="@string/pref_key_alarm"
             android:key="@string/pref_key_alarm_vibrat"
             android:title="@string/pref_title_vibrate"
             android:defaultValue="true" />
