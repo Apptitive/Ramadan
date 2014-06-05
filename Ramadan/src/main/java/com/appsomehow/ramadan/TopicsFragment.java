@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.appsomehow.ramadan.adapter.TopicListAdapter;
 import com.appsomehow.ramadan.model.Topic;
@@ -18,7 +19,7 @@ import java.util.List;
 
 import uk.co.chrisjenx.paralloid.Parallaxor;
 
-public class TopicsFragment extends ListFragment {
+public class TopicsFragment extends ListFragment implements TopicListAdapter.OnTopicClickListener {
 
     private String[] topicHeaders;
     private String[] topicBriefs;
@@ -41,7 +42,7 @@ public class TopicsFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         topics = new ArrayList<Topic>();
-        topicListAdapter = new TopicListAdapter(parentActivity, R.layout.list_item_topics, topics);
+        topicListAdapter = new TopicListAdapter(parentActivity, R.layout.list_item_topics, topics, this);
         topicHeaders = getResources().getStringArray(parentActivity.getHeaderArrayId());
         topicBriefs = getResources().getStringArray(parentActivity.getShortDescArrayId());
         fullTexts = getResources().obtainTypedArray(parentActivity.getFullTextArrayId());
@@ -53,7 +54,7 @@ public class TopicsFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_topics, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_parallax_list, container, false);
         return rootView;
     }
 
@@ -72,5 +73,10 @@ public class TopicsFragment extends ListFragment {
             ((ParallaxListView)listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(R.drawable.bg_parallax), .25f);
         }
         getListView().setAdapter(topicListAdapter);
+    }
+
+    @Override
+    public void onTopicClick() {
+        Toast.makeText(parentActivity, "One topic selected", Toast.LENGTH_SHORT).show();
     }
 }

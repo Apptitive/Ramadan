@@ -19,10 +19,12 @@ import java.util.List;
  */
 public class TopicListAdapter extends ArrayAdapter<Topic> {
     private int layoutResId;
+    private OnTopicClickListener onTopicClickListener;
 
-    public TopicListAdapter(Context context, int resource, List<Topic> objects) {
+    public TopicListAdapter(Context context, int resource, List<Topic> objects, OnTopicClickListener onTopicClickListener) {
         super(context, resource, objects);
         layoutResId = resource;
+        this.onTopicClickListener = onTopicClickListener;
     }
 
     @Override
@@ -38,23 +40,25 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     }
 
     private class ViewHolder {
+        View divider;
+        View selectableView;
         BanglaTextView btvHeader;
         BanglaTextView btvShortDesc;
-        View divider;
         ImageView imageViewDetails;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         Topic topic = getItem(position);
         ViewHolder holder = null;
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(layoutResId, parent, false);
             holder = new ViewHolder();
+            holder.divider = convertView.findViewById(R.id.divider);
+            holder.selectableView = convertView.findViewById(R.id.brief_topic);
             holder.btvHeader = (BanglaTextView) convertView.findViewById(R.id.btv_topic_header);
             holder.btvShortDesc = (BanglaTextView) convertView.findViewById(R.id.btv_topic_hint);
-            holder.divider = convertView.findViewById(R.id.divider);
             holder.imageViewDetails = (ImageView) convertView.findViewById(R.id.imageView_details);
             convertView.setTag(holder);
         } else {
@@ -69,6 +73,19 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
             holder.divider.setVisibility(View.VISIBLE);
             holder.imageViewDetails.setVisibility(View.VISIBLE);
         }
+
+        final ViewHolder finalViewHolder = holder;
+        finalViewHolder.selectableView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTopicClickListener.onTopicClick();
+            }
+        });
+
         return convertView;
+    }
+
+    public interface OnTopicClickListener {
+        void onTopicClick();
     }
 }

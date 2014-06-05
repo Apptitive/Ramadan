@@ -2,6 +2,7 @@ package com.appsomehow.ramadan;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.view.WindowCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -10,10 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
@@ -22,7 +21,7 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 import uk.co.chrisjenx.paralloid.OnScrollChangedListener;
 
 
-public class SaomActivity extends ActionBarActivity implements OnScrollChangedListener {
+public class DetailsActivity extends ActionBarActivity {
 
     private ActionBar actionBar;
     private DrawerLayout drawerLayout;
@@ -31,14 +30,15 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        setContentView(R.layout.activity_saom);
+        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
-        actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.activity_saom), Utilities.getFont(this), -1));
+        actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.saom), Utilities.getFont(this), -1));
         actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
         actionBar.setDisplayShowHomeEnabled(true);
+
+        setContentView(R.layout.activity_detail);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
@@ -75,15 +75,6 @@ public class SaomActivity extends ActionBarActivity implements OnScrollChangedLi
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onScrollChanged(Object who, int l, int t, int oldl, int oldt) {
-        if (t < oldt)
-            actionBar.hide();
-        else if (t > oldt)
-            actionBar.show();
-        ;
     }
 
     @Override

@@ -22,4 +22,10 @@ public final class Constants {
         public static final String EXTRA_DESC_ARRAY_ID = "_brief";
         public static final String EXTRA_FULL_TEXT_ARRAY_ID = "_fullText";
     }
+
+    public final class detail {
+        public static final int VIEW_TYPE_TEXT_ONLY = 0;
+        public static final int VIEW_TYPE_BULLET = 1;
+        public static final int VIEW_TYPE_HEADER_ONLY = 2;
+    }
 }

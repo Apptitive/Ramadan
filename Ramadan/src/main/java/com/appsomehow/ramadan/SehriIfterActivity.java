@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
@@ -70,7 +69,7 @@ public class SehriIfterActivity extends ActionBarActivity {
 
         }
         lvTimeTable = (ListView) findViewById(R.id.lv_time_table);
-        timeTableAdapter = new TimeTableAdapter(this, R.layout.time_table_list_item, timeTables) {
+        timeTableAdapter = new TimeTableAdapter(this, R.layout.list_item_time_table, timeTables) {
 
 
             @Override

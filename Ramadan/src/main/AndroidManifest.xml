@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.appsomehow.ramadan.SaomActivity"
+            android:name=".DetailsActivity"
             android:parentActivityName="com.appsomehow.ramadan.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

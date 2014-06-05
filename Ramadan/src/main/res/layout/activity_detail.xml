@@ -12,7 +12,7 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.appsomehow.ramadan.ParallaxFragment"
+            android:name="com.appsomehow.ramadan.DetailsFragment"
             android:id="@+id/fragment_parallax"
             tools:layout="@layout/fragment_parallax" />
     </RelativeLayout>
