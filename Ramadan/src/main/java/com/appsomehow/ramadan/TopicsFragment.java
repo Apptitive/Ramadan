@@ -2,10 +2,13 @@ package com.appsomehow.ramadan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -92,6 +95,13 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         xpp.setInput(null);
     }
 
+    private void parallaxListViewBackground(int drawable) {
+        final ListView listView = getListView();
+        if(listView instanceof Parallaxor) {
+            ((ParallaxListView)listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .25f);
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -101,10 +111,11 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final ListView listView = getListView();
-        if(listView instanceof Parallaxor) {
-            ((ParallaxListView)listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(R.drawable.bg_parallax), .25f);
-        }
+        int orientation = getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_PORTRAIT)
+            parallaxListViewBackground(R.drawable.bg_home);
+        else
+            parallaxListViewBackground(R.drawable.bg_home_land);
         getListView().setAdapter(topicListAdapter);
     }
 
