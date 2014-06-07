@@ -138,9 +138,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             case R.id.tab_saom:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom);
-                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_saom);
-                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_saom);
-                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
                 startActivity(i);
                 break;
             case R.id.tab_iftar_time:
@@ -155,9 +153,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             case R.id.tab_ramadan:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_romzan);
-                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_ramadan);
-                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_ramadan);
-                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_ramadan);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
                 startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:

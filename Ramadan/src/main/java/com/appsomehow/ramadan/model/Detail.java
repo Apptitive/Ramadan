@@ -3,11 +3,13 @@ package com.appsomehow.ramadan.model;
 /**
  * Created by Iftekhar on 6/5/2014.
  */
-public class DetailFragment {
+public class Detail {
     private String text;
     private int viewType;
 
-    public DetailFragment(String text, int detailViewType) {
+    public Detail() {}
+
+    public Detail(String text, int detailViewType) {
         this.text = text;
         viewType = detailViewType;
     }

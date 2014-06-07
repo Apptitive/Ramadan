@@ -1,5 +1,7 @@
 package com.appsomehow.ramadan.model;
 
+import java.util.List;
+
 /**
  * Created by Iftekhar on 6/4/2014.
  */
@@ -7,11 +9,15 @@ public class Topic {
     private String header;
     private String shortDescription;
     private boolean isFullText;
+    private int detailId;
 
-    public Topic(String header, String shortDescription, boolean isFullText) {
+    public Topic() {}
+
+    public Topic(String header, String shortDescription, boolean isFullText, int detailId) {
         this.header = header;
         this.shortDescription = shortDescription;
         this.isFullText = isFullText;
+        this.detailId = detailId;
     }
 
     public String getHeader() {
@@ -36,5 +42,13 @@ public class Topic {
 
     public void setFullText(boolean isFullText) {
         this.isFullText = isFullText;
+    }
+
+    public int getDetailId() {
+        return detailId;
+    }
+
+    public void setDetailId(int detailId) {
+        this.detailId = detailId;
     }
 }
