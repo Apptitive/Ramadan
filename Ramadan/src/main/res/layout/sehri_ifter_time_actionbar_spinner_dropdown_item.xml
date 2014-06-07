@@ -9,4 +9,5 @@
     android:gravity="center_vertical"
     android:paddingLeft="@dimen/dp_10"
     android:ellipsize="marquee"
-    android:textColor="#FFFFFF" />
+    android:textColor="#FFFFFF"
+    android:textSize="@dimen/text_size_15"/>

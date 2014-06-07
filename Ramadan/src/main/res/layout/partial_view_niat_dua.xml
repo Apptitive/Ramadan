@@ -24,6 +24,7 @@
         android:layout_toRightOf="@id/iv_icon"
         android:layout_centerVertical="true"
         app:banglaText="নিয়াত ও\nদোয়া"
+        android:textSize="@dimen/text_size_15"
         android:textColor="@color/white"
         android:textStyle="bold"/>
 

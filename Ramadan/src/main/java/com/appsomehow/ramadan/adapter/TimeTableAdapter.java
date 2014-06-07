@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.TimeTable;
+import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         } else
             holder = (ViewHolder) convertView.getTag();
 
-        if (android.os.Build.VERSION.SDK_INT >= 14){
+        if (Utilities.isBuildAboveThirteen()){
             holder.date.setTypeface(tf);
             holder.sehriTime.setTypeface(tf);
             holder.ifterTime.setTypeface(tf);
