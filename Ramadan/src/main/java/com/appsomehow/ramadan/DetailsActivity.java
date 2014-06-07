@@ -14,15 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
-import uk.co.chrisjenx.paralloid.OnScrollChangedListener;
-
 
 public class DetailsActivity extends ActionBarActivity {
 
+    private int fileResId;
+    private int detailId;
     private ActionBar actionBar;
     private DrawerLayout drawerLayout;
     private ListView listViewDrawer;
@@ -32,13 +33,19 @@ public class DetailsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            detailId = extras.getInt(Constants.detail.EXTRA_DETAIL_ID);
+            fileResId = extras.getInt(Constants.detail.EXTRA_FILE_RES_ID);
+        }
+
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.saom), Utilities.getFont(this), -1));
         actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
         actionBar.setDisplayShowHomeEnabled(true);
 
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_details);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
@@ -80,5 +87,13 @@ public class DetailsActivity extends ActionBarActivity {
     @Override
     public void setTitle(CharSequence title) {
         actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(title.toString(), Utilities.getFont(this), -1));
+    }
+
+    public int getDetailId() {
+        return detailId;
+    }
+
+    public int getFileResId() {
+        return fileResId;
     }
 }

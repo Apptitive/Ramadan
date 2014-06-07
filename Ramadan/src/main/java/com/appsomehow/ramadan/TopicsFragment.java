@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -12,8 +13,16 @@ import android.widget.Toast;
 
 import com.appsomehow.ramadan.adapter.TopicListAdapter;
 import com.appsomehow.ramadan.model.Topic;
+import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.views.ParallaxListView;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +30,8 @@ import uk.co.chrisjenx.paralloid.Parallaxor;
 
 public class TopicsFragment extends ListFragment implements TopicListAdapter.OnTopicClickListener {
 
-    private String[] topicHeaders;
-    private String[] topicBriefs;
-    private TypedArray fullTexts;
+    private int topicFileResId;
+    private XmlPullParserFactory parserFactory;
     private TopicsActivity parentActivity;
     private TopicListAdapter topicListAdapter;
     private List<Topic> topics;
@@ -43,26 +51,51 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         super.onCreate(savedInstanceState);
         topics = new ArrayList<Topic>();
         topicListAdapter = new TopicListAdapter(parentActivity, R.layout.list_item_topics, topics, this);
-        topicHeaders = getResources().getStringArray(parentActivity.getHeaderArrayId());
-        topicBriefs = getResources().getStringArray(parentActivity.getShortDescArrayId());
-        fullTexts = getResources().obtainTypedArray(parentActivity.getFullTextArrayId());
-        for(int i = 0; i < topicHeaders.length; i++) {
-            topics.add(new Topic(topicHeaders[i], topicBriefs[i], fullTexts.getBoolean(i, false)));
+        topicFileResId = parentActivity.getTopicResId();
+        try {
+            populateList(topicFileResId);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+    private void populateList(int topicResId) throws XmlPullParserException, IOException {
+        parserFactory = XmlPullParserFactory.newInstance();
+        parserFactory.setNamespaceAware(false);
+        XmlPullParser xpp = parserFactory.newPullParser();
+
+        xpp.setInput(getResources().openRawResource(topicResId), "utf-8");
+        Topic topic = null;
+        for(int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
+            String name = xpp.getName();
+            if(eventType == XmlPullParser.START_TAG) {
+                if(name.equalsIgnoreCase("subtopic")) {
+                    topic = new Topic();
+                    topic.setHeader(xpp.getAttributeValue(null, "name"));
+                    topic.setFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
+                }
+                if(name.equalsIgnoreCase("details")) {
+                    topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
+                }
+            }
+            if(eventType == XmlPullParser.END_TAG) {
+                if(name.equalsIgnoreCase("subtopic")) {
+                    topics.add(topic);
+                }
+                if(name.equalsIgnoreCase("brief")) {
+                    topic.setShortDescription(xpp.getAttributeValue(null, "text"));
+                }
+            }
+        }
+        xpp.setInput(null);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_parallax_list, container, false);
-        return rootView;
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        Topic topic=topics.get(position);
-
+        return inflater.inflate(R.layout.fragment_parallax_list, container, false);
     }
 
     @Override
@@ -76,7 +109,10 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     }
 
     @Override
-    public void onTopicClick() {
-        Toast.makeText(parentActivity, "One topic selected", Toast.LENGTH_SHORT).show();
+    public void onTopicClick(Topic topic) {
+        Intent i = new Intent(parentActivity, DetailsActivity.class);
+        i.putExtra(Constants.detail.EXTRA_DETAIL_ID, topic.getDetailId());
+        i.putExtra(Constants.detail.EXTRA_FILE_RES_ID, topicFileResId);
+        startActivity(i);
     }
 }
