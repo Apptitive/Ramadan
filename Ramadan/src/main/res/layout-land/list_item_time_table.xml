@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/tv_roja_count"
-        android:layout_width="@dimen/dp_70"
+        android:layout_width="@dimen/dp_110"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="@dimen/text_size_15"/>
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_sehri_time"
-        android:layout_width="@dimen/dp_70"
+        android:layout_width="@dimen/dp_110"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="@dimen/text_size_15"/>
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/tv_ifter_time"
-        android:layout_width="@dimen/dp_70"
+        android:layout_width="@dimen/dp_110"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="@dimen/text_size_15"/>

@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.appsomehow.ramadan.R;
+import com.appsomehow.ramadan.utilities.Utilities;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
 /**
@@ -60,14 +61,19 @@ public class BanglaTextView extends JustifiedTextView {
             if (fontName != null) {
                 setTypeface(myTypeface);
             }
-            setBanglaSupportedText(banglaText, justify);
+
+
+
+                setBanglaSupportedText(banglaText, justify);
+
+
             typedArray.recycle();
         }
     }
 
     private void setBanglaSupportedText(String banglaText, boolean justify) {
         if (banglaText != null) {
-            setText(AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1).toString(), justify);
+            setText(Utilities.isBuildAboveThirteen()?banglaText:AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1));
         }
     }
 }

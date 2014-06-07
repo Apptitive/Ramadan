@@ -24,6 +24,7 @@
         android:layout_below="@id/iv_icon"
         app:banglaText="তারাবীহ নামায"
         android:textColor="@color/white"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_15"/>
 
 </RelativeLayout>

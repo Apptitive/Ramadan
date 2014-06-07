@@ -49,8 +49,9 @@ public class SehriIfterActivity extends ActionBarActivity {
         preferenceHelper = new PreferenceHelper(this);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
         actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(getResources().getDrawable(R.drawable.ic_sehri_iftar));
         currentDateIndex = UIUtils.getCurrentDateIndex();
         setContentView(R.layout.activity_sehri_ifter);
 
@@ -87,7 +88,7 @@ public class SehriIfterActivity extends ActionBarActivity {
                 View v = super.getView(position, convertView, parent);
 
                 if (currentDateIndex < 100 && position == currentDateIndex) {
-                    v.setBackgroundColor(getResources().getColor(R.color.AB_Green_Ramadan));
+                    v.setBackgroundColor(getResources().getColor(R.color.table_row_selected));
                 }
                 return v;
             }
@@ -116,7 +117,9 @@ public class SehriIfterActivity extends ActionBarActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
+                ((TextView) v).setTypeface(Utilities.getFont(getContext()));
                 ((TextView) v).setText(Utilities.getBanglaText(regionMap.get(items[position]), getBaseContext()));
+
                 return v;
             }
 
@@ -124,6 +127,7 @@ public class SehriIfterActivity extends ActionBarActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View v = super.getDropDownView(position, convertView, parent);
                 v.setBackgroundColor(getResources().getColor(R.color.ActionBar_Navigation));
+                ((TextView) v).setTypeface(Utilities.getFont(getContext()));
                 ((TextView) v).setText(Utilities.getBanglaText(regionMap.get(items[position]), getBaseContext()));
                 return v;
             }
@@ -180,10 +184,6 @@ public class SehriIfterActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
