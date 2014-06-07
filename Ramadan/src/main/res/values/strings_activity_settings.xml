@@ -7,7 +7,7 @@
     <string name="title_about_us">আমাদের সম্পর্কে</string>
 
     <string name="pref_key_alarm_settings">pref_key_alarm_settings</string>
-    <string name="pref_key_alarm">pref_key_alarm</string>
+    <string name="alarm_switch">alarm_switch</string>
     <string name="pref_key_alarm_rington">pref_key_alarm_rington</string>
     <string name="pref_key_alarm_vibrat">pref_key_alarm_vibrat</string>
     <string name="pref_key_location_settings">pref_key_location_settings</string>

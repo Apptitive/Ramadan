@@ -1,33 +1,24 @@
 package com.appsomehow.ramadan;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
-import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.Utilities;
+import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
+
+
 import static android.preference.Preference.OnPreferenceChangeListener;
 
 
@@ -36,11 +27,23 @@ public class SettingsActivity extends PreferenceActivity {
     private PreferenceCategory categoryLocation;
     private PreferenceCategory categoryAboutUs;
     private ListPreference preferenceLocation;
-
     private static Context settingsActivity;
     private Preference preferenceAboutUs;
     private RingtonePreference prefereneRington;
-    private CheckBoxPreference preferenceVibrat;
+    private CustomCheckBoxPreferennce preferenceVibrat;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+      //  requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+//        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.pref_general);
+        settingsActivity = this;
+        setupSimplePreferencesScreen();
+    }
+
+
+/*
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -48,15 +51,15 @@ public class SettingsActivity extends PreferenceActivity {
         settingsActivity = this;
         setupSimplePreferencesScreen();
     }
+*/
 
 
     private void setupSimplePreferencesScreen() {
-        addPreferencesFromResource(R.xml.pref_general);
+       // addPreferencesFromResource(R.xml.pref_general);
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
-            SpannableString[] banglaRegionNames = Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this);
-            listPreference.setEntries(banglaRegionNames);
+            listPreference.setEntries(Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
             listPreference.setEntryValues(englishRegionNames);
             listPreference.setDialogTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
         }
@@ -73,7 +76,7 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
         preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
         prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_rington));
-        preferenceVibrat = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrat));
+        preferenceVibrat = (CustomCheckBoxPreferennce) findPreference(getString(R.string.pref_key_alarm_vibrat));
     }
 
     private void setBanglaTextToView() {
@@ -101,7 +104,7 @@ public class SettingsActivity extends PreferenceActivity {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                Log.e("banlga text",""+listPreference.getEntries()[index].toString());
+                Log.e("banlga text", "" + listPreference.getEntries()[index].toString());
                 preference.setSummary(index >= 0 ? Utilities.getBanglaText(listPreference.getEntries()[index].toString(), settingsActivity) : null);
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {
