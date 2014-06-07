@@ -4,13 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.R;
-import com.appsomehow.ramadan.model.DetailFragment;
+import com.appsomehow.ramadan.model.Detail;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.views.BanglaTextView;
 
@@ -23,17 +20,17 @@ public class DetailsListAdapter extends BaseAdapter{
 
     private static final int VIEW_TYPE_COUNT = 3;
 
-    private List<DetailFragment> detailFragmentList;
+    private List<Detail> details;
     private Context context;
 
-    public DetailsListAdapter(Context context, List<DetailFragment> detailFragmentList) {
+    public DetailsListAdapter(Context context, List<Detail> details) {
         this.context = context;
-        this.detailFragmentList = detailFragmentList;
+        this.details = details;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return detailFragmentList.get(position).getViewType();
+        return details.get(position).getViewType();
     }
 
     @Override
@@ -43,12 +40,12 @@ public class DetailsListAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return detailFragmentList.size();
+        return details.size();
     }
 
     @Override
-    public DetailFragment getItem(int position) {
-        return detailFragmentList.get(position);
+    public Detail getItem(int position) {
+        return details.get(position);
     }
 
     @Override
@@ -62,7 +59,7 @@ public class DetailsListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DetailFragment detailFragment = getItem(position);
+        Detail detail = getItem(position);
         int viewType = getItemViewType(position);
         ViewHolder holder = null;
 
@@ -86,7 +83,7 @@ public class DetailsListAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.btvDetail.setText(detailFragment.getText());
+        holder.btvDetail.setText(detail.getText());
 
         return convertView;
     }

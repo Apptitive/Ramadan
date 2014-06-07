@@ -7,14 +7,16 @@
     <!-- Main content view -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_parallax"
+        android:paddingTop="?attr/actionBarSize">
 
         <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="com.appsomehow.ramadan.DetailsFragment"
             android:id="@+id/fragment_parallax"
-            tools:layout="@layout/fragment_parallax" />
+            tools:layout="@layout/fragment_parallax_list" />
     </RelativeLayout>
 
     <!-- Drawer ListView -->

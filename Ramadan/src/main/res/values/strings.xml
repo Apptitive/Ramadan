@@ -14,8 +14,7 @@
 ৪২।এ ছাড়া মনীশ পাণ্ডে (২১), ইউসুফ পাঠান (২০), সূর্যকুমার যাদবের (২০) ইনিংসগুলোর সৌজন্যে ৮ উইকেটে ১৬৩ রান তোলে কলকাতা।কিন্তু ৮ উইকেটে
 ১৩৫ রানেই ফুরিয়ে যায় পাঞ্জাবের ২০ ওভার।</string>
     <string name="topics_desc_text">কলকাতা নাইট রাইডার্স ফাইনাল কখনো হারে না।তবে কি আবারও চ্যাম্পিয়ন হতে যাচ্ছে সাকিব আল হাসানের দল?সেই উত্তর জানা যাবে ১ জুন।তবে আপাতত দুর্দান্ত
-গতিতে ছুটতে থাকা কলকাতা এবারের আইপিএলে টানা অষ্টম জয় তুলে নিয়ে চলে গেল ফাইনালে। কলকাতা ফাইনালে হারে না, কথাটার মধ্যে একটা ফাঁক আছে।
-    </string>
+গতিতে ছুটতে থাকা কলকাতা এবারের আইপিএলে টানা অষ্টম জয় তুলে নিয়ে চলে গেল ফাইনালে। কলকাতা ফাইনালে হারে না, কথাটার মধ্যে একটা ফাঁক আছে।</string>
     <string name="parallox_title_saom">সাওমের ফযিলাত</string>
     <string name="font_solaimanlipi">solaimanlipinormal.ttf</string>
     <string name="font_kalpurush">kalpurush.ttf</string>
@@ -44,5 +43,10 @@
     <string name="saom_vongo">সাওম ভঙ্গের কারণসমূহ</string>
     <string name="sehri_iftar_time">সেহরি ও ইফতারের সময়সূচী</string>
     <string name="niyat_o_doa">নিয়াত ও দোয়া</string>
+    <string name="ramadan_app_alarm">রমজান অ্যাপ অ্যালার্ম</string>
+    <string name="alarm_turn_off">অ্যালার্ম বন্ধ করার জন্য টানুন</string>
+    <string name="ramadan_app_alarm_eng">Ramadan App Alarm</string>
+    <string name="alarm_turn_off_eng">Please! Drag it to turn off the alarm</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 
 </resources>

@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             return true;
         } else if (id == R.id.menu_alarm) {
             DateTime now = DateTime.now();
-            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.pref_key_alarm),true));
+            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.alarm_switch),true));
             if (mHasDialogFrame) {
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.frame, radialTimePickerDialog, FRAG_TAG_TIME_PICKER)
@@ -138,9 +138,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             case R.id.tab_saom:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom);
-                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_saom);
-                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_saom);
-                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
                 startActivity(i);
                 break;
             case R.id.tab_iftar_time:
@@ -155,9 +153,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             case R.id.tab_ramadan:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_romzan);
-                i.putExtra(Constants.topic.EXTRA_HEADER_ARRAY_ID, R.array.header_topic_ramadan);
-                i.putExtra(Constants.topic.EXTRA_DESC_ARRAY_ID, R.array.brief_topic_ramadan);
-                i.putExtra(Constants.topic.EXTRA_FULL_TEXT_ARRAY_ID, R.array.full_text_topic_ramadan);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
                 startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:
@@ -179,7 +175,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
-        preferenceHelper.setBoolean(getString(R.string.pref_key_alarm), isSwitchOn);
+        preferenceHelper.setBoolean(getString(R.string.alarm_switch), isSwitchOn);
         Alarm alarm = new Alarm(this);
         alarm.setOneTimeAlarm(hourOfDay, minute);
     }

@@ -80,5 +80,7 @@
         <item name="popupMenuStyle">@style/PopupMenu.Ramadan</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Ramadan</item>
     </style>
-
+    <style name="NotificationText">
+        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+    </style>
 </resources>

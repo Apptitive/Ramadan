@@ -24,7 +24,7 @@ public class Utilities {
     }
 
     public static android.text.SpannableString getBanglaText(String banglaText, Context context) {
-        if (Utilities.isBuildAboveThirteen())
+       if (isBuildAboveThirteen())
             return new SpannableString(banglaText);
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
@@ -35,23 +35,19 @@ public class Utilities {
         notificationIntent.setAction("notification_cancelled");
         PendingIntent deletePendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        // Alarm alarm = new Alarm(context);
-        // alarm.setOneTimeAlarm(NotificationCancelReceiver.class, 10);
-
         int mNotificationId = 001;
-
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.icon_tarabih)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!").setDeleteIntent(deletePendingIntent);
+                        .setContentTitle(isBuildAboveThirteen() ? getBanglaText(context.getString(R.string.ramadan_app_alarm), context) : context.getString(R.string.ramadan_app_alarm_eng))
+                        .setContentText(isBuildAboveThirteen() ? getBanglaText(context.getString(R.string.alarm_turn_off), context) : context.getString(R.string.alarm_turn_off_eng));
         NotificationManager mNotifyMgr =
                 (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        mBuilder.setDeleteIntent(deletePendingIntent);
         mBuilder.setAutoCancel(true);
         mBuilder.setContentIntent(deletePendingIntent);
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
-
 
     public static android.text.SpannableString[] banglaSpannableStrings(String[] banglaRegionNames, Context context) {
         android.text.SpannableString[] banglaText = new android.text.SpannableString[banglaRegionNames.length];

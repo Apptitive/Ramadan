@@ -24,6 +24,6 @@
         android:layout_toRightOf="@id/imageView_topic"
         android:layout_centerVertical="true"
         app:fontName="@string/font_solaimanlipi"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_20"
         android:textColor="@color/white" />
 </RelativeLayout>

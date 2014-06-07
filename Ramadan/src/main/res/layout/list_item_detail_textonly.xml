@@ -11,5 +11,7 @@
         android:id="@+id/btv_plainText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:fontName="@string/font_solaimanlipi" />
+        app:fontName="@string/font_solaimanlipi"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_15" />
 </LinearLayout>
