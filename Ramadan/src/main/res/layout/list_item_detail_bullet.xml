@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageView_bullet"
         android:layout_marginLeft="@dimen/dp_8"
-        android:layout_marginTop="@dimen/dp_ng_6"
         app:fontName="@string/font_solaimanlipi"
         android:textSize="@dimen/text_size_15"
         android:textColor="@android:color/white"/>
