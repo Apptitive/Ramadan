@@ -1,15 +1,23 @@
 package com.appsomehow.ramadan.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by Iftekhar on 6/4/2014.
  */
-public class Topic {
+public class Topic implements Parcelable{
     private String header;
     private String shortDescription;
     private boolean isFullText;
     private int detailId;
+
+    private Topic(Parcel in) {
+        header = in.readString();
+        detailId = in.readInt();
+    }
 
     public Topic() {}
 
@@ -51,4 +59,27 @@ public class Topic {
     public void setDetailId(int detailId) {
         this.detailId = detailId;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(header);
+        parcel.writeInt(detailId);
+    }
+
+    public static final Creator<Topic> CREATOR = new Creator<Topic>() {
+        @Override
+        public Topic createFromParcel(Parcel parcel) {
+            return new Topic(parcel);
+        }
+
+        @Override
+        public Topic[] newArray(int size) {
+            return new Topic[size];
+        }
+    };
 }

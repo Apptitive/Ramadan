@@ -11,25 +11,32 @@
         android:background="@drawable/bg_home"
         android:paddingTop="?attr/actionBarSize">
 
-        <fragment
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.appsomehow.ramadan.DetailsFragment"
-            android:id="@+id/fragment_parallax"
-            tools:layout="@layout/fragment_parallax_list" />
+            android:background="@color/black_80"
+            android:layout_margin="@dimen/dp_8">
+
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.appsomehow.ramadan.DetailsFragment"
+                android:id="@+id/fragment_details"
+                tools:layout="@layout/fragment_parallax_list" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <!-- Drawer ListView -->
     <ListView
         android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/listview_drawer"
-        android:layout_width="240dp"
+        android:layout_width="@dimen/dp_240"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:choiceMode="singleChoice"
-        android:divider="@color/gray"
+        android:divider="@color/white_20_transparent"
         android:dividerHeight="1dp"
-        android:background="#111"/>
+        android:background="@color/black_90" />
 
 
 </android.support.v4.widget.DrawerLayout>

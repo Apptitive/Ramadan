@@ -9,6 +9,7 @@
     <dimen name="text_size_35">35sp</dimen>
     <dimen name="text_size_25">25sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_15">15sp</dimen>
     <dimen name="text_size_12">12sp</dimen>
 

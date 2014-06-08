@@ -13,7 +13,10 @@
     <color name="white_20_transparent">#33ffffff</color>
     <color name="transparent_button">#666666</color>
     <color name="black">#B3000000</color>
+    <color name="black_80">#CC000000</color>
+    <color name="black_90">#F2000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="white_dark">#F2F2F2</color>
     <color name="ActionBar_Navigation">#05764A</color>
     <color name="AB_Green_Ramadan">#B3009245</color>
     <color name="AB_White_Ramadan">#1AFFFFFF</color>

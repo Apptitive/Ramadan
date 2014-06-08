@@ -62,10 +62,7 @@ public class BanglaTextView extends JustifiedTextView {
                 setTypeface(myTypeface);
             }
 
-
-
-                setBanglaSupportedText(banglaText, justify);
-
+            setBanglaSupportedText(banglaText, justify);
 
             typedArray.recycle();
         }
@@ -73,7 +70,7 @@ public class BanglaTextView extends JustifiedTextView {
 
     private void setBanglaSupportedText(String banglaText, boolean justify) {
         if (banglaText != null) {
-            setText(Utilities.isBuildAboveThirteen()?banglaText:AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1));
+            setText(Utilities.isBuildAboveThirteen() ? banglaText : AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1));
         }
     }
 }

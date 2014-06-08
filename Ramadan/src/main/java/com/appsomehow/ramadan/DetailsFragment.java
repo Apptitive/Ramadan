@@ -3,9 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.ListView;
 
 import com.appsomehow.ramadan.adapter.DetailsListAdapter;
 import com.appsomehow.ramadan.model.Detail;
-import com.appsomehow.ramadan.model.Topic;
 import com.appsomehow.ramadan.views.ParallaxListView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -88,13 +85,6 @@ public class DetailsFragment extends ListFragment {
         xpp.setInput(null);
     }
 
-    private void parallaxListViewBackground(int drawable) {
-        final ListView listView = getListView();
-        if(listView instanceof Parallaxor) {
-            ((ParallaxListView)listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .25f);
-        }
-    }
-
     private int findViewTypeValue(String vt) {
         if (vt.equalsIgnoreCase("t"))
             return 0;
@@ -108,17 +98,13 @@ public class DetailsFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_parallax_list, container, false);
+        return inflater.inflate(R.layout.fragment_details, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        int orientation = getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_PORTRAIT)
-            parallaxListViewBackground(R.drawable.bg_home);
-        else
-            parallaxListViewBackground(R.drawable.bg_home_land);
         getListView().setAdapter(detailsListAdapter);
+        int orientation = getResources().getConfiguration().orientation;
     }
 }

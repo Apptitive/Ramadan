@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         app:fontName="@string/font_solaimanlipi"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white_dark"
         android:textSize="@dimen/text_size_20"/>
 </RelativeLayout>
