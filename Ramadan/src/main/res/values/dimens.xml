@@ -13,6 +13,7 @@
     <dimen name="text_size_15">15sp</dimen>
     <dimen name="text_size_12">12sp</dimen>
 
+
     <dimen name="dp_ng_80">-80dp</dimen>
     <dimen name="dp_ng_75">-75dp</dimen>
     <dimen name="dp_ng_60">-60dp</dimen>

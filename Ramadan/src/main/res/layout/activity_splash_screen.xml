@@ -10,8 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="12dip"
-        android:textSize="25sp"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/text_size_25"
         android:textColor="#ffffffff"
-        android:text="AppSomeHow" />
+        android:text="AppSomehow" />
 </merge>

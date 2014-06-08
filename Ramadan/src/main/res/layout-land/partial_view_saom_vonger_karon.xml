@@ -6,8 +6,6 @@
     android:layout_height="fill_parent"
     android:background="@drawable/tab_selector">
 
-
-
     <ImageView
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
@@ -23,9 +21,10 @@
         android:layout_below="@id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         app:banglaText="সাওম ভঙ্গের কারণসমূহ"
         android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_15"/>
 
