@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+    <release version="3.0" versioncode="3">
+        <change>Fixed: A bug fix</change>
+        <change>Button appearance changed</change>
+        <change>More small layout changes</change>
+    </release>
+    <release version="2.0" versioncode="2">
+        <change>Small layout change</change>
+        <change>সাওম অগণিত ফযীলত ও উপকারিতা আছে। হাদীসে এ সম্বন্ধে বিস্তারিত বিররণ রয়েছে। হযরত আবু হুরায়রা (রা) থেকে বর্ণিত
+            বুখারী শরীফে এক হাদীসে আছেঃ রাসুলুল্লাহ (সা) বলেন, রোযা ঢাল স্বরূপ।</change>
+    </release>
+</changelog>
