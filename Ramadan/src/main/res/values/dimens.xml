@@ -21,6 +21,8 @@
     <dimen name="dp_ng_20">-20dp</dimen>
     <dimen name="dp_ng_15">-15dp</dimen>
     <dimen name="dp_ng_10">-10dp</dimen>
+    <dimen name="dp_ng_6">-6dp</dimen>
+    <dimen name="dp_ng_5">-5dp</dimen>
     <dimen name="dp_ng_3">-3dp</dimen>
 
     <dimen name="dp_240">240dp</dimen>

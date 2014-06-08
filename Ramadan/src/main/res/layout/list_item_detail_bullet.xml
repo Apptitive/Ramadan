@@ -11,16 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/bullet" />
+        android:src="@drawable/bullet"/>
 
     <com.appsomehow.ramadan.views.BanglaTextView
         android:id="@+id/btv_bulletText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageView_bullet"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_ng_6"
         app:fontName="@string/font_solaimanlipi"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_size_15"/>
+        android:textSize="@dimen/text_size_15"
+        android:textColor="@android:color/white"/>
 </RelativeLayout>
