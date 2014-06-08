@@ -10,6 +10,7 @@
         android:id="@+id/imageView_bullet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6"
         android:layout_marginLeft="@dimen/dp_5"
         android:layout_alignParentLeft="true"
         android:src="@drawable/bullet" />
@@ -19,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageView_bullet"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/dp_8"
         app:fontName="@string/font_solaimanlipi"
         android:textColor="@color/white_dark"
