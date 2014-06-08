@@ -71,7 +71,7 @@ public class ChangeLogDialog {
 
     //Parse a the release tag and appends it to the changelog builder
     private void parseReleaseTag(final StringBuilder changelogBuilder, final XmlPullParser resourceParser) throws XmlPullParserException, IOException {
-        changelogBuilder.append("<h1>"+Utilities.getBanglaText("resourceParser.getText() ",mContext)+": ").append(resourceParser.getAttributeValue(null, "version")).append("</h1>");
+        changelogBuilder.append("<h1>Release: ").append(resourceParser.getAttributeValue(null, "version")).append("</h1>");
 
         //Add date if available
         if (resourceParser.getAttributeValue(null, "date") != null) {
