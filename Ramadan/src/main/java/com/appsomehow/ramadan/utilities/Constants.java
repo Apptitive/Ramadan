@@ -27,5 +27,7 @@ public final class Constants {
         public static final int VIEW_TYPE_TEXT_ONLY = 0;
         public static final int VIEW_TYPE_BULLET = 1;
         public static final int VIEW_TYPE_HEADER_ONLY = 2;
+        public static final int VIEW_TYPE_ARABIC = 3;
+        public static final int VIEW_TYPE_ARABIC_BULLET = 4;
     }
 }
