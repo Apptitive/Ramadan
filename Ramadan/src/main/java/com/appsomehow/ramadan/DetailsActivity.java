@@ -2,6 +2,7 @@ package com.appsomehow.ramadan;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.WindowCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -11,21 +12,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.appsomehow.ramadan.model.Topic;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
+import java.util.ArrayList;
+
 
 public class DetailsActivity extends ActionBarActivity {
 
-    private int fileResId;
-    private int detailId;
+    private int fileResId, iconDrawableId, topicPosition;
+    private Topic topicInView;
     private ActionBar actionBar;
     private DrawerLayout drawerLayout;
+    private ArrayList<Topic> topics;
     private ListView listViewDrawer;
 
     @Override
@@ -33,16 +41,19 @@ public class DetailsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
 
+        topics = getIntent().getParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST);
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            detailId = extras.getInt(Constants.detail.EXTRA_DETAIL_ID);
-            fileResId = extras.getInt(Constants.detail.EXTRA_FILE_RES_ID);
+            topicPosition = extras.getInt(Constants.topic.EXTRA_VIEWING_NOW);
+            iconDrawableId = extras.getInt(Constants.topic.EXTRA_ICON_ID);
+            fileResId = extras.getInt(Constants.topic.EXTRA_DATA_FILE);
         }
+        topicInView = topics.get(topicPosition);
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
-        actionBar.setTitle(AndroidCustomFontSupport.getCorrectedBengaliFormat(getString(R.string.saom), Utilities.getFont(this), -1));
-        actionBar.setIcon(getResources().getDrawable(R.drawable.ic_saom));
+        actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), this));
+        actionBar.setIcon(getResources().getDrawable(iconDrawableId));
         actionBar.setDisplayShowHomeEnabled(true);
 
         setContentView(R.layout.activity_details);
@@ -50,8 +61,8 @@ public class DetailsActivity extends ActionBarActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listview_drawer);
 
-        listViewDrawer.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_layout,
-                getResources().getStringArray(R.array.header_topic_saom)) {
+        listViewDrawer.setAdapter(new ArrayAdapter<Topic>(this, R.layout.drawer_layout,
+                topics) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 BanglaTextView btv;
@@ -59,8 +70,22 @@ public class DetailsActivity extends ActionBarActivity {
                     convertView = getLayoutInflater().inflate(R.layout.drawer_layout, parent, false);
                 }
                 btv = (BanglaTextView) convertView.findViewById(R.id.btv_nav);
-                btv.setBanglaText(getItem(position));
+                btv.setBanglaText(getItem(position).getHeader());
                 return convertView;
+            }
+        });
+
+        listViewDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View item, int position, long id) {
+                topicInView = topics.get(position);
+                actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), DetailsActivity.this));
+                DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.detach(detailsFragment);
+                fragmentTransaction.attach(detailsFragment);
+                fragmentTransaction.commit();
+                drawerLayout.closeDrawer(Gravity.RIGHT);
             }
         });
     }
@@ -90,7 +115,7 @@ public class DetailsActivity extends ActionBarActivity {
     }
 
     public int getDetailId() {
-        return detailId;
+        return topicInView.getDetailId();
     }
 
     public int getFileResId() {

@@ -3,16 +3,12 @@ package com.appsomehow.ramadan;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.appsomehow.ramadan.adapter.TopicListAdapter;
 import com.appsomehow.ramadan.model.Topic;
@@ -23,11 +19,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import uk.co.chrisjenx.paralloid.Parallaxor;
 
@@ -37,7 +30,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     private XmlPullParserFactory parserFactory;
     private TopicsActivity parentActivity;
     private TopicListAdapter topicListAdapter;
-    private List<Topic> topics;
+    private ArrayList<Topic> topics;
 
     public TopicsFragment() {
 
@@ -105,25 +98,29 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_parallax_list, container, false);
+        return inflater.inflate(R.layout.fragment_topics, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getListView().setAdapter(topicListAdapter);
         int orientation = getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_PORTRAIT)
             parallaxListViewBackground(R.drawable.bg_home);
         else
             parallaxListViewBackground(R.drawable.bg_home_land);
-        getListView().setAdapter(topicListAdapter);
     }
 
     @Override
-    public void onTopicClick(Topic topic) {
-        Intent i = new Intent(parentActivity, DetailsActivity.class);
-        i.putExtra(Constants.detail.EXTRA_DETAIL_ID, topic.getDetailId());
-        i.putExtra(Constants.detail.EXTRA_FILE_RES_ID, topicFileResId);
-        startActivity(i);
+    public void onTopicClick(Topic topic, int position) {
+        if(!topic.isFullText()) {
+            Intent i = new Intent(parentActivity, DetailsActivity.class);
+            i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
+            i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);
+            i.putExtra(Constants.topic.EXTRA_ICON_ID, parentActivity.getIconDrawableId());
+            i.putExtra(Constants.topic.EXTRA_DATA_FILE, topicFileResId);
+            startActivity(i);
+        }
     }
 }

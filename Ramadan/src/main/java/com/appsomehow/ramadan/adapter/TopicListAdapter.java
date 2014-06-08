@@ -48,7 +48,7 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final Topic topic = getItem(position);
         ViewHolder holder = null;
 
@@ -78,7 +78,7 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
         finalViewHolder.selectableView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onTopicClickListener.onTopicClick(topic);
+                onTopicClickListener.onTopicClick(topic, position);
             }
         });
 
@@ -86,6 +86,6 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     }
 
     public interface OnTopicClickListener {
-        void onTopicClick(Topic topic);
+        void onTopicClick(Topic topic, int position);
     }
 }

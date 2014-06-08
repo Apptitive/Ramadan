@@ -21,6 +21,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/dp_8"
         app:fontName="@string/font_solaimanlipi"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white_dark"
         android:textSize="@dimen/text_size_15"/>
 </RelativeLayout>

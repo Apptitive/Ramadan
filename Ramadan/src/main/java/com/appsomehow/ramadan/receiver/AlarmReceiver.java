@@ -7,7 +7,7 @@ import android.os.Vibrator;
 import android.util.Log;
 
 import com.appsomehow.ramadan.R;
-import com.appsomehow.ramadan.services.RingtonService;
+import com.appsomehow.ramadan.services.RingtoneService;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 
@@ -33,8 +33,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_rington), "default ringtone");
 
         if (ringTonName!=null) {
-            Intent ringTonIntent = new Intent(context, RingtonService.class);
-            ringTonIntent.putExtra(Constants.KEY_RINGTON_NAME, ringTonName);
+            Intent ringTonIntent = new Intent(context, RingtoneService.class);
+            ringTonIntent.putExtra(Constants.KEY_RINGTONE_NAME, ringTonName);
             Log.e("rington name", "" + ringTonName);
             context.startService(ringTonIntent);
         }
