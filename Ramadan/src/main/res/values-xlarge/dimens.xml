@@ -20,7 +20,11 @@
     <dimen name="dp_ng_10">-20dp</dimen>
     <dimen name="dp_ng_3">-6dp</dimen>
 
+    <dimen name="dp_240">480dp</dimen>
     <dimen name="dp_120">240dp</dimen>
+    <dimen name="dp_110">220dp</dimen>
+    <dimen name="dp_105">210dp</dimen>
+    <dimen name="dp_80">160dp</dimen>
     <dimen name="dp_70">140dp</dimen>
     <dimen name="dp_50">100dp</dimen>
     <dimen name="dp_30">60dp</dimen>

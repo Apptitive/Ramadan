@@ -25,6 +25,7 @@
         android:layout_centerHorizontal="true"
         app:banglaText="রমযান"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_15"/>
 
 </RelativeLayout>

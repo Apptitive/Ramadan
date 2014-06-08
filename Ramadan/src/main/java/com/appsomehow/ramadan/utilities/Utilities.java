@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.SpannableString;
-import android.widget.RemoteViews;
 
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;

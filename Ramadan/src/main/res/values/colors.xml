@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="table_row_background">#E0E6F8</color>
+    <color name="table_colomn_divider">#33000000</color>
+    <color name="table_row_selected">#80009245</color>
+    <color name="table_heading_background">#FAFAC0</color>
+    <color name="table_row_background">#E7EAF2</color>
     <color name="bgColor">#81BEF7</color>
     <color name="red">#FE2E2E</color>
     <color name="yellow">#FFFF00</color>
@@ -10,9 +12,9 @@
     <color name="soily">#F5F6CE</color>
     <color name="white_20_transparent">#33ffffff</color>
     <color name="transparent_button">#666666</color>
-    <color name="black">#80000000</color>
+    <color name="black">#B3000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="ActionBar_Navigation">#2A4867</color>
+    <color name="ActionBar_Navigation">#05764A</color>
     <color name="AB_Green_Ramadan">#B3009245</color>
     <color name="AB_White_Ramadan">#1AFFFFFF</color>
     <color name="Green_Ramadan">#009245</color>

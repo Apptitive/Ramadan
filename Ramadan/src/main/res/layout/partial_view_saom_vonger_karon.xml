@@ -39,6 +39,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             app:banglaText="সাওম ভঙ্গের\nকারণসমূহ"
+            android:textSize="@dimen/text_size_15"
             app:fontName="@string/font_solaimanlipi" />
     </RelativeLayout>
 

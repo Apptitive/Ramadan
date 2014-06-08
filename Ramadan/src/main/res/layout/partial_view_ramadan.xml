@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:banglaText="@string/ramadan"
+        android:textSize="@dimen/text_size_15"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
