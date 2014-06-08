@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -12,12 +13,16 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+
 import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.utilities.ChangeLogDialog;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
-
 
 import static android.preference.Preference.OnPreferenceChangeListener;
 
@@ -37,9 +42,22 @@ public class SettingsActivity extends PreferenceActivity {
       //  requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 //        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT>=11){
+         getActionBar().hide();
+        }
         addPreferencesFromResource(R.xml.pref_general);
+        setContentView(R.layout.activity_settings);
         settingsActivity = this;
         setupSimplePreferencesScreen();
+
+
+        LinearLayout settings =(LinearLayout)findViewById(R.id.settings_back);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
@@ -90,7 +108,9 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                startActivity(new Intent(getBaseContext(), AboutUsActivity.class));
+                //startActivity(new Intent(getBaseContext(), AboutUsActivity.class));
+                ChangeLogDialog changeLogDialog = new ChangeLogDialog(SettingsActivity.this);
+                changeLogDialog.show();
                 return true;
             }
         });
