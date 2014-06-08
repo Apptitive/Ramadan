@@ -105,6 +105,5 @@ public class DetailsFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(detailsListAdapter);
-        int orientation = getResources().getConfiguration().orientation;
     }
 }
