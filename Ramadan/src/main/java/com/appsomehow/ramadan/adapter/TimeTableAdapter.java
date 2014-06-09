@@ -7,14 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.appsomehow.ramadan.utilities.Utilities;
-import com.appsomehow.ramadan.views.BanglaTextView;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**
