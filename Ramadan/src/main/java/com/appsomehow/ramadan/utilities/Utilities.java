@@ -27,19 +27,19 @@ public class Utilities {
     }
 
     public static android.text.SpannableString getBanglaText(String banglaText, Context context) {
-       
-        if(banglaText == null) {
+
+        if (banglaText == null) {
             return new SpannableString(new String(""));
         }
-	   
+
         if (isBuildAboveThirteen()) {
-		    TypefaceSpan span = new TypefaceSpan(getFont(context));
+            TypefaceSpan span = new TypefaceSpan(getFont(context));
             SpannableString spannableString = new SpannableString(banglaText);
             spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return spannableString;     
+            return spannableString;
+        }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
-
     public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
         notificationIntent.setAction("notification_cancelled");
