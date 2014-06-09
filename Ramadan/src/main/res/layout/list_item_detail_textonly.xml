@@ -12,6 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:fontName="@string/font_solaimanlipi"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white_dark"
         android:textSize="@dimen/text_size_15" />
 </LinearLayout>

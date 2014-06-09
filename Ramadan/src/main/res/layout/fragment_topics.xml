@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.appsomehow.ramadan.views.ParallaxListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@android:id/list"
+    android:layout_gravity="center"
+    android:listSelector="@android:color/transparent"
+    android:cacheColorHint="@android:color/transparent"
+    android:fillViewport="true"
+    android:dividerHeight="0dp"
+    android:divider="@android:color/transparent"/>

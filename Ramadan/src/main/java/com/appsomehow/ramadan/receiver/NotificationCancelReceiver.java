@@ -3,9 +3,8 @@ package com.appsomehow.ramadan.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
-import com.appsomehow.ramadan.services.RingtonService;
+import com.appsomehow.ramadan.services.RingtoneService;
 
 public class NotificationCancelReceiver extends BroadcastReceiver {
     public NotificationCancelReceiver() {
@@ -13,6 +12,6 @@ public class NotificationCancelReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        context.stopService(new Intent(context, RingtonService.class));
+        context.stopService(new Intent(context, RingtoneService.class));
     }
 }

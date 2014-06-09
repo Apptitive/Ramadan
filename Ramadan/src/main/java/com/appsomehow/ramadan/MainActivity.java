@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.helper.DbTableName;
@@ -55,7 +56,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowTitleEnabled(false);
 
-
         mHasDialogFrame = findViewById(R.id.frame) != null;
 
         findViewById(R.id.tab_iftar_time).setOnClickListener(this);
@@ -87,11 +87,11 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
 
         if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true,true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false,true));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false, true));
         } else {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true,true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false,true));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false, true));
         }
 
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             return true;
         } else if (id == R.id.menu_alarm) {
             DateTime now = DateTime.now();
-            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.alarm_switch),true));
+            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.alarm_switch), true));
             if (mHasDialogFrame) {
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.frame, radialTimePickerDialog, FRAG_TAG_TIME_PICKER)
@@ -145,10 +145,10 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
                 break;
             case R.id.tab_nioat:
-                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_niyat);
-                startActivity(i);*/
-                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                startActivity(i);
                 break;
             case R.id.tab_ramadan:
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
@@ -157,16 +157,16 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:
-                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom_vongo);
-                startActivity(i);*/
-                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                startActivity(i);
                 break;
             case R.id.tab_tarabih:
-                /*i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
+                i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_tarabih);
-                startActivity(i);*/
-                this.startActivity(new Intent(MainActivity.this, DetailsActivity.class));
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                startActivity(i);
                 break;
             default:
                 break;

@@ -14,7 +14,7 @@ import com.appsomehow.ramadan.utilities.Utilities;
 
 import java.io.IOException;
 
-public class RingtonService extends Service {
+public class RingtoneService extends Service {
 
     private MediaPlayer mMediaPlayer;
 
@@ -28,7 +28,7 @@ public class RingtonService extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-        String ringTonName = intent.getStringExtra(Constants.KEY_RINGTON_NAME);
+        String ringTonName = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
         if (ringTonName != null) {
             playSound(ringTonName);
             Log.e("service rington name", "" + ringTonName);

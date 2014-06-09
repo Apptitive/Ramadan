@@ -7,6 +7,7 @@
     <dimen name="text_size_35">70sp</dimen>
     <dimen name="text_size_25">50sp</dimen>
     <dimen name="text_size_20">40sp</dimen>
+    <dimen name="text_size_18">36sp</dimen>
     <dimen name="text_size_15">35sp</dimen>
     <dimen name="text_size_12">24sp</dimen>
 
@@ -18,6 +19,8 @@
     <dimen name="dp_ng_20">-40dp</dimen>
     <dimen name="dp_ng_15">-30dp</dimen>
     <dimen name="dp_ng_10">-20dp</dimen>
+    <dimen name="dp_ng_6">-12dp</dimen>
+    <dimen name="dp_ng_5">-10dp</dimen>
     <dimen name="dp_ng_3">-6dp</dimen>
 
     <dimen name="dp_240">480dp</dimen>

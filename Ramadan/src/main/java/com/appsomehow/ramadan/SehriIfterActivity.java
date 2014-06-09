@@ -148,15 +148,15 @@ public class SehriIfterActivity extends ActionBarActivity {
 
                 if (region.isPositive()) {
                     for (TimeTable timeTable : tempTimeTableList) {
-                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true,Utilities.isBuildAboveThirteen()));
-                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false,Utilities.isBuildAboveThirteen()));
+                        timeTable.setSehriTime(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, getBaseContext(), true, Utilities.isBuildAboveThirteen()));
+                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, getBaseContext(), false, Utilities.isBuildAboveThirteen()));
                         timeTables.add(timeTable);
                     }
 
                 } else {
                     for (TimeTable timeTable : tempTimeTableList) {
                         timeTable.setSehriTime(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, getBaseContext(), true, Utilities.isBuildAboveThirteen()));
-                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false,Utilities.isBuildAboveThirteen()));
+                        timeTable.setIfterTime(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, getBaseContext(), false, Utilities.isBuildAboveThirteen()));
                         timeTables.add(timeTable);
                     }
                 }
@@ -174,17 +174,4 @@ public class SehriIfterActivity extends ActionBarActivity {
         actions.setListNavigationCallbacks(adapter, callback);
         actions.setSelectedNavigationItem(Helper.getArrayIndex(items, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, Constants.DEFAULT_REGION)));
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sehri_ifter, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
 }
