@@ -21,7 +21,6 @@ import android.widget.LinearLayout;
 
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.AboutUsDialog;
-import com.appsomehow.ramadan.utilities.ChangeLogDialog;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
 

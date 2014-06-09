@@ -4,9 +4,17 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.appsomehow.ramadan.receiver.AlarmReceiver;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
+
+import org.joda.time.DateTime;
+import org.joda.time.MutableDateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Calendar;
 
 /**
  * Created by Sharif on 5/26/2014.
@@ -18,31 +26,41 @@ public class Alarm {
     public Alarm(Context context) {
         this.context = context;
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
     }
 
 
     public void setOneTimeAlarm(int hourOfDay, int hourOfMinute) {
-        alarmManager.set(AlarmManager.RTC_WAKEUP, MyCalender.getInstance().getTimeInMillies(
-                hourOfDay, hourOfMinute), setUpAlarmType(PendingIntent.FLAG_ONE_SHOT));
+        MutableDateTime dateTime = getCalculatedDateAndTime(hourOfDay,hourOfMinute);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH,dateTime.getDayOfMonth());
+        calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHourOfDay());
+        calendar.set(Calendar.MINUTE, dateTime.getMinuteOfHour());
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.AM_PM, getAM_PM(hourOfDay));
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), setUpAlarmType(PendingIntent.FLAG_ONE_SHOT));
     }
 
-    public void setOneTimeAlarm(Class<NotificationCancelReceiver> receiverClass, int requestCode) {
-        Intent intent = new Intent(context, receiverClass);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode,
-                intent, PendingIntent.FLAG_ONE_SHOT);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent);
+    private MutableDateTime getCalculatedDateAndTime(int hourofDay,int hourOfMinute) {
+        DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss");
+        DateTime now =DateTime.now();
+        String inputDateTime= now.getMonthOfYear()+"/"+now.getDayOfMonth()+"/"+now.getYear()+" "+hourofDay+":"+hourOfMinute+":00";
+        MutableDateTime selected = new MutableDateTime(dtf.parseDateTime(inputDateTime));
+        if (selected.isBefore(now)) {
+            selected.addDays(1);
+            return selected;
+        }
+        return selected;
     }
 
-    public void setRepeatingAlarm() {
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),
-                (60 * 1000), setUpAlarmType(PendingIntent.FLAG_CANCEL_CURRENT));
-    }
 
     private PendingIntent setUpAlarmType(int flag) {
         Intent intent = new Intent(context, AlarmReceiver.class);
         return PendingIntent.getBroadcast(context, 0,
                 intent, flag);
+    }
+
+    public int getAM_PM(int hourOfDay) {
+        return hourOfDay < 12 ? Calendar.AM : Calendar.PM;
     }
 
 
