@@ -1,6 +1,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.appsomehow.ramadan.views.CustomPreferenceCategory android:key="@string/pref_key_alarm_settings">
+        <com.appsomehow.ramadan.views.CustomPreference
+            android:key="@string/pref_key_alarm_time" />
         <com.appsomehow.ramadan.views.CustomRingtonPreference
             android:key="@string/pref_key_alarm_rington"
             android:title="@string/pref_title_ringtone"

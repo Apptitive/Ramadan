@@ -176,7 +176,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
         preferenceHelper.setBoolean(getString(R.string.alarm_switch), isSwitchOn);
-       Log.e("hourofDay: ",""+hourOfDay+"------"+minute);
+
+        boolean isAlarmSelected = preferenceHelper.getBoolean(getString(R.string.alarm_switch));
+        if (!isAlarmSelected)return;
+        preferenceHelper.setString(Constants.PREF_ALARM_HOUR,""+hourOfDay);
+        preferenceHelper.setString(Constants.PREF_ALARM_MINUT,""+minute);
+        DateTime now =DateTime.now();
+        preferenceHelper.setString(Constants.PREF_ALARM_DATE,""+now.getDayOfMonth()+"/"+now.getMonthOfYear()+"/"+now.getYear());
         Alarm alarm = new Alarm(this);
         alarm.setOneTimeAlarm(hourOfDay, minute);
     }

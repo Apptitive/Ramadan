@@ -19,8 +19,12 @@ import android.widget.LinearLayout;
 
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.AboutUsDialog;
+import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.utilities.PreferenceHelper;
+import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
+import com.appsomehow.ramadan.views.CustomPreference;
 
 import static android.preference.Preference.OnPreferenceChangeListener;
 
@@ -31,17 +35,16 @@ public class SettingsActivity extends PreferenceActivity {
     private PreferenceCategory categoryAboutUs;
     private ListPreference preferenceLocation;
     private static Context settingsActivity;
-    private Preference preferenceAboutUs;
+    private CustomPreference preferenceAboutUs;
     private RingtonePreference prefereneRington;
     private CustomCheckBoxPreferennce preferenceVibrat;
+    private CustomPreference alrmPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-      //  requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-//        supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT>=11){
-         getActionBar().hide();
+        if (Build.VERSION.SDK_INT >= 11) {
+            getActionBar().hide();
         }
         addPreferencesFromResource(R.xml.pref_general);
         setContentView(R.layout.activity_settings);
@@ -49,7 +52,7 @@ public class SettingsActivity extends PreferenceActivity {
         setupSimplePreferencesScreen();
 
 
-        LinearLayout settings =(LinearLayout)findViewById(R.id.settings_back);
+        LinearLayout settings = (LinearLayout) findViewById(R.id.settings_back);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,19 +62,8 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
 
-/*
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        settingsActivity = this;
-        setupSimplePreferencesScreen();
-    }
-*/
-
-
     private void setupSimplePreferencesScreen() {
-       // addPreferencesFromResource(R.xml.pref_general);
+        // addPreferencesFromResource(R.xml.pref_general);
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
@@ -90,9 +82,10 @@ public class SettingsActivity extends PreferenceActivity {
         categoryLocation = (PreferenceCategory) findPreference(getString(R.string.pref_key_location_settings));
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
-        preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
+        preferenceAboutUs = (CustomPreference) findPreference(getString(R.string.pref_key_preference_about_us));
         prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_rington));
         preferenceVibrat = (CustomCheckBoxPreferennce) findPreference(getString(R.string.pref_key_alarm_vibrat));
+        alrmPreference = (CustomPreference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 
     private void setBanglaTextToView() {
@@ -103,6 +96,19 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAboutUs.setSummary(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
         prefereneRington.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
         preferenceVibrat.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
+        alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
+
+        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
+        String hour = preferenceHelper.getString(Constants.PREF_ALARM_HOUR, "");
+        String minute = preferenceHelper.getString(Constants.PREF_ALARM_MINUT, "");
+        String date = preferenceHelper.getString(Constants.PREF_ALARM_DATE, "");
+        if (!date.equals("")) {
+            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getBanglaCharacter(hour) + " : " + getBanglaCharacter(minute) + "   " + getBanglaCharacter(date), this));
+        } else {
+            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getString(R.string.alarm_time_off), this));
+        }
+
+
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -113,6 +119,20 @@ public class SettingsActivity extends PreferenceActivity {
             }
         });
     }
+
+    public  String getBanglaCharacter(String input) {
+        char[] array = input.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] =='/' ){
+                stringBuilder.append('/');
+            }else
+            stringBuilder.append(Character.toChars((int) array[i] + 2486));
+        }
+        return stringBuilder.toString();
+    }
+
+
 
     private static OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new OnPreferenceChangeListener() {
         @Override
