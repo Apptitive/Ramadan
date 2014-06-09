@@ -48,7 +48,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
-        actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), this));
+        actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), this));
         actionBar.setIcon(getResources().getDrawable(iconDrawableId));
         actionBar.setDisplayShowHomeEnabled(true);
 
@@ -75,7 +75,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
             @Override
             public void onItemClick(AdapterView<?> parent, View item, int position, long id) {
                 topicInView = topics.get(position);
-                actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), DetailsActivity.this));
+                actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), DetailsActivity.this));
                 DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
                 detailsFragment.changeTopic(topicInView);
                 item.setSelected(true);

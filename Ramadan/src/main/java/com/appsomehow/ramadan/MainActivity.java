@@ -52,6 +52,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         setContentView(R.layout.activity_main);
 
         preferenceHelper = new PreferenceHelper(this);
+        if (!preferenceHelper.getBoolean(Constants.IS_DB_CREATED)) {
+            Log.e("Db Checking : ", "First Time Db Created !");
+            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
+            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
+            preferenceHelper.setBoolean(Constants.IS_DB_CREATED, true);
+        }
+
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowTitleEnabled(false);
@@ -68,12 +75,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         iftarTime = (BanglaTextView) findViewById(R.id.tv_ifter_time);
         seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
-        if (!preferenceHelper.getBoolean(Constants.IS_DB_CREATED)) {
-            Log.e("Db Checking : ", "First Time Db Created !");
-            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
-            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
-            preferenceHelper.setBoolean(Constants.IS_DB_CREATED, true);
-        }
+
         timeTables = DbManager.getInstance().getAllTimeTables();
         timeTable = UIUtils.compareCurrentDate(timeTables);
         regions = DbManager.getInstance().getAllRegions();
@@ -82,16 +84,19 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onResume() {
         super.onResume();
+
         // Example of reattaching to the fragment
         if (timeTable != null)
             region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        else
+            return;
 
         if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false, true));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
         } else {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false, true));
+            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
+            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
         }
 
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
@@ -181,6 +186,13 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
         preferenceHelper.setBoolean(getString(R.string.alarm_switch), isSwitchOn);
+
+        boolean isAlarmSelected = preferenceHelper.getBoolean(getString(R.string.alarm_switch));
+        if (!isAlarmSelected)return;
+        preferenceHelper.setString(Constants.PREF_ALARM_HOUR,""+hourOfDay);
+        preferenceHelper.setString(Constants.PREF_ALARM_MINUT,""+minute);
+        DateTime now =DateTime.now();
+        preferenceHelper.setString(Constants.PREF_ALARM_DATE,""+now.getDayOfMonth()+"/"+now.getMonthOfYear()+"/"+now.getYear());
         Alarm alarm = new Alarm(this);
         alarm.setOneTimeAlarm(hourOfDay, minute);
     }

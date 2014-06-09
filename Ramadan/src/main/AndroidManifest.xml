@@ -51,10 +51,11 @@
         </activity>
         <activity
             android:name=".SplashScreen"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

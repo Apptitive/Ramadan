@@ -41,7 +41,7 @@ public class SaomVongerKaronActivity extends ActionBarActivity implements Detail
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
-        actionBar.setTitle(Utilities.getBanglaText(topicTitle, this));
+        actionBar.setTitle(Utilities.getBanglaSpannableString(topicTitle, this));
         actionBar.setIcon(getResources().getDrawable(iconDrawableId));
         actionBar.setDisplayShowHomeEnabled(true);
 
