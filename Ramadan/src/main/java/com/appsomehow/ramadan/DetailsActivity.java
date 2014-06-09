@@ -15,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appsomehow.ramadan.model.Topic;
 import com.appsomehow.ramadan.utilities.Constants;
@@ -52,7 +50,7 @@ public class DetailsActivity extends ActionBarActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_Green_Ramadan)));
-        actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), this));
+        actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), this));
         actionBar.setIcon(getResources().getDrawable(iconDrawableId));
         actionBar.setDisplayShowHomeEnabled(true);
 
@@ -79,7 +77,7 @@ public class DetailsActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View item, int position, long id) {
                 topicInView = topics.get(position);
-                actionBar.setTitle(Utilities.getBanglaText(topicInView.getHeader(), DetailsActivity.this));
+                actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), DetailsActivity.this));
                 DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.detach(detailsFragment);

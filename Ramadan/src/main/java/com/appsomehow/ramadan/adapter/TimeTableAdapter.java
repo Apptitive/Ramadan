@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.TimeTable;
-import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
+import com.appsomehow.ramadan.views.BanglaTextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
     Context context;
     int layoutResourceId;
     Typeface tf;
+    boolean isBuildVersionAboveThirteen;
 
 
     public TimeTableAdapter(Context context, int layout, List<TimeTable> timeTables) {
@@ -29,15 +33,16 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         this.context = context;
         layoutResourceId = layout;
         tf = Utilities.getFont(this.context);
+        isBuildVersionAboveThirteen = Utilities.isBuildAboveThirteen();
     }
 
     private class ViewHolder {
+        TextView rojaCount;
         TextView date;
         TextView sehriTime;
         TextView ifterTime;
-        TextView rojaCount;
-
     }
+
     @Override
     public int getViewTypeCount() {
         return 2;
@@ -72,18 +77,26 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         } else
             holder = (ViewHolder) convertView.getTag();
 
-        if (Utilities.isBuildAboveThirteen()){
-            holder.date.setTypeface(tf);
-            holder.sehriTime.setTypeface(tf);
-            holder.ifterTime.setTypeface(tf);
-            holder.rojaCount.setTypeface(tf);
+        if (Utilities.isBuildAboveThirteen()) {
+
         }
 
-        holder.date.setText(timeTable.getDateInBangla());
-        holder.sehriTime.setText(timeTable.getSehriTime());
-        holder.ifterTime.setText(timeTable.getIfterTime());
-        holder.rojaCount.setText(timeTable.getRojaCount());
+        holder.rojaCount.setTypeface(tf);
+        holder.sehriTime.setTypeface(tf);
+        holder.ifterTime.setTypeface(tf);
+        holder.date.setTypeface(tf);
 
+        if (isBuildVersionAboveThirteen) {
+            holder.date.setText(timeTable.getDateInBangla());
+            holder.sehriTime.setText(timeTable.getSehriTime());
+            holder.ifterTime.setText(timeTable.getIfterTime());
+            holder.rojaCount.setText(timeTable.getRojaCount());
+        } else {
+            holder.date.setText(Utilities.getBanglaSpannableString(timeTable.getDateInBangla(), context));
+            holder.sehriTime.setText(Utilities.getBanglaSpannableString(timeTable.getSehriTime(), context));
+            holder.ifterTime.setText(Utilities.getBanglaSpannableString(timeTable.getIfterTime(), context));
+            holder.rojaCount.setText(Utilities.getBanglaSpannableString(timeTable.getRojaCount(), context));
+        }
 
         if (Integer.parseInt(timeTable.getId()) % 2 == 0)
             convertView.setBackgroundColor(context.getResources().getColor(R.color.table_row_background));

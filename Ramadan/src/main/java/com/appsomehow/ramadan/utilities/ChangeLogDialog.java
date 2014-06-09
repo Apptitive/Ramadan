@@ -90,7 +90,7 @@ public class ChangeLogDialog {
         while ((eventType != XmlPullParser.END_TAG) || (resourceParser.getName().equals("change"))) {
             if ((eventType == XmlPullParser.START_TAG) && (resourceParser.getName().equals("change"))) {
                 eventType = resourceParser.next();
-                changelogBuilder.append("<li>" + Utilities.getBanglaText(resourceParser.getText(),mContext)+ "</li>");
+                changelogBuilder.append("<li>" + Utilities.getBanglaSpannableString(resourceParser.getText(), mContext)+ "</li>");
             }
             eventType = resourceParser.next();
         }
@@ -201,7 +201,7 @@ public class ChangeLogDialog {
         final WebView webView = new WebView(mContext);
         webView.loadDataWithBaseURL(null, htmlChangelog, "text/html", "utf-8", null);
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(Utilities.getBanglaText(title, mContext))
+                .setTitle(Utilities.getBanglaSpannableString(title, mContext))
                 .setView(webView)
                 .setPositiveButton(closeString, new Dialog.OnClickListener() {
                     public void onClick(final DialogInterface dialogInterface, final int i) {

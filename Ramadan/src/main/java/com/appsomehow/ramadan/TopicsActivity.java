@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
-import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
 
 public class TopicsActivity extends ActionBarActivity {
@@ -31,7 +30,7 @@ public class TopicsActivity extends ActionBarActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
-        actionBar.setTitle(Utilities.getBanglaText(topicTitle, this));
+        actionBar.setTitle(Utilities.getBanglaSpannableString(topicTitle, this));
         actionBar.setIcon(getResources().getDrawable(iconDrawableId));
         actionBar.setDisplayShowHomeEnabled(true);
 

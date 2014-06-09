@@ -9,7 +9,6 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
@@ -26,7 +25,7 @@ public class Utilities {
                 "fonts/" + context.getString(R.string.font_solaimanlipi));
     }
 
-    public static android.text.SpannableString getBanglaText(String banglaText, Context context) {
+    public static android.text.SpannableString getBanglaSpannableString(String banglaText, Context context) {
         if(banglaText == null) {
             return new SpannableString(new String(""));
         }
@@ -48,8 +47,8 @@ public class Utilities {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.icon_tarabih)
-                        .setContentTitle(isBuildAboveThirteen() ? getBanglaText(context.getString(R.string.ramadan_app_alarm), context) : context.getString(R.string.ramadan_app_alarm_eng))
-                        .setContentText(isBuildAboveThirteen() ? getBanglaText(context.getString(R.string.alarm_turn_off), context) : context.getString(R.string.alarm_turn_off_eng));
+                        .setContentTitle(isBuildAboveThirteen() ? getBanglaSpannableString(context.getString(R.string.ramadan_app_alarm), context) : context.getString(R.string.ramadan_app_alarm_eng))
+                        .setContentText(isBuildAboveThirteen() ? getBanglaSpannableString(context.getString(R.string.alarm_turn_off), context) : context.getString(R.string.alarm_turn_off_eng));
         NotificationManager mNotifyMgr =
                 (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
         mBuilder.setDeleteIntent(deletePendingIntent);
@@ -61,7 +60,7 @@ public class Utilities {
     public static android.text.SpannableString[] banglaSpannableStrings(String[] banglaRegionNames, Context context) {
         android.text.SpannableString[] banglaText = new android.text.SpannableString[banglaRegionNames.length];
         for (int counter = 0; counter < banglaRegionNames.length; counter++) {
-            banglaText[counter] = getBanglaText(banglaRegionNames[counter], context);
+            banglaText[counter] = getBanglaSpannableString(banglaRegionNames[counter], context);
         }
         return banglaText;
     }
