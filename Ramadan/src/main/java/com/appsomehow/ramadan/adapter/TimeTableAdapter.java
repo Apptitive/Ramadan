@@ -92,10 +92,10 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             holder.ifterTime.setText(timeTable.getIfterTime());
             holder.rojaCount.setText(timeTable.getRojaCount());
         } else {
-            holder.date.setText(Utilities.getBanglaSpannableString(timeTable.getDateInBangla(), context));
-            holder.sehriTime.setText(Utilities.getBanglaSpannableString(timeTable.getSehriTime(), context));
-            holder.ifterTime.setText(Utilities.getBanglaSpannableString(timeTable.getIfterTime(), context));
-            holder.rojaCount.setText(Utilities.getBanglaSpannableString(timeTable.getRojaCount(), context));
+            holder.date.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getDateInBangla()));
+            holder.sehriTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getSehriTime()));
+            holder.ifterTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getIfterTime()));
+            holder.rojaCount.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getRojaCount()));
         }
 
         if (Integer.parseInt(timeTable.getId()) % 2 == 0)

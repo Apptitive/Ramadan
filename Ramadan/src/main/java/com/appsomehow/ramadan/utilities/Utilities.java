@@ -15,6 +15,8 @@ import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.dibosh.experiments.android.support.customfonthelper.utils.TypefaceSpan;
 
+import androidbangladesh.bengali.support.BengaliUnicodeString;
+
 /**
  * Created by Sharif on 5/27/2014.
  */
@@ -37,6 +39,8 @@ public class Utilities {
         }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
+
+
 
     public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
@@ -76,6 +80,10 @@ public class Utilities {
 
     public static boolean isBuildAboveThirteen() {
         return Build.VERSION.SDK_INT >= 14 ? true : false;
+    }
+
+    public static SpannableString getSpannableStringWithBanglaSupport(String text){
+        return new SpannableString(BengaliUnicodeString.getBengaliUTF(text));
     }
 
 }
