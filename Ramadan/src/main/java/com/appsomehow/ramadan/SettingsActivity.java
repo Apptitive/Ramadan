@@ -1,7 +1,6 @@
 package com.appsomehow.ramadan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -79,7 +77,7 @@ public class SettingsActivity extends PreferenceActivity {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
             listPreference.setEntries(Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
             listPreference.setEntryValues(englishRegionNames);
-            listPreference.setDialogTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
+            listPreference.setDialogTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         }
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_location)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_alarm_rington)));
@@ -98,13 +96,13 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void setBanglaTextToView() {
-        categoryAlarm.setTitle(Utilities.getBanglaText(getString(R.string.title_alarm), this));
-        categoryLocation.setTitle(Utilities.getBanglaText(getString(R.string.title_location), this));
-        categoryAboutUs.setTitle(Utilities.getBanglaText(getString(R.string.title_about_us), this));
-        preferenceLocation.setTitle(Utilities.getBanglaText(getString(R.string.title_location_setting), this));
-        preferenceAboutUs.setSummary(Utilities.getBanglaText(getString(R.string.title_about_us), this));
-        prefereneRington.setTitle(Utilities.getBanglaText(getString(R.string.pref_title_ringtone), this));
-        preferenceVibrat.setTitle(Utilities.getBanglaText(getString(R.string.pref_title_vibrate), this));
+        categoryAlarm.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_alarm), this));
+        categoryLocation.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location), this));
+        categoryAboutUs.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
+        preferenceLocation.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
+        preferenceAboutUs.setSummary(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
+        prefereneRington.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
+        preferenceVibrat.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -125,7 +123,7 @@ public class SettingsActivity extends PreferenceActivity {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
                 Log.e("banlga text", "" + listPreference.getEntries()[index].toString());
-                preference.setSummary(index >= 0 ? Utilities.getBanglaText(listPreference.getEntries()[index].toString(), settingsActivity) : null);
+                preference.setSummary(index >= 0 ? Utilities.getBanglaSpannableString(listPreference.getEntries()[index].toString(), settingsActivity) : null);
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {
                     preference.setSummary(R.string.pref_ringtone_silent);
@@ -143,7 +141,7 @@ public class SettingsActivity extends PreferenceActivity {
                 }
 
             } else {
-                preference.setSummary(Utilities.getBanglaText(stringValue, settingsActivity));
+                preference.setSummary(Utilities.getBanglaSpannableString(stringValue, settingsActivity));
             }
             return true;
         }
