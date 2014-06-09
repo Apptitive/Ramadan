@@ -26,6 +26,12 @@ import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
 import com.appsomehow.ramadan.views.CustomPreference;
 
+import org.joda.time.DateTime;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static android.preference.Preference.OnPreferenceChangeListener;
 
 
@@ -99,11 +105,19 @@ public class SettingsActivity extends PreferenceActivity {
         alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
 
         PreferenceHelper preferenceHelper = new PreferenceHelper(this);
-        String hour = preferenceHelper.getString(Constants.PREF_ALARM_HOUR, "");
-        String minute = preferenceHelper.getString(Constants.PREF_ALARM_MINUT, "");
+        String time = preferenceHelper.getString(Constants.PREF_ALARM_HOUR, "")+":"+preferenceHelper.getString(Constants.PREF_ALARM_MINUT, "");
+        SimpleDateFormat formatDate = new SimpleDateFormat("hh:mm a");
+        try {
+          time = String.valueOf(formatDate.parse(time));
+            Log.e("time",""+time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         String date = preferenceHelper.getString(Constants.PREF_ALARM_DATE, "");
         if (!date.equals("")) {
-            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getBanglaCharacter(hour) + " : " + getBanglaCharacter(minute) + "   " + getBanglaCharacter(date), this));
+            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getBanglaCharacter(time) + "   " + getBanglaCharacter(date), this));
         } else {
             alrmPreference.setSummary(Utilities.getBanglaSpannableString(getString(R.string.alarm_time_off), this));
         }
