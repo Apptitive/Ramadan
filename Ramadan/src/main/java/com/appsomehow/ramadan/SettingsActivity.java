@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.appsomehow.ramadan.helper.DbManager;
+import com.appsomehow.ramadan.utilities.AboutUsDialog;
 import com.appsomehow.ramadan.utilities.ChangeLogDialog;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
@@ -107,8 +108,8 @@ public class SettingsActivity extends PreferenceActivity {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 //startActivity(new Intent(getBaseContext(), AboutUsActivity.class));
-                ChangeLogDialog changeLogDialog = new ChangeLogDialog(SettingsActivity.this);
-                changeLogDialog.show();
+                AboutUsDialog aboutUsDialog = new AboutUsDialog(SettingsActivity.this);
+                aboutUsDialog.show();
                 return true;
             }
         });

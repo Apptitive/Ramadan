@@ -90,11 +90,13 @@ public class ChangeLogDialog {
         while ((eventType != XmlPullParser.END_TAG) || (resourceParser.getName().equals("change"))) {
             if ((eventType == XmlPullParser.START_TAG) && (resourceParser.getName().equals("change"))) {
                 eventType = resourceParser.next();
-                changelogBuilder.append("<li>" + Utilities.getBanglaSpannableString(resourceParser.getText(), mContext)+ "</li>");
+                changelogBuilder.append("<li>" + Utilities.getBanglaText(resourceParser.getText(),mContext)+ "</li>");
             }
             eventType = resourceParser.next();
         }
         changelogBuilder.append("</ul>");
+
+
     }
 
     //CSS style for the html
@@ -116,6 +118,8 @@ public class ChangeLogDialog {
         boolean releaseFound = false;
         final StringBuilder changelogBuilder = new StringBuilder();
         changelogBuilder.append("<html><head>").append(getStyle()).append("</head><body>");
+
+        changelogBuilder.append("<a href=\"http://stackoverflow.com/questions/478665/link-to-resources-inside-webview-iphone\">Doesn't work</a>");
         final XmlResourceParser xml = resources.getXml(resourceId);
         try {
             int eventType = xml.getEventType();
@@ -182,14 +186,14 @@ public class ChangeLogDialog {
         }
 
         //Get dialog title
-        String title = resources.getString(R.string.title_about_us);
+        String title = resources.getString(R.string.app_name);
         title = String.format("%s v%s", title, getAppVersion());
 
         //Create html change log
         final String htmlChangelog = getHTMLChangelog(R.xml.changelog, resources, version);
 
         //Get button strings
-        final String closeString = "Done";//resources.getString(R.string.changelog_close);
+        final String closeString = resources.getString(R.string.done);
 
         //Check for empty change log
         if (htmlChangelog.length() == 0) {
@@ -201,9 +205,9 @@ public class ChangeLogDialog {
         final WebView webView = new WebView(mContext);
         webView.loadDataWithBaseURL(null, htmlChangelog, "text/html", "utf-8", null);
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(Utilities.getBanglaSpannableString(title, mContext))
+                .setTitle(title)
                 .setView(webView)
-                .setPositiveButton(closeString, new Dialog.OnClickListener() {
+                .setPositiveButton(Utilities.getBanglaText(closeString,mContext), new Dialog.OnClickListener() {
                     public void onClick(final DialogInterface dialogInterface, final int i) {
                         dialogInterface.dismiss();
                     }

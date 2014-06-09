@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Ramadan</string>
     <string name="action_settings">সেটিংস</string>
     <string name="action_alarm">অ্যালার্ম</string>
@@ -31,5 +30,6 @@
     <string name="alarm_turn_off">অ্যালার্ম বন্ধ করার জন্য টানুন</string>
     <string name="ramadan_app_alarm_eng">Ramadan App Alarm</string>
     <string name="alarm_turn_off_eng">Please! Drag it to turn off the alarm</string>
-
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="done">ঠিক আছে</string>
 </resources>
