@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.text.Spannable;
 import android.text.SpannableString;
 
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
+import com.dibosh.experiments.android.support.customfonthelper.utils.TypefaceSpan;
 
 /**
  * Created by Sharif on 5/27/2014.
@@ -24,8 +26,12 @@ public class Utilities {
     }
 
     public static android.text.SpannableString getBanglaText(String banglaText, Context context) {
-       if (isBuildAboveThirteen())
-            return new SpannableString(banglaText);
+        TypefaceSpan span = new TypefaceSpan(getFont(context));
+        if (isBuildAboveThirteen()) {
+            SpannableString spannableString = new SpannableString(banglaText);
+            spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return spannableString;
+        }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
 
