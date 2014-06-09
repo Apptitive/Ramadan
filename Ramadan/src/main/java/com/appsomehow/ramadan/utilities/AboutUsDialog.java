@@ -16,7 +16,7 @@ public class AboutUsDialog {
     private String mStyle = "h1 { margin-left: 0px; font-size: 12pt; }"
             + "li { margin-left: 0px; font-size: 9pt; }"
             + "ul { padding-left: 30px; }"
-            +"p {font-style:italic; margin-left: 0px; font-size: 9pt;}"
+            +"p {font-style:italic; margin-left: 8px; font-size: 9pt;}"
             + ".summary { font-size: 9pt; color: #606060; display: block; clear: left; }"
             + ".date { font-size: 9pt; color: #606060;  display: block; }";
 
@@ -49,7 +49,7 @@ public class AboutUsDialog {
         changelogBuilder.append("<html><head>").append(getStyle())
                 .append("</head><body>");
         changelogBuilder.append("<h1>Developed by</h1>");
-        changelogBuilder.append("<p>AppSomeHow</p>");
+        changelogBuilder.append("<p>Appsomehow</p>");
         changelogBuilder.append("<a href=\"activity_a://a\">Rate this app</a>");
         changelogBuilder.append("</body></html>");
         return changelogBuilder.toString();
