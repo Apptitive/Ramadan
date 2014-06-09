@@ -99,7 +99,7 @@ public class UIUtils {
         return null;
     }
 
-    private static String getReplacedString(Calendar calendar) {
+    public static String getReplacedString(Calendar calendar) {
             return Utilities.replaceBanglaCharacter("" + calendar.get(Calendar.HOUR)) + ":" + Utilities.replaceBanglaCharacter("" + String.format("%02d", calendar.get(Calendar.MINUTE)));
     }
 

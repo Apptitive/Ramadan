@@ -31,5 +31,7 @@
     <string name="ramadan_app_alarm_eng">Ramadan App Alarm</string>
     <string name="alarm_turn_off_eng">Please! Drag it to turn off the alarm</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="done">ঠিক আছে</string>
+    <string name="alarm_time">অ্যালার্মের সময়</string>
+    <string name="alarm_time_off">অ্যালার্ম সেট করা হয়নি</string>
+    <string name="pref_key_alarm_time">pref_key_alarm_time</string>
 </resources>

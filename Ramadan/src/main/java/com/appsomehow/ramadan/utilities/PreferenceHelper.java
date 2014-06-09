@@ -33,7 +33,7 @@ public class PreferenceHelper {
         return sharedPreferences.getBoolean(key, defaultValue);
     }
 
-    public void setBoolean(String key, Boolean value) {
+    public void setBoolean(String key, boolean value) {
         editor = sharedPreferences.edit();
         editor.putBoolean(key, value);
         editor.commit();
