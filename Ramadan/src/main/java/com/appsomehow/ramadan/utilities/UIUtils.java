@@ -78,7 +78,7 @@ public class UIUtils {
                 return region;
             }
         }
-        return null;
+        return DbManager.getInstance().getRegionWithName("Dhaka");
     }
 
     public static String getSehriIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
