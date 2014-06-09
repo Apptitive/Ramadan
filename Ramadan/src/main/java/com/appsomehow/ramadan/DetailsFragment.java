@@ -1,17 +1,16 @@
 package com.appsomehow.ramadan;
 
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.appsomehow.ramadan.adapter.DetailsListAdapter;
 import com.appsomehow.ramadan.model.Detail;
-import com.appsomehow.ramadan.views.ParallaxListView;
+import com.appsomehow.ramadan.model.Topic;
+import com.appsomehow.ramadan.utilities.Constants;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -21,12 +20,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.chrisjenx.paralloid.Parallaxor;
-
 public class DetailsFragment extends ListFragment {
 
     private XmlPullParserFactory parserFactory;
-    private DetailsActivity parentActivity;
+    private DetailProvider detailProvider;
     private DetailsListAdapter detailsListAdapter;
     private List<Detail> details;
 
@@ -37,18 +34,16 @@ public class DetailsFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        parentActivity = (DetailsActivity) activity;
+        detailProvider = (DetailProvider) activity;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         details = new ArrayList<Detail>();
-        detailsListAdapter = new DetailsListAdapter(parentActivity, details);
-        int file_res_id = parentActivity.getFileResId();
-        int detail_id = parentActivity.getDetailId();
+        detailsListAdapter = new DetailsListAdapter(getActivity(), details);
         try {
-            populateList(file_res_id, detail_id);
+            populateList(detailProvider.getFileResId(), detailProvider.getTopic().getDetailId());
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -60,9 +55,10 @@ public class DetailsFragment extends ListFragment {
         parserFactory = XmlPullParserFactory.newInstance();
         parserFactory.setNamespaceAware(false);
         XmlPullParser xpp = parserFactory.newPullParser();
-
         xpp.setInput(getResources().openRawResource(fileResId), "utf-8");
+
         boolean foundDetail = false;
+
         for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
             String name = xpp.getName();
             if (eventType == XmlPullParser.START_TAG) {
@@ -87,12 +83,32 @@ public class DetailsFragment extends ListFragment {
 
     private int findViewTypeValue(String vt) {
         if (vt.equalsIgnoreCase("t"))
-            return 0;
+            return Constants.detail.VIEW_TYPE_TEXT_ONLY;
         else if (vt.equalsIgnoreCase("b"))
-            return 1;
+            return Constants.detail.VIEW_TYPE_BULLET;
         else if (vt.equalsIgnoreCase("h"))
-            return 2;
+            return Constants.detail.VIEW_TYPE_HEADER_ONLY;
+        else if(vt.equalsIgnoreCase("d"))
+            return Constants.detail.VIEW_TYPE_DIVIDER;
+        else if(vt.equalsIgnoreCase("a"))
+            return Constants.detail.VIEW_TYPE_ARABIC;
+        else if(vt.equalsIgnoreCase("ab"))
+            return Constants.detail.VIEW_TYPE_ARABIC_BULLET_ALIGN;
+        else if(vt.equalsIgnoreCase("tb"))
+            return Constants.detail.VIEW_TYPE_TEXT_BULLET_ALIGN;
         return 0;
+    }
+
+    public void changeTopic(Topic topic) {
+        details.clear();
+        try {
+            populateList(detailProvider.getFileResId(), topic.getDetailId());
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        getListView().setAdapter(detailsListAdapter);
     }
 
     @Override
@@ -105,5 +121,10 @@ public class DetailsFragment extends ListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(detailsListAdapter);
+    }
+
+    public interface DetailProvider {
+        Topic getTopic();
+        int getFileResId();
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appsomehow.ramadan">
+    package="com.appsomehow.ramadan" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -8,26 +8,26 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_ramadan"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Ramadan">
+        android:theme="@style/Theme.Ramadan" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name=".DetailsActivity"
-            android:parentActivityName=".TopicsActivity">
+            android:parentActivityName=".TopicsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.TopicsActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
         </activity>
         <activity
             android:name=".TopicsActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
@@ -37,10 +37,26 @@
             android:label="@string/title_activity_about_us" />
         <activity
             android:name=".SehriIfterActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SaomVongerKaronActivity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appsomehow.ramadan.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <service
@@ -59,20 +75,11 @@
         <receiver
             android:name=".receiver.NotificationCancelReceiver"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

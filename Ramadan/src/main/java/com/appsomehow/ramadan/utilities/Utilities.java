@@ -33,10 +33,11 @@ public class Utilities {
         }
 	   
         if (isBuildAboveThirteen()) {
-		    TypefaceSpan span = new TypefaceSpan(getFont(context));
+            TypefaceSpan span = new TypefaceSpan(getFont(context));
             SpannableString spannableString = new SpannableString(banglaText);
             spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return spannableString;     
+            return spannableString;
+        }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
 

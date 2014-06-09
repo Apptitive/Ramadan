@@ -61,9 +61,10 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         parserFactory = XmlPullParserFactory.newInstance();
         parserFactory.setNamespaceAware(false);
         XmlPullParser xpp = parserFactory.newPullParser();
-
         xpp.setInput(getResources().openRawResource(topicResId), "utf-8");
+
         Topic topic = null;
+
         for(int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
             String name = xpp.getName();
             if(eventType == XmlPullParser.START_TAG) {

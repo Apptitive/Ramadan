@@ -22,21 +22,22 @@
                 android:layout_height="match_parent"
                 android:name="com.appsomehow.ramadan.DetailsFragment"
                 android:id="@+id/fragment_details"
-                tools:layout="@layout/fragment_parallax_list" />
+                tools:layout="@layout/fragment_details" />
         </RelativeLayout>
     </RelativeLayout>
 
     <!-- Drawer ListView -->
     <ListView
         android:layout_marginTop="?attr/actionBarSize"
-        android:id="@+id/listview_drawer"
+        android:id="@+id/listView_drawer"
         android:layout_width="@dimen/dp_240"
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:choiceMode="singleChoice"
         android:divider="@color/white_20_transparent"
-        android:dividerHeight="1dp"
-        android:background="@color/black_90" />
+        android:dividerHeight="0.5dp"
+        android:background="@color/black_90"
+        android:listSelector="@drawable/drawer_item_selector"/>
 
 
 </android.support.v4.widget.DrawerLayout>

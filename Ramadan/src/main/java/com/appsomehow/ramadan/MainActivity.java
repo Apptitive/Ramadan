@@ -133,9 +133,10 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this, TopicsActivity.class);
+        Intent i;
         switch (view.getId()) {
             case R.id.tab_saom:
+                i = new Intent(this, TopicsActivity.class);
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom);
                 i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
@@ -145,27 +146,31 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
                 this.startActivity(new Intent(MainActivity.this, SehriIfterActivity.class));
                 break;
             case R.id.tab_nioat:
+                i = new Intent(this, TopicsActivity.class);
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.niyat_o_doa));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_niyat);
-                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_niyat_o_doa);
                 startActivity(i);
                 break;
             case R.id.tab_ramadan:
+                i = new Intent(this, TopicsActivity.class);
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.ramadan));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_romzan);
-                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_ramadan);
                 startActivity(i);
                 break;
             case R.id.tab_saom_vonger_karon:
+                i = new Intent(this, SaomVongerKaronActivity.class);
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.saom_vongo));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_saom_vongo);
-                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom_vongo);
                 startActivity(i);
                 break;
             case R.id.tab_tarabih:
+                i = new Intent(this, TopicsActivity.class);
                 i.putExtra(Constants.topic.EXTRA_TITLE, getString(R.string.tarabih));
                 i.putExtra(Constants.topic.EXTRA_ICON_ID, R.drawable.ic_tarabih);
-                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_saom);
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, R.raw.data_topic_tarabih);
                 startActivity(i);
                 break;
             default:
