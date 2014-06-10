@@ -6,6 +6,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -21,8 +22,6 @@ import com.appsomehow.ramadan.utilities.AboutUsDialog;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.Utilities;
-import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
-import com.appsomehow.ramadan.views.CustomPreference;
 
 import static android.preference.Preference.OnPreferenceChangeListener;
 
@@ -33,10 +32,10 @@ public class SettingsActivity extends PreferenceActivity {
     private PreferenceCategory categoryAboutUs;
     private ListPreference preferenceLocation;
     private static Context settingsActivity;
-    private CustomPreference preferenceAboutUs;
+    private Preference preferenceAboutUs;
     private RingtonePreference prefereneRington;
-    private CustomCheckBoxPreferennce preferenceVibrat;
-    private CustomPreference alrmPreference;
+    private CheckBoxPreference preferenceVibrat;
+    private Preference alrmPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +78,10 @@ public class SettingsActivity extends PreferenceActivity {
         categoryLocation = (PreferenceCategory) findPreference(getString(R.string.pref_key_location_settings));
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
-        preferenceAboutUs = (CustomPreference) findPreference(getString(R.string.pref_key_preference_about_us));
+        preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
         prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
-        preferenceVibrat = (CustomCheckBoxPreferennce) findPreference(getString(R.string.pref_key_alarm_vibrate));
-        alrmPreference = (CustomPreference) findPreference(getString(R.string.pref_key_alarm_time));
+        preferenceVibrat = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
+        alrmPreference = (Preference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 
     private void setBanglaTextToView() {
@@ -106,7 +105,6 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                //startActivity(new Intent(getBaseContext(), AboutUsActivity.class));
                 AboutUsDialog aboutUsDialog = new AboutUsDialog(SettingsActivity.this);
                 aboutUsDialog.show();
                 return true;
