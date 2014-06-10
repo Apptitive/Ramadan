@@ -27,9 +27,11 @@ import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
 import com.appsomehow.ramadan.views.CustomPreference;
 
 import org.joda.time.DateTime;
+import org.joda.time.Period;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.preference.Preference.OnPreferenceChangeListener;
@@ -105,19 +107,9 @@ public class SettingsActivity extends PreferenceActivity {
         alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
 
         PreferenceHelper preferenceHelper = new PreferenceHelper(this);
-        String time = preferenceHelper.getString(Constants.PREF_ALARM_HOUR, "")+":"+preferenceHelper.getString(Constants.PREF_ALARM_MINUT, "");
-        SimpleDateFormat formatDate = new SimpleDateFormat("hh:mm a");
-        try {
-          time = String.valueOf(formatDate.parse(time));
-            Log.e("time",""+time);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-        String date = preferenceHelper.getString(Constants.PREF_ALARM_DATE, "");
-        if (!date.equals("")) {
-            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getBanglaCharacter(time) + "   " + getBanglaCharacter(date), this));
+        String dateTime = preferenceHelper.getString(Constants.PREF_ALARM_DATE, "");
+        if (!dateTime.equals("")) {
+            alrmPreference.setSummary(dateTime);
         } else {
             alrmPreference.setSummary(Utilities.getBanglaSpannableString(getString(R.string.alarm_time_off), this));
         }
@@ -134,20 +126,6 @@ public class SettingsActivity extends PreferenceActivity {
         });
     }
 
-    public  String getBanglaCharacter(String input) {
-        char[] array = input.toCharArray();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] =='/' ){
-                stringBuilder.append('/');
-            }else
-            stringBuilder.append(Character.toChars((int) array[i] + 2486));
-        }
-        return stringBuilder.toString();
-    }
-
-
-
     private static OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -156,8 +134,8 @@ public class SettingsActivity extends PreferenceActivity {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                Log.e("banlga text", "" + listPreference.getEntries()[index].toString());
-                preference.setSummary(index >= 0 ? Utilities.getBanglaSpannableString(listPreference.getEntries()[index].toString(), settingsActivity) : null);
+                String districtName=listPreference.getEntries()[index].toString();
+                preference.setSummary(Utilities.getBanglaSpannableString(districtName, settingsActivity));
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {
                     preference.setSummary(R.string.pref_ringtone_silent);
