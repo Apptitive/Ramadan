@@ -13,5 +13,5 @@
         android:layout_height="wrap_content"
         app:fontName="@string/font_arabic"
         android:textColor="@color/white_dark"
-        android:textSize="@dimen/text_size_15" />
+        android:textSize="@dimen/text_size_25" />
 </LinearLayout>

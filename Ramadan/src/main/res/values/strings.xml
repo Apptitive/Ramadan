@@ -4,10 +4,8 @@
     <string name="app_name">Ramadan</string>
     <string name="action_settings">সেটিংস</string>
     <string name="action_alarm">অ্যালার্ম</string>
-    <string name="parallox_title_saom">সাওমের ফযিলাত</string>
     <string name="font_solaimanlipi">solaimanlipinormal.ttf</string>
-    <string name="font_kalpurush">kalpurush.ttf</string>
-    <string name="font_arabic">arabic.ttf</string>
+    <string name="font_arabic">a_nefel_adeti.ttf</string>
     <string name="file_path_region">region.txt</string>
     <string name="bangla_character_zero">০</string>
     <string name="bangla_character_one">১</string>
