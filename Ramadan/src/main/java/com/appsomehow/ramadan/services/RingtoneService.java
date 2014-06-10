@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
-import android.util.Log;
 
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
@@ -31,8 +30,6 @@ public class RingtoneService extends Service {
         String ringTonName = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
         if (ringTonName != null) {
             playSound(ringTonName);
-            Log.e("service rington name", "" + ringTonName);
-            Log.e("start music ", "music started");
             Utilities.customNotification(getBaseContext());
         }
     }
@@ -58,7 +55,6 @@ public class RingtoneService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e("service destroyed", "oh!");
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
             mMediaPlayer.release();

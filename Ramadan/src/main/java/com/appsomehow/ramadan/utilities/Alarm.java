@@ -4,10 +4,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.appsomehow.ramadan.receiver.AlarmReceiver;
-import com.appsomehow.ramadan.receiver.NotificationCancelReceiver;
 
 import org.joda.time.DateTime;
 import org.joda.time.MutableDateTime;

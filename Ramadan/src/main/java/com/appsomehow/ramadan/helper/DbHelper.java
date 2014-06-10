@@ -3,12 +3,14 @@ package com.appsomehow.ramadan.helper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +47,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         List<String> allSql = new ArrayList<String>();
         try {
-            switch(oldVersion)
-            {
+            switch (oldVersion) {
                 case 1:
                     //allSql.add("alter table AdData add column `new_col` VARCHAR");
                     //allSql.add("alter table AdData add column `new_col2` VARCHAR");
@@ -54,8 +55,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
             for (String sql : allSql) {
                 sqLiteDatabase.execSQL(sql);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             Log.e(DbHelper.class.getName(), "exception during onUpgrade", e);
             throw new RuntimeException(e);
         }
@@ -65,7 +65,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
         if (null == regionDao) {
             try {
                 regionDao = getDao(Region.class);
-            }catch (java.sql.SQLException e) {
+            } catch (java.sql.SQLException e) {
                 e.printStackTrace();
             }
         }
@@ -76,7 +76,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
         if (null == timeTableDao) {
             try {
                 timeTableDao = getDao(TimeTable.class);
-            }catch (java.sql.SQLException e) {
+            } catch (java.sql.SQLException e) {
                 e.printStackTrace();
             }
         }

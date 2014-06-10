@@ -11,7 +11,7 @@ import com.appsomehow.ramadan.utilities.Utilities;
 /**
  * Created by Sharif on 6/7/2014.
  */
-public class CustomRingtonePreference extends RingtonePreference{
+public class CustomRingtonePreference extends RingtonePreference {
     public CustomRingtonePreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
@@ -23,6 +23,7 @@ public class CustomRingtonePreference extends RingtonePreference{
     public CustomRingtonePreference(Context context) {
         super(context);
     }
+
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);

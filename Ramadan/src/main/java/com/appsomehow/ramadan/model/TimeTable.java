@@ -3,8 +3,6 @@ package com.appsomehow.ramadan.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.Date;
-
 /**
  * Created by rayhan on 5/27/2014.
  */

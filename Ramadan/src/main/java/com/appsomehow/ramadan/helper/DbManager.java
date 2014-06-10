@@ -55,7 +55,7 @@ public class DbManager {
         return regionNames.toArray(new String[regionNames.size()]);
     }
 
-    public Region getRegionWithName(String name){
+    public Region getRegionWithName(String name) {
         List<Region> regions = getAllRegions();
         for (Region region : regions) {
             if (region.getName().equals(name))

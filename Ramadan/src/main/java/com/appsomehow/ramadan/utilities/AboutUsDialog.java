@@ -16,7 +16,7 @@ public class AboutUsDialog {
     private String mStyle = "h1 { margin-left: 0px; font-size: 12pt; }"
             + "li { margin-left: 0px; font-size: 9pt; }"
             + "ul { padding-left: 30px; }"
-            +"p {font-style:italic; margin-left: 8px; font-size: 9pt;}"
+            + "p {font-style:italic; margin-left: 8px; font-size: 9pt;}"
             + ".summary { font-size: 9pt; color: #606060; display: block; clear: left; }"
             + ".date { font-size: 9pt; color: #606060;  display: block; }";
 

@@ -1,14 +1,11 @@
 package com.appsomehow.ramadan;
 
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.appsomehow.ramadan.model.Detail;
 import com.appsomehow.ramadan.model.Topic;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
@@ -20,7 +17,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 
 
-public class SaomVongerKaronActivity extends ActionBarActivity implements DetailsFragment.DetailProvider{
+public class SaomVongerKaronActivity extends ActionBarActivity implements DetailsFragment.DetailProvider {
 
     private int iconDrawableId, topicResId;
     private String topicTitle;
@@ -33,7 +30,7 @@ public class SaomVongerKaronActivity extends ActionBarActivity implements Detail
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             topicTitle = extras.getString(Constants.topic.EXTRA_TITLE);
             iconDrawableId = extras.getInt(Constants.topic.EXTRA_ICON_ID);
             topicResId = extras.getInt(Constants.topic.EXTRA_DATA_FILE);
@@ -56,14 +53,14 @@ public class SaomVongerKaronActivity extends ActionBarActivity implements Detail
 
         Topic topic = new Topic();
 
-        for(int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
+        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
             String name = xpp.getName();
-            if(eventType == XmlPullParser.START_TAG) {
-                if(name.equalsIgnoreCase("topic")) {
+            if (eventType == XmlPullParser.START_TAG) {
+                if (name.equalsIgnoreCase("topic")) {
                     topic.setHeader(xpp.getAttributeValue(null, "name"));
                     topic.setFullText(false);
                 }
-                if(name.equalsIgnoreCase("details")) {
+                if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
                 }
             }
