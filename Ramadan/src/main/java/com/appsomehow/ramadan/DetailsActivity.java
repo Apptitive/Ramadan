@@ -30,6 +30,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
     private ActionBar actionBar;
     private DrawerLayout drawerLayout;
     private ArrayList<Topic> topics;
+    private ArrayAdapter<Topic> drawerListAdapter;
     private ListView listViewDrawer;
 
     @Override
@@ -57,7 +58,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
         drawerLayout = (DrawerLayout) findViewById(R.id.layout_drawer);
         listViewDrawer = (ListView) findViewById(R.id.listView_drawer);
 
-        listViewDrawer.setAdapter(new ArrayAdapter<Topic>(this, R.layout.drawer_layout,
+        drawerListAdapter = new ArrayAdapter<Topic>(this, R.layout.drawer_layout,
                 topics) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -67,9 +68,12 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
                 }
                 btv = (BanglaTextView) convertView.findViewById(R.id.btv_nav);
                 btv.setBanglaText(getItem(position).getHeader());
+                if (position == topics.indexOf(topicInView))
+                    convertView.setBackgroundColor(getResources().getColor(R.color.ActionBar_Navigation));
                 return convertView;
             }
-        });
+        };
+        listViewDrawer.setAdapter(drawerListAdapter);
 
         listViewDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,7 +82,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
                 actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), DetailsActivity.this));
                 DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
                 detailsFragment.changeTopic(topicInView);
-                item.setSelected(true);
+                listViewDrawer.setAdapter(drawerListAdapter);
                 drawerLayout.closeDrawer(listViewDrawer);
             }
         });
@@ -100,6 +104,14 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(listViewDrawer))
+            drawerLayout.closeDrawer(listViewDrawer);
+        else
+            super.onBackPressed();
     }
 
     @Override
