@@ -1,36 +1,36 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.appsomehow.ramadan.views.CustomPreferenceCategory android:key="@string/pref_key_alarm_settings">
-        <com.appsomehow.ramadan.views.CustomPreference
+    <PreferenceCategory android:key="@string/pref_key_alarm_settings">
+        <Preference
             android:key="@string/pref_key_alarm_time" />
-        <com.appsomehow.ramadan.views.CustomRingtonePreference
+        <RingtonePreference
             android:key="@string/pref_key_alarm_ringtone"
             android:title="@string/pref_title_ringtone"
             android:ringtoneType="alarm"
             android:defaultValue="content://settings/system/alarm_alert" />
-        <com.appsomehow.ramadan.views.CustomCheckBoxPreferennce
+        <CheckBoxPreference
             android:key="@string/pref_key_alarm_vibrate"
             android:title="@string/pref_title_vibrate"
             android:defaultValue="true" />
-    </com.appsomehow.ramadan.views.CustomPreferenceCategory>
+    </PreferenceCategory>
 
-    <com.appsomehow.ramadan.views.CustomPreferenceCategory
+    <PreferenceCategory
         android:title="@string/title_location"
         android:key="@string/pref_key_location_settings">
-        <com.appsomehow.ramadan.views.CustomListPreference
+        <ListPreference
             android:key="@string/pref_key_location"
             android:title="@string/title_location_setting"
             android:defaultValue="Dhaka"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null" />
-    </com.appsomehow.ramadan.views.CustomPreferenceCategory>
-    <com.appsomehow.ramadan.views.CustomPreferenceCategory
+    </PreferenceCategory>
+    <PreferenceCategory
         android:title="@string/title_about_us"
         android:key="@string/pref_key_about_us">
-        <com.appsomehow.ramadan.views.CustomPreference
+        <Preference
             android:key="@string/pref_key_preference_about_us"
             android:summary="about us" />
-    </com.appsomehow.ramadan.views.CustomPreferenceCategory>
+    </PreferenceCategory>
 
 
 </PreferenceScreen>

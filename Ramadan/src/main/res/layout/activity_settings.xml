@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
                 android:clickable="false"
-                android:src="@drawable/ic_sehri_iftar" />
+                android:src="@drawable/ic_action_settings" />
             <com.appsomehow.ramadan.views.BanglaTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
