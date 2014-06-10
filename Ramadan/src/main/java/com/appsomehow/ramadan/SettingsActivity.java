@@ -80,7 +80,7 @@ public class SettingsActivity extends PreferenceActivity {
             listPreference.setDialogTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         }
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_location)));
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_alarm_rington)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_key_alarm_ringtone)));
         findViews();
         setBanglaTextToView();
     }
@@ -91,8 +91,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
         preferenceAboutUs = (CustomPreference) findPreference(getString(R.string.pref_key_preference_about_us));
-        prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_rington));
-        preferenceVibrat = (CustomCheckBoxPreferennce) findPreference(getString(R.string.pref_key_alarm_vibrat));
+        prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
+        preferenceVibrat = (CustomCheckBoxPreferennce) findPreference(getString(R.string.pref_key_alarm_vibrate));
         alrmPreference = (CustomPreference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 

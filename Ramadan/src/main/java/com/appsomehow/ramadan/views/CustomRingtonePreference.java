@@ -11,16 +11,16 @@ import com.appsomehow.ramadan.utilities.Utilities;
 /**
  * Created by Sharif on 6/7/2014.
  */
-public class CustomRingtonPreference extends RingtonePreference{
-    public CustomRingtonPreference(Context context, AttributeSet attrs, int defStyle) {
+public class CustomRingtonePreference extends RingtonePreference{
+    public CustomRingtonePreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public CustomRingtonPreference(Context context, AttributeSet attrs) {
+    public CustomRingtonePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomRingtonPreference(Context context) {
+    public CustomRingtonePreference(Context context) {
         super(context);
     }
     @Override

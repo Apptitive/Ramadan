@@ -3,13 +3,13 @@
     <com.appsomehow.ramadan.views.CustomPreferenceCategory android:key="@string/pref_key_alarm_settings">
         <com.appsomehow.ramadan.views.CustomPreference
             android:key="@string/pref_key_alarm_time" />
-        <com.appsomehow.ramadan.views.CustomRingtonPreference
-            android:key="@string/pref_key_alarm_rington"
+        <com.appsomehow.ramadan.views.CustomRingtonePreference
+            android:key="@string/pref_key_alarm_ringtone"
             android:title="@string/pref_title_ringtone"
             android:ringtoneType="alarm"
             android:defaultValue="content://settings/system/alarm_alert" />
         <com.appsomehow.ramadan.views.CustomCheckBoxPreferennce
-            android:key="@string/pref_key_alarm_vibrat"
+            android:key="@string/pref_key_alarm_vibrate"
             android:title="@string/pref_title_vibrate"
             android:defaultValue="true" />
     </com.appsomehow.ramadan.views.CustomPreferenceCategory>
