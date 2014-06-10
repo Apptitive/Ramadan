@@ -13,7 +13,6 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -21,18 +20,9 @@ import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.AboutUsDialog;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
-import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.CustomCheckBoxPreferennce;
 import com.appsomehow.ramadan.views.CustomPreference;
-
-import org.joda.time.DateTime;
-import org.joda.time.Period;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import static android.preference.Preference.OnPreferenceChangeListener;
 
@@ -58,7 +48,6 @@ public class SettingsActivity extends PreferenceActivity {
         setContentView(R.layout.activity_settings);
         settingsActivity = this;
         setupSimplePreferencesScreen();
-
 
         LinearLayout settings = (LinearLayout) findViewById(R.id.settings_back);
         settings.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +103,6 @@ public class SettingsActivity extends PreferenceActivity {
             alrmPreference.setSummary(Utilities.getBanglaSpannableString(getString(R.string.alarm_time_off), this));
         }
 
-
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -134,7 +122,7 @@ public class SettingsActivity extends PreferenceActivity {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                String districtName=listPreference.getEntries()[index].toString();
+                String districtName = listPreference.getEntries()[index].toString();
                 preference.setSummary(Utilities.getBanglaSpannableString(districtName, settingsActivity));
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {

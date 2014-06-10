@@ -2,10 +2,8 @@ package com.appsomehow.ramadan.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.utilities.Utilities;
@@ -15,12 +13,12 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
  * Created by Sharif on 5/26/2014.
  */
 public class BanglaTextView extends JustifiedTextView {
+
     TypedArray typedArray;
     Typeface myTypeface;
     String banglaText;
     String fontName;
     boolean justify;
-
 
     public BanglaTextView(Context context) {
         super(context);

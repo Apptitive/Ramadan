@@ -19,6 +19,7 @@ public class CustomListPreference extends ListPreference {
     public CustomListPreference(Context context) {
         super(context);
     }
+
     @Override
     protected void onBindView(View view) {
         super.onBindView(view);

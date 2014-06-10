@@ -14,7 +14,7 @@ import com.appsomehow.ramadan.utilities.Utilities;
 public class CustomCheckBoxPreferennce extends CheckBoxPreference {
 
 
-   public CustomCheckBoxPreferennce(Context context) {
+    public CustomCheckBoxPreferennce(Context context) {
         super(context);
     }
 

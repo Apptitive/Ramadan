@@ -1,10 +1,10 @@
 package com.appsomehow.ramadan;
 
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.Utilities;
@@ -22,7 +22,7 @@ public class TopicsActivity extends ActionBarActivity {
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
 
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             topicTitle = extras.getString(Constants.topic.EXTRA_TITLE);
             iconDrawableId = extras.getInt(Constants.topic.EXTRA_ICON_ID);
             topicResId = extras.getInt(Constants.topic.EXTRA_DATA_FILE);

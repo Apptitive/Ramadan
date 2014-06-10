@@ -1,25 +1,16 @@
 package com.appsomehow.ramadan.utilities;
 
 import android.content.Context;
-import android.text.format.DateUtils;
-import android.util.Log;
 
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
-
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Created by Sharif on 5/28/2014.
@@ -84,7 +75,7 @@ public class UIUtils {
     public static String getSehriIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
         try {
-            Date date = simpleDateFormat.parse(getTimeSeyeriIftarTime(isSeheri, timeTable));
+            Date date = simpleDateFormat.parse(getSehriIftarTime(isSeheri, timeTable));
 
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, date.getYear());
@@ -100,18 +91,15 @@ public class UIUtils {
     }
 
     public static String getReplacedString(Calendar calendar) {
-            return Utilities.replaceBanglaCharacter("" + calendar.get(Calendar.HOUR)) + ":" + Utilities.replaceBanglaCharacter("" + String.format("%02d", calendar.get(Calendar.MINUTE)));
+        return Utilities.replaceBanglaCharacter("" + calendar.get(Calendar.HOUR)) + ":" + Utilities.replaceBanglaCharacter("" + String.format("%02d", calendar.get(Calendar.MINUTE)));
     }
 
-    private static String getTimeSeyeriIftarTime(boolean isSeyeri, TimeTable timeTable) {
+    private static String getSehriIftarTime(boolean isSehri, TimeTable timeTable) {
 
-        if (isSeyeri)
+        if (isSehri)
             return timeTable.getDate() + " " + timeTable.getSehriTime();
         return timeTable.getDate() + " " + timeTable.getIfterTime();
-        /*return isSeyeri==true ? timeTable.getDate() + " " + timeTable.getSehriTime() : timeTable.getDate() + " " + timeTable.getIfterTime();*/
     }
-
-
 
 
 }

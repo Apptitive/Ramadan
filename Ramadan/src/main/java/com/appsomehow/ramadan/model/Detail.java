@@ -7,7 +7,8 @@ public class Detail {
     private String text;
     private int viewType;
 
-    public Detail() {}
+    public Detail() {
+    }
 
     public Detail(String text, int detailViewType) {
         this.text = text;

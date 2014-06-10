@@ -3,11 +3,7 @@ package com.appsomehow.ramadan;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ViewParent;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,9 +21,9 @@ public class SplashScreen extends Activity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-          startActivity(new Intent(SplashScreen.this,MainActivity.class));
+                startActivity(new Intent(SplashScreen.this, MainActivity.class));
                 finish();
             }
-        },2000);
+        }, 2000);
     }
 }

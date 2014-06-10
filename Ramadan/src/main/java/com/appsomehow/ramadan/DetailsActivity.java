@@ -23,7 +23,7 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 import java.util.ArrayList;
 
 
-public class DetailsActivity extends ActionBarActivity implements DetailsFragment.DetailProvider{
+public class DetailsActivity extends ActionBarActivity implements DetailsFragment.DetailProvider {
 
     private int fileResId, iconDrawableId, topicPosition;
     private Topic topicInView;
@@ -39,7 +39,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
 
         topics = getIntent().getParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST);
         Bundle extras = getIntent().getExtras();
-        if(extras != null) {
+        if (extras != null) {
             topicPosition = extras.getInt(Constants.topic.EXTRA_VIEWING_NOW);
             iconDrawableId = extras.getInt(Constants.topic.EXTRA_ICON_ID);
             fileResId = extras.getInt(Constants.topic.EXTRA_DATA_FILE);
@@ -62,7 +62,7 @@ public class DetailsActivity extends ActionBarActivity implements DetailsFragmen
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 BanglaTextView btv;
-                if(convertView == null) {
+                if (convertView == null) {
                     convertView = getLayoutInflater().inflate(R.layout.drawer_layout, parent, false);
                 }
                 btv = (BanglaTextView) convertView.findViewById(R.id.btv_nav);

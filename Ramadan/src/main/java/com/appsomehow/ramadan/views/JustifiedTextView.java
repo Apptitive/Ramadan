@@ -10,10 +10,7 @@ import android.graphics.Paint.Align;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.utilities.TextJustifyUtils;
-import com.appsomehow.ramadan.utilities.Utilities;
-import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
 /*
 *

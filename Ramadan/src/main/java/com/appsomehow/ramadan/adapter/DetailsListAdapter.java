@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Iftekhar on 6/5/2014.
  */
-public class DetailsListAdapter extends BaseAdapter{
+public class DetailsListAdapter extends BaseAdapter {
 
     private static final int VIEW_TYPE_COUNT = 7;
 
@@ -100,9 +100,9 @@ public class DetailsListAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if(holder.btvDetail != null)
+        if (holder.btvDetail != null)
             holder.btvDetail.setBanglaText(detail.getText());
-        if(holder.atvDetail != null)
+        if (holder.atvDetail != null)
             holder.atvDetail.setArabicText(detail.getText());
 
         return convertView;

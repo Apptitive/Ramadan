@@ -12,7 +12,7 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 /**
  * Created by Iftekhar on 6/9/2014.
  */
-public class ArabicTextView extends JustifiedTextView{
+public class ArabicTextView extends JustifiedTextView {
     TypedArray typedArray;
     Typeface myTypeface;
     String arabicText;
