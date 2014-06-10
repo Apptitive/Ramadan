@@ -13,6 +13,6 @@
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_gravity="left"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_18"
+        android:textSize="18sp"
         app:fontName="@string/font_solaimanlipi"/>
 </LinearLayout>
