@@ -10,33 +10,32 @@ import com.appsomehow.ramadan.utilities.Utilities;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 
 /**
- * Created by Sharif on 5/26/2014.
+ * Created by Iftekhar on 6/9/2014.
  */
-public class BanglaTextView extends JustifiedTextView {
-
+public class ArabicTextView extends JustifiedTextView {
     TypedArray typedArray;
     Typeface myTypeface;
-    String banglaText;
+    String arabicText;
     String fontName;
     boolean justify;
 
-    public BanglaTextView(Context context) {
+    public ArabicTextView(Context context) {
         super(context);
         init(null, 0);
     }
 
-    public BanglaTextView(Context context, AttributeSet attrs) {
+    public ArabicTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
     }
 
-    public BanglaTextView(Context context, AttributeSet attrs, int defStyle) {
+    public ArabicTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }
 
-    public void setBanglaText(String banglaText) {
-        setBanglaSupportedText(banglaText, justify);
+    public void setArabicText(String arabicText) {
+        setBanglaSupportedText(arabicText, justify);
         if (typedArray != null) {
             typedArray.recycle();
         }
@@ -49,7 +48,7 @@ public class BanglaTextView extends JustifiedTextView {
                 typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomTextView);
                 fontName = typedArray.getString(R.styleable.CustomTextView_fontName);
                 myTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/" + fontName);
-                banglaText = typedArray.getString(R.styleable.CustomTextView_banglaText);
+                arabicText = typedArray.getString(R.styleable.CustomTextView_banglaText);
                 justify = Boolean.parseBoolean(typedArray.getString(R.styleable.CustomTextView_justify));
 
             } catch (Exception e) {
@@ -60,15 +59,15 @@ public class BanglaTextView extends JustifiedTextView {
                 setTypeface(myTypeface);
             }
 
-            setBanglaSupportedText(banglaText, justify);
+            setBanglaSupportedText(arabicText, justify);
 
             typedArray.recycle();
         }
     }
 
-    private void setBanglaSupportedText(String banglaText, boolean justify) {
-        if (banglaText != null) {
-            setText(Utilities.isBuildAboveThirteen() ? banglaText : AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, myTypeface, -1));
+    private void setBanglaSupportedText(String arabicText, boolean justify) {
+        if (arabicText != null) {
+            setText(Utilities.isBuildAboveThirteen() ? arabicText : AndroidCustomFontSupport.getCorrectedBengaliFormat(arabicText, myTypeface, -1));
         }
     }
 }

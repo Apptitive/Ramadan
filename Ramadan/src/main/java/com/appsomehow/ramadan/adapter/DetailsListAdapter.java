@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import com.appsomehow.ramadan.R;
 import com.appsomehow.ramadan.model.Detail;
 import com.appsomehow.ramadan.utilities.Constants;
+import com.appsomehow.ramadan.views.ArabicTextView;
 import com.appsomehow.ramadan.views.BanglaTextView;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 /**
  * Created by Iftekhar on 6/5/2014.
  */
-public class DetailsListAdapter extends BaseAdapter{
+public class DetailsListAdapter extends BaseAdapter {
 
-    private static final int VIEW_TYPE_COUNT = 3;
+    private static final int VIEW_TYPE_COUNT = 7;
 
     private List<Detail> details;
     private Context context;
@@ -55,6 +56,7 @@ public class DetailsListAdapter extends BaseAdapter{
 
     private class ViewHolder {
         BanglaTextView btvDetail;
+        ArabicTextView atvDetail;
     }
 
     @Override
@@ -78,12 +80,30 @@ public class DetailsListAdapter extends BaseAdapter{
                     convertView = LayoutInflater.from(context).inflate(R.layout.list_item_detail_headeronly, parent, false);
                     holder.btvDetail = (BanglaTextView) convertView.findViewById(R.id.btv_headerText);
                     break;
+                case Constants.detail.VIEW_TYPE_DIVIDER:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.list_item_detail_divider, parent, false);
+                    break;
+                case Constants.detail.VIEW_TYPE_TEXT_BULLET_ALIGN:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.list_item_detail_text_bullet_align, parent, false);
+                    holder.btvDetail = (BanglaTextView) convertView.findViewById(R.id.btv_plainText_bullet_align);
+                    break;
+                case Constants.detail.VIEW_TYPE_ARABIC:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.list_item_detail_arabic, parent, false);
+                    holder.atvDetail = (ArabicTextView) convertView.findViewById(R.id.btv_plainText_arabic);
+                    break;
+                case Constants.detail.VIEW_TYPE_ARABIC_BULLET_ALIGN:
+                    convertView = LayoutInflater.from(context).inflate(R.layout.list_item_detail_arabic_bullet_align, parent, false);
+                    holder.atvDetail = (ArabicTextView) convertView.findViewById(R.id.btv_plainText_arabic_bullet_align);
+                    break;
             }
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.btvDetail.setText(detail.getText());
+        if (holder.btvDetail != null)
+            holder.btvDetail.setBanglaText(detail.getText());
+        if (holder.atvDetail != null)
+            holder.atvDetail.setArabicText(detail.getText());
 
         return convertView;
     }

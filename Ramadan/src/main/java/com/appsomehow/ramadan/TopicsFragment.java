@@ -39,7 +39,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        parentActivity = (TopicsActivity)activity;
+        parentActivity = (TopicsActivity) activity;
     }
 
     @Override
@@ -61,26 +61,27 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         parserFactory = XmlPullParserFactory.newInstance();
         parserFactory.setNamespaceAware(false);
         XmlPullParser xpp = parserFactory.newPullParser();
-
         xpp.setInput(getResources().openRawResource(topicResId), "utf-8");
+
         Topic topic = null;
-        for(int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
+
+        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
             String name = xpp.getName();
-            if(eventType == XmlPullParser.START_TAG) {
-                if(name.equalsIgnoreCase("subtopic")) {
+            if (eventType == XmlPullParser.START_TAG) {
+                if (name.equalsIgnoreCase("subtopic")) {
                     topic = new Topic();
                     topic.setHeader(xpp.getAttributeValue(null, "name"));
                     topic.setFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
                 }
-                if(name.equalsIgnoreCase("details")) {
+                if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
                 }
             }
-            if(eventType == XmlPullParser.END_TAG) {
-                if(name.equalsIgnoreCase("subtopic")) {
+            if (eventType == XmlPullParser.END_TAG) {
+                if (name.equalsIgnoreCase("subtopic")) {
                     topics.add(topic);
                 }
-                if(name.equalsIgnoreCase("brief")) {
+                if (name.equalsIgnoreCase("brief")) {
                     topic.setShortDescription(xpp.getAttributeValue(null, "text"));
                 }
             }
@@ -90,8 +91,8 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
     private void parallaxListViewBackground(int drawable) {
         final ListView listView = getListView();
-        if(listView instanceof Parallaxor) {
-            ((ParallaxListView)listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .25f);
+        if (listView instanceof Parallaxor) {
+            ((ParallaxListView) listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .25f);
         }
     }
 
@@ -106,7 +107,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(topicListAdapter);
         int orientation = getResources().getConfiguration().orientation;
-        if(orientation == Configuration.ORIENTATION_PORTRAIT)
+        if (orientation == Configuration.ORIENTATION_PORTRAIT)
             parallaxListViewBackground(R.drawable.bg_home);
         else
             parallaxListViewBackground(R.drawable.bg_home_land);
@@ -114,7 +115,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
     @Override
     public void onTopicClick(Topic topic, int position) {
-        if(!topic.isFullText()) {
+        if (!topic.isFullText()) {
             Intent i = new Intent(parentActivity, DetailsActivity.class);
             i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
             i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);

@@ -3,8 +3,6 @@ package com.appsomehow.ramadan.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import java.util.List;
-
 /**
  * Created by rayhan on 5/27/2014.
  */
@@ -33,7 +31,7 @@ public class Region {
     public Region() {
     }
 
-    public Region(String id, String name, String nameInBangla, boolean isPositive, int intervalSehri , int intervalIfter) {
+    public Region(String id, String name, String nameInBangla, boolean isPositive, int intervalSehri, int intervalIfter) {
         this.id = id;
         this.name = name;
         this.nameInBangla = nameInBangla;

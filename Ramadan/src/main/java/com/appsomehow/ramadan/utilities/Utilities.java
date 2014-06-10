@@ -83,7 +83,7 @@ public class Utilities {
         return Build.VERSION.SDK_INT >= 14 ? true : false;
     }
 
-    public static SpannableString getSpannableStringWithBanglaSupport(String text){
+    public static SpannableString getSpannableStringWithBanglaSupport(String text) {
         return new SpannableString(BengaliUnicodeString.getBengaliUTF(text));
     }
 

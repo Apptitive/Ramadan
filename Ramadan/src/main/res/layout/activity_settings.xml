@@ -10,7 +10,7 @@
         android:id="@+id/custom_actionbar"
         android:background="@color/AB_Green_Ramadan"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30"
+        android:layout_height="@dimen/dp_40"
         android:orientation="horizontal">
 
         <LinearLayout

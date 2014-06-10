@@ -17,22 +17,19 @@ public class AlarmReceiver extends BroadcastReceiver {
         PreferenceHelper preferenceHelper = new PreferenceHelper(context);
 
 
-
         boolean isAlarmSelected = preferenceHelper.getBoolean(context.getString(R.string.alarm_switch));
         if (!isAlarmSelected) {
             return;
         }
 
 
-
-
-        boolean isVibrate = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm_vibrat));
+        boolean isVibrate = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm_vibrate));
         if (isVibrate) {
             setAlarmVibration(context);
         }
-        String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_rington), "default ringtone");
+        String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_ringtone), "default ringtone");
 
-        if (ringTonName!=null) {
+        if (ringTonName != null) {
             Intent ringTonIntent = new Intent(context, RingtoneService.class);
             ringTonIntent.putExtra(Constants.KEY_RINGTONE_NAME, ringTonName);
             Log.e("rington name", "" + ringTonName);

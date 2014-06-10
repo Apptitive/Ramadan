@@ -3,12 +3,10 @@ package com.appsomehow.ramadan.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
-
 /**
  * Created by Iftekhar on 6/4/2014.
  */
-public class Topic implements Parcelable{
+public class Topic implements Parcelable {
     private String header;
     private String shortDescription;
     private boolean isFullText;
@@ -19,7 +17,8 @@ public class Topic implements Parcelable{
         detailId = in.readInt();
     }
 
-    public Topic() {}
+    public Topic() {
+    }
 
     public Topic(String header, String shortDescription, boolean isFullText, int detailId) {
         this.header = header;
