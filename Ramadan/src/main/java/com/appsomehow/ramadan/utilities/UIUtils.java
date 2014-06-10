@@ -1,6 +1,7 @@
 package com.appsomehow.ramadan.utilities;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;

@@ -75,7 +75,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
 
 
         timeTables = DbManager.getInstance().getAllTimeTables();
-        timeTable = UIUtils.compareCurrentDate(timeTables);
+
         regions = DbManager.getInstance().getAllRegions();
     }
 
@@ -84,10 +84,16 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         super.onResume();
 
         // Example of reattaching to the fragment
-        if (timeTable != null)
+        timeTable = UIUtils.compareCurrentDate(timeTables);
+        if (timeTable != null) {
+
             region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
-        else
+        }
+        else {
+            seheriTime.setText("0:00");
+            iftarTime.setText("0:00");
             return;
+        };
 
         if (region.isPositive()) {
             seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
