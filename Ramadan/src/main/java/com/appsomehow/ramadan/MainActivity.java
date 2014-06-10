@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 
 import com.appsomehow.ramadan.helper.CSVToDbHelper;
 import com.appsomehow.ramadan.helper.DbManager;
