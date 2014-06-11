@@ -22,6 +22,7 @@ import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
 import com.appsomehow.ramadan.utilities.Utilities;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -130,7 +131,7 @@ public class SehriIfterActivity extends ActionBarActivity {
             List<Region> regions = DbManager.getInstance().getAllRegions();
 
             @Override
-            public boolean onNavigationItemSelected(int position, long id) {
+            public boolean onNavigationItemSelected(int position, long id)  {
 
                 timeTables.clear();
                 Region region = UIUtils.getSelectedLocation(regions, dropDownItems[position]);

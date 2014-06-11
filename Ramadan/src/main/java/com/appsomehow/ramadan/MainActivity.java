@@ -22,11 +22,17 @@ import com.appsomehow.ramadan.utilities.Alarm;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.UIUtils;
+import com.appsomehow.ramadan.utilities.Utilities;
 import com.appsomehow.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.MutableDateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -82,33 +88,40 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onResume() {
         super.onResume();
-
         // Example of reattaching to the fragment
-        timeTable = UIUtils.compareCurrentDate(timeTables);
-        if (timeTable != null) {
 
-            region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
-        }
-        else {
-            seheriTime.setText("0:00");
-            iftarTime.setText("0:00");
-            return;
-        };
+        // timeTable = UIUtils.compareCurrentDate(timeTables, UIUtils.stringToDate(UIUtils.getCurrentDate(Constants.DATE_FORMAT)));
+        seheriTime.setText("0:00");
+        iftarTime.setText("0:00");
 
-        if (region.isPositive()) {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTable, this, false));
-        } else {
-            seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTable, this, true));
-            iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTable, this, false));
+        region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        if (region != null) {
+
+            try {
+                if (region.isPositive()) {
+                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, this, true));
+                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, this, false));
+                } else {
+                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, this, true));
+                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, this, false));
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
-        RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
-                FRAG_TAG_TIME_PICKER);
-        if (rtpd != null) {
-            rtpd.setOnTimeSetListener(this);
-        }
+
+
+
+    RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
+            FRAG_TAG_TIME_PICKER);
+    if(rtpd!=null)
+
+    {
+        rtpd.setOnTimeSetListener(this);
     }
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,10 +203,14 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
         preferenceHelper.setBoolean(getString(R.string.alarm_switch), isSwitchOn);
-        setUpAlarm(hourOfDay, minute);
+        try {
+            setUpAlarm(hourOfDay, minute);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void setUpAlarm(int hourOfDay, int minute) {
+    private void setUpAlarm(int hourOfDay, int minute) throws ParseException {
         boolean isAlarmSelected = preferenceHelper.getBoolean(getString(R.string.alarm_switch));
         if (isAlarmSelected) {
             Alarm alarm = new Alarm(this);

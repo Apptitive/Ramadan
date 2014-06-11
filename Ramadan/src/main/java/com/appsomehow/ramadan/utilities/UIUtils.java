@@ -7,6 +7,11 @@ import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.model.Region;
 import com.appsomehow.ramadan.model.TimeTable;
 
+import org.joda.time.DateTime;
+import org.joda.time.MutableDateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,14 +22,22 @@ import java.util.List;
  * Created by Sharif on 5/28/2014.
  */
 public class UIUtils {
-    public static String getCurrentDate() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
+
+    public static final SimpleDateFormat simpleDateTimeFormat = new SimpleDateFormat(
+            "dd/MM/yyyy HH:mm");
+
+    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            "dd/MM/yyyy");
+
+    public static String getCurrentDate(String format) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         return simpleDateFormat.format(new Date());
     }
 
-    public static TimeTable compareCurrentDate(List<TimeTable> timeTables) {
+    public static TimeTable compareCurrentDate(List<TimeTable> timeTables,
+                                               String currentDate) {
         for (TimeTable timeTable : timeTables) {
-            if (timeTable.getDate().equals(getCurrentDate())) {
+            if (timeTable.getDate().equals(currentDate)) {
                 return timeTable;
             }
         }
@@ -35,7 +48,7 @@ public class UIUtils {
         List<TimeTable> timeTables = DbManager.getInstance().getAllTimeTables();
         int i = 0;
         for (TimeTable timeTable : timeTables) {
-            if (timeTable.getDate().equals(getCurrentDate())) {
+            if (timeTable.getDate().equals(getCurrentDate(Constants.DATE_FORMAT))) {
                 return i;
             }
             i++;
@@ -73,22 +86,47 @@ public class UIUtils {
         return DbManager.getInstance().getRegionWithName("Dhaka");
     }
 
-    public static String getSehriIftarTime(int interval, TimeTable timeTable, Context context, boolean isSeheri) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.DATE_FORMAT_HOUR_MINUTE);
-        try {
-            Date date = simpleDateFormat.parse(getSehriIftarTime(isSeheri, timeTable));
 
+    public static String getSehriIftarTime(int interval,TimeTable timeTable, Context context, boolean isSeheri) {
+        if (timeTable==null){
+            return "0:00";
+        }
+        try {
+            Date sehriIftarTime = simpleDateTimeFormat.parse(getSehriIftarTime(isSeheri, timeTable));
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.YEAR, date.getYear());
-            calendar.set(Calendar.MONTH, date.getMonth());
-            calendar.set(Calendar.DAY_OF_MONTH, date.getDay());
-            calendar.set(Calendar.HOUR_OF_DAY, date.getHours());
-            calendar.set(Calendar.MINUTE, date.getMinutes() + interval);
+            calendar.set(Calendar.YEAR, sehriIftarTime.getYear());
+            calendar.set(Calendar.MONTH, sehriIftarTime.getMonth());
+            calendar.set(Calendar.DAY_OF_MONTH, sehriIftarTime.getDay());
+            calendar.set(Calendar.HOUR_OF_DAY, sehriIftarTime.getHours());
+            calendar.set(Calendar.MINUTE, sehriIftarTime.getMinutes() + interval);
             return getReplacedString(calendar);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return null;
+        return "0:00";
+    }
+
+
+    public static String getSehriIftarTime(int interval,List<TimeTable>timeTables, Context context, boolean isSeheri) throws ParseException {
+
+        TimeTable timeTable=  getCalculatedTimeTable(timeTables,isSeheri);
+        if (timeTable==null){
+            return "0:00";
+        }
+
+        try {
+            Date sehriIftarTime = simpleDateTimeFormat.parse(getSehriIftarTime(isSeheri, timeTable));
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, sehriIftarTime.getYear());
+            calendar.set(Calendar.MONTH, sehriIftarTime.getMonth());
+            calendar.set(Calendar.DAY_OF_MONTH, sehriIftarTime.getDay());
+            calendar.set(Calendar.HOUR_OF_DAY, sehriIftarTime.getHours());
+            calendar.set(Calendar.MINUTE, sehriIftarTime.getMinutes() + interval);
+            return getReplacedString(calendar);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "0:00";
     }
 
     public static String getReplacedString(Calendar calendar) {
@@ -96,11 +134,50 @@ public class UIUtils {
     }
 
     private static String getSehriIftarTime(boolean isSehri, TimeTable timeTable) {
-
         if (isSehri)
             return timeTable.getDate() + " " + timeTable.getSehriTime();
-        return timeTable.getDate() + " " + timeTable.getIfterTime();
+        String iftarTime= (Integer.parseInt(timeTable.getIfterTime().substring(0,2))-12)+ timeTable.getIfterTime().substring(2);
+        return timeTable.getDate() + " " + iftarTime;
     }
 
+
+    public static TimeTable getCalculatedTimeTable(List<TimeTable> timeTables,
+                                                   boolean isSehri) throws ParseException {
+
+        Calendar calendar = Calendar.getInstance();
+
+        String currentDate = simpleDateFormat.format(calendar.getTime());
+
+        Date currentDateTime = simpleDateTimeFormat.parse(simpleDateTimeFormat
+                .format(calendar.getTime()));
+
+        TimeTable timeTable = compareCurrentDate(timeTables, currentDate);
+        if (timeTable != null) {
+            Date mutableDateTime = getMutableDateTime(timeTable, isSehri);
+            if (currentDateTime.before(mutableDateTime)) {
+                return timeTable;
+            } else {
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+                return compareCurrentDate(timeTables,
+                        simpleDateFormat.format(calendar.getTime()));
+            }
+        }
+        return null;
+    }
+
+    private static Date getMutableDateTime(TimeTable timeTable, boolean isSehri)
+            throws ParseException {
+
+        Calendar mutablCalendar = Calendar.getInstance();
+        if (isSehri) {
+            mutablCalendar.setTime(simpleDateTimeFormat.parse(timeTable
+                    .getDate() + " " + timeTable.getSehriTime()));
+        } else
+            mutablCalendar.setTime(simpleDateTimeFormat.parse(timeTable
+                    .getDate() + " " + timeTable.getIfterTime()));
+
+        mutablCalendar.add(Calendar.MINUTE, 30);
+        return mutablCalendar.getTime();
+    }
 
 }
