@@ -6,11 +6,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.appsomehow.ramadan.adapter.TopicListAdapter;
 import com.appsomehow.ramadan.model.Topic;
@@ -94,12 +96,15 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     private void parallaxListViewBackground(int drawable) {
         final ListView listView = getListView();
         if (listView instanceof Parallaxor) {
-            DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-            // parallax background sometimes ends before screen bottom. To ensure that,
-            // ListView height is stretched to match parent height
-            listView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, displayMetrics.heightPixels));
-            ((ParallaxListView) listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .25f);
+            ((ParallaxListView) listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .35f);
         }
+    }
+
+    private boolean isListScrolling(ListView listView, int displayHeight) {
+        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayHeight)
+            return false;
+        Toast.makeText(parentActivity, "list scrolling", Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     @Override
@@ -112,11 +117,20 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(topicListAdapter);
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == Configuration.ORIENTATION_PORTRAIT)
-            parallaxListViewBackground(R.drawable.bg_home);
-        else
-            parallaxListViewBackground(R.drawable.bg_home_land);
+        final ListView listView = getListView();
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+                if(isListScrolling(listView, displayMetrics.heightPixels)) {
+                    int orientation = getResources().getConfiguration().orientation;
+                    if (orientation == Configuration.ORIENTATION_PORTRAIT)
+                        parallaxListViewBackground(R.drawable.bg_home);
+                    else
+                        parallaxListViewBackground(R.drawable.bg_home_land);
+                }
+            }
+        });
     }
 
     @Override
