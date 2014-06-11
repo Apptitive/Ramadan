@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appsomehow.ramadan" >
+    package="com.apptitive.ramadan">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -18,7 +18,7 @@
             android:parentActivityName=".TopicsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.TopicsActivity" />
+                android:value="com.apptitive.ramadan.TopicsActivity" />
         </activity>
         <activity
             android:name=".SettingsActivity"
@@ -30,21 +30,21 @@
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
         <activity
             android:name=".SehriIfterActivity"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
         <activity
             android:name=".SaomVongerKaronActivity"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appsomehow.ramadan.MainActivity" />
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
         <activity
             android:name=".SplashScreen"

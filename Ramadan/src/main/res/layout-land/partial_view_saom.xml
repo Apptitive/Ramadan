@@ -16,7 +16,7 @@
         android:layout_marginBottom="@dimen/dp_5"
         android:src="@drawable/saom"/>
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         app:fontName="@string/font_solaimanlipi"
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"

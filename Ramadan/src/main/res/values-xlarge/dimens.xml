@@ -36,6 +36,7 @@
     <dimen name="dp_20">40dp</dimen>
     <dimen name="dp_18">36dp</dimen>
     <dimen name="dp_15">30dp</dimen>
+    <dimen name="dp_12">24dp</dimen>
     <dimen name="dp_10">20dp</dimen>
     <dimen name="dp_5">10dp</dimen>
     <dimen name="dp_8">16dp</dimen>

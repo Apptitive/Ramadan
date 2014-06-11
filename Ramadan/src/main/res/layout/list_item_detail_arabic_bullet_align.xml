@@ -5,11 +5,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/dp_10"
+    android:paddingLeft="@dimen/dp_12"
     android:paddingBottom="@dimen/dp_10"
     android:paddingRight="@dimen/dp_10">
 
-    <com.appsomehow.ramadan.views.ArabicTextView
+    <com.apptitive.ramadan.views.ArabicTextView
         android:id="@+id/btv_plainText_arabic_bullet_align"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -79,7 +79,7 @@
                 android:layout_marginLeft="@dimen/dp_25"
                 android:gravity="center_vertical">
 
-                <com.appsomehow.ramadan.views.BanglaTextView
+                <com.apptitive.ramadan.views.BanglaTextView
                     android:id="@+id/tv_time_seheri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     android:textSize="@dimen/text_size_12"
                     app:banglaText="@string/sehri_time"
                     app:fontName="@string/font_solaimanlipi" />
-                <com.appsomehow.ramadan.views.BanglaTextView
+                <com.apptitive.ramadan.views.BanglaTextView
                     android:id="@+id/tv_seheri_time"
                     android:layout_below="@id/tv_time_seheri"
                     android:layout_marginTop="@dimen/dp_ng_10"
@@ -107,7 +107,7 @@
                 android:layout_marginLeft="@dimen/dp_25"
                 android:gravity="center_vertical">
 
-                <com.appsomehow.ramadan.views.BanglaTextView
+                <com.apptitive.ramadan.views.BanglaTextView
                     android:id="@+id/tv_time_ifter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                     app:banglaText="@string/ifter"
                     app:fontName="@string/font_solaimanlipi" />
 
-                <com.appsomehow.ramadan.views.BanglaTextView
+                <com.apptitive.ramadan.views.BanglaTextView
                     android:id="@+id/tv_ifter_time"
                     android:layout_below="@id/tv_time_ifter"
                     android:layout_width="wrap_content"

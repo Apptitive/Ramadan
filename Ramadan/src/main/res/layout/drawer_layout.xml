@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         android:id="@+id/btv_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_marginBottom="@dimen/dp_10"
-        android:src="@drawable/shob_e_kodor"
+        android:src="@drawable/ramadan"
         android:layout_centerHorizontal="true"
         />
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         app:fontName="@string/font_solaimanlipi"
         android:id="@+id/tv_name"
         android:layout_below="@id/iv_icon"

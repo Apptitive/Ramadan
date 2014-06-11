@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/tab_selector">
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         android:id="@+id/btv_topic_hint"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/divider"
-        android:padding="@dimen/dp_15"
+        android:padding="@dimen/dp_10"
         app:fontName="@string/font_solaimanlipi"
         android:textSize="@dimen/text_size_15"
         android:textColor="@color/White" />
