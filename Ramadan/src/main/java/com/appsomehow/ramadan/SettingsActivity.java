@@ -16,13 +16,11 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import com.appsomehow.ramadan.helper.DbManager;
 import com.appsomehow.ramadan.utilities.AboutUsDialog;
 import com.appsomehow.ramadan.utilities.Constants;
 import com.appsomehow.ramadan.utilities.PreferenceHelper;
 import com.appsomehow.ramadan.utilities.Utilities;
-
 import static android.preference.Preference.OnPreferenceChangeListener;
 
 
@@ -55,6 +53,7 @@ public class SettingsActivity extends PreferenceActivity {
                 finish();
             }
         });
+
     }
 
 
