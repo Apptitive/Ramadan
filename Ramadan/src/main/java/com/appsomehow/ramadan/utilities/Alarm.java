@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.appsomehow.ramadan.receiver.AlarmReceiver;
 
@@ -12,6 +13,7 @@ import org.joda.time.MutableDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,16 +31,10 @@ public class Alarm {
     }
 
 
-    public void setOneTimeAlarm(int hourOfDay, int hourOfMinute) {
-        MutableDateTime dateTime = getCalculatedDateAndTime(hourOfDay, hourOfMinute);
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_MONTH, dateTime.getDayOfMonth());
-        calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHourOfDay());
-        calendar.set(Calendar.MINUTE, dateTime.getMinuteOfHour());
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.AM_PM, getAM_PM(hourOfDay));
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), setUpAlarmType(PendingIntent.FLAG_ONE_SHOT));
-        saveSelectedDateTime(calendar.getTime());
+    public void setOneTimeAlarm(int hourOfDay, int hourOfMinute) throws ParseException {
+        Calendar dateTime = getCalculatedDateAndTime(hourOfDay, hourOfMinute);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, dateTime.getTimeInMillis(), setUpAlarmType(PendingIntent.FLAG_ONE_SHOT));
+        saveSelectedDateTime(dateTime.getTime());
     }
 
     private void saveSelectedDateTime(Date time) {
@@ -47,16 +43,20 @@ public class Alarm {
         preferenceHelper.setString(Constants.PREF_ALARM_DATE, dateTime);
     }
 
-    private MutableDateTime getCalculatedDateAndTime(int hourofDay, int hourOfMinute) {
-        DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss");
-        DateTime now = DateTime.now();
-        String inputDateTime = now.getMonthOfYear() + "/" + now.getDayOfMonth() + "/" + now.getYear() + " " + hourofDay + ":" + hourOfMinute + ":00";
-        MutableDateTime selected = new MutableDateTime(dtf.parseDateTime(inputDateTime));
-        if (selected.isBefore(now)) {
-            selected.addDays(1);
-            return selected;
+    private Calendar getCalculatedDateAndTime(int hourofDay, int hourOfMinute) throws ParseException {
+        Calendar calendar =Calendar.getInstance();
+        Date currentDateTime = UIUtils.simpleDateTimeFormat.parse(UIUtils.simpleDateTimeFormat
+                .format(calendar.getTime()));
+
+        calendar.set(Calendar.HOUR_OF_DAY,hourofDay);
+        calendar.set(Calendar.MINUTE,hourOfMinute);
+        Date selectedDateTime =UIUtils.simpleDateTimeFormat.parse(UIUtils.simpleDateTimeFormat.format(calendar.getTime()));
+        calendar.setTime(selectedDateTime);
+        if (selectedDateTime.before(currentDateTime)) {
+            calendar.add(Calendar.DAY_OF_MONTH,1);
+            return calendar;
         }
-        return selected;
+        return calendar;
     }
 
 
@@ -65,10 +65,5 @@ public class Alarm {
         return PendingIntent.getBroadcast(context, 0,
                 intent, flag);
     }
-
-    public int getAM_PM(int hourOfDay) {
-        return hourOfDay < 12 ? Calendar.AM : Calendar.PM;
-    }
-
 
 }
