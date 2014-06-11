@@ -6,13 +6,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.appsomehow.ramadan.adapter.TopicListAdapter;
 import com.appsomehow.ramadan.model.Topic;
@@ -103,7 +100,6 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     private boolean isListScrolling(ListView listView, int displayHeight) {
         if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayHeight)
             return false;
-        Toast.makeText(parentActivity, "list scrolling", Toast.LENGTH_SHORT).show();
         return true;
     }
 
@@ -122,7 +118,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
             @Override
             public void run() {
                 DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-                if(isListScrolling(listView, displayMetrics.heightPixels)) {
+                if (isListScrolling(listView, displayMetrics.heightPixels)) {
                     int orientation = getResources().getConfiguration().orientation;
                     if (orientation == Configuration.ORIENTATION_PORTRAIT)
                         parallaxListViewBackground(R.drawable.bg_home);
