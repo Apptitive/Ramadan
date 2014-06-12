@@ -6,16 +6,13 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.apptitive.ramadan.adapter.DetailsListAdapter;
 import com.apptitive.ramadan.model.Detail;
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
