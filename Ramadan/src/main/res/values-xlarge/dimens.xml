@@ -43,5 +43,6 @@
     <dimen name="dp_4">8dp</dimen>
     <dimen name="dp_6">12dp</dimen>
     <dimen name="dp_2">1.5dp</dimen>
+    <dimen name="dp_action_bar">62dp</dimen>
     <!--common file dimen end-->
 </resources>

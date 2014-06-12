@@ -10,7 +10,7 @@
         android:id="@+id/custom_actionbar"
         android:background="@color/AB_Green_Ramadan"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
+        android:layout_height="@dimen/dp_action_bar"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -31,7 +31,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-5dp"
+                android:paddingLeft="@dimen/dp_2"
+                android:paddingRight="@dimen/dp_2"
                 android:clickable="false"
                 android:src="@drawable/ic_action_settings" />
             <com.apptitive.ramadan.views.BanglaTextView
