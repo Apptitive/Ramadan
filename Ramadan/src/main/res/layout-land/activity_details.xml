@@ -20,7 +20,7 @@
             <fragment
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="com.appsomehow.ramadan.DetailsFragment"
+                android:name="com.apptitive.ramadan.DetailsFragment"
                 android:id="@+id/fragment_details"
                 tools:layout="@layout/fragment_parallax_list" />
         </RelativeLayout>
