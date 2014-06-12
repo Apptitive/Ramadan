@@ -14,6 +14,7 @@ import com.apptitive.ramadan.views.BanglaTextView;
 
 import java.util.List;
 
+
 /**
  * Created by Iftekhar on 6/5/2014.
  */
