@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/tab_selector">
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         android:id="@+id/btv_topic_hint"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

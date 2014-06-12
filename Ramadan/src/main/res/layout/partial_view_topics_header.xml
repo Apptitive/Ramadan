@@ -16,7 +16,7 @@
         android:paddingBottom="@dimen/dp_10"
         android:src="@drawable/ic_saom" />
 
-    <com.appsomehow.ramadan.views.BanglaTextView
+    <com.apptitive.ramadan.views.BanglaTextView
         android:id="@+id/btv_topic_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
