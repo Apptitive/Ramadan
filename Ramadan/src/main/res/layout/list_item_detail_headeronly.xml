@@ -5,13 +5,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/dp_10">
+    android:background="@color/AB_White_Ramadan"
+    android:padding="@dimen/dp_8">
 
     <com.appsomehow.ramadan.views.BanglaTextView
         android:id="@+id/btv_headerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         app:fontName="@string/font_solaimanlipi"
         android:textColor="@color/white_dark"
         android:textSize="@dimen/text_size_20"/>

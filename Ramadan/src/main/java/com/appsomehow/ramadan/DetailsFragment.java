@@ -88,8 +88,6 @@ public class DetailsFragment extends ListFragment {
             return Constants.detail.VIEW_TYPE_BULLET;
         else if (vt.equalsIgnoreCase("h"))
             return Constants.detail.VIEW_TYPE_HEADER_ONLY;
-        else if(vt.equalsIgnoreCase("d"))
-            return Constants.detail.VIEW_TYPE_DIVIDER;
         else if(vt.equalsIgnoreCase("a"))
             return Constants.detail.VIEW_TYPE_ARABIC;
         else if(vt.equalsIgnoreCase("ab"))
