@@ -8,7 +8,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.appsomehow.ramadan.TopicsFragment"
+        android:name="com.apptitive.ramadan.TopicsFragment"
         android:id="@+id/fragment_topics"
         tools:layout="@layout/fragment_topics" />
 
