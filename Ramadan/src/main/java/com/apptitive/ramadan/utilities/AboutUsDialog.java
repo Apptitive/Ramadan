@@ -49,7 +49,7 @@ public class AboutUsDialog {
         changelogBuilder.append("<html><head>").append(getStyle())
                 .append("</head><body>");
         changelogBuilder.append("<h1>Developed by</h1>");
-        changelogBuilder.append("<p>Appsomehow</p>");
+        changelogBuilder.append("<p>Apptitive</p>");
         changelogBuilder.append("<a href=\"activity_a://a\">Rate this app</a>");
         changelogBuilder.append("</body></html>");
         return changelogBuilder.toString();
