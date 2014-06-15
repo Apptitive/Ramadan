@@ -38,7 +38,6 @@ private PreferenceHelper preferenceHelper;
         }else {
             ringTonName  = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
         }
-
         playSound(ringTonName);
         Utilities.customNotification(getBaseContext());
         preferenceHelper.setString("RINGTON_NAME",ringTonName);
