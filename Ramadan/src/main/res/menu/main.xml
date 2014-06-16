@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.apptitive.ramadan.MainActivity">
     <item
-        android:id="@+id/menu_alarm"
+        android:id="@+id/action_alarm"
         android:icon="@drawable/ic_action_alarms"
         android:title="@string/action_alarm"
         app:showAsAction="always"></item>

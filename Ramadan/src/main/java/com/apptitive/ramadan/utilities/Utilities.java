@@ -31,11 +31,9 @@ public class Utilities {
     }
 
     public static android.text.SpannableString getBanglaSpannableString(String banglaText, Context context) {
-
         if (banglaText == null) {
             return new SpannableString(new String(""));
         }
-
         if (isBuildAboveThirteen()) {
             SpannableString spannableString = new SpannableString(banglaText);
             if (isBanglaAvailable()) {
