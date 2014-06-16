@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 
@@ -34,7 +35,7 @@ private PreferenceHelper preferenceHelper;
     public int onStartCommand(Intent intent, int flags, int startId) {
         String ringTonName="default ringtone";
         if (intent==null){
-            ringTonName=preferenceHelper.getString("RINGTON_NAME","default ringtone");
+            ringTonName=preferenceHelper.getString("RINGTON_NAME", RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString());
         }else {
             ringTonName  = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
         }
