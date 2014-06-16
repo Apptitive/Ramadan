@@ -32,8 +32,8 @@ public class SettingsActivity extends PreferenceActivity {
     private ListPreference preferenceLocation;
     private static Context settingsActivity;
     private Preference preferenceAboutUs;
-    private RingtonePreference prefereneRington;
-    private CheckBoxPreference preferenceVibrat;
+    private RingtonePreference preferenceRingtone;
+    private CheckBoxPreference preferenceVibrate;
     private Preference alrmPreference;
     private static String[] entries;
 
@@ -67,7 +67,7 @@ public class SettingsActivity extends PreferenceActivity {
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
-            listPreference.setEntries(Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
+            listPreference.setEntries(Utilities.getBanglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
             listPreference.setEntryValues(englishRegionNames);
             listPreference.setDialogTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         }
@@ -83,8 +83,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
         preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
-        prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
-        preferenceVibrat = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
+        preferenceRingtone = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
+        preferenceVibrate = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
         alrmPreference = (Preference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 
@@ -94,8 +94,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
         preferenceLocation.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         preferenceAboutUs.setSummary(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
-        prefereneRington.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
-        preferenceVibrat.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
+        preferenceRingtone.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
+        preferenceVibrate.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
         alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
 
         PreferenceHelper preferenceHelper = new PreferenceHelper(this);

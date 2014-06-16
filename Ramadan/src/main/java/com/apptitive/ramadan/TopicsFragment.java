@@ -66,7 +66,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
         Topic topic = null;
 
-        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
+        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.nextToken()) {
             String name = xpp.getName();
             if (eventType == XmlPullParser.START_TAG) {
                 if (name.equalsIgnoreCase("subtopic")) {
@@ -77,13 +77,13 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
                 if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
                 }
+                if (name.equalsIgnoreCase("brief")) {
+                    topic.setShortDescription(xpp.getAttributeValue(null, "text"));
+                }
             }
             if (eventType == XmlPullParser.END_TAG) {
                 if (name.equalsIgnoreCase("subtopic")) {
                     topics.add(topic);
-                }
-                if (name.equalsIgnoreCase("brief")) {
-                    topic.setShortDescription(xpp.getAttributeValue(null, "text"));
                 }
             }
         }
@@ -97,8 +97,8 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         }
     }
 
-    private boolean isListScrolling(ListView listView, int displayHeight) {
-        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayHeight)
+    private boolean isListScrolling(ListView listView, DisplayMetrics displayMetrics) {
+        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayMetrics.heightPixels)
             return false;
         return true;
     }
@@ -118,7 +118,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
             @Override
             public void run() {
                 DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-                if (isListScrolling(listView, displayMetrics.heightPixels)) {
+                if (isListScrolling(listView, displayMetrics)) {
                     int orientation = getResources().getConfiguration().orientation;
                     if (orientation == Configuration.ORIENTATION_PORTRAIT)
                         parallaxListViewBackground(R.drawable.bg_home);
