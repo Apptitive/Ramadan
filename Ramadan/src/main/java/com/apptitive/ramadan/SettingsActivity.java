@@ -13,6 +13,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ public class SettingsActivity extends PreferenceActivity {
     private RingtonePreference preferenceRingtone;
     private CheckBoxPreference preferenceVibrate;
     private Preference alrmPreference;
+    private static String[] entries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,10 @@ public class SettingsActivity extends PreferenceActivity {
 
 
     private void setupSimplePreferencesScreen() {
-        // addPreferencesFromResource(R.xml.pref_general);
+
+        entries =DbManager.getInstance().getAllBanglaRegionNames();
+
+
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
@@ -119,8 +124,7 @@ public class SettingsActivity extends PreferenceActivity {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                String districtName = listPreference.getEntries()[index].toString();
-                preference.setSummary(Utilities.getBanglaSpannableString(districtName, settingsActivity));
+                preference.setSummary(Utilities.getBanglaSpannableString(entries[index], settingsActivity));
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {
                     preference.setSummary(R.string.pref_ringtone_silent);

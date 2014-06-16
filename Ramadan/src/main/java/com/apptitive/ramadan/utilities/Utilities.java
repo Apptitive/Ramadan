@@ -9,6 +9,7 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.Log;
 
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.receiver.NotificationCancelReceiver;
