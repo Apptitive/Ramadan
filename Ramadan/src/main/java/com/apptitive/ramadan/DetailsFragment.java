@@ -3,6 +3,7 @@ package com.apptitive.ramadan;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,12 @@ public class DetailsFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        detailProvider = (DetailProvider) activity;
+        try{
+            detailProvider = (DetailProvider) activity;
+        }
+        catch (ClassCastException cce) {
+            Log.e(this.getTag(), "Parent activity must implement DetailProvider");
+        }
     }
 
     @Override
