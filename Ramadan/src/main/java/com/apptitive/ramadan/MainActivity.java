@@ -29,6 +29,7 @@ import org.joda.time.DateTime;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
@@ -49,10 +50,8 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         DbManager.init(this);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_main);
-
         preferenceHelper = new PreferenceHelper(this);
         if (!preferenceHelper.getBoolean(Constants.IS_DB_CREATED)) {
-            Log.e("Db Checking : ", "First Time Db Created !");
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.timetable, DbTableName.TimeTable);
             preferenceHelper.setBoolean(Constants.IS_DB_CREATED, true);

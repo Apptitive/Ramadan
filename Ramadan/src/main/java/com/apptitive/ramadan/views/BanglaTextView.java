@@ -3,11 +3,16 @@ package com.apptitive.ramadan.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.support.v4.text.TextUtilsCompat;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.utilities.Utilities;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
+
+import java.util.Locale;
 
 /**
  * Created by Sharif on 5/26/2014.
@@ -57,12 +62,20 @@ public class BanglaTextView extends JustifiedTextView {
             }
 
             if (fontName != null) {
-                setTypeface(myTypeface);
+               setUpTypeFace(myTypeface);
             }
 
             setBanglaSupportedText(banglaText, justify);
 
             typedArray.recycle();
+        }
+    }
+
+    private void setUpTypeFace(Typeface myTypeface) {
+        if (!Utilities.isBanglaAvailable()&Utilities.isBuildAboveThirteen()){
+            //nothing just add default font
+        }else {
+            setTypeface(myTypeface);
         }
     }
 

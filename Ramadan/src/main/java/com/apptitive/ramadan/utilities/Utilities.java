@@ -16,6 +16,8 @@ import com.apptitive.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.dibosh.experiments.android.support.customfonthelper.utils.TypefaceSpan;
 
+import java.util.Locale;
+
 import androidbangladesh.bengali.support.BengaliUnicodeString;
 
 /**
@@ -35,9 +37,11 @@ public class Utilities {
         }
 
         if (isBuildAboveThirteen()) {
-            TypefaceSpan span = new TypefaceSpan(getFont(context));
             SpannableString spannableString = new SpannableString(banglaText);
-            spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (isBanglaAvailable()) {
+                TypefaceSpan span = new TypefaceSpan(getFont(context));
+                spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             return spannableString;
         }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
@@ -86,6 +90,19 @@ public class Utilities {
 
     public static SpannableString getSpannableStringWithBanglaSupport(String text) {
         return new SpannableString(BengaliUnicodeString.getBengaliUTF(text));
+    }
+
+
+    public static boolean isBanglaAvailable(){
+        Locale[] locales=Locale.getAvailableLocales();
+        for(Locale locale:locales)
+        {
+            if(locale.getDisplayName().toLowerCase().contains("bengali"))
+            {
+                return true;
+            }
+        }
+     return false;
     }
 
 }

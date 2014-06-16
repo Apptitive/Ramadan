@@ -23,6 +23,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
     int layoutResourceId;
     Typeface tf;
     boolean isBuildVersionAboveThirteen;
+    private boolean isBanglaAvailable;
 
 
     public TimeTableAdapter(Context context, int layout, List<TimeTable> timeTables) {
@@ -31,6 +32,7 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         layoutResourceId = layout;
         tf = Utilities.getFont(this.context);
         isBuildVersionAboveThirteen = Utilities.isBuildAboveThirteen();
+        isBanglaAvailable=Utilities.isBanglaAvailable();
     }
 
     private class ViewHolder {
@@ -74,16 +76,14 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
         } else
             holder = (ViewHolder) convertView.getTag();
 
-        if (Utilities.isBuildAboveThirteen()) {
-
-        }
-
-        holder.rojaCount.setTypeface(tf);
-        holder.sehriTime.setTypeface(tf);
-        holder.ifterTime.setTypeface(tf);
-        holder.date.setTypeface(tf);
 
         if (isBuildVersionAboveThirteen) {
+            if (isBanglaAvailable){
+                holder.rojaCount.setTypeface(tf);
+                holder.sehriTime.setTypeface(tf);
+                holder.ifterTime.setTypeface(tf);
+                holder.date.setTypeface(tf);
+            }
             holder.date.setText(timeTable.getDateInBangla());
             holder.sehriTime.setText(timeTable.getSehriTime());
             holder.ifterTime.setText(timeTable.getIfterTime());
