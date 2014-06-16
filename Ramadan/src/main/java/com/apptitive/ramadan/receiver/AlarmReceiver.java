@@ -32,7 +32,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (ringTonName != null) {
             Intent ringTonIntent = new Intent(context, RingtoneService.class);
             ringTonIntent.putExtra(Constants.KEY_RINGTONE_NAME, ringTonName);
-            Log.e("rington name", "" + ringTonName);
             context.startService(ringTonIntent);
         }
 
