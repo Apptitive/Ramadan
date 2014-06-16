@@ -63,8 +63,8 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.btvHeader.setText(topic.getHeader());
-        holder.btvShortDesc.setText(topic.getShortDescription());
+        holder.btvHeader.setBanglaText(topic.getHeader());
+        holder.btvShortDesc.setBanglaText(topic.getShortDescription());
         if (topic.hasFullText()) {
             holder.divider.setVisibility(View.GONE);
             holder.imageViewDetails.setVisibility(View.GONE);

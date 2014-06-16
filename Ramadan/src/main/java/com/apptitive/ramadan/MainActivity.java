@@ -106,17 +106,15 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         }
 
 
+        RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
+                FRAG_TAG_TIME_PICKER);
+        if (rtpd != null)
 
+        {
+            rtpd.setOnTimeSetListener(this);
+        }
 
-    RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
-            FRAG_TAG_TIME_PICKER);
-    if(rtpd!=null)
-
-    {
-        rtpd.setOnTimeSetListener(this);
     }
-
-}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

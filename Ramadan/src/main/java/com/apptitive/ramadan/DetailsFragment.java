@@ -72,13 +72,14 @@ public class DetailsFragment extends ListFragment {
                         foundDetail = false;
                     }
                 }
-            }
-            if (eventType == XmlPullParser.END_TAG) {
                 if (name.equalsIgnoreCase("part")) {
                     if (foundDetail) {
                         details.add(new Detail(xpp.getAttributeValue(null, "text"), findViewTypeValue(xpp.getAttributeValue(null, "view_type"))));
                     }
                 }
+            }
+            if (eventType == XmlPullParser.END_TAG) {
+                continue;
             }
         }
         xpp.setInput(null);

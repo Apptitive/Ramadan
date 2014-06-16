@@ -62,7 +62,7 @@ public class Utilities {
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
-    public static android.text.SpannableString[] banglaSpannableStrings(String[] banglaRegionNames, Context context) {
+    public static android.text.SpannableString[] getBanglaSpannableStrings(String[] banglaRegionNames, Context context) {
         android.text.SpannableString[] banglaText = new android.text.SpannableString[banglaRegionNames.length];
         for (int counter = 0; counter < banglaRegionNames.length; counter++) {
             banglaText[counter] = getBanglaSpannableString(banglaRegionNames[counter], context);
