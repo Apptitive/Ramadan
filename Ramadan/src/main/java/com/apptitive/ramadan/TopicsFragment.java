@@ -72,7 +72,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
                 if (name.equalsIgnoreCase("subtopic")) {
                     topic = new Topic();
                     topic.setHeader(xpp.getAttributeValue(null, "name"));
-                    topic.setFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
+                    topic.setHasFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
                 }
                 if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
@@ -131,7 +131,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
     @Override
     public void onTopicClick(Topic topic, int position) {
-        if (!topic.isFullText()) {
+        if (!topic.hasFullText()) {
             Intent i = new Intent(parentActivity, DetailsActivity.class);
             i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
             i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);

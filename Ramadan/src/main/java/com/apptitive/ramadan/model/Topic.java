@@ -9,7 +9,7 @@ import android.os.Parcelable;
 public class Topic implements Parcelable {
     private String header;
     private String shortDescription;
-    private boolean isFullText;
+    private boolean hasFullText;
     private int detailId;
 
     private Topic(Parcel in) {
@@ -20,10 +20,10 @@ public class Topic implements Parcelable {
     public Topic() {
     }
 
-    public Topic(String header, String shortDescription, boolean isFullText, int detailId) {
+    public Topic(String header, String shortDescription, boolean hasFullText, int detailId) {
         this.header = header;
         this.shortDescription = shortDescription;
-        this.isFullText = isFullText;
+        this.hasFullText = hasFullText;
         this.detailId = detailId;
     }
 
@@ -43,12 +43,12 @@ public class Topic implements Parcelable {
         this.shortDescription = shortDescription;
     }
 
-    public boolean isFullText() {
-        return isFullText;
+    public boolean hasFullText() {
+        return hasFullText;
     }
 
-    public void setFullText(boolean isFullText) {
-        this.isFullText = isFullText;
+    public void setHasFullText(boolean isFullText) {
+        this.hasFullText = isFullText;
     }
 
     public int getDetailId() {
