@@ -97,8 +97,8 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         }
     }
 
-    private boolean isListScrolling(ListView listView, int displayHeight) {
-        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayHeight)
+    private boolean isListScrolling(ListView listView, DisplayMetrics displayMetrics) {
+        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayMetrics.heightPixels)
             return false;
         return true;
     }
@@ -118,7 +118,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
             @Override
             public void run() {
                 DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-                if (isListScrolling(listView, displayMetrics.heightPixels)) {
+                if (isListScrolling(listView, displayMetrics)) {
                     int orientation = getResources().getConfiguration().orientation;
                     if (orientation == Configuration.ORIENTATION_PORTRAIT)
                         parallaxListViewBackground(R.drawable.bg_home);
