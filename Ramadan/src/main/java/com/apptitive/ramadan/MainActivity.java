@@ -36,7 +36,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
-    private MenuItem menuItemAlarm, menuItemSettings;
     private PreferenceHelper preferenceHelper;
     private BanglaTextView iftarTime;
     private BanglaTextView seheriTime;
@@ -113,11 +112,9 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        menuItemAlarm = menu.findItem(R.id.action_alarm);
-        menuItemAlarm.setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_alarm), this));
-        menuItemSettings = menu.findItem(R.id.action_settings);
-        menuItemSettings.setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_settings), this));
-        return super.onCreateOptionsMenu(menu);
+        //menu.findItem(R.id.action_alarm).setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_alarm), this));
+        //menu.findItem(R.id.action_settings).setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_settings), this));
+        return true;
     }
 
     @Override
