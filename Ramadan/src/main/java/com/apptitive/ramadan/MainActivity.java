@@ -22,6 +22,7 @@ import com.apptitive.ramadan.utilities.Alarm;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.UIUtils;
+import com.apptitive.ramadan.utilities.Utilities;
 import com.apptitive.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -35,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
+    private MenuItem menuItemAlarm, menuItemSettings;
     private PreferenceHelper preferenceHelper;
     private BanglaTextView iftarTime;
     private BanglaTextView seheriTime;
@@ -74,7 +76,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
         iftarTime = (BanglaTextView) findViewById(R.id.tv_ifter_time);
         seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
-
         timeTables = DbManager.getInstance().getAllTimeTables();
 
         regions = DbManager.getInstance().getAllRegions();
@@ -83,15 +84,12 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     @Override
     public void onResume() {
         super.onResume();
-        // Example of reattaching to the fragment
 
-        // timeTable = UIUtils.compareCurrentDate(timeTables, UIUtils.stringToDate(UIUtils.getCurrentDate(Constants.DATE_FORMAT)));
         seheriTime.setText("0:00");
         iftarTime.setText("0:00");
 
         region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
         if (region != null) {
-
             try {
                 if (region.isPositive()) {
                     seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, this, true));
@@ -105,34 +103,30 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
             }
         }
 
-
         RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
                 FRAG_TAG_TIME_PICKER);
-        if (rtpd != null)
-
-        {
+        if (rtpd != null) {
             rtpd.setOnTimeSetListener(this);
         }
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        menuItemAlarm = menu.findItem(R.id.action_alarm);
+        menuItemAlarm.setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_alarm), this));
+        menuItemSettings = menu.findItem(R.id.action_settings);
+        menuItemSettings.setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_settings), this));
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
-        } else if (id == R.id.menu_alarm) {
+        } else if (id == R.id.action_alarm) {
             DateTime now = DateTime.now();
             RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.alarm_switch), true));
             if (mHasDialogFrame) {
