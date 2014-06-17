@@ -63,7 +63,6 @@ public class SettingsActivity extends PreferenceActivity {
 
         entries =DbManager.getInstance().getAllBanglaRegionNames();
 
-
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
