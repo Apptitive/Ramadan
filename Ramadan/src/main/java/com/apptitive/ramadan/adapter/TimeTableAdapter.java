@@ -89,6 +89,10 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             holder.ifterTime.setText(timeTable.getIfterTime());
             holder.rojaCount.setText(timeTable.getRojaCount());
         } else {
+            holder.rojaCount.setTypeface(tf);
+            holder.sehriTime.setTypeface(tf);
+            holder.ifterTime.setTypeface(tf);
+            holder.date.setTypeface(tf);
             holder.date.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getDateInBangla()));
             holder.sehriTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getSehriTime()));
             holder.ifterTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getIfterTime()));
