@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,9 +96,11 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         }
     }
 
-    private boolean isListScrolling(ListView listView, DisplayMetrics displayMetrics) {
-        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayMetrics.heightPixels)
-            return false;
+    private boolean isListScrolling(ListView listView) {
+        View lastChild = listView.getChildAt(listView.getLastVisiblePosition());
+        if (lastChild != null)
+            if (lastChild.getBottom() < listView.getHeight())
+                return false;
         return true;
     }
 
@@ -113,12 +114,12 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(topicListAdapter);
+        topicListAdapter.notifyDataSetChanged();
         final ListView listView = getListView();
         listView.post(new Runnable() {
             @Override
             public void run() {
-                DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-                if (isListScrolling(listView, displayMetrics)) {
+                if (isListScrolling(listView)) {
                     int orientation = getResources().getConfiguration().orientation;
                     if (orientation == Configuration.ORIENTATION_PORTRAIT)
                         parallaxListViewBackground(R.drawable.bg_home);
