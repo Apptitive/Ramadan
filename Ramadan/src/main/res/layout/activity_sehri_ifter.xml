@@ -16,7 +16,7 @@
         android:background="@color/table_heading_background">
 
         <com.apptitive.ramadan.views.BanglaTextView
-            app:banglaText="রমযান"
+            app:banglaText="@string/ramadan"
             app:fontName="@string/font_solaimanlipi"
             android:id="@+id/tv_roja_count"
             android:layout_width="@dimen/dp_70"
