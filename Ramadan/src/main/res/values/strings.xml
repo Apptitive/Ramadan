@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Ramadan</string>
+    <string name="app_name">Ramjan</string>
     <string name="action_settings">সেটিংস</string>
     <string name="action_alarm">অ্যালার্ম</string>
     <string name="font_solaimanlipi">solaimanlipinormal.ttf</string>
