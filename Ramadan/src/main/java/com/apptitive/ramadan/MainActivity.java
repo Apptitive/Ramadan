@@ -8,7 +8,6 @@ import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.apptitive.ramadan.utilities.Alarm;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.UIUtils;
-import com.apptitive.ramadan.utilities.Utilities;
 import com.apptitive.ramadan.views.BanglaTextView;
 import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 
@@ -30,7 +28,6 @@ import org.joda.time.DateTime;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
@@ -41,7 +38,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private BanglaTextView iftarTime;
     private BanglaTextView seheriTime;
     private List<TimeTable> timeTables;
-    private TimeTable timeTable;
     private List<Region> regions;
     private Region region;
 
