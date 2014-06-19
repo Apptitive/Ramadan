@@ -3,6 +3,8 @@ package com.apptitive.ramadan.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Vibrator;
 import android.util.Log;
 
@@ -27,12 +29,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (isVibrate) {
             setAlarmVibration(context);
         }
-        String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_ringtone), "default ringtone");
-
+        String ringTonName = preferenceHelper.getString(context.getString(R.string.pref_key_alarm_ringtone), RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString());
         if (ringTonName != null) {
             Intent ringTonIntent = new Intent(context, RingtoneService.class);
             ringTonIntent.putExtra(Constants.KEY_RINGTONE_NAME, ringTonName);
-            Log.e("rington name", "" + ringTonName);
             context.startService(ringTonIntent);
         }
 

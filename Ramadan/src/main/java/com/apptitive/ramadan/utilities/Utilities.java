@@ -9,11 +9,14 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.Log;
 
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.receiver.NotificationCancelReceiver;
 import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFontSupport;
 import com.dibosh.experiments.android.support.customfonthelper.utils.TypefaceSpan;
+
+import java.util.Locale;
 
 import androidbangladesh.bengali.support.BengaliUnicodeString;
 
@@ -28,15 +31,15 @@ public class Utilities {
     }
 
     public static android.text.SpannableString getBanglaSpannableString(String banglaText, Context context) {
-
         if (banglaText == null) {
             return new SpannableString(new String(""));
         }
-
         if (isBuildAboveThirteen()) {
-            TypefaceSpan span = new TypefaceSpan(getFont(context));
             SpannableString spannableString = new SpannableString(banglaText);
-            spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (isBanglaAvailable()) {
+                TypefaceSpan span = new TypefaceSpan(getFont(context));
+                spannableString.setSpan(span, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             return spannableString;
         }
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
@@ -62,7 +65,7 @@ public class Utilities {
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
-    public static android.text.SpannableString[] banglaSpannableStrings(String[] banglaRegionNames, Context context) {
+    public static android.text.SpannableString[] getBanglaSpannableStrings(String[] banglaRegionNames, Context context) {
         android.text.SpannableString[] banglaText = new android.text.SpannableString[banglaRegionNames.length];
         for (int counter = 0; counter < banglaRegionNames.length; counter++) {
             banglaText[counter] = getBanglaSpannableString(banglaRegionNames[counter], context);
@@ -85,6 +88,19 @@ public class Utilities {
 
     public static SpannableString getSpannableStringWithBanglaSupport(String text) {
         return new SpannableString(BengaliUnicodeString.getBengaliUTF(text));
+    }
+
+
+    public static boolean isBanglaAvailable(){
+        Locale[] locales=Locale.getAvailableLocales();
+        for(Locale locale:locales)
+        {
+            if(locale.getDisplayName().toLowerCase().contains("bengali"))
+            {
+                return true;
+            }
+        }
+     return false;
     }
 
 }

@@ -23,8 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_15"/>
-
+            android:textSize="@dimen/text_size_15" />
 
         <View
             android:layout_width="1dp"
@@ -32,14 +31,14 @@
             android:background="@color/table_colomn_divider" />
 
         <com.apptitive.ramadan.views.BanglaTextView
-            app:banglaText="সেহরি"
+            app:banglaText="@string/sehri"
             app:fontName="@string/font_solaimanlipi"
             android:id="@+id/tv_sehri_time"
             android:layout_width="@dimen/dp_70"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_15"/>
+            android:textSize="@dimen/text_size_15" />
 
         <View
             android:layout_width="1dp"
@@ -47,22 +46,22 @@
             android:background="@color/table_colomn_divider" />
 
         <com.apptitive.ramadan.views.BanglaTextView
-            app:banglaText="ইফতার"
+            app:banglaText="@string/iftar"
             app:fontName="@string/font_solaimanlipi"
             android:id="@+id/tv_ifter_time"
             android:layout_width="@dimen/dp_70"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_15"/>
+            android:textSize="@dimen/text_size_15" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/table_colomn_divider"/>
+            android:background="@color/table_colomn_divider" />
 
         <com.apptitive.ramadan.views.BanglaTextView
-            app:banglaText="তারিখ"
+            app:banglaText="@string/date"
             app:fontName="@string/font_solaimanlipi"
             android:id="@+id/tv_date"
             android:layout_width="0dp"
@@ -70,7 +69,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="@dimen/text_size_15"/>
+            android:textSize="@dimen/text_size_15" />
 
     </LinearLayout>
 

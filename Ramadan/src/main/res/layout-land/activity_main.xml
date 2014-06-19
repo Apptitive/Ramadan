@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_12"
-                    app:banglaText="@string/ifter"
+                    app:banglaText="@string/iftar"
                     app:fontName="@string/font_solaimanlipi" />
 
                 <com.apptitive.ramadan.views.BanglaTextView

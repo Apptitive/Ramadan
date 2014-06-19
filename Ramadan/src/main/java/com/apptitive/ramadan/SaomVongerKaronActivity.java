@@ -58,7 +58,7 @@ public class SaomVongerKaronActivity extends ActionBarActivity implements Detail
             if (eventType == XmlPullParser.START_TAG) {
                 if (name.equalsIgnoreCase("topic")) {
                     topic.setHeader(xpp.getAttributeValue(null, "name"));
-                    topic.setFullText(false);
+                    topic.setHasFullText(false);
                 }
                 if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));

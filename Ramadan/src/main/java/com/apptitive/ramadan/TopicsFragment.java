@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,24 +65,24 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
         Topic topic = null;
 
-        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
+        for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.nextToken()) {
             String name = xpp.getName();
             if (eventType == XmlPullParser.START_TAG) {
                 if (name.equalsIgnoreCase("subtopic")) {
                     topic = new Topic();
                     topic.setHeader(xpp.getAttributeValue(null, "name"));
-                    topic.setFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
+                    topic.setHasFullText(Boolean.parseBoolean(xpp.getAttributeValue(null, "show_all")));
                 }
                 if (name.equalsIgnoreCase("details")) {
                     topic.setDetailId(Integer.parseInt(xpp.getAttributeValue(null, "id")));
+                }
+                if (name.equalsIgnoreCase("brief")) {
+                    topic.setShortDescription(xpp.getAttributeValue(null, "text"));
                 }
             }
             if (eventType == XmlPullParser.END_TAG) {
                 if (name.equalsIgnoreCase("subtopic")) {
                     topics.add(topic);
-                }
-                if (name.equalsIgnoreCase("brief")) {
-                    topic.setShortDescription(xpp.getAttributeValue(null, "text"));
                 }
             }
         }
@@ -97,9 +96,12 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
         }
     }
 
-    private boolean isListScrolling(ListView listView, int displayHeight) {
-        if (listView.getChildAt(listView.getLastVisiblePosition()).getBottom() < displayHeight)
-            return false;
+    private boolean isListScrolling(ListView listView) {
+        int last_visible_pos = listView.getLastVisiblePosition();
+        View lastChild = listView.getChildAt(last_visible_pos);
+        if (lastChild != null)
+            if (last_visible_pos == listView.getCount() - 1 && lastChild.getBottom() <= listView.getHeight())
+                return false;
         return true;
     }
 
@@ -113,12 +115,12 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getListView().setAdapter(topicListAdapter);
+        topicListAdapter.notifyDataSetChanged();
         final ListView listView = getListView();
         listView.post(new Runnable() {
             @Override
             public void run() {
-                DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-                if (isListScrolling(listView, displayMetrics.heightPixels)) {
+                if (isListScrolling(listView)) {
                     int orientation = getResources().getConfiguration().orientation;
                     if (orientation == Configuration.ORIENTATION_PORTRAIT)
                         parallaxListViewBackground(R.drawable.bg_home);
@@ -131,7 +133,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
     @Override
     public void onTopicClick(Topic topic, int position) {
-        if (!topic.isFullText()) {
+        if (!topic.hasFullText()) {
             Intent i = new Intent(parentActivity, DetailsActivity.class);
             i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
             i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);

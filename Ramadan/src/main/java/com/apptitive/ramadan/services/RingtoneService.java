@@ -5,10 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 
+import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.utilities.Constants;
+import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.Utilities;
 
 import java.io.IOException;
@@ -16,24 +19,32 @@ import java.io.IOException;
 public class RingtoneService extends Service {
 
     private MediaPlayer mMediaPlayer;
-
+private PreferenceHelper preferenceHelper;
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
-        super.onStart(intent, startId);
-        String ringTonName = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
-        if (ringTonName != null) {
-            playSound(ringTonName);
-            Utilities.customNotification(getBaseContext());
-        }
+    public void onCreate() {
+        preferenceHelper= new PreferenceHelper(this);
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String ringTonName="default ringtone";
+        if (intent==null){
+            ringTonName=preferenceHelper.getString("RINGTON_NAME", RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString());
+        }else {
+            ringTonName  = intent.getStringExtra(Constants.KEY_RINGTONE_NAME);
+        }
+        playSound(ringTonName);
+        Utilities.customNotification(getBaseContext());
+        preferenceHelper.setString("RINGTON_NAME",ringTonName);
+
+        return START_STICKY;
+    }
 
     private void playSound(String ringTon) {
         mMediaPlayer = new MediaPlayer();

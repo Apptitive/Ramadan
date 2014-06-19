@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Ramadan</string>
+    <string name="app_name">Ramjan</string>
     <string name="action_settings">সেটিংস</string>
     <string name="action_alarm">অ্যালার্ম</string>
     <string name="font_solaimanlipi">solaimanlipinormal.ttf</string>
@@ -19,8 +19,10 @@
     <string name="bangla_character_nine">৯</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="sehri_time">সেহরির শেষ সময়</string>
-    <string name="ifter">ইফতার</string>
-    <string name="ramadan">রমযান</string>
+    <string name="iftar">ইফতার</string>
+    <string name="ramadan">রমজান</string>
+    <string name="date">তারিখ</string>
+    <string name="sehri">সেহরি</string>
     <string name="saom">সাওম</string>
     <string name="tarabih">তারাবীহ নামায</string>
     <string name="saom_vongo">সাওম ভঙ্গের কারণসমূহ</string>

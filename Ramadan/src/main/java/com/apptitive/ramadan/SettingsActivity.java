@@ -13,6 +13,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,9 +32,10 @@ public class SettingsActivity extends PreferenceActivity {
     private ListPreference preferenceLocation;
     private static Context settingsActivity;
     private Preference preferenceAboutUs;
-    private RingtonePreference prefereneRington;
-    private CheckBoxPreference preferenceVibrat;
+    private RingtonePreference preferenceRingtone;
+    private CheckBoxPreference preferenceVibrate;
     private Preference alrmPreference;
+    private static String[] entries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +60,13 @@ public class SettingsActivity extends PreferenceActivity {
 
 
     private void setupSimplePreferencesScreen() {
-        // addPreferencesFromResource(R.xml.pref_general);
+
+        entries =DbManager.getInstance().getAllBanglaRegionNames();
+
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
             String[] englishRegionNames = DbManager.getInstance().getAllRegionNames();
-            listPreference.setEntries(Utilities.banglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
+            listPreference.setEntries(Utilities.getBanglaSpannableStrings(DbManager.getInstance().getAllBanglaRegionNames(), this));
             listPreference.setEntryValues(englishRegionNames);
             listPreference.setDialogTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         }
@@ -78,8 +82,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs = (PreferenceCategory) findPreference(getString(R.string.pref_key_about_us));
         preferenceLocation = (ListPreference) findPreference(getString(R.string.pref_key_location));
         preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
-        prefereneRington = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
-        preferenceVibrat = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
+        preferenceRingtone = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
+        preferenceVibrate = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
         alrmPreference = (Preference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 
@@ -89,8 +93,8 @@ public class SettingsActivity extends PreferenceActivity {
         categoryAboutUs.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
         preferenceLocation.setTitle(Utilities.getBanglaSpannableString(getString(R.string.title_location_setting), this));
         preferenceAboutUs.setSummary(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
-        prefereneRington.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
-        preferenceVibrat.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
+        preferenceRingtone.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
+        preferenceVibrate.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
         alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
 
         PreferenceHelper preferenceHelper = new PreferenceHelper(this);
@@ -119,8 +123,7 @@ public class SettingsActivity extends PreferenceActivity {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                String districtName = listPreference.getEntries()[index].toString();
-                preference.setSummary(Utilities.getBanglaSpannableString(districtName, settingsActivity));
+                preference.setSummary(Utilities.getBanglaSpannableString(entries[index], settingsActivity));
             } else if (preference instanceof RingtonePreference) {
                 if (TextUtils.isEmpty(stringValue)) {
                     preference.setSummary(R.string.pref_ringtone_silent);

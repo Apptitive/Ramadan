@@ -64,10 +64,6 @@
             android:name=".services.RingtoneService"
             android:enabled="true"
             android:exported="true" />
-        <service
-            android:name=".services.MusicService"
-            android:enabled="true"
-            android:exported="true" />
 
         <receiver
             android:name=".receiver.AlarmReceiver"
