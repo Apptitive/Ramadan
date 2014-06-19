@@ -97,9 +97,10 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     }
 
     private boolean isListScrolling(ListView listView) {
-        View lastChild = listView.getChildAt(listView.getLastVisiblePosition());
+        int last_visible_pos = listView.getLastVisiblePosition();
+        View lastChild = listView.getChildAt(last_visible_pos);
         if (lastChild != null)
-            if (lastChild.getBottom() < listView.getHeight())
+            if (last_visible_pos == listView.getCount() - 1 && lastChild.getBottom() <= listView.getHeight())
                 return false;
         return true;
     }
