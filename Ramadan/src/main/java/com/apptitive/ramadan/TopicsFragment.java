@@ -108,14 +108,13 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setListAdapter(topicListAdapter);
         return inflater.inflate(R.layout.fragment_topics, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getListView().setAdapter(topicListAdapter);
-        topicListAdapter.notifyDataSetChanged();
         final ListView listView = getListView();
         listView.post(new Runnable() {
             @Override
