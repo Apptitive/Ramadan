@@ -17,11 +17,13 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
+
 import com.apptitive.ramadan.helper.DbManager;
 import com.apptitive.ramadan.utilities.AboutUsDialog;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.Utilities;
+
 import static android.preference.Preference.OnPreferenceChangeListener;
 
 
@@ -40,6 +42,7 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DbManager.init(this);
         if (Build.VERSION.SDK_INT >= 11) {
             getActionBar().hide();
         }
@@ -61,7 +64,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     private void setupSimplePreferencesScreen() {
 
-        entries =DbManager.getInstance().getAllBanglaRegionNames();
+        entries = DbManager.getInstance().getAllBanglaRegionNames();
 
         ListPreference listPreference = (ListPreference) findPreference(getString(R.string.pref_key_location));
         if (listPreference != null) {
