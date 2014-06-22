@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.model.TimeTable;
 import com.apptitive.ramadan.utilities.Utilities;
-
 import java.util.List;
 
 /**
@@ -89,6 +87,10 @@ public class TimeTableAdapter extends ArrayAdapter<TimeTable> {
             holder.ifterTime.setText(timeTable.getIfterTime());
             holder.rojaCount.setText(timeTable.getRojaCount());
         } else {
+            holder.rojaCount.setTypeface(tf);
+            holder.sehriTime.setTypeface(tf);
+            holder.ifterTime.setTypeface(tf);
+            holder.date.setTypeface(tf);
             holder.date.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getDateInBangla()));
             holder.sehriTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getSehriTime()));
             holder.ifterTime.setText(Utilities.getSpannableStringWithBanglaSupport(timeTable.getIfterTime()));
