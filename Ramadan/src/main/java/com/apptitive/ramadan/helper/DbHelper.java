@@ -21,7 +21,7 @@ import java.util.List;
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "Ramadan.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private Dao<Region, String> regionDao = null;
     private Dao<TimeTable, String> timeTableDao = null;
