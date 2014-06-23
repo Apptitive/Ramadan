@@ -23,6 +23,7 @@ import com.apptitive.ramadan.utilities.AboutUsDialog;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.Utilities;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import static android.preference.Preference.OnPreferenceChangeListener;
 
@@ -38,7 +39,17 @@ public class SettingsActivity extends PreferenceActivity {
     private CheckBoxPreference preferenceVibrate;
     private Preference alrmPreference;
     private static String[] entries;
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -30,7 +30,7 @@ import java.text.ParseException;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
+public class MainActivity extends BaseActionBar implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;
@@ -40,7 +40,6 @@ public class MainActivity extends ActionBarActivity implements RadialTimePickerD
     private List<TimeTable> timeTables;
     private List<Region> regions;
     private Region region;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

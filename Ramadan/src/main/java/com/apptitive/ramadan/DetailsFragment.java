@@ -11,6 +11,8 @@ import com.apptitive.ramadan.adapter.DetailsListAdapter;
 import com.apptitive.ramadan.model.Detail;
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
+import com.google.analytics.tracking.android.EasyTracker;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -28,7 +30,17 @@ public class DetailsFragment extends ListFragment {
     public DetailsFragment() {
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(getActivity()).activityStart(getActivity());
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

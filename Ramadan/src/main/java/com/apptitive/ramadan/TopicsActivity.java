@@ -10,7 +10,7 @@ import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.Utilities;
 
 
-public class TopicsActivity extends ActionBarActivity {
+public class TopicsActivity extends BaseActionBar {
 
     private int iconDrawableId, topicResId;
     private String topicTitle;

@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 
 
-public class SaomVongerKaronActivity extends ActionBarActivity implements DetailsFragment.DetailProvider {
+public class SaomVongerKaronActivity extends BaseActionBar implements DetailsFragment.DetailProvider {
 
     private int iconDrawableId, topicResId;
     private String topicTitle;

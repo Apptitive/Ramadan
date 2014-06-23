@@ -14,6 +14,7 @@ import com.apptitive.ramadan.adapter.TopicListAdapter;
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.views.ParallaxListView;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -34,6 +35,18 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
 
     public TopicsFragment() {
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(getActivity()).activityStart(getActivity());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
     }
 
     @Override

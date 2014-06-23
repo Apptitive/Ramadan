@@ -23,7 +23,7 @@ import com.dibosh.experiments.android.support.customfonthelper.AndroidCustomFont
 import java.util.ArrayList;
 
 
-public class DetailsActivity extends ActionBarActivity implements DetailsFragment.DetailProvider {
+public class DetailsActivity extends BaseActionBar implements DetailsFragment.DetailProvider {
 
     private int fileResId, iconDrawableId, topicPosition;
     private Topic topicInView;

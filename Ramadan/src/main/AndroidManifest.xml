@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apptitive.ramadan">
+    package="com.apptitive.ramadan" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -75,6 +77,11 @@
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".BaseActionBar"
+            android:label="@string/title_activity_base_action_bar" >
+        </activity>
     </application>
 
 </manifest>
