@@ -1,5 +1,6 @@
 package com.apptitive.ramadan;
 
+import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
@@ -32,6 +33,7 @@ public class DetailsActivity extends BaseActionBar implements DetailsFragment.De
     private ArrayList<Topic> topics;
     private ArrayAdapter<Topic> drawerListAdapter;
     private ListView listViewDrawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
