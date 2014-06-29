@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +39,7 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
     private List<TimeTable> timeTables;
     private List<Region> regions;
     private Region region;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

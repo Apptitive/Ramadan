@@ -87,6 +87,7 @@
                     android:textSize="@dimen/text_size_12"
                     app:banglaText="@string/sehri_time"
                     app:fontName="@string/font_solaimanlipi" />
+
                 <com.apptitive.ramadan.views.BanglaTextView
                     android:id="@+id/tv_seheri_time"
                     android:layout_below="@id/tv_time_seheri"

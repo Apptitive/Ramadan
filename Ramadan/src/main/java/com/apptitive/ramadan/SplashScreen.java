@@ -12,6 +12,7 @@ import java.util.TimerTask;
 
 
 public class SplashScreen extends Activity {
+
     @Override
     public void onStart() {
         super.onStart();
@@ -23,6 +24,7 @@ public class SplashScreen extends Activity {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

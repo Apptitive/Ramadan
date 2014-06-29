@@ -13,7 +13,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
-import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -39,6 +38,7 @@ public class SettingsActivity extends PreferenceActivity {
     private CheckBoxPreference preferenceVibrate;
     private Preference alrmPreference;
     private static String[] entries;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -50,6 +50,7 @@ public class SettingsActivity extends PreferenceActivity {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

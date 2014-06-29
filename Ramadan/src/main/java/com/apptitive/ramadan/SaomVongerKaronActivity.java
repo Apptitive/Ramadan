@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
