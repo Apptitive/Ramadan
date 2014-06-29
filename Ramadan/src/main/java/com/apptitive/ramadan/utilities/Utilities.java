@@ -4,12 +4,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.util.Log;
 
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.receiver.NotificationCancelReceiver;
@@ -91,16 +92,18 @@ public class Utilities {
     }
 
 
-    public static boolean isBanglaAvailable(){
-        Locale[] locales=Locale.getAvailableLocales();
-        for(Locale locale:locales)
-        {
-            if(locale.getDisplayName().toLowerCase().contains("bengali"))
-            {
+    public static boolean isBanglaAvailable() {
+        Locale[] locales = Locale.getAvailableLocales();
+        for (Locale locale : locales) {
+            if (locale.getDisplayName().toLowerCase().contains("bengali")) {
                 return true;
             }
         }
-     return false;
+        return false;
     }
 
+    public static String getVersionName(Context context) throws PackageManager.NameNotFoundException {
+        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+        return packageInfo.versionName;
+    }
 }
