@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +29,7 @@ import java.text.ParseException;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
+public class MainActivity extends BaseActionBar implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
     private ActionBar actionBar;

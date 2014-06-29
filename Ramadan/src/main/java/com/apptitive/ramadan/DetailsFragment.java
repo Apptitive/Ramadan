@@ -7,13 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.apptitive.ramadan.adapter.DetailsListAdapter;
 import com.apptitive.ramadan.model.Detail;
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
+import com.google.analytics.tracking.android.EasyTracker;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +34,23 @@ public class DetailsFragment extends ListFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(getActivity()).activityStart(getActivity());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(getActivity()).activityStop(getActivity());
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try{
+        try {
             detailProvider = (DetailProvider) activity;
-        }
-        catch (ClassCastException cce) {
+        } catch (ClassCastException cce) {
             Log.e(this.getTag(), "Parent activity must implement DetailProvider");
         }
     }
@@ -65,7 +80,7 @@ public class DetailsFragment extends ListFragment {
         for (int eventType = xpp.getEventType(); eventType != XmlPullParser.END_DOCUMENT; eventType = xpp.next()) {
             String name = xpp.getName();
             if (eventType == XmlPullParser.START_TAG) {
-                if(name.equalsIgnoreCase("details")) {
+                if (name.equalsIgnoreCase("details")) {
                     if (detailId == Integer.parseInt(xpp.getAttributeValue(null, "id"))) {
                         foundDetail = true;
                     } else {
@@ -92,11 +107,11 @@ public class DetailsFragment extends ListFragment {
             return Constants.detail.VIEW_TYPE_BULLET;
         else if (vt.equalsIgnoreCase("h"))
             return Constants.detail.VIEW_TYPE_HEADER_ONLY;
-        else if(vt.equalsIgnoreCase("a"))
+        else if (vt.equalsIgnoreCase("a"))
             return Constants.detail.VIEW_TYPE_ARABIC;
-        else if(vt.equalsIgnoreCase("ab"))
+        else if (vt.equalsIgnoreCase("ab"))
             return Constants.detail.VIEW_TYPE_ARABIC_BULLET_ALIGN;
-        else if(vt.equalsIgnoreCase("tb"))
+        else if (vt.equalsIgnoreCase("tb"))
             return Constants.detail.VIEW_TYPE_TEXT_BULLET_ALIGN;
         return 0;
     }
@@ -122,6 +137,7 @@ public class DetailsFragment extends ListFragment {
 
     public interface DetailProvider {
         Topic getTopic();
+
         int getFileResId();
     }
 }

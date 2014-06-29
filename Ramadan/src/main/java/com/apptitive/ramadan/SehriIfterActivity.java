@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -26,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SehriIfterActivity extends ActionBarActivity {
+public class SehriIfterActivity extends BaseActionBar {
 
     private List<TimeTable> timeTables;
     private TimeTableAdapter timeTableAdapter;
@@ -130,7 +129,7 @@ public class SehriIfterActivity extends ActionBarActivity {
             List<Region> regions = DbManager.getInstance().getAllRegions();
 
             @Override
-            public boolean onNavigationItemSelected(int position, long id)  {
+            public boolean onNavigationItemSelected(int position, long id) {
 
                 timeTables.clear();
                 Region region = UIUtils.getSelectedLocation(regions, dropDownItems[position]);

@@ -4,13 +4,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.Utilities;
 
 
-public class TopicsActivity extends ActionBarActivity {
+public class TopicsActivity extends BaseActionBar {
 
     private int iconDrawableId, topicResId;
     private String topicTitle;

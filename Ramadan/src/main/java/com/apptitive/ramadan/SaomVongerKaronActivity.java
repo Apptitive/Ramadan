@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 
 import com.apptitive.ramadan.model.Topic;
 import com.apptitive.ramadan.utilities.Constants;
@@ -17,7 +16,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 
 
-public class SaomVongerKaronActivity extends ActionBarActivity implements DetailsFragment.DetailProvider {
+public class SaomVongerKaronActivity extends BaseActionBar implements DetailsFragment.DetailProvider {
 
     private int iconDrawableId, topicResId;
     private String topicTitle;
