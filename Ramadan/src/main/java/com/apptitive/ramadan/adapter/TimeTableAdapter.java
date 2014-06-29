@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.model.TimeTable;
 import com.apptitive.ramadan.utilities.Utilities;
-
 import java.util.List;
 
 /**

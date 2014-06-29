@@ -34,7 +34,6 @@ public class DetailsActivity extends BaseActionBar implements DetailsFragment.De
     private ArrayAdapter<Topic> drawerListAdapter;
     private ListView listViewDrawer;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
