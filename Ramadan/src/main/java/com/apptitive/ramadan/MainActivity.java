@@ -106,8 +106,6 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        //menu.findItem(R.id.action_alarm).setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_alarm), this));
-        //menu.findItem(R.id.action_settings).setTitle(Utilities.getBanglaSpannableString(getString(R.string.action_settings), this));
         return true;
     }
 
