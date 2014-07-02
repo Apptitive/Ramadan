@@ -1,6 +1,7 @@
 package com.apptitive.ramadan;
 
 import android.app.FragmentTransaction;
+import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.apptitive.ramadan.helper.DbManager;
 import com.apptitive.ramadan.helper.DbTableName;
 import com.apptitive.ramadan.model.Region;
 import com.apptitive.ramadan.model.TimeTable;
+import com.apptitive.ramadan.receiver.TimeTableWidgetProvider;
 import com.apptitive.ramadan.utilities.Alarm;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
@@ -32,6 +34,7 @@ import java.util.List;
 public class MainActivity extends BaseActionBar implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
     private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
     private boolean mHasDialogFrame;
+    private int mAppWidgetId;
     private ActionBar actionBar;
     private PreferenceHelper preferenceHelper;
     private BanglaTextView iftarTime;
@@ -46,6 +49,12 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
         DbManager.init(this);
         supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_main);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            mAppWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+        }
+
         preferenceHelper = new PreferenceHelper(this);
         if (!preferenceHelper.getBoolean(Constants.IS_DB_CREATED)) {
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.region, DbTableName.Region);
@@ -70,8 +79,17 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
         seheriTime = (BanglaTextView) findViewById(R.id.tv_seheri_time);
 
         timeTables = DbManager.getInstance().getAllTimeTables();
-
         regions = DbManager.getInstance().getAllRegions();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent = new Intent(this, TimeTableWidgetProvider.class);
+        intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+        int[] ids = {mAppWidgetId};
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
     }
 
     @Override
