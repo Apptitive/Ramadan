@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -13,6 +14,7 @@ import android.webkit.WebViewClient;
 public class AboutUsDialog {
     private static final String TAG = "ChangeLogDialog";
     private final Context mContext;
+    private String versionName;
     private String mStyle = "h1 { margin-left: 0px; font-size: 12pt; }"
             + "li { margin-left: 0px; font-size: 9pt; }"
             + "ul { padding-left: 30px; }"
@@ -24,6 +26,12 @@ public class AboutUsDialog {
 
     public AboutUsDialog(final Context context) {
         mContext = context;
+        try {
+            versionName = Utilities.getVersionName(mContext);
+        } catch (PackageManager.NameNotFoundException e) {
+            versionName = "1.0";
+            e.printStackTrace();
+        }
     }
 
     protected Context getContext() {
@@ -95,7 +103,7 @@ public class AboutUsDialog {
         });
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle("Ramadan V 1.0").setView(webView)
+                .setTitle("Ramadan V" + versionName).setView(webView)
                 .setPositiveButton(closeString, new Dialog.OnClickListener() {
                     public void onClick(final DialogInterface dialogInterface,
                                         final int i) {
