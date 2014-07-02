@@ -1,12 +1,10 @@
 package com.apptitive.ramadan;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v7.app.ActionBar;
-import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,22 +14,16 @@ import com.apptitive.ramadan.helper.DbManager;
 import com.apptitive.ramadan.helper.DbTableName;
 import com.apptitive.ramadan.model.Region;
 import com.apptitive.ramadan.model.TimeTable;
-import com.apptitive.ramadan.utilities.Alarm;
 import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.UIUtils;
 import com.apptitive.ramadan.views.BanglaTextView;
-import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
-
-import org.joda.time.DateTime;
 
 import java.text.ParseException;
 import java.util.List;
 
 
-public class MainActivity extends BaseActionBar implements RadialTimePickerDialog.OnTimeSetListener, View.OnClickListener {
-    private static final String FRAG_TAG_TIME_PICKER = "timePickerDialogFragment";
-    private boolean mHasDialogFrame;
+public class MainActivity extends BaseActionBar implements View.OnClickListener {
     private ActionBar actionBar;
     private PreferenceHelper preferenceHelper;
     private BanglaTextView iftarTime;
@@ -57,8 +49,6 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.AB_White_Ramadan)));
         actionBar.setDisplayShowTitleEnabled(false);
 
-        mHasDialogFrame = findViewById(R.id.frame) != null;
-
         findViewById(R.id.tab_iftar_time).setOnClickListener(this);
         findViewById(R.id.tab_saom).setOnClickListener(this);
         findViewById(R.id.tab_nioat).setOnClickListener(this);
@@ -81,25 +71,19 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
         seheriTime.setText("0:00");
         iftarTime.setText("0:00");
 
-        region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION, "Dhaka"));
+        region = UIUtils.getSelectedLocation(regions, preferenceHelper.getString(Constants.PREF_KEY_LOCATION,  Constants.DEFAULT_REGION));
         if (region != null) {
             try {
                 if (region.isPositive()) {
-                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, this, true));
-                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, this, false));
+                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, true, true));
+                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, true, false));
                 } else {
-                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, this, true));
-                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, this, false));
+                    seheriTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, true, true));
+                    iftarTime.setBanglaText(UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, true, false));
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-        }
-
-        RadialTimePickerDialog rtpd = (RadialTimePickerDialog) getSupportFragmentManager().findFragmentByTag(
-                FRAG_TAG_TIME_PICKER);
-        if (rtpd != null) {
-            rtpd.setOnTimeSetListener(this);
         }
     }
 
@@ -116,15 +100,8 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
             startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             return true;
         } else if (id == R.id.action_alarm) {
-            DateTime now = DateTime.now();
-            RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance(MainActivity.this, now.getHourOfDay(), now.getMinuteOfHour(), DateFormat.is24HourFormat(MainActivity.this), preferenceHelper.getBoolean(getString(R.string.alarm_switch), true));
-            if (mHasDialogFrame) {
-                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.frame, radialTimePickerDialog, FRAG_TAG_TIME_PICKER)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .commit();
-            }
-            radialTimePickerDialog.show(getSupportFragmentManager(), FRAG_TAG_TIME_PICKER);
+            startActivity(new Intent(MainActivity.this, AlarmActivity.class));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -173,24 +150,6 @@ public class MainActivity extends BaseActionBar implements RadialTimePickerDialo
                 break;
             default:
                 break;
-        }
-    }
-
-    @Override
-    public void onTimeSet(RadialTimePickerDialog dialog, int hourOfDay, int minute, boolean isSwitchOn) {
-        preferenceHelper.setBoolean(getString(R.string.alarm_switch), isSwitchOn);
-        try {
-            setUpAlarm(hourOfDay, minute);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setUpAlarm(int hourOfDay, int minute) throws ParseException {
-        boolean isAlarmSelected = preferenceHelper.getBoolean(getString(R.string.alarm_switch));
-        if (isAlarmSelected) {
-            Alarm alarm = new Alarm(this);
-            alarm.setOneTimeAlarm(hourOfDay, minute);
         }
     }
 }

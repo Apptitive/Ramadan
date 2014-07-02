@@ -2,7 +2,7 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+    buildToolsVersion "20.0.0"
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion 19
@@ -11,8 +11,10 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-project.txt'), 'proguard-rules.pro'
+        }
+        buildType {
         }
     }
     productFlavors {
@@ -25,6 +27,7 @@ dependencies {
     compile project(':paralloid')
     compile files('libs/ormlite-android-4.48.jar')
     compile files('libs/ormlite-core-4.48.jar')
-    compile project(':library')
+  //  compile 'joda-time:joda-time:2.3'
+  //  compile project(':library')
     compile 'com.android.support:appcompat-v7:19.+'
 }

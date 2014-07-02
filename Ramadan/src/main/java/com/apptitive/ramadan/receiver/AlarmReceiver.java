@@ -18,11 +18,11 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         PreferenceHelper preferenceHelper = new PreferenceHelper(context);
 
-
+/*
         boolean isAlarmSelected = preferenceHelper.getBoolean(context.getString(R.string.alarm_switch));
         if (!isAlarmSelected) {
             return;
-        }
+        }*/
 
 
         boolean isVibrate = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm_vibrate));

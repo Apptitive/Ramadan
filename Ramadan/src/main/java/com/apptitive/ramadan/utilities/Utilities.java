@@ -50,9 +50,8 @@ public class Utilities {
     public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
         notificationIntent.setAction("notification_cancelled");
-        PendingIntent deletePendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent deletePendingIntent = PendingIntent.getBroadcast(context, (int) System.currentTimeMillis(), notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        int mNotificationId = 001;
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.icon_tarabih)
@@ -63,7 +62,7 @@ public class Utilities {
         mBuilder.setDeleteIntent(deletePendingIntent);
         mBuilder.setAutoCancel(true);
         mBuilder.setContentIntent(deletePendingIntent);
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+        mNotifyMgr.notify((int) System.currentTimeMillis(), mBuilder.build());
     }
 
     public static android.text.SpannableString[] getBanglaSpannableStrings(String[] banglaRegionNames, Context context) {

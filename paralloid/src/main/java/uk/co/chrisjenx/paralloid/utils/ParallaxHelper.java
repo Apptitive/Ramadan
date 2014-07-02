@@ -51,6 +51,7 @@ public final class ParallaxHelper {
                 parallaxDrawable.setParallaxExtraWidthHeight(width, height);
             }
         });
+        //noinspection deprecation
         view.setBackgroundDrawable(parallaxDrawable);
         fixParallaxBackgroundPreJBMR1(view, parallaxDrawable);
     }
@@ -116,6 +117,7 @@ public final class ParallaxHelper {
     static void fixParallaxBackgroundPreJBMR1(final View view, final Drawable drawable) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             drawable.setCallback(new Drawable.Callback() {
+                @SuppressWarnings("deprecation")
                 @Override
                 public void invalidateDrawable(Drawable who) {
                     view.setBackgroundDrawable(who);
