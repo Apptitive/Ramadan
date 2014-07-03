@@ -24,13 +24,10 @@
             android:layout_marginRight="@dimen/dp_20"
             android:src="@drawable/sehri_iftar_time" />
 
-        <TextView
-            android:id="@+id/tv_name"
+        <ImageView
+            android:id="@+id/imageView_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_15"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <RelativeLayout
@@ -59,24 +56,18 @@
                 android:layout_weight="4"
                 android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tv_time_seheri"
+                <ImageView
+                    android:id="@+id/imageView_time_seheri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_12"
-                    android:text="@string/sehri_time"
                     android:layout_marginLeft="@dimen/dp_25" />
 
-                <TextView
-                    android:id="@+id/tv_seheri_time"
-                    android:layout_below="@id/tv_time_seheri"
+                <ImageView
+                    android:id="@+id/imageView_seheri_time"
+                    android:layout_below="@id/imageView_time_seheri"
                     android:layout_marginTop="@dimen/dp_ng_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_35"
-                    android:textStyle="bold"
                     android:layout_marginLeft="@dimen/dp_25" />
             </RelativeLayout>
 
@@ -86,26 +77,19 @@
                 android:layout_weight="4"
                 android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/tv_time_iftar"
+                <ImageView
+                    android:id="@+id/imageView_time_iftar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_12"
-                    android:text="@string/iftar"
                     android:layout_marginLeft="@dimen/dp_25" />
 
-                <TextView
-                    android:id="@+id/tv_iftar_time"
-                    android:layout_below="@id/tv_time_iftar"
+                <ImageView
+                    android:id="@+id/imageView_iftar_time"
+                    android:layout_below="@id/imageView_time_iftar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_ng_10"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_35"
-                    android:textStyle="bold"
                     android:layout_marginLeft="@dimen/dp_25" />
-
             </RelativeLayout>
         </LinearLayout>
 

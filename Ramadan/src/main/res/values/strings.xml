@@ -37,5 +37,5 @@
     <string name="alarm_time_off">অ্যালার্ম সেট করা হয়নি</string>
     <string name="pref_key_alarm_time">pref_key_alarm_time</string>
     <string name="widget_label">Ramjan - রমজান</string>
-    <string name="widget_left_label">সেহরি\nও ইফতারের\nসময়সূচী</string>
+    <string name="widget_left_label">সময়সূচী</string>
 </resources>

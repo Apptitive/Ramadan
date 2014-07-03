@@ -33,15 +33,17 @@ public class TimeTableWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // Get all ids
         ComponentName thisWidget = new ComponentName(context,
                 TimeTableWidgetProvider.class);
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-        for (int widgetId : allWidgetIds) {
 
+        for (int widgetId : allWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.layout_appwidget);
-            remoteViews.setTextViewText(R.id.tv_name, Utilities.getBanglaSpannableString(context.getString(R.string.widget_left_label), context));
+            remoteViews.setImageViewBitmap(R.id.imageView_name,
+                    Utilities.getTypefaceBitmap(context, context.getString(R.string.widget_left_label), 20, false));
+            remoteViews.setImageViewBitmap(R.id.imageView_time_seheri, Utilities.getTypefaceBitmap(context, context.getString(R.string.sehri_time), 12, false));
+            remoteViews.setImageViewBitmap(R.id.imageView_time_iftar, Utilities.getTypefaceBitmap(context, context.getString(R.string.iftar), 12, false));
 
             DbManager.init(context);
             preferenceHelper = new PreferenceHelper(context);
@@ -53,17 +55,17 @@ public class TimeTableWidgetProvider extends AppWidgetProvider {
             if (region != null) {
                 try {
                     if (region.isPositive()) {
-                        remoteViews.setTextViewText(R.id.tv_seheri_time, UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, context, true));
-                        remoteViews.setTextViewText(R.id.tv_iftar_time, UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, context, false));
+                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, context, true), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, context, false), 35, true));
                     } else {
-                        remoteViews.setTextViewText(R.id.tv_seheri_time, UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, context, true));
-                        remoteViews.setTextViewText(R.id.tv_iftar_time, UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, context, false));
+                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, context, true), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, context, false), 35, true));
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-            // Register an onClickListener
+
             Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
 
