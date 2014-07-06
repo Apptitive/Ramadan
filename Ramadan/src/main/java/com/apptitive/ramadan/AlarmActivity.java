@@ -6,20 +6,21 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.apptitive.ramadan.adapter.SpinnerAdapter;
 import com.apptitive.ramadan.helper.DbManager;
 import com.apptitive.ramadan.model.Region;
 import com.apptitive.ramadan.model.TimeTable;
 import com.apptitive.ramadan.receiver.AlarmReceiver;
 import com.apptitive.ramadan.utilities.Constants;
-import com.apptitive.ramadan.utilities.InputFilterMinMax;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 import com.apptitive.ramadan.utilities.UIUtils;
 
@@ -30,30 +31,34 @@ import java.util.List;
 /**
  * Created by Sharif on 7/1/2014.
  */
-public class AlarmActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    private Button buttonDone;
+public class AlarmActivity extends Activity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, AdapterView.OnItemSelectedListener {
+    private TextView textDone, textCancel;
     private CompoundButton switchIftar, switchSehri;
-    private EditText etSehriHour, etSehriMinute, etIftarHour, etIftarMinute;
     private PreferenceHelper preferenceHelper;
     private boolean isSheri, isIftar;
     private List<TimeTable> timeTables;
     private String calculatedSehriTime;
     private String calculatedIftarTime;
+    private Spinner spinnerIftarTime, spinnerSehriTime;
+    private int iftarRowPosition, sehriRowPosition;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.alarm_window);
+        setContentView(R.layout.activity_dialog);
         preferenceHelper = new PreferenceHelper(this);
         DbManager.init(this);
         initViews();
         initListeners();
-        setUpText();
 
         isIftar = preferenceHelper.getBoolean(Constants.PREF_SWITCH_IFTAR);
         isSheri = preferenceHelper.getBoolean(Constants.PREF_SWITCH_SEHRI);
-
+        iftarRowPosition = preferenceHelper.getInt(Constants.IFTAR_ROW_POSITION);
+        sehriRowPosition = preferenceHelper.getInt(Constants.SEHRI_ROW_POSITION);
+        spinnerIftarTime.setSelection(iftarRowPosition);
+        spinnerSehriTime.setSelection(sehriRowPosition);
         switchIftar.setChecked(isIftar);
         switchSehri.setChecked(isSheri);
         sehriEnabled(isSheri);
@@ -61,107 +66,94 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
         getTodaysSehriIftarTime();
     }
 
-    private void setUpText() {
-        etSehriHour.setText(preferenceHelper.getString(Constants.SEHRI_HOUR, "hh"));
-        etSehriMinute.setText(preferenceHelper.getString(Constants.SEHRI_MINUTE, "mm"));
-        etIftarHour.setText(preferenceHelper.getString(Constants.IFTAR_HOUR, "hh"));
-        etIftarMinute.setText(preferenceHelper.getString(Constants.IFTAR_MINUTE, "mm"));
-    }
 
     private void getTodaysSehriIftarTime() {
         timeTables = DbManager.getInstance().getAllTimeTables();
 
         try {
             Region region = UIUtils.getSelectedLocation(DbManager.getInstance().getAllRegions(), preferenceHelper.getString(Constants.PREF_KEY_LOCATION, Constants.DEFAULT_REGION));
-
             if (region != null) {
-                try {
-                    if (region.isPositive()) {
-                        calculatedSehriTime = UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, false, true);
-                        calculatedIftarTime = UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, false, false);
-                    } else {
-                        calculatedSehriTime = UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, false, true);
-                        calculatedIftarTime = UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, false, false);
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                if (region.isPositive()) {
+                    calculatedSehriTime = UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, false, true);
+                    calculatedIftarTime = UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, false, false);
+                } else {
+                    calculatedSehriTime = UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, false, true);
+                    calculatedIftarTime = UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, false, false);
                 }
             }
         } catch (Exception e) {
-
         }
     }
 
     private void initViews() {
-        buttonDone = (Button) findViewById(R.id.done);
-        switchIftar = (CompoundButton) findViewById(R.id.switch_iftar);
-        switchSehri = (CompoundButton) findViewById(R.id.switch_sehri);
-        etSehriHour = (EditText) findViewById(R.id.et_sehri_hour);
-        etSehriMinute = (EditText) findViewById(R.id.et_sehri_minute);
-        etIftarHour = (EditText) findViewById(R.id.et_iftar_hour);
-        etIftarMinute = (EditText) findViewById(R.id.et_iftar_minute);
-        etIftarMinute.setFilters(new InputFilter[]{new InputFilterMinMax("0", "59")});
-        etSehriMinute.setFilters(new InputFilter[]{new InputFilterMinMax("0", "59")});
+        textDone = (TextView) findViewById(R.id.tv_dialog_action_ok);
+        textCancel = (TextView) findViewById(R.id.tv_dialog_action_cancel);
+        switchIftar = (CompoundButton) findViewById(R.id.switch_iftar_alarm);
+        switchSehri = (CompoundButton) findViewById(R.id.switch_sehri_alarm);
+        spinnerIftarTime = (Spinner) findViewById(R.id.sp_iftar_time);
+        spinnerSehriTime = (Spinner) findViewById(R.id.sp_sehri_time);
+
+
+        SpinnerAdapter iftarAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.iftar_time));
+        iftarAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerIftarTime.setAdapter(iftarAdapter);
+
+        SpinnerAdapter sehriAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.sehri_time));
+        sehriAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSehriTime.setAdapter(iftarAdapter);
+
     }
 
     private void initListeners() {
-        buttonDone.setOnClickListener(this);
+        textDone.setOnClickListener(this);
+        textCancel.setOnClickListener(this);
         switchIftar.setOnCheckedChangeListener(this);
         switchSehri.setOnCheckedChangeListener(this);
+        spinnerSehriTime.setOnItemSelectedListener(this);
+        spinnerIftarTime.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
-
-        if (isIftar) {
-
-            if (isEmpty(false)) {
-                finish();
-                return;
-            }
-            try {
-                setAlarm(calculatedIftarTime, Integer.valueOf(etIftarHour.getText().toString()), Integer.valueOf(etIftarMinute.getText().toString()), Constants.IFTAR_REQUEST_CODE);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-        if (isSheri) {
-            if (isEmpty(true)) {
-                finish();
-                return;
-            }
-            try {
-                setAlarm(calculatedSehriTime, Integer.valueOf(etSehriHour.getText().toString()), Integer.valueOf(etSehriMinute.getText().toString()), Constants.SEHRI_REQUEST_CODE);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        switch (view.getId()) {
+            case R.id.tv_dialog_action_cancel:
+                break;
+            case R.id.tv_dialog_action_ok:
+                if (isIftar) {
+                    int[] iftarTimes = new int[]{0, 5, 10, 30};
+                    setUpSehriIftarAlarm(calculatedIftarTime, 0, iftarTimes[iftarRowPosition], Constants.IFTAR_REQUEST_CODE);
+                }
+                if (isSheri) {
+                    int[][] sehriTimes = new int[][]{{0, 30}, {1, 0}, {1, 30}, {2, 0}};
+                    setUpSehriIftarAlarm(calculatedSehriTime, sehriTimes[sehriRowPosition][0], sehriTimes[sehriRowPosition][1], Constants.SEHRI_REQUEST_CODE);
+                }
+                break;
         }
         finish();
+
     }
 
-    public boolean isEmpty(boolean isSehriEmpty) {
-        if (isSehriEmpty) {
-            if (TextUtils.isEmpty(etSehriMinute.getText().toString()) || TextUtils.isEmpty(etSehriHour.getText().toString())) {
-                return true;
+
+    private void setUpSehriIftarAlarm(String calculatedTime, int hour, int minute, int requestCode) {
+        try {
+            if (calculatedTime.equals("0:00")) {
+                return;
             }
-        } else if (!isSehriEmpty) {
-            if (TextUtils.isEmpty(etIftarMinute.getText().toString()) || TextUtils.isEmpty(etIftarHour.getText().toString())) {
-                return true;
-            }
+            setAlarm(calculatedTime, hour, minute, requestCode);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        return false;
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         switch (compoundButton.getId()) {
-            case R.id.switch_iftar:
+            case R.id.switch_iftar_alarm:
                 preferenceHelper.setBoolean(Constants.PREF_SWITCH_IFTAR, isChecked);
                 isIftar = isChecked;
                 iftarEnabled(isChecked);
                 break;
-            case R.id.switch_sehri:
+            case R.id.switch_sehri_alarm:
                 sehriEnabled(isChecked);
                 preferenceHelper.setBoolean(Constants.PREF_SWITCH_SEHRI, isChecked);
                 isSheri = isChecked;
@@ -171,13 +163,11 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
     }
 
     private void sehriEnabled(boolean isChecked) {
-        etSehriHour.setEnabled(isChecked);
-        etSehriMinute.setEnabled(isChecked);
+        spinnerSehriTime.setEnabled(isChecked);
     }
 
     private void iftarEnabled(boolean isChecked) {
-        etIftarHour.setEnabled(isChecked);
-        etIftarMinute.setEnabled(isChecked);
+        spinnerIftarTime.setEnabled(isChecked);
     }
 
 
@@ -188,20 +178,30 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
         calendar.add(Calendar.HOUR_OF_DAY, -hourOfDay);
         calendar.add(Calendar.MINUTE, -hourOfMinute);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), setUpAlarmType(PendingIntent.FLAG_ONE_SHOT, requestCode));
-
-        if (requestCode == Constants.SEHRI_REQUEST_CODE) {
-            preferenceHelper.setString(Constants.SEHRI_HOUR, "" + calendar.get(Calendar.HOUR_OF_DAY));
-            preferenceHelper.setString(Constants.SEHRI_MINUTE, "" + calendar.get(Calendar.MINUTE));
-        } else if (requestCode == Constants.IFTAR_REQUEST_CODE) {
-            preferenceHelper.setString(Constants.IFTAR_HOUR, "" + calendar.get(Calendar.HOUR_OF_DAY));
-            preferenceHelper.setString(Constants.IFTAR_MINUTE, "" + calendar.get(Calendar.MINUTE));
-        }
-
     }
 
     private PendingIntent setUpAlarmType(int flag, int requestCode) {
         Intent intent = new Intent(this, AlarmReceiver.class);
         return PendingIntent.getBroadcast(this, requestCode,
                 intent, flag);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getId()) {
+            case R.id.sp_iftar_time:
+                iftarRowPosition = position;
+                preferenceHelper.setInt(Constants.IFTAR_ROW_POSITION, position);
+                break;
+            case R.id.sp_sehri_time:
+                sehriRowPosition = position;
+                preferenceHelper.setInt(Constants.SEHRI_ROW_POSITION, position);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

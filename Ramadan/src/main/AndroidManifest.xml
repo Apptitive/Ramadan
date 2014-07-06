@@ -59,6 +59,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BaseActionBar"></activity>
 
         <service
             android:name=".services.RingtoneService"
@@ -77,8 +78,19 @@
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:icon="@drawable/widget_timetable"
+            android:label="@string/widget_label"
+            android:name=".receiver.TimeTableWidgetProvider" >
+            <intent-filter >
+                <action
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
-        <activity android:name=".BaseActionBar"></activity>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
         <activity
             android:name=".AlarmActivity"
             android:theme="@android:style/Theme.Dialog"></activity>

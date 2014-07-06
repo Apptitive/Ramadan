@@ -2,7 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:key="@string/pref_key_alarm_settings">
-        <Preference android:key="@string/pref_key_alarm_time"/>
         <RingtonePreference
             android:defaultValue="content://settings/system/alarm_alert"
             android:key="@string/pref_key_alarm_ringtone"

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white">
+
+        <com.apptitive.ramadan.views.BanglaTextView
+            android:id="@+id/title_alarm"
+            android:background="@color/blue_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            app:banglaText="@string/action_alarm"
+            app:fontName="@string/font_solaimanlipi"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_20" />
+
+        <com.apptitive.ramadan.views.BanglaTextView
+            android:id="@+id/tv_before_iftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_2"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            app:banglaText="ইফতারের পূর্বেঃ"
+            app:fontName="@string/font_solaimanlipi"
+            android:gravity="center_vertical"
+            android:layout_below="@id/title_alarm"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_15" />
+
+        <ToggleButton
+            android:id="@+id/switch_iftar_alarm"
+            android:layout_marginTop="@dimen/dp_ng_3"
+            android:layout_alignTop="@id/tv_before_iftar"
+            android:layout_toRightOf="@id/tv_before_iftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:thumb="@drawable/switch_selector" />
+
+
+        <Spinner
+            android:id="@+id/sp_iftar_time"
+            android:layout_below="@id/tv_before_iftar"
+            android:layout_alignLeft="@id/switch_iftar_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_20"
+            android:paddingLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:background="@drawable/sp_bg"
+            android:textSize="@dimen/text_size_15" />
+
+        <com.apptitive.ramadan.views.BanglaTextView
+            android:id="@+id/tv_before_sehri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_before_iftar"
+            app:banglaText="সেহরীর পূর্বেঃ"
+            app:fontName="@string/font_solaimanlipi"
+            android:layout_below="@id/sp_iftar_time"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/dp_30"
+            android:textSize="@dimen/text_size_15" />
+
+        <ToggleButton
+            android:id="@+id/switch_sehri_alarm"
+            android:layout_alignTop="@id/tv_before_sehri"
+            android:layout_toRightOf="@id/tv_before_sehri"
+            android:layout_marginTop="@dimen/dp_ng_3"
+            android:layout_alignLeft="@id/switch_iftar_alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:thumb="@drawable/switch_selector" />
+
+
+        <Spinner
+            android:id="@+id/sp_sehri_time"
+            android:layout_below="@id/tv_before_sehri"
+            android:layout_alignLeft="@id/switch_sehri_alarm"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_height="@dimen/dp_25"
+            android:paddingLeft="@dimen/dp_5"
+            android:background="@drawable/sp_bg"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:textSize="@dimen/text_size_15" />
+
+
+        <LinearLayout
+            android:id="@+id/dialog_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_below="@id/sp_sehri_time">
+
+            <com.apptitive.ramadan.views.BanglaTextView
+                android:id="@+id/tv_dialog_action_cancel"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_action_selector"
+                app:banglaText="বাতিল"
+                app:fontName="@string/font_solaimanlipi"
+                android:clickable="true"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:layout_marginRight="1dp"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_15" />
+
+            <com.apptitive.ramadan.views.BanglaTextView
+                android:id="@+id/tv_dialog_action_ok"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_action_selector"
+                app:banglaText="সেট করুন"
+                app:fontName="@string/font_solaimanlipi"
+                android:clickable="true"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_15" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

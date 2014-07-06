@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.apptitive.ramadan.model.Region;
 import com.apptitive.ramadan.model.TimeTable;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -17,10 +17,9 @@ public final class Constants {
     public static final int IFTAR_REQUEST_CODE=1;
     public static final int SEHRI_REQUEST_CODE=2;
 
-    public static final String IFTAR_HOUR="iftar_hour";
-    public static final String IFTAR_MINUTE="iftar_minute";
-    public static final String SEHRI_HOUR="sehri_hour";
-    public static final String SEHRI_MINUTE="sehri_minute";
+    public static final String IFTAR_ROW_POSITION="iftar_row_position";
+    public static final String SEHRI_ROW_POSITION="sehri_row_position";
+
 
     public final class topic {
         public static final String EXTRA_TITLE = "_title";

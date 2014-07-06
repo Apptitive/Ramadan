@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/layout_appwidget"
+    android:initialKeyguardLayout="@layout/layout_appwidget"
+    android:previewImage="@drawable/widget_timetable"
+    android:minHeight="@dimen/dp_72"
+    android:minWidth="@dimen/dp_294"
+    android:widgetCategory="home_screen|keyguard"
+    android:updatePeriodMillis="1200000">
+</appwidget-provider>

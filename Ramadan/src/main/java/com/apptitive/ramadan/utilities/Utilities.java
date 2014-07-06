@@ -6,11 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.TypedValue;
 
 import com.apptitive.ramadan.R;
 import com.apptitive.ramadan.receiver.NotificationCancelReceiver;
@@ -104,5 +109,28 @@ public class Utilities {
     public static String getVersionName(Context context) throws PackageManager.NameNotFoundException {
         PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
         return packageInfo.versionName;
+    }
+
+    public static Bitmap getTypefaceBitmap(Context context, String text, float textSize, boolean bold) {
+        int font_size_pixel = convertDipToPix(context, textSize);
+        int padding = font_size_pixel / 2;
+        Paint paint = new Paint();
+        int textWidth =  convertDipToPix(context, (paint.measureText(text) + padding * 2));
+        int height = (int) (font_size_pixel / 0.5);
+        Bitmap bitmap = Bitmap.createBitmap(convertDipToPix(context, 80), height, Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(bitmap);
+        paint.setAntiAlias(true);
+        paint.setSubpixelText(true);
+        paint.setFakeBoldText(bold);
+        paint.setTypeface(getFont(context));
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(font_size_pixel);
+        canvas.drawText(text, 0, font_size_pixel, paint);
+        return bitmap;
+    }
+
+    public static int convertDipToPix(Context context, float dip) {
+        int value = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, context.getResources().getDisplayMetrics());
+        return value;
     }
 }
