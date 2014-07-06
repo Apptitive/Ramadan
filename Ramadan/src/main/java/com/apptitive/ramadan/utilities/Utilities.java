@@ -113,19 +113,20 @@ public class Utilities {
 
     public static Bitmap getTypefaceBitmap(Context context, String text, float textSize, boolean bold) {
         int font_size_pixel = convertDipToPix(context, textSize);
-        int padding = font_size_pixel / 2;
+        int padding = font_size_pixel / 9;
         Paint paint = new Paint();
-        int textWidth =  convertDipToPix(context, (paint.measureText(text) + padding * 2));
-        int height = (int) (font_size_pixel / 0.5);
-        Bitmap bitmap = Bitmap.createBitmap(convertDipToPix(context, 80), height, Bitmap.Config.ARGB_4444);
-        Canvas canvas = new Canvas(bitmap);
         paint.setAntiAlias(true);
-        paint.setSubpixelText(true);
         paint.setFakeBoldText(bold);
         paint.setTypeface(getFont(context));
         paint.setColor(Color.WHITE);
         paint.setTextSize(font_size_pixel);
-        canvas.drawText(text, 0, font_size_pixel, paint);
+
+        int textWidth = (int) (paint.measureText(text) + padding * 2);
+        int height = (int) (font_size_pixel / 0.75);
+        Bitmap bitmap = Bitmap.createBitmap(textWidth, height, Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(bitmap);
+        float x_original = padding;
+        canvas.drawText(text, x_original, font_size_pixel, paint);
         return bitmap;
     }
 
