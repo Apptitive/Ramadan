@@ -4,9 +4,8 @@
     android:id="@+id/widget_sehri_iftar_time"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dp_4"
-    android:layout_marginTop="@dimen/dp_6"
-    android:layout_weight=".30"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="6dp"
     android:background="@drawable/tab_selector"
     android:orientation="horizontal">
 
@@ -20,9 +19,9 @@
             android:id="@+id/iv_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_30"
-            android:layout_marginRight="@dimen/dp_20"
-            android:src="@drawable/sehri_iftar_time" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/widget_sehri_iftar_time" />
 
         <ImageView
             android:id="@+id/imageView_name"
@@ -39,8 +38,8 @@
             android:id="@+id/divider"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/white_20_transparent" />
 
         <LinearLayout
@@ -48,7 +47,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_toRightOf="@id/divider"
-            android:paddingTop="@dimen/dp_5">
+            android:paddingTop="5dp">
 
             <RelativeLayout
                 android:layout_width="fill_parent"
@@ -60,15 +59,15 @@
                     android:id="@+id/imageView_time_seheri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_25" />
+                    android:layout_marginLeft="25dp" />
 
                 <ImageView
                     android:id="@+id/imageView_seheri_time"
                     android:layout_below="@id/imageView_time_seheri"
-                    android:layout_marginTop="@dimen/dp_ng_10"
+                    android:layout_marginTop="-10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_25" />
+                    android:layout_marginLeft="25dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -81,15 +80,15 @@
                     android:id="@+id/imageView_time_iftar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_25" />
+                    android:layout_marginLeft="25dp" />
 
                 <ImageView
                     android:id="@+id/imageView_iftar_time"
                     android:layout_below="@id/imageView_time_iftar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_ng_10"
-                    android:layout_marginLeft="@dimen/dp_25" />
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginLeft="25dp" />
             </RelativeLayout>
         </LinearLayout>
 

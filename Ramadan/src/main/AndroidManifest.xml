@@ -81,10 +81,9 @@
         <receiver
             android:icon="@drawable/widget_timetable"
             android:label="@string/widget_label"
-            android:name=".receiver.TimeTableWidgetProvider" >
-            <intent-filter >
-                <action
-                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            android:name=".receiver.TimeTableWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
@@ -92,7 +91,7 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
-        <!-- Used for Google Play Store Campaign Measurement-->;
+        <!-- Used for Google Play Store Campaign Measurement-->
         <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />
         <receiver
             android:name="com.google.analytics.tracking.android.CampaignTrackingReceiver"
