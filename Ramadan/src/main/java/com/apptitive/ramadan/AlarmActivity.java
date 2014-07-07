@@ -7,10 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -100,7 +98,7 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
 
         SpinnerAdapter sehriAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.sehri_time));
         sehriAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSehriTime.setAdapter(iftarAdapter);
+        spinnerSehriTime.setAdapter(sehriAdapter);
 
     }
 
