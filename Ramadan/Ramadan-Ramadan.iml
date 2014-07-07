@@ -62,12 +62,12 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="ormlite-android-4.48" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="ormlite-core-4.48" level="project" />
-    <orderEntry type="library" exported="" name="libGoogleAnalyticsServices" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
-    <orderEntry type="module" module-name="AndroidCustomFontSupport" exported="" />
+    <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="libGoogleAnalyticsServices" level="project" />
     <orderEntry type="module" module-name="paralloid" exported="" />
+    <orderEntry type="module" module-name="AndroidCustomFontSupport" exported="" />
   </component>
 </module>
 
