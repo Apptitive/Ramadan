@@ -55,11 +55,11 @@ public class TimeTableWidgetProvider extends AppWidgetProvider {
             if (region != null) {
                 try {
                     if (region.isPositive()) {
-                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, context, true), 35, true));
-                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, context, false), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalSehri(), timeTables, true, true), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(region.getIntervalIfter(), timeTables, true, false), 35, true));
                     } else {
-                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, context, true), 35, true));
-                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, context, false), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_seheri_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalSehri(), timeTables, true, true), 35, true));
+                        remoteViews.setImageViewBitmap(R.id.imageView_iftar_time, Utilities.getTypefaceBitmap(context, UIUtils.getSehriIftarTime(-region.getIntervalIfter(), timeTables, true, false), 35, true));
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();

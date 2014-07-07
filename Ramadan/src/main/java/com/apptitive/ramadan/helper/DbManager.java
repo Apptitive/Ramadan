@@ -61,7 +61,7 @@ public class DbManager {
             if (region.getName().equals(name))
                 return region;
         }
-        return new Region();
+        return new Region("1", "Dhaka", "", true,0, 0);
     }
 
     public Region getDonorWithId(String regionId) {

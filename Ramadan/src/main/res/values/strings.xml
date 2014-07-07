@@ -36,6 +36,21 @@
     <string name="alarm_time">অ্যালার্মের সময়</string>
     <string name="alarm_time_off">অ্যালার্ম সেট করা হয়নি</string>
     <string name="pref_key_alarm_time">pref_key_alarm_time</string>
+    <string name="before_sehri">সেহরির পূর্বে</string>
+    <string name="before_iftar">ইফতারের পূর্বে</string>
     <string name="widget_label">Ramjan - রমজান</string>
     <string name="widget_left_label">সময়সূচী</string>
+    <string-array name="sehri_time">
+        <item>০ ঘন্টা ৩০ মিনিট</item>
+        <item>১ ঘন্টা ০ মিনিট </item>
+        <item>১ ঘন্টা ৩০ মিনিট </item>
+        <item>২ ঘন্টা ০ মিনিট</item>
+    </string-array>
+
+    <string-array name="iftar_time">
+        <item>০ মিনিট</item>
+        <item>৫ মিনিট</item>
+        <item>১০ মিনিট</item>
+        <item>৩০ মিনিট</item>
+    </string-array>
 </resources>

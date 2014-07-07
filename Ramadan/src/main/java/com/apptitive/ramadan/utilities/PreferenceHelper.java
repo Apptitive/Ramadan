@@ -38,4 +38,18 @@ public class PreferenceHelper {
         editor.putBoolean(key, value);
         editor.commit();
     }
+
+    public void setInt(String key, int value) {
+        editor = sharedPreferences.edit();
+        editor.putInt(key, value);
+        editor.commit();
+    }
+
+    public int getInt(String key, int defaultValue) {
+        return sharedPreferences.getInt(key, defaultValue);
+    }
+
+    public int getInt(String key) {
+        return sharedPreferences.getInt(key, 0);
+    }
 }

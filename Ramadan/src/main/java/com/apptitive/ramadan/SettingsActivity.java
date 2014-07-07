@@ -36,7 +36,6 @@ public class SettingsActivity extends PreferenceActivity {
     private Preference preferenceAboutUs;
     private RingtonePreference preferenceRingtone;
     private CheckBoxPreference preferenceVibrate;
-    private Preference alrmPreference;
     private static String[] entries;
 
     @Override
@@ -99,7 +98,6 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAboutUs = (Preference) findPreference(getString(R.string.pref_key_preference_about_us));
         preferenceRingtone = (RingtonePreference) findPreference(getString(R.string.pref_key_alarm_ringtone));
         preferenceVibrate = (CheckBoxPreference) findPreference(getString(R.string.pref_key_alarm_vibrate));
-        alrmPreference = (Preference) findPreference(getString(R.string.pref_key_alarm_time));
     }
 
     private void setBanglaTextToView() {
@@ -110,15 +108,6 @@ public class SettingsActivity extends PreferenceActivity {
         preferenceAboutUs.setSummary(Utilities.getBanglaSpannableString(getString(R.string.title_about_us), this));
         preferenceRingtone.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_ringtone), this));
         preferenceVibrate.setTitle(Utilities.getBanglaSpannableString(getString(R.string.pref_title_vibrate), this));
-        alrmPreference.setTitle(Utilities.getBanglaSpannableString(getString(R.string.alarm_time), this));
-
-        PreferenceHelper preferenceHelper = new PreferenceHelper(this);
-        String dateTime = preferenceHelper.getString(Constants.PREF_ALARM_DATE, "");
-        if (!dateTime.equals("")) {
-            alrmPreference.setSummary(dateTime);
-        } else {
-            alrmPreference.setSummary(Utilities.getBanglaSpannableString(getString(R.string.alarm_time_off), this));
-        }
 
         preferenceAboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override

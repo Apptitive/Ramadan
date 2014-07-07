@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
-
-     Copyright (C) 2011 The Android Open Source Project
-     Copyright (C) 2012 readyState Software Ltd
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <resources>
 
@@ -48,11 +31,11 @@
     <style name="TitleText.Ramadan" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/White</item>
     </style>
-	
-    <style name="PopupMenu.Ramadan" parent="@style/Widget.AppCompat.Light.PopupMenu">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_ramadan</item>	
+
+    <style name="PopupMenu.Ramadan" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_ramadan</item>
     </style>
-	
+
     <style name="DropDownListView.Ramadan" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_ramadan</item>
     </style>
@@ -60,26 +43,27 @@
     <style name="ActionBarTabStyle.Ramadan" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_ramadan</item>
     </style>
-	
+
     <style name="DropDownNav.Ramadan" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_ramadan</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_ramadan</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_ramadan</item>
     </style>
-    
+
     <style name="ProgressBar.Ramadan" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_ramadan</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Ramadan" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_ramadan</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Ramadan.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Ramadan</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Ramadan</item>
     </style>
+
     <style name="NotificationText">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
     </style>
