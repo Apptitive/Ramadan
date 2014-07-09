@@ -78,7 +78,7 @@ public class SaomVongerKaronActivity extends BaseActionBar implements DetailsFra
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new Topic(topicTitle, "", false, 1);
+        return new Topic(topicTitle, "", false, 1, null);
     }
 
     @Override

@@ -51,7 +51,6 @@ public class Utilities {
         return AndroidCustomFontSupport.getCorrectedBengaliFormat(banglaText, getFont(context), -1);
     }
 
-
     public static void customNotification(Context context) {
         Intent notificationIntent = new Intent(context, NotificationCancelReceiver.class);
         notificationIntent.setAction("notification_cancelled");

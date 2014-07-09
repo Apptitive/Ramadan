@@ -1,5 +1,6 @@
 package com.apptitive.ramadan.model;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -11,20 +12,23 @@ public class Topic implements Parcelable {
     private String shortDescription;
     private boolean hasFullText;
     private int detailId;
+    private Uri detailUri;
 
     private Topic(Parcel in) {
         header = in.readString();
         detailId = in.readInt();
+        detailUri = Uri.parse(in.readString());
     }
 
     public Topic() {
     }
 
-    public Topic(String header, String shortDescription, boolean hasFullText, int detailId) {
+    public Topic(String header, String shortDescription, boolean hasFullText, int detailId, Uri detailUri) {
         this.header = header;
         this.shortDescription = shortDescription;
         this.hasFullText = hasFullText;
         this.detailId = detailId;
+        this.detailUri = detailUri;
     }
 
     public String getHeader() {
@@ -59,6 +63,14 @@ public class Topic implements Parcelable {
         this.detailId = detailId;
     }
 
+    public Uri getDetailUri() {
+        return detailUri;
+    }
+
+    public void setDetailUri(Uri detailUri) {
+        this.detailUri = detailUri;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -68,6 +80,7 @@ public class Topic implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(header);
         parcel.writeInt(detailId);
+        parcel.writeString(detailUri == null ? "" : detailUri.toString());
     }
 
     public static final Creator<Topic> CREATOR = new Creator<Topic>() {

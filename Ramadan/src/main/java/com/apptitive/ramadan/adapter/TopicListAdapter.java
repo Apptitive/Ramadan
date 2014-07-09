@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class TopicListAdapter extends ArrayAdapter<Topic> {
     private int layoutResId;
-    private OnTopicClickListener onTopicClickListener;
+    private TopicClickListener topicClickListener;
 
-    public TopicListAdapter(Context context, int resource, List<Topic> objects, OnTopicClickListener onTopicClickListener) {
+    public TopicListAdapter(Context context, int resource, List<Topic> objects, TopicClickListener topicClickListener) {
         super(context, resource, objects);
         layoutResId = resource;
-        this.onTopicClickListener = onTopicClickListener;
+        this.topicClickListener = topicClickListener;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final Topic topic = getItem(position);
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(layoutResId, parent, false);
@@ -77,14 +77,14 @@ public class TopicListAdapter extends ArrayAdapter<Topic> {
         finalViewHolder.selectableView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onTopicClickListener.onTopicClick(topic, position);
+                topicClickListener.onTopicClick(topic, position);
             }
         });
 
         return convertView;
     }
 
-    public interface OnTopicClickListener {
+    public interface TopicClickListener {
         void onTopicClick(Topic topic, int position);
     }
 }

@@ -284,5 +284,35 @@
                 <part text="আল্লাহ্ তা’আলা আমাদের সবাইকে ঈদের প্রকৃত শিক্ষা উপলব্ধি করার এবং তদানুযায়ী ’আমল করার তাওফিক দান করুন। আমীন!" view_type="t" />
             </details>
         </subtopic>
+        <subtopic name="রমজানের ইবাদত" show_all="false">
+            <brief text="মাহে রমজানে আল্লাহর নিয়ামত উপভোগ করে ইবাদত করা হচ্ছে একজন মুসলিমের প্রধান কাজ। রমজান মাস ইবাদতের বসন্তকাল। মাহে রমজানের সিয়াম সাধনা আল্লাহর অনন্ত অসীম রহমতের দ্বার উন্মুক্ত করে দেয়।" />
+            <details id="07">
+                <url link="http://m.dhakatimes.com.bd/tag/roja-prayer/" />
+            </details>
+        </subtopic>
+        <subtopic name="রমজানের স্বাস্থ্যকথা" show_all="false">
+            <brief text="রমজান মাসে মুসলিম জাহান ইসলামিক চিন্তা চেতনায় এবং মহান আল্লাহ্‌কে সন্তুষ্ট করতে রোজা রাখেন। এতে শরীরের নানান বিষয়ে খেয়াল রাখা জরুরী তাই রমজান মাসে সঠিক স্বাস্থ্য কথা অনুসরণ করা জরুরী।" />
+            <details id="08">
+                <url link="http://m.dhakatimes.com.bd/tag/roja-health/" />
+            </details>
+        </subtopic>
+        <subtopic name="রমজানের রেসিপি" show_all="false">
+            <brief text="রোজায় সারাদিন পানাহার থেকে বিরত থেকে সূর্যাস্তের পর খাবার গ্রহন করতে হয়। আর এই সময় সকল খাবার স্বাস্থ্যের জন্য সমান ভাবে কার্যকরী নয়। তাই রমজানের রেসিপি জানা আবশ্যক সকলের জন্য।" />
+            <details id="09">
+                <url link="http://m.dhakatimes.com.bd/tag/roja-recipe/" />
+            </details>
+        </subtopic>
+        <subtopic name="ঈদ রেসিপি" show_all="false">
+            <brief text="ঈদ দীর্ঘ এক মাস সিয়াম সাধনার পরে অপার আনন্দ নিয়ে আসে মুসলিম হাজানে। এই আনন্দ উপভোগ করতে চাই সকলের জন্য মজাদার খাবার রেসিপি।" />
+            <details id="10">
+                <url link="http://m.dhakatimes.com.bd/tag/eid-recipe/" />
+            </details>
+        </subtopic>
+        <subtopic name="ঈদ ফ্যাশন" show_all="false">
+            <brief text="ঈদে সবাই চান নিজেকে একটু সুন্দর পোষাকে সাজাতে। শুধু নতুন পোশাক হলেই হবেনা চাই রুচিশীল সুন্দর পোশাক। তাই সকলের জন্য ঈদ ফ্যাশনে আপডেট থাকা জরুরী।" />
+            <details id="11">
+                <url link="http://m.dhakatimes.com.bd/tag/eid-fashion/" />
+            </details>
+        </subtopic>
     </topic>
 </ramadan>
