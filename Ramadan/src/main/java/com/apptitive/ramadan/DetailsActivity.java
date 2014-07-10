@@ -62,6 +62,18 @@ public class DetailsActivity extends BaseActionBar implements DetailsFragment.De
         drawerListAdapter = new ArrayAdapter<Topic>(this, R.layout.drawer_layout,
                 topics) {
             @Override
+            public int getViewTypeCount() {
+                if (getCount() != 0)
+                    return getCount();
+                return 1;
+            }
+
+            @Override
+            public int getItemViewType(int position) {
+                return position;
+            }
+
+            @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 BanglaTextView btv;
                 if (convertView == null) {

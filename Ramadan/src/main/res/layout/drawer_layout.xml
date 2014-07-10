@@ -14,5 +14,5 @@
         android:layout_gravity="left"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:fontName="@string/font_solaimanlipi"/>
+        app:fontName="@string/font_solaimanlipi" />
 </LinearLayout>
