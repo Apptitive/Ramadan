@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
 
@@ -14,17 +15,32 @@ import com.apptitive.ramadan.utilities.Constants;
 import com.apptitive.ramadan.utilities.PreferenceHelper;
 
 public class AlarmReceiver extends BroadcastReceiver {
+    private PreferenceHelper preferenceHelper;
+    private int requestCode;
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        PreferenceHelper preferenceHelper = new PreferenceHelper(context);
+        preferenceHelper = new PreferenceHelper(context);
+        preferenceHelper.getBoolean(Constants.PREF_SWITCH_IFTAR);
+        preferenceHelper.getBoolean(Constants.PREF_SWITCH_SEHRI);
 
-/*
-        boolean isAlarmSelected = preferenceHelper.getBoolean(context.getString(R.string.alarm_switch));
-        if (!isAlarmSelected) {
-            return;
-        }*/
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            requestCode = extras.getInt(Constants.REQUEST_CODE);
+        }
+
+        if (requestCode == Constants.IFTAR_REQUEST_CODE & preferenceHelper.getBoolean(Constants.PREF_SWITCH_IFTAR)) {
+            setUpVibrationAndRingTon(context);
+        }
+
+        if (requestCode == Constants.SEHRI_REQUEST_CODE & preferenceHelper.getBoolean(Constants.PREF_SWITCH_SEHRI)) {
+            setUpVibrationAndRingTon(context);
+        }
 
 
+    }
+
+    private void setUpVibrationAndRingTon(Context context) {
         boolean isVibrate = preferenceHelper.getBoolean(context.getString(R.string.pref_key_alarm_vibrate));
         if (isVibrate) {
             setAlarmVibration(context);
@@ -35,7 +51,6 @@ public class AlarmReceiver extends BroadcastReceiver {
             ringTonIntent.putExtra(Constants.KEY_RINGTONE_NAME, ringTonName);
             context.startService(ringTonIntent);
         }
-
     }
 
     private void setAlarmVibration(Context context) {

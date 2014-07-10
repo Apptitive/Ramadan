@@ -12,13 +12,14 @@ public final class Constants {
     public static final String DATE_FORMAT_12_HOUR = "dd-MM-yyyy hh:mm aa";
     public static final String IS_DB_CREATED = "key_db_creation";
     public static final String PREF_ALARM_DATE = "key_alarm_date";
-    public static final String PREF_SWITCH_IFTAR="pref_switch_iftar";
-    public static final String PREF_SWITCH_SEHRI="pref_switch_sehri";
-    public static final int IFTAR_REQUEST_CODE=1;
-    public static final int SEHRI_REQUEST_CODE=2;
+    public static final String PREF_SWITCH_IFTAR = "pref_switch_iftar";
+    public static final String PREF_SWITCH_SEHRI = "pref_switch_sehri";
+    public static final int IFTAR_REQUEST_CODE = 1;
+    public static final int SEHRI_REQUEST_CODE = 2;
 
-    public static final String IFTAR_ROW_POSITION="iftar_row_position";
-    public static final String SEHRI_ROW_POSITION="sehri_row_position";
+    public static final String IFTAR_ROW_POSITION = "iftar_row_position";
+    public static final String SEHRI_ROW_POSITION = "sehri_row_position";
+    public static final String REQUEST_CODE = "request_code";
 
 
     public final class topic {
