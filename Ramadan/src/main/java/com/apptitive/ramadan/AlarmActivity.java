@@ -125,8 +125,13 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
                     int[][] sehriTimes = new int[][]{{0, 30}, {1, 0}, {1, 30}, {2, 0}};
                     setUpSehriIftarAlarm(calculatedSehriTime, sehriTimes[sehriRowPosition][0], sehriTimes[sehriRowPosition][1], Constants.SEHRI_REQUEST_CODE);
                 }
+                preferenceHelper.setBoolean(Constants.PREF_SWITCH_IFTAR, isIftar);
+                preferenceHelper.setBoolean(Constants.PREF_SWITCH_SEHRI, isSheri);
+                preferenceHelper.setInt(Constants.IFTAR_ROW_POSITION, iftarRowPosition);
+                preferenceHelper.setInt(Constants.SEHRI_ROW_POSITION, sehriRowPosition);
                 break;
         }
+
         finish();
 
     }
@@ -147,13 +152,11 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         switch (compoundButton.getId()) {
             case R.id.switch_iftar_alarm:
-                preferenceHelper.setBoolean(Constants.PREF_SWITCH_IFTAR, isChecked);
                 isIftar = isChecked;
                 iftarEnabled(isChecked);
                 break;
             case R.id.switch_sehri_alarm:
                 sehriEnabled(isChecked);
-                preferenceHelper.setBoolean(Constants.PREF_SWITCH_SEHRI, isChecked);
                 isSheri = isChecked;
                 break;
 
@@ -180,6 +183,7 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
 
     private PendingIntent setUpAlarmType(int flag, int requestCode) {
         Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra(Constants.REQUEST_CODE, requestCode);
         return PendingIntent.getBroadcast(this, requestCode,
                 intent, flag);
     }
@@ -189,11 +193,9 @@ public class AlarmActivity extends Activity implements View.OnClickListener, Com
         switch (parent.getId()) {
             case R.id.sp_iftar_time:
                 iftarRowPosition = position;
-                preferenceHelper.setInt(Constants.IFTAR_ROW_POSITION, position);
                 break;
             case R.id.sp_sehri_time:
                 sehriRowPosition = position;
-                preferenceHelper.setInt(Constants.SEHRI_ROW_POSITION, position);
                 break;
         }
     }
