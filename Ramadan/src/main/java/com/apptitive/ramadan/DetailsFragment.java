@@ -69,6 +69,13 @@ public class DetailsFragment extends ListFragment {
         }
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        setListAdapter(detailsListAdapter);
+        return inflater.inflate(R.layout.fragment_details, container, false);
+    }
+
     private void populateList(int fileResId, int detailId) throws XmlPullParserException, IOException {
         parserFactory = XmlPullParserFactory.newInstance();
         parserFactory.setNamespaceAware(false);
@@ -128,16 +135,8 @@ public class DetailsFragment extends ListFragment {
         getListView().setAdapter(detailsListAdapter);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        setListAdapter(detailsListAdapter);
-        return inflater.inflate(R.layout.fragment_details, container, false);
-    }
-
     public interface DetailProvider {
         Topic getTopic();
-
         int getFileResId();
     }
 }

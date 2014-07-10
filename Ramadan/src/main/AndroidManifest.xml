@@ -60,6 +60,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActionBar"></activity>
+        <activity
+            android:name=".AlarmActivity"
+            android:theme="@android:style/Theme.Dialog"></activity>
 
         <service
             android:name=".services.RingtoneService"
@@ -90,9 +93,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
-        <activity
-            android:name=".AlarmActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
 
         <!-- Used for Google Play Store Campaign Measurement-->
         <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />

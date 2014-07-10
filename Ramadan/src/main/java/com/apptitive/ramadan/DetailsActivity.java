@@ -1,12 +1,12 @@
 package com.apptitive.ramadan;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.WindowCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,11 +80,17 @@ public class DetailsActivity extends BaseActionBar implements DetailsFragment.De
             @Override
             public void onItemClick(AdapterView<?> parent, View item, int position, long id) {
                 topicInView = topics.get(position);
-                actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), DetailsActivity.this));
-                DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
-                detailsFragment.changeTopic(topicInView);
-                listViewDrawer.setAdapter(drawerListAdapter);
-                drawerLayout.closeDrawer(listViewDrawer);
+                if (TextUtils.isEmpty(topicInView.getDetailUri().toString())) {
+                    actionBar.setTitle(Utilities.getBanglaSpannableString(topicInView.getHeader(), DetailsActivity.this));
+                    DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
+                    detailsFragment.changeTopic(topicInView);
+                    listViewDrawer.setAdapter(drawerListAdapter);
+                    drawerLayout.closeDrawer(listViewDrawer);
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(topicInView.getDetailUri());
+                    startActivity(intent);
+                }
             }
         });
     }

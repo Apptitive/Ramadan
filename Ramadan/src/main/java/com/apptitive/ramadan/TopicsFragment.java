@@ -3,12 +3,14 @@ package com.apptitive.ramadan;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.apptitive.ramadan.adapter.TopicListAdapter;
 import com.apptitive.ramadan.model.Topic;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.paralloid.Parallaxor;
 
-public class TopicsFragment extends ListFragment implements TopicListAdapter.OnTopicClickListener {
+public class TopicsFragment extends ListFragment implements TopicListAdapter.TopicClickListener {
 
     private int topicFileResId;
     private XmlPullParserFactory parserFactory;
@@ -92,6 +94,9 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
                 if (name.equalsIgnoreCase("brief")) {
                     topic.setShortDescription(xpp.getAttributeValue(null, "text"));
                 }
+                if(name.equalsIgnoreCase("url")) {
+                    topic.setDetailUri(Uri.parse(xpp.getAttributeValue(null, "link")));
+                }
             }
             if (eventType == XmlPullParser.END_TAG) {
                 if (name.equalsIgnoreCase("subtopic")) {
@@ -105,7 +110,7 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     private void parallaxListViewBackground(int drawable) {
         final ListView listView = getListView();
         if (listView instanceof Parallaxor) {
-            ((ParallaxListView) listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .35f);
+            ((ParallaxListView) listView).parallaxViewBackgroundBy(listView, getResources().getDrawable(drawable), .15f);
         }
     }
 
@@ -146,12 +151,19 @@ public class TopicsFragment extends ListFragment implements TopicListAdapter.OnT
     @Override
     public void onTopicClick(Topic topic, int position) {
         if (!topic.hasFullText()) {
-            Intent i = new Intent(parentActivity, DetailsActivity.class);
-            i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
-            i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);
-            i.putExtra(Constants.topic.EXTRA_ICON_ID, parentActivity.getIconDrawableId());
-            i.putExtra(Constants.topic.EXTRA_DATA_FILE, topicFileResId);
-            startActivity(i);
+            if(topic.getDetailUri() == null && topic.getDetailId() > 0) {
+                Intent i = new Intent(parentActivity, DetailsActivity.class);
+                i.putParcelableArrayListExtra(Constants.topic.EXTRA_PARCELABLE_LIST, topics);
+                i.putExtra(Constants.topic.EXTRA_VIEWING_NOW, position);
+                i.putExtra(Constants.topic.EXTRA_ICON_ID, parentActivity.getIconDrawableId());
+                i.putExtra(Constants.topic.EXTRA_DATA_FILE, topicFileResId);
+                startActivity(i);
+            }
+            else if(topic.getDetailUri() != null) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(topic.getDetailUri());
+                startActivity(intent);
+            }
         }
     }
 }
